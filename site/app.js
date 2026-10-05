@@ -161,12 +161,6 @@ async function verificarApi() {
     ponto.className = "ponto-status online";
     texto.textContent = `API Online (${urlCurta})`;
 
-    // Se a API subiu, auto-completa o Passo 1 da missão
-    const ck1 = document.getElementById("check-passo-1");
-    if (ck1 && !ck1.checked) {
-      ck1.checked = true;
-      atualizarProgresso();
-    }
   } catch (e) {
     ponto.className = "ponto-status offline";
     texto.textContent = `API Offline (${urlCurta})`;
@@ -197,13 +191,6 @@ document.getElementById("form-chamado").addEventListener("submit", async (evento
     ultimoChamadoId = id;
     localStorage.setItem("ultimoChamadoId", id);
     atualizarBotaoUltimo(id);
-
-    // Auto-completa etapa 5 do checklist
-    const ck5 = document.getElementById("check-passo-5");
-    if (ck5 && !ck5.checked) {
-      ck5.checked = true;
-      atualizarProgresso();
-    }
 
     saida.innerHTML = `
       <div style="background:var(--destaque); padding:1rem; border-radius:6px; border-left:4px solid var(--cor-sucesso);">

@@ -336,6 +336,78 @@ section {
   margin-top: 1rem;
 }
 
+.contrato-aprendizagem,
+.entrega-final {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--cor-primaria);
+  border-radius: 8px;
+  background: var(--cartao);
+}
+
+.contrato-aprendizagem h3,
+.entrega-final h3 {
+  margin-top: 0;
+}
+
+.regras-investigacao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.regras-investigacao span {
+  padding: 0.65rem;
+  border-radius: 6px;
+  background: var(--fundo);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.grade-desafio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.grade-desafio > div {
+  padding: 0.8rem;
+  border-radius: 6px;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+}
+
+.grade-desafio p {
+  margin: 0.35rem 0 0;
+}
+
+.pista {
+  margin-top: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.35);
+}
+
+.pista summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.entrega-final ul {
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 700px) {
+  .grade-desafio {
+    grid-template-columns: 1fr;
+  }
+}
+
 .item-passo {
   border: 1px solid var(--borda);
   border-radius: 8px;
