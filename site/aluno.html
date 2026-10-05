@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina Digital — Manual do Aluno</title>
+  <style>
+    :root { --azul:#1565c0; --laranja:#e65100; --verde:#2e7d32; --fundo:#f4f6f8; --cartao:#fff; --texto:#1e293b; --suave:#475569; --borda:#cbd5e1; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, "Segoe UI", Arial, sans-serif; font-size:1.2rem; line-height:1.6; background:var(--fundo); color:var(--texto); }
+    header { background:var(--azul); color:#fff; padding:1.5rem 1rem; }
+    header h1 { margin:0 0 .3rem; font-size:1.9rem; }
+    header p { margin:0; opacity:.95; }
+    main, .topo { max-width:820px; margin:0 auto; padding:0 1rem; }
+    main { padding-bottom:3rem; }
+    a { color:var(--azul); font-weight:600; }
+    .legenda { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0; font-size:1rem; }
+    .legenda span { background:#fff; border:1px solid var(--borda); border-radius:999px; padding:.2rem .8rem; }
+    .progresso { background:#fff; border:2px solid var(--borda); border-radius:12px; padding:1rem; margin:1rem 0; }
+    .barra { height:18px; background:#e2e8f0; border-radius:9px; overflow:hidden; }
+    .barra div { height:100%; width:0; background:var(--verde); transition:width .3s; }
+    .etapa { background:var(--cartao); border:2px solid var(--borda); border-radius:14px; margin:1rem 0; }
+    .etapa > summary { cursor:pointer; padding:1rem; font-size:1.35rem; font-weight:700; list-style:none; display:flex; gap:.7rem; align-items:center; }
+    .etapa > summary::-webkit-details-marker { display:none; }
+    .etapa > summary::after { content:"▼"; margin-left:auto; font-size:1rem; color:var(--suave); }
+    .etapa[open] > summary::after { content:"▲"; }
+    .etapa.feita { border-color:var(--verde); }
+    .corpo { padding:0 1.2rem 1.2rem; }
+    .corpo h3 { margin:1.3rem 0 .4rem; font-size:1.2rem; }
+    .corpo ol, .corpo ul { padding-left:1.4rem; }
+    .corpo li { margin:.5rem 0; }
+    .marcar { display:flex; gap:.7rem; align-items:center; font-weight:700; }
+    .marcar input { width:28px; height:28px; accent-color:var(--verde); }
+    .aviso, .dica, .prova { border-left:6px solid; border-radius:8px; padding:.7rem 1rem; margin:1rem 0; }
+    .aviso { background:#fff3e0; border-color:var(--laranja); }
+    .dica { background:#e3f2fd; border-color:var(--azul); }
+    .prova { background:#e8f5e9; border-color:var(--verde); }
+    pre { background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:10px; white-space:pre-wrap; word-break:break-word; font-size:1rem; margin:.4rem 0; }
+    .copiar { background:var(--azul); color:#fff; border:0; border-radius:8px; padding:.7rem 1.2rem; font-size:1.05rem; font-weight:700; cursor:pointer; min-height:48px; }
+    .copiar:focus-visible, summary:focus-visible, a:focus-visible { outline:3px solid var(--laranja); outline-offset:2px; }
+    table { width:100%; border-collapse:collapse; font-size:1rem; margin:.5rem 0; }
+    th, td { border:1px solid var(--borda); padding:.5rem; text-align:left; vertical-align:top; }
+    .no { display:inline-block; width:1.1rem; height:1.1rem; border-radius:50%; vertical-align:middle; margin-right:.3rem; }
+    .btn-doc { display:inline-block; background:#fff; border:2px solid var(--azul); border-radius:8px; padding:.5rem 1rem; margin:.25rem .25rem .25rem 0; text-decoration:none; }
+    footer { text-align:center; color:var(--suave); font-size:1rem; padding:1.5rem 1rem 3rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topo">
+      <h1>🛠️ Oficina Digital — Manual do Aluno</h1>
+      <p>Você é <strong>técnico de bancada</strong> em capacitação. Pouca leitura. Muito áudio, imagem e clique.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="legenda" aria-label="Legenda dos ícones">
+      <span>🔘 Clique aqui</span><span>⚠️ Cuidado</span><span>💡 Dica</span><span>🔊 Ouça aqui</span><span>📲 No celular</span><span>📸 Comprovante</span>
+    </div>
+
+    <div class="progresso" role="status">
+      <strong id="txt-prog">0 de 5 etapas feitas</strong>
+      <div class="barra"><div id="barra"></div></div>
+    </div>
+
+    <div class="dica">📸 <strong>Como provar cada etapa:</strong> um print da tela, uma foto do celular ou um áudio de até 1 minuto. Não precisa escrever relatório.</div>
+
+    <!-- ETAPA 1 -->
+    <details class="etapa" id="e1" open>
+      <summary>1️⃣ Arquivo Digital Central <small>(GitHub)</small></summary>
+      <div class="corpo">
+        <p>O <strong>GitHub</strong> é uma <strong>pasta compartilhada na internet</strong>. Nada se perde. Um <strong>repositório</strong> é uma pasta de trabalho dentro dele.</p>
+        <h3>Criar a conta (grátis)</h3>
+        <ol>
+          <li>🔘 Abra <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</li>
+          <li>🔘 Clique em <strong>Sign up</strong> (canto de cima, à direita).</li>
+          <li>Preencha <strong>e-mail</strong>, <strong>senha</strong> e <strong>nome de usuário</strong>.</li>
+          <li>Resolva o teste "não sou robô". Clique em <strong>Create account</strong>.</li>
+        </ol>
+        <div class="aviso">⚠️ Anote a senha em um caderno seu. Não mande a senha para ninguém.</div>
+        <h3>Confirmar o e-mail</h3>
+        <ol>
+          <li>Abra seu e-mail. 💡 Olhe também em <strong>Spam</strong>.</li>
+          <li>🔘 Clique em <strong>Verify email address</strong>.</li>
+        </ol>
+        <h3>Pegar a pasta do projeto</h3>
+        <ol>
+          <li>🔘 Abra <a href="https://github.com/rcminitor/Oficina_CuCa_IA" target="_blank" rel="noopener">a pasta da oficina</a>.</li>
+          <li>🔘 Clique no botão verde <strong>&lt;&gt; Code</strong> → <strong>Download ZIP</strong>.</li>
+          <li>Na pasta Downloads: botão direito no ZIP → <strong>Extrair tudo</strong>.</li>
+        </ol>
+        <h3>🎬 Vídeos em português</h3>
+        <p>No YouTube, procure: <strong>Curso em Vídeo Gustavo Guanabara Git e GitHub</strong>.</p>
+        <div class="prova">📸 <strong>Comprovante:</strong> print da sua página do GitHub com seu nome de usuário.</div>
+        <label class="marcar"><input type="checkbox" data-etapa="1"> Etapa 1 feita</label>
+      </div>
+    </details>
+
+    <!-- ETAPA 2 -->
+    <details class="etapa" id="e2">
+      <summary>2️⃣ Assistente que lê em voz alta <small>(NotebookLM)</small></summary>
+      <div class="corpo">
+        <p>O NotebookLM lê seus documentos e <strong>explica em áudio</strong>. Você estuda de fone de ouvido.</p>
+        <h3>Os 3 documentos de bancada</h3>
+        <p>
+          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/01_guia_defeitos_comuns.md" target="_blank" rel="noopener">📄 1. Defeitos comuns</a>
+          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/02_catalogo_pecas.md" target="_blank" rel="noopener">📄 2. Catálogo de peças</a>
+          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/03_historico_ordens_servico.md" target="_blank" rel="noopener">📄 3. Histórico de serviços</a>
+        </p>
+        <ol>
+          <li>🔘 Abra <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a> e entre com a conta Google.</li>
+          <li>🔘 Clique em <strong>Novo caderno</strong>.</li>
+          <li>🔘 <strong>Adicionar fonte</strong> → envie os 3 arquivos (baixe cada um antes).</li>
+        </ol>
+        <h3>🔊 Ouvir o resumo em áudio</h3>
+        <ol>
+          <li>🔘 Clique em <strong>Resumo em áudio</strong> (<em>Audio Overview</em>). Espere alguns minutos.</li>
+          <li>🔘 Clique em <strong>Play</strong>. Coloque o fone.</li>
+        </ol>
+        <p>Pergunta pronta (copie e cole na conversa):</p>
+        <pre id="p-nb">Meu cliente disse que o notebook desliga sozinho. Quais peças eu devo olhar primeiro? Responda em 5 linhas curtas.</pre>
+        <button class="copiar" data-copiar="p-nb">📋 Copiar pergunta</button>
+        <div class="aviso">⚠️ A IA pode errar. Confira a resposta nos documentos 1 e 2.</div>
+        <div class="prova">📸 <strong>Comprovante:</strong> print do caderno com os 3 documentos, <strong>ou</strong> 🔊 áudio de 1 minuto: "o que eu aprendi ouvindo".</div>
+        <label class="marcar"><input type="checkbox" data-etapa="2"> Etapa 2 feita</label>
+      </div>
+    </details>
+
+    <!-- ETAPA 3 -->
+    <details class="etapa" id="e3">
+      <summary>3️⃣ Bancada de Testes de IA <small>(Gemini Notebook)</small></summary>
+      <div class="corpo">
+        <p>Aqui você <strong>testa</strong> a IA antes de usar no trabalho de verdade. Duas ferramentas de prompt (Skills):</p>
+        <table>
+          <tr><th>Skill</th><th>Entra</th><th>Sai</th></tr>
+          <tr><td><strong>A</strong> — Triagem</td><td>Relato do cliente</td><td>Modelo + Sintoma + Gravidade</td></tr>
+          <tr><td><strong>B</strong> — Busca no histórico</td><td>Modelo + Sintoma</td><td>Peça provável + tempo de bancada</td></tr>
+        </table>
+        <ol>
+          <li>🔘 Abra <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> (ou o Colab, se o professor pedir).</li>
+          <li>Copie a <strong>Skill A</strong> e troque o relato.</li>
+        </ol>
+        <h3>Skill A — Triagem de Sintomas</h3>
+        <pre id="p-a">Você é atendente de oficina de informática. Leia o relato do cliente.
+Responda SOMENTE neste formato, uma linha cada:
+Modelo: ...
+Sintoma principal: ...
+Gravidade: BAIXA, MÉDIA ou ALTA
+Se faltar informação, escreva "não informado". Não invente.
+
+Relato: """COLE O RELATO AQUI"""</pre>
+        <button class="copiar" data-copiar="p-a">📋 Copiar Skill A</button>
+        <h3>Skill B — Busca no histórico (GraphRAG)</h3>
+        <pre id="p-b">Você é técnico de bancada. Use APENAS o histórico abaixo.
+Dado o modelo e o sintoma, diga:
+Peça provável: ...
+Tempo de bancada: ...
+Casos parecidos: (número da ordem de serviço)
+Se o histórico não tiver caso parecido, responda "sem histórico".
+
+Modelo: COLE_AQUI
+Sintoma: COLE_AQUI
+Histórico: """COLE AQUI A TABELA DO DOCUMENTO 3"""</pre>
+        <button class="copiar" data-copiar="p-b">📋 Copiar Skill B</button>
+        <h3>🧠 Desafio de Decisão</h3>
+        <p>Faça 3 chamados de treino. Depois conte por áudio:</p>
+        <ul>
+          <li>Em qual chamado usei a <strong>Skill A</strong>? Por quê?</li>
+          <li>Em qual usei a <strong>Skill B</strong>? Por quê?</li>
+          <li>Em qual usei <strong>as duas juntas</strong>? Por quê?</li>
+        </ul>
+        <div class="dica">💡 A Skill B funciona melhor quando recebe o modelo e o sintoma já limpos pela Skill A.</div>
+        <div class="prova">📸 <strong>Comprovante:</strong> print das respostas <strong>e</strong> o áudio de 1 minuto.</div>
+        <label class="marcar"><input type="checkbox" data-etapa="3"> Etapa 3 feita</label>
+      </div>
+    </details>
+
+    <!-- ETAPA 4 -->
+    <details class="etapa" id="e4">
+      <summary>4️⃣ Quadro de Fichas e Ligações <small>(Obsidian)</small></summary>
+      <div class="corpo">
+        <p>O <strong>Obsidian</strong> guarda fichas e <strong>desenha as ligações</strong> entre elas.</p>
+        <table>
+          <tr><th>Cor</th><th>O que é</th><th>Exemplo</th></tr>
+          <tr><td><span class="no" style="background:#1976d2"></span>Azul</td><td>Aparelho</td><td>Notebook Dell G15</td></tr>
+          <tr><td><span class="no" style="background:#fb8c00"></span>Laranja</td><td>Sintoma</td><td>Desliga sozinho</td></tr>
+          <tr><td><span class="no" style="background:#43a047"></span>Verde</td><td>Solução / Peça</td><td>Troca de pasta térmica</td></tr>
+        </table>
+        <ol>
+          <li>🔘 Baixe em <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a> (grátis) e instale.</li>
+          <li>🔘 <strong>Create new vault</strong>, nome: <code>Oficina</code>.</li>
+          <li>Crie 3 notas. O texto com <code>[[ ]]</code> cria a ligação:</li>
+        </ol>
+        <pre id="p-ob">Nota "Notebook Dell G15":  #aparelho  Sintoma: [[Desliga sozinho]]
+Nota "Desliga sozinho":    #sintoma   Solução: [[Troca de pasta térmica]]
+Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
+        <button class="copiar" data-copiar="p-ob">📋 Copiar modelo das notas</button>
+        <ol start="4">
+          <li>🔘 Menu da esquerda → ícone do <strong>grafo</strong> (bolinhas ligadas).</li>
+          <li>No grafo, abra <strong>Grupos</strong> e crie 3 cores: <code>tag:#aparelho</code> azul, <code>tag:#sintoma</code> laranja, <code>tag:#solucao</code> verde.</li>
+        </ol>
+        <div class="dica">💡 <strong>Graphiti</strong> é o mesmo quadro, mas feito pelo programa. Cada chamado novo vira uma ligação: aparelho → sintoma → peça. Neste projeto usamos uma versão simples em Python.</div>
+        <div class="prova">📸 <strong>Comprovante:</strong> print do grafo com 3 cores e pelo menos 5 bolinhas.</div>
+        <label class="marcar"><input type="checkbox" data-etapa="4"> Etapa 4 feita</label>
+      </div>
+    </details>
+
+    <!-- ETAPA 5 -->
+    <details class="etapa" id="e5">
+      <summary>5️⃣ Rádio do Técnico <small>(Telegram + CrewAI)</small></summary>
+      <div class="corpo">
+        <p><strong>CrewAI</strong> é a <strong>dupla</strong>: o atendente recebe o cliente e o técnico diagnostica. O <strong>Telegram</strong> é o rádio no seu celular.</p>
+        <h3>📲 Criar o bot em 4 passos</h3>
+        <ol>
+          <li>No Telegram, procure <strong>@BotFather</strong> (tem selo azul ✔️). Envie <code>/start</code>.</li>
+          <li>Envie <code>/newbot</code>.</li>
+          <li>Digite o nome da oficina. Depois um usuário que termina em <code>bot</code>.</li>
+          <li>Ele mostra o <strong>token</strong> (a chave do bot).</li>
+        </ol>
+        <div class="aviso">⚠️ O token é a chave da sua oficina. Não mande para ninguém. Não publique no GitHub. Tape o token antes de tirar print.</div>
+        <h3>📲 Comandos do dia a dia</h3>
+        <table>
+          <tr><th>Você envia</th><th>Resultado</th></tr>
+          <tr><td><code>/abertos</code></td><td>Mostra os serviços na fila</td></tr>
+          <tr><td><code>/ver 1</code></td><td>Mostra o laudo da IA do chamado 1</td></tr>
+          <tr><td><code>/andamento 1</code></td><td>Marca o chamado 1 como em andamento</td></tr>
+          <tr><td><code>/concluir 1</code></td><td>Dá baixa: serviço entregue</td></tr>
+        </table>
+        <p>Para ligar o bot e a automação, siga o <a href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/GUIA_DO_ALUNO.md" target="_blank" rel="noopener">guia técnico</a> com o professor.</p>
+        <div class="prova">📸 <strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta do bot.</div>
+        <label class="marcar"><input type="checkbox" data-etapa="5"> Etapa 5 feita</label>
+      </div>
+    </details>
+
+    <h2>📚 Estudar mais</h2>
+    <ul>
+      <li>🔧 Bancada: no YouTube, procure <strong>MW Informática</strong> e <strong>Emerson BR</strong>. Termos: "como trocar pasta térmica notebook", "tela azul Windows o que fazer".</li>
+      <li>🤖 IA sem matemática: procure "o que é inteligência artificial explicado simples".</li>
+    </ul>
+
+    <p><a href="index.html">➡️ Ir para o painel de chamados da oficina</a></p>
+  </main>
+
+  <footer>Seu progresso fica salvo só neste aparelho. Envie os comprovantes ao professor.</footer>
+
+  <script>
+    const CHAVE = "oficina_aluno_etapas";
+    function ler() { try { return JSON.parse(localStorage.getItem(CHAVE)) || {}; } catch (e) { return {}; } }
+    function salvar(v) { try { localStorage.setItem(CHAVE, JSON.stringify(v)); } catch (e) {} }
+
+    function atualizar() {
+      const caixas = document.querySelectorAll("input[data-etapa]");
+      const feitas = [...caixas].filter(c => c.checked).length;
+      document.getElementById("txt-prog").textContent = feitas + " de 5 etapas feitas";
+      document.getElementById("barra").style.width = (feitas * 20) + "%";
+      caixas.forEach(c => document.getElementById("e" + c.dataset.etapa).classList.toggle("feita", c.checked));
+    }
+
+    const estado = ler();
+    document.querySelectorAll("input[data-etapa]").forEach(c => {
+      c.checked = !!estado[c.dataset.etapa];
+      c.addEventListener("change", () => { const e = ler(); e[c.dataset.etapa] = c.checked; salvar(e); atualizar(); });
+    });
+    atualizar();
+
+    document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", async () => {
+      const texto = document.getElementById(b.dataset.copiar).innerText;
+      const original = b.textContent;
+      try { await navigator.clipboard.writeText(texto); b.textContent = "✅ Copiado!"; }
+      catch (e) { b.textContent = "⚠️ Selecione o texto e use Ctrl+C"; }
+      setTimeout(() => b.textContent = original, 2000);
+    }));
+  </script>
+</body>
+</html>
