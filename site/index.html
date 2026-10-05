@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina Digital — Manutenção de Computadores</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header>
+    <h1>🖥️ Oficina Digital</h1>
+    <nav><a href="#servicos">Serviços</a> <a href="#chamado">Abrir chamado</a> <a href="#acompanhar">Acompanhar</a></nav>
+  </header>
+
+  <main>
+    <section id="servicos">
+      <h2>Serviços</h2>
+      <ul class="cards">
+        <li><strong>Formatação</strong><span>Instalação do sistema e backup dos arquivos.</span></li>
+        <li><strong>Limpeza</strong><span>Limpeza interna e troca de pasta térmica.</span></li>
+        <li><strong>Upgrade</strong><span>Memória RAM e SSD.</span></li>
+        <li><strong>Redes</strong><span>Wi-Fi, roteador e impressora em rede.</span></li>
+      </ul>
+    </section>
+
+    <section id="chamado">
+      <h2>Abrir chamado</h2>
+      <form id="form-chamado">
+        <label>Nome <input name="nome" required minlength="2" maxlength="80"></label>
+        <label>E-mail ou telefone <input name="contato" required minlength="5" maxlength="80"></label>
+        <label>Equipamento <input name="equipamento" required placeholder="Ex.: Notebook Dell Inspiron" maxlength="80"></label>
+        <label>O que está acontecendo? <textarea name="problema" required minlength="10" maxlength="1000"></textarea></label>
+        <button type="submit">Enviar chamado</button>
+      </form>
+      <p id="resposta-chamado" role="status"></p>
+    </section>
+
+    <section id="acompanhar">
+      <h2>Acompanhar chamado</h2>
+      <form id="form-acompanhar">
+        <label>Número do chamado <input name="id" type="number" min="1" required></label>
+        <button type="submit">Consultar</button>
+      </form>
+      <p id="resposta-acompanhar" role="status"></p>
+    </section>
+  </main>
+
+  <footer>Projeto didático — FastAPI + CrewAI + Telegram + GitHub</footer>
+  <script src="app.js"></script>
+</body>
+</html>

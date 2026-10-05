@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pytest
+httpx
+crewai
+# para usar o Gemini (gratuito com limite): troque a linha acima por  crewai[google-genai]
