@@ -1,6 +1,6 @@
-# Oficina Digital
+# Oficina Digital 🛠️
 
-Site de assistência técnica de computadores: o cliente abre um chamado pelo site, uma equipe de agentes de IA (CrewAI) faz a triagem e o técnico recebe o aviso e gerencia os chamados pelo Telegram.
+Sistema inteligente e didático de assistência técnica de computadores: o cliente abre chamados pelo site (ou GitHub Pages), a IA com Google Gemini e Grafo de Conhecimento (Graphiti / GraphRAG) diagnostica falhas com base no histórico da oficina, e o técnico recebe alertas em tempo real e gerencia a bancada via Bot do Telegram.
 
 | Parte | Tecnologia | Onde roda |
 |---|---|---|
