@@ -15,7 +15,7 @@
 | 1 | GitHub | **Arquivo Digital Central** | Guardar as pastas do trabalho |
 | 2 | NotebookLM | **Assistente que lê em voz alta** | Estudar ouvindo, sem ler muito |
 | 3 | Gemini Notebook (Colab) | **Bancada de Testes de IA** | Testar perguntas antes de usar |
-| 4 | Obsidian + Graphiti | **Quadro de Fichas e Ligações** | Ligar defeito → peça que já deu certo |
+| 4 | Obsidian + Graphify | **Quadro de Fichas e Ligações** | Ligar defeito → peça que já deu certo |
 | 5 | CrewAI | **Dupla de Especialistas** | Um atendente + um técnico (virtuais) |
 | 6 | Telegram | **Rádio do Técnico** | Receber chamados no celular |
 
@@ -110,7 +110,7 @@ Meu cliente disse que o notebook desliga sozinho. Quais peças eu devo olhar pri
 # ETAPA 3 — Bancada de Testes de IA (Gemini Notebook)
 
 Aqui você **testa** a IA antes de usar no trabalho de verdade.
-Arquivo: `notebooks/laboratorio_gemini_graphiti.ipynb`.
+Arquivo: `notebooks/laboratorio_gemini_graphify.ipynb`.
 
 ### 3.1 Abrir
 1. 🔘 Abra `colab.research.google.com`.
@@ -171,7 +171,7 @@ Faça **3 chamados** de treino (use os da tabela do Documento 3). Depois respond
 
 ---
 
-# ETAPA 4 — Quadro de Fichas e Ligações (Obsidian + Graphiti)
+# ETAPA 4 — Quadro de Fichas e Ligações (Obsidian + Graphify)
 
 O **Obsidian** guarda fichas (notas) e **desenha as ligações** entre elas.
 
@@ -209,11 +209,25 @@ Solução. Tempo de bancada: 40 minutos.
 
 📸 **Comprovante:** print do grafo com 3 cores e pelo menos 5 bolinhas.
 
-### 4.3 E o Graphiti?
-**Graphiti** = o mesmo quadro, mas **feito pelo programa**.
-Cada chamado novo vira uma ligação: *aparelho → sintoma → peça*. O quadro cresce sozinho e fica guardado.
+### 4.3 E o Graphify?
+**Graphify** = o mesmo quadro, mas **montado pelo programa**.
+Ele lê uma pasta (os seus documentos, por exemplo) e desenha o grafo sozinho. Você pode **fazer perguntas** ao grafo e **exportar para o Obsidian**.
 
-⚠️ **Verdade sobre este projeto:** o arquivo `api/grafo_conhecimento.py` usa a **ideia** do Graphiti, com um grafo simples em Python (funciona sem internet). O Graphiti oficial é uma biblioteca separada e precisa de banco de grafos. Para a aula, o simples basta.
+Exemplo para a turma (o professor roda na pasta do projeto):
+```text
+/graphify docs/notebooklm --obsidian
+/graphify query "qual peça resolve superaquecimento?"
+```
+*O que faz:* o primeiro comando monta o grafo dos 3 documentos e cria um cofre do Obsidian. O segundo pergunta ao grafo.
+
+**O que você vai ver:** uma página com o grafo escuro e interativo.
+- 🔘 Use a caixa **Search nodes** para achar uma bolinha.
+- 🔘 Clique numa bolinha: o painel **Node info** mostra os detalhes.
+- Na lista **Communities**, cada cor é um **grupo de assunto** que o Graphify descobriu sozinho. Marque ou desmarque para esconder um grupo.
+
+💡 Atenção: as cores do Graphify **não** são as cores azul, laranja e verde da Etapa 4.2. Aquelas você escolhe **à mão no Obsidian**. No Graphify, a cor mostra o grupo.
+
+⚠️ **Verdade sobre este projeto:** o arquivo `api/grafo_conhecimento.py` usa um grafo **simples em Python** (funciona sem internet), com a mesma ideia. O Graphify é a ferramenta que faz isso para uma pasta inteira.
 
 ---
 
