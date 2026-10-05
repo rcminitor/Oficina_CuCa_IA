@@ -4,56 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Oficina Digital — Manual do Aluno</title>
-  <style>
-    :root { --azul:#1565c0; --laranja:#e65100; --verde:#2e7d32; --fundo:#f4f6f8; --cartao:#fff; --texto:#1e293b; --suave:#475569; --borda:#cbd5e1; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, "Segoe UI", Arial, sans-serif; font-size:1.2rem; line-height:1.6; background:var(--fundo); color:var(--texto); }
-    header { background:var(--azul); color:#fff; padding:1.5rem 1rem; }
-    header h1 { margin:0 0 .3rem; font-size:1.9rem; }
-    header p { margin:0; opacity:.95; }
-    main, .topo { max-width:820px; margin:0 auto; padding:0 1rem; }
-    main { padding-bottom:3rem; }
-    a { color:var(--azul); font-weight:600; }
-    .legenda { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0; font-size:1rem; }
-    .legenda span { background:#fff; border:1px solid var(--borda); border-radius:999px; padding:.2rem .8rem; }
-    .progresso { background:#fff; border:2px solid var(--borda); border-radius:12px; padding:1rem; margin:1rem 0; }
-    .barra { height:18px; background:#e2e8f0; border-radius:9px; overflow:hidden; }
-    .barra div { height:100%; width:0; background:var(--verde); transition:width .3s; }
-    .etapa { background:var(--cartao); border:2px solid var(--borda); border-radius:14px; margin:1rem 0; }
-    .etapa > summary { cursor:pointer; padding:1rem; font-size:1.35rem; font-weight:700; list-style:none; display:flex; gap:.7rem; align-items:center; }
-    .etapa > summary::-webkit-details-marker { display:none; }
-    .etapa > summary::after { content:"▼"; margin-left:auto; font-size:1rem; color:var(--suave); }
-    .etapa[open] > summary::after { content:"▲"; }
-    .etapa.feita { border-color:var(--verde); }
-    .corpo { padding:0 1.2rem 1.2rem; }
-    .corpo h3 { margin:1.3rem 0 .4rem; font-size:1.2rem; }
-    .corpo ol, .corpo ul { padding-left:1.4rem; }
-    .corpo li { margin:.5rem 0; }
-    .marcar { display:flex; gap:.7rem; align-items:center; font-weight:700; }
-    .marcar input { width:28px; height:28px; accent-color:var(--verde); }
-    .aviso, .dica, .prova { border-left:6px solid; border-radius:8px; padding:.7rem 1rem; margin:1rem 0; }
-    .aviso { background:#fff3e0; border-color:var(--laranja); }
-    .dica { background:#e3f2fd; border-color:var(--azul); }
-    .prova { background:#e8f5e9; border-color:var(--verde); }
-    pre { background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:10px; white-space:pre-wrap; word-break:break-word; font-size:1rem; margin:.4rem 0; }
-    .copiar { background:var(--azul); color:#fff; border:0; border-radius:8px; padding:.7rem 1.2rem; font-size:1.05rem; font-weight:700; cursor:pointer; min-height:48px; }
-    .copiar:focus-visible, summary:focus-visible, a:focus-visible { outline:3px solid var(--laranja); outline-offset:2px; }
-    table { width:100%; border-collapse:collapse; font-size:1rem; margin:.5rem 0; }
-    th, td { border:1px solid var(--borda); padding:.5rem; text-align:left; vertical-align:top; }
-    .no { display:inline-block; width:1.1rem; height:1.1rem; border-radius:50%; vertical-align:middle; margin-right:.3rem; }
-    .btn-doc { display:inline-block; background:#fff; border:2px solid var(--azul); border-radius:8px; padding:.5rem 1rem; margin:.25rem .25rem .25rem 0; text-decoration:none; }
-    footer { text-align:center; color:var(--suave); font-size:1rem; padding:1.5rem 1rem 3rem; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css">
+  <script src="tema.js"></script>
 </head>
 <body>
-  <header>
-    <div class="topo">
-      <h1>🛠️ Oficina Digital — Manual do Aluno</h1>
-      <p>Você é <strong>técnico de bancada</strong> em capacitação. Pouca leitura. Muito áudio, imagem e clique.</p>
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo">🛠️</span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
     </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="aluno.html" aria-current="page">Manual <span class="cont">5</span></a>
+      <a class="aba" href="tutorial.html">Tutorial <span class="cont">9</span></a>
+      <a class="aba" href="grafo.html">Grafo</a>
+      <a class="aba" href="index.html">Painel de chamados</a>
+    </nav>
   </header>
 
   <main>
+    <section class="hero">
+      <p class="eyebrow">Manual do aluno</p>
+      <h1>Seu manual de técnico de bancada</h1>
+      <p class="lead">Pouca leitura. Muito áudio, imagem e clique. Cada etapa tem um comprovante simples.</p>
+    </section>
+
     <div class="legenda" aria-label="Legenda dos ícones">
       <span>🔘 Clique aqui</span><span>⚠️ Cuidado</span><span>💡 Dica</span><span>🔊 Ouça aqui</span><span>📲 No celular</span><span>📸 Comprovante</span>
     </div>
@@ -63,11 +40,13 @@
       <div class="barra"><div id="barra"></div></div>
     </div>
 
+    <div class="aviso">🧰 <strong>Quer montar o projeto no seu computador?</strong> Siga o <a href="tutorial.html">Tutorial Passo a Passo</a>.</div>
+
     <div class="dica">📸 <strong>Como provar cada etapa:</strong> um print da tela, uma foto do celular ou um áudio de até 1 minuto. Não precisa escrever relatório.</div>
 
     <!-- ETAPA 1 -->
     <details class="etapa" id="e1" open>
-      <summary>1️⃣ Arquivo Digital Central <small>(GitHub)</small></summary>
+      <summary><span class="num">1</span><span>Arquivo Digital Central <small>(GitHub)</small></span></summary>
       <div class="corpo">
         <p>O <strong>GitHub</strong> é uma <strong>pasta compartilhada na internet</strong>. Nada se perde. Um <strong>repositório</strong> é uma pasta de trabalho dentro dele.</p>
         <h3>Criar a conta (grátis)</h3>
@@ -98,7 +77,7 @@
 
     <!-- ETAPA 2 -->
     <details class="etapa" id="e2">
-      <summary>2️⃣ Assistente que lê em voz alta <small>(NotebookLM)</small></summary>
+      <summary><span class="num">2</span><span>Assistente que lê em voz alta <small>(NotebookLM)</small></span></summary>
       <div class="corpo">
         <p>O NotebookLM lê seus documentos e <strong>explica em áudio</strong>. Você estuda de fone de ouvido.</p>
         <h3>Os 3 documentos de bancada</h3>
@@ -128,7 +107,7 @@
 
     <!-- ETAPA 3 -->
     <details class="etapa" id="e3">
-      <summary>3️⃣ Bancada de Testes de IA <small>(Gemini Notebook)</small></summary>
+      <summary><span class="num">3</span><span>Bancada de Testes de IA <small>(Gemini Notebook)</small></span></summary>
       <div class="corpo">
         <p>Aqui você <strong>testa</strong> a IA antes de usar no trabalho de verdade. Duas ferramentas de prompt (Skills):</p>
         <table>
@@ -177,7 +156,7 @@ Histórico: """COLE AQUI A TABELA DO DOCUMENTO 3"""</pre>
 
     <!-- ETAPA 4 -->
     <details class="etapa" id="e4">
-      <summary>4️⃣ Quadro de Fichas e Ligações <small>(Obsidian)</small></summary>
+      <summary><span class="num">4</span><span>Quadro de Fichas e Ligações <small>(Obsidian)</small></span></summary>
       <div class="corpo">
         <p>O <strong>Obsidian</strong> guarda fichas e <strong>desenha as ligações</strong> entre elas.</p>
         <table>
@@ -209,7 +188,7 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
 
     <!-- ETAPA 5 -->
     <details class="etapa" id="e5">
-      <summary>5️⃣ Rádio do Técnico <small>(Telegram + CrewAI)</small></summary>
+      <summary><span class="num">5</span><span>Rádio do Técnico <small>(Telegram + CrewAI)</small></span></summary>
       <div class="corpo">
         <p><strong>CrewAI</strong> é a <strong>dupla</strong>: o atendente recebe o cliente e o técnico diagnostica. O <strong>Telegram</strong> é o rádio no seu celular.</p>
         <h3>📲 Criar o bot em 4 passos</h3>
