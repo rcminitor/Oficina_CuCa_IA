@@ -7,5 +7,4 @@ crewai
 google-genai
 networkx
 matplotlib
-# Opcional para grafo de conhecimento em produção com Graphiti:
-# graphiti-core
+# O grafo desta oficina é simples (networkx). Para montar o grafo de uma pasta inteira, use o Graphify (/graphify).

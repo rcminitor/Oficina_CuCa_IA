@@ -1,6 +1,6 @@
 # Oficina Digital 🛠️
 
-Sistema inteligente e didático de assistência técnica de computadores: o cliente abre chamados pelo site (ou GitHub Pages), a IA com Google Gemini e Grafo de Conhecimento (Graphiti / GraphRAG) diagnostica falhas com base no histórico da oficina, e o técnico recebe alertas em tempo real e gerencia a bancada via Bot do Telegram.
+Sistema inteligente e didático de assistência técnica de computadores: o cliente abre chamados pelo site (ou GitHub Pages), a IA com Google Gemini e Grafo de Conhecimento (Graphify / GraphRAG) diagnostica falhas com base no histórico da oficina, e o técnico recebe alertas em tempo real e gerencia a bancada via Bot do Telegram.
 
 | Parte | Tecnologia | Onde roda |
 |---|---|---|
@@ -8,9 +8,9 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 | API (`api/`) | Python + FastAPI + SQLite | Render (ou o seu PC) |
 | Triagem | CrewAI (2 agentes) ou regras simples | dentro da API |
 | Avisos e comandos | Bot do Telegram | dentro da API |
-| Memória e Grafo | Gemini 2.5 + Grafo de Conhecimento (Graphiti) | `api/grafo_conhecimento.py` |
+| Memória e Grafo | Gemini 2.5 + Grafo de Conhecimento (Graphify) | `api/grafo_conhecimento.py` |
 | Automação Python | Pipeline autônomo de chamados | `api/automacao_chamados.py` |
-| Laboratório do Aluno | Jupyter Notebook / Google Colab | `notebooks/laboratorio_gemini_graphiti.ipynb` |
+| Laboratório do Aluno | Jupyter Notebook / Google Colab | `notebooks/laboratorio_gemini_graphify.ipynb` |
 
 > 📘 **Alunos adultos / iniciantes:** comece pelo [Manual do Aluno](MANUAL_DO_ALUNO.md) (linguagem simples, áudio e prints). Documentos do NotebookLM em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md).
 
@@ -61,13 +61,13 @@ Em seguida, abra o arquivo `site/index.html` com dois cliques no navegador para 
 
 ### 4. 🧠 Laboratório Interativo: Gemini Notebook (Colab / Jupyter)
 Cada aluno tem seu próprio notebook guiado em:
-`notebooks/laboratorio_gemini_graphiti.ipynb`
+`notebooks/laboratorio_gemini_graphify.ipynb`
 
 Para abrir localmente no VS Code ou Jupyter:
 ```bash
 code .                      # Abre a pasta no VS Code
 # ou:
-jupyter notebook notebooks/laboratorio_gemini_graphiti.ipynb
+jupyter notebook notebooks/laboratorio_gemini_graphify.ipynb
 ```
 *Dica:* O notebook também pode ser arrastado e aberto diretamente no [Google Colab](https://colab.research.google.com/).
 
