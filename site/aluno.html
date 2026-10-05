@@ -265,6 +265,14 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
     });
     atualizar();
 
+    // Link direto da etapa (aluno.html#e3): abre a etapa e leva até ela.
+    function abrirPelaUrl() {
+      const alvo = document.getElementById(location.hash.slice(1));
+      if (alvo && alvo.tagName === "DETAILS") { alvo.open = true; alvo.scrollIntoView(); }
+    }
+    abrirPelaUrl();
+    window.addEventListener("hashchange", abrirPelaUrl);
+
     document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", async () => {
       const texto = document.getElementById(b.dataset.copiar).innerText;
       const original = b.textContent;
