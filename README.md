@@ -12,6 +12,8 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 | Automação Python | Pipeline autônomo de chamados | `api/automacao_chamados.py` |
 | Laboratório do Aluno | Jupyter Notebook / Google Colab | `notebooks/laboratorio_gemini_graphiti.ipynb` |
 
+> 📘 **Alunos adultos / iniciantes:** comece pelo [Manual do Aluno](MANUAL_DO_ALUNO.md) (linguagem simples, áudio e prints). Documentos do NotebookLM em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md).
+
 ## 🚀 Como Rodar o Projeto (Guia do Aluno na pasta `Downloads`)
 
 Como cada aluno desenvolverá a sua própria cópia do projeto, o fluxo padrão é baixar o código diretamente para a pasta **`Downloads`** da sua máquina:
