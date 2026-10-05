@@ -1,6 +1,6 @@
 # Oficina Digital 🛠️
 
-Sistema inteligente e didático de assistência técnica de computadores: o cliente abre chamados pelo site (ou GitHub Pages), a IA com Google Gemini e Grafo de Conhecimento (Graphity / GraphRAG) diagnostica falhas com base no histórico da oficina, e o técnico recebe alertas em tempo real e gerencia a bancada via Bot do Telegram.
+Sistema inteligente e didático de assistência técnica de computadores: o cliente abre chamados pelo site (ou GitHub Pages), a IA com Google Gemini e Grafo de Conhecimento (Graphify / GraphRAG) diagnostica falhas com base no histórico da oficina, e o técnico recebe alertas em tempo real e gerencia a bancada via Bot do Telegram.
 
 | Parte | Tecnologia | Onde roda |
 |---|---|---|
@@ -8,7 +8,7 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 | API (`api/`) | Python + FastAPI + SQLite | Render (ou o seu PC) |
 | Triagem | CrewAI (2 agentes) ou regras simples | dentro da API |
 | Avisos e comandos | Bot do Telegram | dentro da API |
-| Memória e Grafo | Gemini 2.5 + Grafo de Conhecimento (Graphity) | `api/grafo_conhecimento.py` |
+| Memória e Grafo | Gemini 2.5 + Grafo de Conhecimento (Graphify) | `api/grafo_conhecimento.py` |
 | Automação Python | Pipeline autônomo de chamados | `api/automacao_chamados.py` |
 | Laboratório do Aluno | Jupyter Notebook / Google Colab | `notebooks/laboratorio_gemini_graphify.ipynb` |
 

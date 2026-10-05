@@ -1,6 +1,6 @@
 # 🎓 Guia Autoguiado do Aluno: Oficina Digital
 > **Objetivo:** Você vai colocar no ar, sozinho e no seu próprio computador, um sistema completo de assistência técnica inteligente integrando:
-> **Site Web ➔ API FastAPI ➔ Gemini Notebook ➔ Grafo de Conhecimento (Graphity) ➔ Automação Python ➔ Bot do Telegram**.
+> **Site Web ➔ API FastAPI ➔ Gemini Notebook ➔ Grafo de Conhecimento (Graphify) ➔ Automação Python ➔ Bot do Telegram**.
 
 ---
 
@@ -54,7 +54,7 @@ Agora você vai entender como a Inteligência Artificial e a Memória da Oficina
    - *(Ou se preferir usar no navegador, abra o [Google Colab](https://colab.research.google.com/) e faça o upload desse arquivo).*
 2. Execute as células em ordem:
    - **Passo 1 & 2:** Veja como o **Google Gemini** lê um relato confuso do cliente e extrai com precisão cirúrgica a marca, modelo, sintomas e gravidade usando **Pydantic**.
-   - **Passo 3:** Veja como o **Grafo de Conhecimento (ideia do Graphity)** conecta computadores a falhas crônicas de bancada e peças necessárias.
+   - **Passo 3:** Veja como o **Grafo de Conhecimento (ideia do Graphify)** conecta computadores a falhas crônicas de bancada e peças necessárias.
    - **Passo 4:** Veja o **GraphRAG**: a IA consulta o histórico da oficina antes de dar a resposta, acertando o defeito exato!
 
 ---

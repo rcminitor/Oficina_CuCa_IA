@@ -7,4 +7,4 @@ crewai
 google-genai
 networkx
 matplotlib
-# O grafo desta oficina é simples (networkx). Para montar o grafo de uma pasta inteira, use o Graphity (/graphify).
+# O grafo desta oficina é simples (networkx). Para montar o grafo de uma pasta inteira, use o Graphify (/graphify).
