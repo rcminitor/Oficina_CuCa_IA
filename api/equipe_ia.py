@@ -16,6 +16,16 @@ class Diagnostico(BaseModel):
 
 
 def analisar(chamado: dict) -> Diagnostico:
+    if os.environ.get("USAR_GRAFO"):
+        import grafo_conhecimento
+        res = grafo_conhecimento.analisar_com_grafo_e_gemini(chamado)
+        pecas = f" | Peças: {', '.join(res.pecas_sugeridas)}" if res.pecas_sugeridas else ""
+        return Diagnostico(
+            prioridade=res.prioridade,
+            causa_provavel=f"{res.causa_provavel}{pecas}",
+            proximos_passos=res.proximos_passos,
+            mensagem_cliente=res.mensagem_cliente
+        )
     if os.environ.get("MODELO_IA"):
         return analisar_com_crewai(chamado)
     return triagem_simples(chamado)

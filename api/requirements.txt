@@ -2,5 +2,10 @@ fastapi
 uvicorn
 pytest
 httpx
+pydantic
 crewai
-# para usar o Gemini (gratuito com limite): troque a linha acima por  crewai[google-genai]
+google-genai
+networkx
+matplotlib
+# Opcional para grafo de conhecimento em produção com Graphiti:
+# graphiti-core

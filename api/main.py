@@ -52,8 +52,8 @@ def consultar(id_: int):
     chamado = db.buscar(id_)
     if not chamado:
         raise HTTPException(404, "Chamado não encontrado")
-    # o cliente vê o andamento, não os dados de contato
-    return {k: chamado[k] for k in ("id", "equipamento", "status", "prioridade", "criado_em")}
+    # o cliente vê o andamento e o diagnóstico, não os dados de contato
+    return {k: chamado[k] for k in ("id", "equipamento", "status", "prioridade", "diagnostico", "criado_em")}
 
 
 # --- comandos do técnico no Telegram ------------------------------------------------------------

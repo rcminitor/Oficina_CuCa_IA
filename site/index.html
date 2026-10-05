@@ -3,49 +3,294 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oficina Digital — Manutenção de Computadores</title>
+  <title>Oficina Digital — Laboratório Autoguiado do Aluno</title>
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
   <header>
-    <h1>🖥️ Oficina Digital</h1>
-    <nav><a href="#servicos">Serviços</a> <a href="#chamado">Abrir chamado</a> <a href="#acompanhar">Acompanhar</a></nav>
+    <div class="logo-area">
+      <h1>🖥️ Oficina Digital</h1>
+      <span class="subtitulo">Laboratório Autoguiado: Gemini Notebook + Grafo de Conhecimento + Automação + Telegram</span>
+    </div>
+
+    <!-- SELETOR E STATUS DA API (COMPATÍVEL COM GITHUB PAGES E LOCAL) -->
+    <div class="api-status-box">
+      <div class="api-status" id="indicador-api" onclick="abrirConfigApi()" title="Clique para alterar o endereço da API">
+        <span class="ponto-status" id="ponto-status"></span>
+        <span id="texto-status">Verificando API...</span>
+        <button type="button" class="btn-config-api" title="Configurar Servidor">⚙️ Alterar</button>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#missao-aluno" class="btn-guia">🚀 Sua Missão</a>
+      <a href="#chamado">Abrir Chamado</a>
+      <a href="#acompanhar">Acompanhar</a>
+      <a href="#telegram-comandos">Comandos Telegram</a>
+    </nav>
   </header>
 
+  <!-- MODAL DE CONFIGURAÇÃO DA API (LOCAL VS NUVEM/RENDER) -->
+  <div id="modal-config-api" class="modal-overlay" style="display: none;">
+    <div class="modal-conteudo">
+      <div class="modal-cabecalho">
+        <h3>⚙️ Conexão com a API</h3>
+        <button type="button" class="btn-fechar-modal" onclick="fecharConfigApi()">✕</button>
+      </div>
+      <p class="modal-descricao">
+        Como o site pode rodar no <strong>GitHub Pages</strong> ou no seu computador, escolha onde a sua API está rodando:
+      </p>
+
+      <div class="opcoes-api">
+        <button type="button" class="btn-opcao-api" onclick="definirModoApi('local')">
+          💻 <strong>API no meu PC (Local)</strong>
+          <small>http://localhost:8000 (Você roda no terminal)</small>
+        </button>
+        <button type="button" class="btn-opcao-api" onclick="definirModoApi('nuvem')">
+          ☁️ <strong>API na Nuvem (Render)</strong>
+          <small>URL pública compartilhada pela turma</small>
+        </button>
+      </div>
+
+      <div class="campo-url-custom">
+        <label for="input-url-api"><strong>Endereço da API:</strong></label>
+        <input type="url" id="input-url-api" placeholder="http://localhost:8000">
+      </div>
+
+      <div class="modal-botoes">
+        <button type="button" class="btn-secundario" onclick="fecharConfigApi()">Cancelar</button>
+        <button type="button" class="btn-principal-modal" onclick="salvarConfigApi()">Salvar e Conectar</button>
+      </div>
+    </div>
+  </div>
+
   <main>
-    <section id="servicos">
-      <h2>Serviços</h2>
-      <ul class="cards">
-        <li><strong>Formatação</strong><span>Instalação do sistema e backup dos arquivos.</span></li>
-        <li><strong>Limpeza</strong><span>Limpeza interna e troca de pasta térmica.</span></li>
-        <li><strong>Upgrade</strong><span>Memória RAM e SSD.</span></li>
-        <li><strong>Redes</strong><span>Wi-Fi, roteador e impressora em rede.</span></li>
-      </ul>
+    <!-- PAINEL DA MISSÃO AUTOGUIADA DO ALUNO -->
+    <section id="missao-aluno" class="secao-destaque">
+      <div class="cabecalho-secao">
+        <div>
+          <h2>🎯 Missão do Aluno: Passo a Passo 100% Autônomo</h2>
+          <p class="intro-guia">Você está acessando o painel web. Siga as etapas abaixo para colocar o sistema no ar sozinho!</p>
+        </div>
+        <div class="progresso-container">
+          <span class="progresso-rotulo">Seu Progresso:</span>
+          <div class="barra-fundo"><div class="barra-preenchimento" id="barra-progresso"></div></div>
+          <span id="texto-progresso" class="progresso-percentual">0% Concluído</span>
+        </div>
+      </div>
+
+      <div class="checklist-passos">
+        <!-- PASSO 1 -->
+        <div class="item-passo" id="item-passo-1">
+          <div class="passo-cabecalho" onclick="alternarPasso(1)">
+            <input type="checkbox" id="check-passo-1" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-1" class="titulo-passo">
+              <strong>Etapa 1:</strong> Ligar a API localmente na pasta Downloads
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-1">
+            <p>Abra o <strong>PowerShell</strong> no seu computador e cole os comandos abaixo:</p>
+            <div class="bloco-codigo">
+              <pre id="cmd-etapa-1"><code>cd "$env:USERPROFILE\Downloads\oficina-digital\api"
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload</code></pre>
+              <button type="button" class="btn-copiar" onclick="copiarComando('cmd-etapa-1', this)">📋 Copiar</button>
+            </div>
+            <p class="dica-sucesso">✅ Quando aparecer <code>Uvicorn running on http://127.0.0.1:8000</code>, a bolinha no topo ficará verde e esta etapa será marcada automaticamente!</p>
+          </div>
+        </div>
+
+        <!-- PASSO 2 -->
+        <div class="item-passo" id="item-passo-2">
+          <div class="passo-cabecalho" onclick="alternarPasso(2)">
+            <input type="checkbox" id="check-passo-2" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-2" class="titulo-passo">
+              <strong>Etapa 2:</strong> Explorar o Gemini Notebook & Grafo de Conhecimento
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-2">
+            <p>Abra no <strong>VS Code</strong> ou arraste para o <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colab</a>:</p>
+            <div class="bloco-codigo">
+              <pre id="cmd-etapa-2"><code>notebooks/laboratorio_gemini_graphiti.ipynb</code></pre>
+              <button type="button" class="btn-copiar" onclick="copiarComando('cmd-etapa-2', this)">📋 Copiar Caminho</button>
+            </div>
+            <p>Execute as células para ver o <strong>Gemini</strong> extraindo entidades estruturadas (Pydantic), gerando o <strong>Grafo da Oficina (Graphiti)</strong> e realizando o diagnóstico enriquecido (GraphRAG).</p>
+          </div>
+        </div>
+
+        <!-- PASSO 3 -->
+        <div class="item-passo" id="item-passo-3">
+          <div class="passo-cabecalho" onclick="alternarPasso(3)">
+            <input type="checkbox" id="check-passo-3" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-3" class="titulo-passo">
+              <strong>Etapa 3:</strong> Conectar o Bot do Telegram do Técnico
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-3">
+            <ol class="lista-instrucoes">
+              <li>No Telegram, fale com o <strong>@BotFather</strong>, envie <code>/newbot</code> e copie o <strong>Token</strong>.</li>
+              <li>Fale com o <strong>@userinfobot</strong>, dê <code>/start</code> e anote seu número de <strong>Chat ID</strong>.</li>
+              <li>Copie <code>api/.env.example</code> para <code>api/.env</code> e preencha o Token e o Chat ID.</li>
+              <li>Abra um <strong>novo terminal</strong> no PowerShell e ligue o repassador:</li>
+            </ol>
+            <div class="bloco-codigo">
+              <pre id="cmd-etapa-3"><code>cd "$env:USERPROFILE\Downloads\oficina-digital\api"
+.venv\Scripts\activate
+python bot_local.py</code></pre>
+              <button type="button" class="btn-copiar" onclick="copiarComando('cmd-etapa-3', this)">📋 Copiar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 4 -->
+        <div class="item-passo" id="item-passo-4">
+          <div class="passo-cabecalho" onclick="alternarPasso(4)">
+            <input type="checkbox" id="check-passo-4" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-4" class="titulo-passo">
+              <strong>Etapa 4:</strong> Ligar a Automação Python de Triagem com Grafo
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-4">
+            <p>Abra um <strong>terceiro terminal</strong> no PowerShell e ative a automação em segundo plano:</p>
+            <div class="bloco-codigo">
+              <pre id="cmd-etapa-4"><code>cd "$env:USERPROFILE\Downloads\oficina-digital\api"
+.venv\Scripts\activate
+python automacao_chamados.py --continuo --intervalo 5</code></pre>
+              <button type="button" class="btn-copiar" onclick="copiarComando('cmd-etapa-4', this)">📋 Copiar</button>
+            </div>
+            <p class="dica-sucesso">🤖 O robô ficará varrendo novos chamados do banco SQLite e aplicando GraphRAG automaticamente!</p>
+          </div>
+        </div>
+
+        <!-- PASSO 5 -->
+        <div class="item-passo" id="item-passo-5">
+          <div class="passo-cabecalho" onclick="alternarPasso(5)">
+            <input type="checkbox" id="check-passo-5" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-5" class="titulo-passo">
+              <strong>Etapa 5:</strong> Testar o Ciclo Completo (Site ➔ IA ➔ Grafo ➔ Telegram)
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-5">
+            <p>Role até a seção abaixo <strong>"Abrir Novo Chamado"</strong>, use um botão de 1-clique e clique em <strong>Enviar Chamado</strong>. Em seguida, confira a notificação chegando no seu celular no Telegram!</p>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- SEÇÃO ABERTURA DE CHAMADO COM BOTÕES RÁPIDOS -->
     <section id="chamado">
-      <h2>Abrir chamado</h2>
+      <div class="cabecalho-secao">
+        <h2>🛠️ Abrir Novo Chamado de Manutenção</h2>
+        <span class="tag-etapa">Testar no Navegador</span>
+      </div>
+
+      <div class="atalhos-exemplos">
+        <span class="atalhos-titulo">⚡ Clique em um caso para preencher automaticamente:</span>
+        <div class="botoes-exemplos">
+          <button type="button" class="btn-exemplo" onclick="preencherExemplo('dell')">
+            🔥 Dell G15 esquentando e desligando
+          </button>
+          <button type="button" class="btn-exemplo" onclick="preencherExemplo('nitro')">
+            💥 Acer Nitro 5 com tela azul
+          </button>
+          <button type="button" class="btn-exemplo" onclick="preencherExemplo('desktop')">
+            ⚡ Desktop reiniciando ao jogar
+          </button>
+        </div>
+      </div>
+
       <form id="form-chamado">
-        <label>Nome <input name="nome" required minlength="2" maxlength="80"></label>
-        <label>E-mail ou telefone <input name="contato" required minlength="5" maxlength="80"></label>
-        <label>Equipamento <input name="equipamento" required placeholder="Ex.: Notebook Dell Inspiron" maxlength="80"></label>
-        <label>O que está acontecendo? <textarea name="problema" required minlength="10" maxlength="1000"></textarea></label>
-        <button type="submit">Enviar chamado</button>
+        <label>Nome do Cliente <input id="campo-nome" name="nome" required minlength="2" maxlength="80" placeholder="Ex.: Lucas Mendes"></label>
+        <label>E-mail ou Telefone <input id="campo-contato" name="contato" required minlength="5" maxlength="80" placeholder="Ex.: lucas@email.com"></label>
+        <label>Equipamento <input id="campo-equipamento" name="equipamento" required placeholder="Ex.: Notebook Dell G15" maxlength="80"></label>
+        <label>Relato do Problema <textarea id="campo-problema" name="problema" required minlength="10" maxlength="1000" placeholder="Descreva o defeito detalhadamente..."></textarea></label>
+        <button type="submit" id="btn-enviar" class="btn-principal">🚀 Enviar Chamado para Triagem IA</button>
       </form>
-      <p id="resposta-chamado" role="status"></p>
+      <div id="resposta-chamado" class="mensagem-resultado" role="status"></div>
     </section>
 
+    <!-- SEÇÃO ACOMPANHAMENTO E DIAGNÓSTICO -->
     <section id="acompanhar">
-      <h2>Acompanhar chamado</h2>
+      <div class="cabecalho-secao">
+        <h2>🔍 Acompanhar Chamado & Diagnóstico Inteligente</h2>
+        <span class="tag-etapa">Retorno da IA & Grafo</span>
+      </div>
+
       <form id="form-acompanhar">
-        <label>Número do chamado <input name="id" type="number" min="1" required></label>
-        <button type="submit">Consultar</button>
+        <div class="consulta-linha">
+          <label class="label-consulta">
+            Número do Chamado
+            <input id="campo-id-consulta" name="id" type="number" min="1" required placeholder="Ex.: 1">
+          </label>
+          <button type="submit" class="btn-secundario">Consultar Status</button>
+          <button type="button" id="btn-ultimo" class="btn-link" style="display:none;" onclick="consultarUltimo()">
+            Consultar último (#<span id="txt-ultimo-id"></span>)
+          </button>
+        </div>
       </form>
-      <p id="resposta-acompanhar" role="status"></p>
+
+      <div id="resultado-detalhes" class="painel-diagnostico" style="display: none;">
+        <div class="topo-diagnostico">
+          <h3 id="diag-titulo">Chamado #1</h3>
+          <div class="tags-status">
+            <span id="diag-status" class="badge-status">Status</span>
+            <span id="diag-prioridade" class="badge-prioridade">Prioridade</span>
+          </div>
+        </div>
+
+        <div class="linha-info"><strong>Equipamento:</strong> <span id="diag-equipamento">---</span></div>
+        <div class="linha-info"><strong>Data de Abertura:</strong> <span id="diag-data">---</span></div>
+
+        <div class="caixa-ia">
+          <div class="cabecalho-ia">
+            <span>🧠 Diagnóstico Enriquecido (Gemini + Grafo de Conhecimento):</span>
+          </div>
+          <pre id="diag-texto" class="texto-ia">Aguardando processamento pela IA...</pre>
+        </div>
+      </div>
+      <p id="resposta-acompanhar" class="mensagem-resultado" role="status"></p>
+    </section>
+
+    <!-- SEÇÃO COMANDOS TELEGRAM -->
+    <section id="telegram-comandos">
+      <div class="cabecalho-secao">
+        <h2>📱 Comandos do Técnico no Telegram</h2>
+        <span class="tag-etapa">No Celular</span>
+      </div>
+      <p>Envie estes comandos no chat com o seu bot do Telegram para gerenciar a bancada:</p>
+
+      <div class="tabela-comandos">
+        <div class="comando-item">
+          <code>/abertos</code>
+          <span>Lista todos os chamados abertos e em andamento com prioridade.</span>
+        </div>
+        <div class="comando-item">
+          <code>/ver [ID]</code>
+          <span>Exibe a ficha completa, dados do cliente e diagnóstico da IA.</span>
+        </div>
+        <div class="comando-item">
+          <code>/andamento [ID]</code>
+          <span>Muda o status para "Em andamento" (computador na bancada).</span>
+        </div>
+        <div class="comando-item">
+          <code>/concluir [ID]</code>
+          <span>Finaliza o atendimento e marca como "Concluído".</span>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>Projeto didático — FastAPI + CrewAI + Telegram + GitHub</footer>
+  <footer>
+    <p>Oficina Digital — Laboratório Autoguiado de IA com Gemini, Graphiti (Grafos) e Telegram.</p>
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>

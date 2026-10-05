@@ -1,9 +1,10 @@
 """Banco de dados (SQLite) dos chamados de manutenção."""
 import os
+from pathlib import Path
 import sqlite3
 from datetime import datetime
 
-CAMINHO = os.environ.get("BANCO", "chamados.db")
+CAMINHO = os.environ.get("BANCO", str(Path(__file__).resolve().parent / "chamados.db"))
 STATUS = ("aberto", "em_andamento", "concluido")
 
 
