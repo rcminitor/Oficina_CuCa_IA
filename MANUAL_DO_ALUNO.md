@@ -213,6 +213,8 @@ Solução. Tempo de bancada: 40 minutos.
 **Graphify** = o mesmo quadro, mas **montado pelo programa**.
 Ele lê uma pasta (os seus documentos, por exemplo) e desenha o grafo sozinho. Você pode **fazer perguntas** ao grafo e **exportar para o Obsidian**.
 
+Site oficial da ferramenta: [github.com/Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify). Instalação (professor): `pip install graphifyy` (com dois **y**).
+
 Exemplo para a turma (o professor roda na pasta do projeto):
 ```text
 /graphify docs/notebooklm --obsidian
