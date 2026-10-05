@@ -220,6 +220,13 @@ Exemplo para a turma (o professor roda na pasta do projeto):
 ```
 *O que faz:* o primeiro comando monta o grafo dos 3 documentos e cria um cofre do Obsidian. O segundo pergunta ao grafo.
 
+**O que você vai ver:** uma página com o grafo escuro e interativo.
+- 🔘 Use a caixa **Search nodes** para achar uma bolinha.
+- 🔘 Clique numa bolinha: o painel **Node info** mostra os detalhes.
+- Na lista **Communities**, cada cor é um **grupo de assunto** que o Graphify descobriu sozinho. Marque ou desmarque para esconder um grupo.
+
+💡 Atenção: as cores do Graphify **não** são as cores azul, laranja e verde da Etapa 4.2. Aquelas você escolhe **à mão no Obsidian**. No Graphify, a cor mostra o grupo.
+
 ⚠️ **Verdade sobre este projeto:** o arquivo `api/grafo_conhecimento.py` usa um grafo **simples em Python** (funciona sem internet), com a mesma ideia. O Graphify é a ferramenta que faz isso para uma pasta inteira.
 
 ---
