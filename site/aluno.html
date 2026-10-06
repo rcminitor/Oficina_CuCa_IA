@@ -18,6 +18,8 @@
       <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
       <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
       <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+      <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
     </defs>
   </svg>
@@ -59,6 +61,7 @@
     <div class="progresso" role="status">
       <strong id="txt-prog">0 de 5 etapas feitas</strong>
       <div class="barra"><div id="barra"></div></div>
+      <p class="como-usar">Faça uma etapa de cada vez, <strong>na ordem</strong>, de 1 a 5. Quando terminar uma, marque a caixinha <strong>"Etapa feita"</strong> no fim dela.</p>
     </div>
 
     <h2 class="titulo-sec">Seu percurso</h2>
@@ -77,8 +80,6 @@
       <div class="prova-card"><span class="ico"><svg class="ic"><use href="#i-mic"/></svg></span><h3>Áudio de até 1 minuto</h3><p>Conte com a sua voz o que você fez. Não precisa escrever.</p></div>
     </div>
 
-    <div class="dica"><div class="cb"><strong>Quer montar o projeto no seu computador?</strong> Siga o <a href="tutorial.html">Tutorial Passo a Passo</a>.</div></div>
-    <div class="dica"><div class="cb"><strong>Precisa de ajuda com o código?</strong> Instale o <strong>Antigravity</strong>, um editor com assistente de IA. O passo a passo está no <a href="tutorial.html#p3">Passo 3 do tutorial</a>.</div></div>
 
     <h2 class="titulo-sec">As 5 etapas</h2>
 
@@ -260,6 +261,23 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
         <label class="marcar"><input type="checkbox" data-etapa="5"> Etapa 5 feita</label>
       </div>
     </details>
+
+    <h2 class="titulo-sec">Terminou as 5 etapas? E agora?</h2>
+    <p class="sub-sec">Os dois caminhos abaixo são <strong>opcionais</strong> e vêm depois do manual.</p>
+    <div class="entradas">
+      <a class="entrada" href="tutorial.html">
+        <span class="ico"><svg class="ic"><use href="#i-terminal"/></svg></span>
+        <h3>Monte o projeto no seu computador</h3>
+        <p>O <strong>Tutorial</strong> ensina, em 10 passos, a instalar e ligar o sistema da oficina. Você usa a sua conta e o seu computador. Leva cerca de 2 horas.</p>
+        <span class="ir">Abrir o tutorial <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="entrada" href="tutorial.html#p3">
+        <span class="ico"><svg class="ic"><use href="#i-code"/></svg></span>
+        <h3>Ajuda com o código</h3>
+        <p>O <strong>Antigravity</strong> é um editor com assistente de IA. Ele explica o código e ajuda com erros. Precisa de conta Google e de ter 18 anos ou mais.</p>
+        <span class="ir">Ver como instalar <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
 
     <h2 class="titulo-sec">Estudar mais</h2>
     <ul>
