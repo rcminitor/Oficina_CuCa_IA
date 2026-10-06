@@ -49,6 +49,14 @@
 .manual .btn-doc { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1.2rem; }
 .manual .btn-doc::after { content: ""; width: 1em; height: 1em; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M7%2017L17%207%27/%3E%3Cpolyline%20points%3D%277%207%2017%207%2017%2017%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M7%2017L17%207%27/%3E%3Cpolyline%20points%3D%277%207%2017%207%2017%2017%27/%3E%3C/svg%3E") center / contain no-repeat; }
 
+@media (max-width: 640px) {
+  table.empilha tr:first-child { display: none; }
+  table.empilha, table.empilha tbody, table.empilha tr, table.empilha td { display: block; width: 100%; }
+  table.empilha { border: 0; }
+  table.empilha tr { border: 1px solid var(--borda); border-radius: var(--r-md); margin: 0 0 .8rem; padding: .4rem .2rem; background: var(--surface); }
+  table.empilha td { border: 0; padding: .35rem .8rem; }
+  table.empilha td::before { content: attr(data-l); display: block; font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--suave); }
+}
 @media (max-width: 960px) { .percurso { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) {
   .manual { font-size: 1.1rem; }

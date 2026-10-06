@@ -94,8 +94,19 @@ Casos de exemplo do grafo (use exatamente estes sete):
 | `/andamento 1` | Marca o chamado 1 como em andamento |
 | `/concluir 1` | Dá baixa: serviço entregue |
 
-- Dados do bot (token, número do chat) ficam em **variáveis de ambiente**, nunca nos arquivos.
+- Dados do bot (token e número do chat) ficam num arquivo **`.env`**, nunca escritos no código. O arquivo `.env` **não vai** para o GitHub (fica no `.gitignore`). Existe também um `.env.example`, só com os nomes.
 - Se o bot não estiver configurado, o programa só escreve o aviso na tela e continua funcionando.
+
+### 2.7 Chaves e senhas: onde achar e onde guardar
+
+| Qual | Para que serve | Onde achar | Onde guardar |
+|---|---|---|---|
+| Chave do Gemini (chave de API) | O agente CrewAI usa o Gemini | Google AI Studio (`aistudio.google.com`), menu "Chaves de API", botão "Criar chave de API" | Segredos do Colab, com o nome `GEMINI_API_KEY` |
+| Token do bot do Telegram | O programa manda mensagens como o bot | Telegram, `@BotFather`: aparece no fim do `/newbot`. Se perder, `/mybots` e escolha o bot; para gerar outro, `/token` | Arquivo `.env` |
+| Id do Telegram | O bot só obedece a quem tem esse número | `@userinfobot`, comando `/start`, ou um programa que o Gemini cria | Arquivo `.env` |
+| Login do GitHub | Enviar a pasta ao GitHub | Conta em `github.com`; o Git abre um login no navegador | Não guardar em arquivo |
+
+Peça ajuda ao Gemini **sem colar o valor**: "Explique onde eu encontro [a chave] e onde guardar. NÃO peça que eu cole o valor aqui no chat."
 
 ---
 

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina Digital — Guia das chaves</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css">
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="manual.css">
+  <script src="tema.js"></script>
+</head>
+<body class="manual">
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="index.html">Início</a>
+      <a class="aba" href="sobre.html">Sobre</a>
+      <a class="aba" href="aluno.html">Manual <span class="cont">6</span></a>
+      <a class="aba" href="tutorial.html">Tutorial <span class="cont">10</span></a>
+      <a class="aba" href="chaves.html" aria-current="page">Chaves</a>
+      <a class="aba" href="grafo.html">Grafo</a>
+      <a class="aba" href="painel.html">Painel de chamados</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Guia das chaves</p>
+      <h1>Chaves e senhas: onde achar e como guardar</h1>
+      <p class="lead">Neste projeto você vai usar algumas <strong>informações secretas</strong>. Aqui você descobre <strong>onde encontrar cada uma</strong>, onde guardar e como pedir ajuda ao Gemini <strong>sem mostrar o segredo</strong>.</p>
+    </section>
+
+    <h2 class="titulo-sec">O que é uma chave</h2>
+    <p>Uma <strong>chave</strong> (ou <strong>token</strong>) é como a <strong>chave da porta da sua oficina</strong>. Quem tem a chave entra e usa o que é seu. Por isso ela é <strong>secreta</strong>.</p>
+
+    <h2 class="titulo-sec">As 4 regras de ouro</h2>
+    <div class="provas">
+      <div class="prova-card"><h3>1. Nunca no chat</h3><p>Não escreva chave nem senha no chat do assistente, do Gemini ou de qualquer pessoa.</p></div>
+      <div class="prova-card"><h3>2. Nunca em print</h3><p>Antes de mandar um print ou foto, <strong>tape</strong> a chave com o dedo ou corte a imagem.</p></div>
+      <div class="prova-card"><h3>3. Nunca no GitHub</h3><p>A chave fica num arquivo que <strong>não vai</strong> para o GitHub (o <code>.env</code>).</p></div>
+      <div class="prova-card"><h3>4. Vazou? Troque</h3><p>Se a chave apareceu onde não devia, <strong>apague e crie outra</strong>. Veja o quadro no fim da página.</p></div>
+    </div>
+
+    <h2 class="titulo-sec">As chaves do projeto</h2>
+    <p class="sub-sec">Cada linha diz <strong>para que serve</strong>, <strong>onde achar</strong> e <strong>onde guardar</strong>.</p>
+    <table class="empilha">
+      <tr><th>Qual</th><th>Para que serve</th><th>Onde achar</th><th>Onde guardar</th></tr>
+      <tr><td data-l="Qual"><strong>Chave do Gemini</strong> (chave de API)</td><td data-l="Para que serve">Deixa o agente CrewAI usar o Gemini.</td><td data-l="Onde achar">Em <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a>, no menu <em>Chaves de API</em>, botão <em>Criar chave de API</em>.</td><td data-l="Onde guardar">Nos <strong>Segredos do Colab</strong>, com o nome <code>GEMINI_API_KEY</code>.</td></tr>
+      <tr><td data-l="Qual"><strong>Token do bot</strong> do Telegram</td><td data-l="Para que serve">Deixa o seu programa mandar mensagens como o bot.</td><td data-l="Onde achar">No Telegram, <strong>@BotFather</strong>: aparece no fim do <code>/newbot</code>. Se perder, envie <code>/mybots</code>, escolha o bot e veja <em>API Token</em>.</td><td data-l="Onde guardar">No arquivo <strong>.env</strong> da pasta do projeto.</td></tr>
+      <tr><td data-l="Qual"><strong>Seu Id</strong> do Telegram</td><td data-l="Para que serve">O bot só obedece a quem tem esse número.</td><td data-l="Onde achar">No Telegram, <strong>@userinfobot</strong>, envie <code>/start</code>. Ou peça ao Gemini um programa que mostre o seu Id.</td><td data-l="Onde guardar">No arquivo <strong>.env</strong>.</td></tr>
+      <tr><td data-l="Qual"><strong>Login do GitHub</strong></td><td data-l="Para que serve">Enviar a sua pasta para o GitHub.</td><td data-l="Onde achar">Na sua conta em <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. O Git costuma abrir uma janela de login no navegador.</td><td data-l="Onde guardar"><strong>Não guarde</strong> em arquivo. Faça o login você mesmo.</td></tr>
+      <tr><td data-l="Qual"><strong>Conta Google</strong></td><td data-l="Para que serve">Antigravity, NotebookLM, Colab e AI Studio.</td><td data-l="Onde achar">É a sua conta (de preferência <code>@gmail.com</code>).</td><td data-l="Onde guardar">Não guarde a senha em arquivo.</td></tr>
+    </table>
+    <div class="dica"><div class="cb"><strong>Dúvida sobre onde achar alguma?</strong> Pergunte ao Gemini <strong>sem colar a chave</strong>. O pedido pronto está mais abaixo.</div></div>
+
+    <h2 class="titulo-sec">Como guardar: o arquivo .env</h2>
+    <p>O <code>.env</code> é um arquivo de texto onde ficam as informações secretas do programa. Ele <strong>não vai</strong> para o GitHub.</p>
+    <ol>
+      <li>Peça ao Gemini para criar o arquivo <code>.env.example</code> e o <code>.gitignore</code> (pedido abaixo). O <code>.env.example</code> mostra só os <strong>nomes</strong>, sem valores.</li>
+      <li>No editor do Antigravity, crie um arquivo novo chamado <code>.env</code> na mesma pasta.</li>
+      <li>Escreva <strong>uma linha para cada nome</strong>. O valor vai logo depois do sinal de igual, <strong>sem espaços e sem aspas</strong>. Exemplo com valores falsos:
+        <pre id="c-env">TELEGRAM_TOKEN=123456789:valor-do-seu-token
+TELEGRAM_CHAT_ID=123456789</pre>
+<button class="copiar" data-copiar="c-env">Copiar exemplo</button>
+      </li>
+      <li>Troque os valores falsos pelos seus e salve com <code>Ctrl + S</code>.</li>
+      <li>Abra o <code>.gitignore</code> e confira que existe uma linha escrita <code>.env</code>.</li>
+      <li>Feche e ligue o programa de novo. Ele só lê o <code>.env</code> quando começa.</li>
+    </ol>
+    <div class="aviso"><div class="cb"><strong>Use os nomes que o assistente escolheu</strong> no <code>.env.example</code>. Os nomes do exemplo acima são só um modelo.</div></div>
+
+    <h2 class="titulo-sec">Como guardar: Segredos do Colab</h2>
+    <p>No Google Colab, a chave do Gemini fica nos <strong>Segredos</strong> (ícone de chave na barra da esquerda). O passo completo está no <a href="tutorial.html#p8">Passo 8 do tutorial</a>.</p>
+
+    <h2 class="titulo-sec">Como pedir ajuda ao Gemini sem mostrar o segredo</h2>
+    <p>Você pode e deve pedir ajuda. O segredo é <strong>pedir o caminho</strong>, e não colar o valor.</p>
+    <p class="term">Pedido 1: onde encontro uma chave</p>
+<pre id="q-onde">Preciso de [ESCREVA AQUI QUAL CHAVE: por exemplo, a chave do Gemini ou o token do meu bot do Telegram].
+Explique, em passos curtos, onde eu encontro essa informação e onde devo guardá-la no meu projeto.
+NÃO peça que eu cole o valor aqui no chat.</pre>
+<button class="copiar" data-copiar="q-onde">Copiar pedido</button>
+    <p class="term">Pedido 2: criar o .env.example e o .gitignore</p>
+<pre id="q-env">Crie um arquivo .env.example com os NOMES das variáveis secretas deste projeto, sem valores.
+Crie um arquivo .gitignore que impeça o envio do arquivo .env, do ambiente virtual (.venv) e do banco de dados.
+Depois me explique, em passos curtos, como eu mesmo crio o arquivo .env e escrevo os valores nele.
+NÃO peça que eu cole os valores aqui no chat.</pre>
+<button class="copiar" data-copiar="q-env">Copiar pedido</button>
+    <p class="term">Pedido 3: conferir se alguma chave ficou escrita nos arquivos</p>
+<pre id="q-busca">Procure, em todos os arquivos desta pasta, chaves, tokens ou senhas escritos no código.
+NÃO mostre os valores. Mostre só o nome do arquivo e o número da linha.
+Se achar algo, explique como trocar por uma variável do arquivo .env.</pre>
+<button class="copiar" data-copiar="q-busca">Copiar pedido</button>
+
+    <h2 class="titulo-sec">E se a chave vazou?</h2>
+    <p class="sub-sec">Vazou é quando a chave foi para o chat, para um print, para o GitHub ou para outra pessoa. <strong>Troque na hora:</strong></p>
+    <table class="empilha">
+      <tr><th>Chave</th><th>O que fazer</th></tr>
+      <tr><td data-l="Chave">Chave do Gemini</td><td data-l="O que fazer">No AI Studio, abra <em>Chaves de API</em>, <strong>apague</strong> a chave que vazou e <strong>crie outra</strong>. Guarde a nova nos Segredos do Colab.</td></tr>
+      <tr><td data-l="Chave">Token do bot</td><td data-l="O que fazer">No <strong>@BotFather</strong>, envie <code>/token</code> e escolha o bot. Ele gera um token novo. Troque no <code>.env</code>.</td></tr>
+      <tr><td data-l="Chave">Chave que foi para o GitHub</td><td data-l="O que fazer">Apagar o arquivo <strong>não basta</strong>: a chave continua no histórico. <strong>Troque a chave</strong> e avise o professor.</td></tr>
+    </table>
+    <div class="erro"><div class="cb"><strong>Quando em dúvida, troque a chave.</strong> Criar outra é grátis e leva um minuto. Avise o professor.</div></div>
+
+    <p><a href="tutorial.html">Voltar ao Tutorial</a> · <a href="aluno.html">Voltar ao Manual do Aluno</a></p>
+  </main>
+
+  <footer>Material de ensino. Os valores dos exemplos são falsos.</footer>
+
+  <script>
+    document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", async () => {
+      const texto = document.getElementById(b.dataset.copiar).innerText;
+      const original = b.textContent;
+      try { await navigator.clipboard.writeText(texto); b.textContent = "Copiado!"; }
+      catch (e) { b.textContent = "Selecione o texto e use Ctrl+C"; }
+      setTimeout(() => b.textContent = original, 2000);
+    }));
+  </script>
+</body>
+</html>

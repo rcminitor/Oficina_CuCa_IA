@@ -28,6 +28,7 @@
       <a class="aba" href="sobre.html">Sobre</a>
       <a class="aba" href="aluno.html">Manual <span class="cont">6</span></a>
       <a class="aba" href="tutorial.html" aria-current="page">Tutorial <span class="cont">10</span></a>
+      <a class="aba" href="chaves.html">Chaves</a>
       <a class="aba" href="grafo.html">Grafo</a>
       <a class="aba" href="painel.html">Painel de chamados</a>
     </nav>
@@ -68,9 +69,29 @@
     <h2 class="titulo-sec">Os passos</h2>
 
     <details class="etapa" id="p1" open>
-      <summary><span class="num">1</span><span>Instalar o Python</span></summary>
+      <summary><span class="num">1</span><span>Conferir e instalar o Python (e o Git)</span></summary>
       <div class="corpo">
-        <p>O <strong>Python</strong> é a linguagem em que o projeto vai ser escrito. Você instala uma vez.</p>
+        <p>O projeto é escrito em <strong>Python</strong>. O Gemini só consegue rodar o código se o Python estiver instalado. <strong>Primeiro confira.</strong> Se faltar, instale.</p>
+        <h3>A) Conferir o que você já tem</h3>
+        <p>Abra o terminal: tecla <strong>Windows</strong>, digite <code>PowerShell</code>, Enter. Digite os três comandos, um de cada vez:</p>
+        <pre id="c-py">python --version
+pip --version
+git --version</pre>
+<button class="copiar" data-copiar="c-py">Copiar</button>
+        <table>
+          <tr><th>O que apareceu</th><th>O que significa</th></tr>
+          <tr><td><code>Python 3.12.10</code> (ou outro 3.x)</td><td>O Python está instalado.</td></tr>
+          <tr><td>Uma versão do <code>pip</code></td><td>O pip está instalado. Ele instala as peças do projeto.</td></tr>
+          <tr><td>Uma versão do <code>git</code></td><td>O Git está instalado. Você só vai usar no final.</td></tr>
+          <tr><td>"não é reconhecido"</td><td>Falta instalar, ou o PATH não foi marcado.</td></tr>
+          <tr><td>Abriu a <strong>Microsoft Store</strong></td><td>O Python <strong>não</strong> está instalado. Instale pelo passo B.</td></tr>
+        </table>
+        <div class="dica"><div class="cb"><strong>Prefere pedir ao Gemini?</strong> Cole o pedido abaixo no painel do assistente. Ele confere sozinho e explica o que faltar.</div></div>
+        <p class="term">Pedido: conferir as ferramentas</p>
+<pre id="p-ferr">Verifique, no meu computador, se o Python e o pip estão instalados e funcionando, e se o Git está instalado. Mostre a versão de cada um.
+Se algum faltar, explique em passos curtos, para Windows, como instalar. Peça minha permissão antes de rodar cada comando.</pre>
+<button class="copiar" data-copiar="p-ferr">Copiar pedido</button>
+        <h3>B) Instalar o Python (se faltar)</h3>
         <ol>
           <li>Abra <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>.</li>
           <li>Clique no botão amarelo <strong>Download Python</strong>. Prefira a versão <strong>3.12</strong> (ou 3.11).</li>
@@ -78,12 +99,22 @@
           <li><strong>Marque a caixinha "Add python.exe to PATH"</strong> (embaixo, na primeira tela).</li>
           <li>Clique em <strong>Install Now</strong> e espere terminar.</li>
         </ol>
-        <p>Abra o terminal: tecla <strong>Windows</strong>, digite <code>PowerShell</code>, Enter. Digite:</p>
-        <pre id="c-py">python --version</pre>
-<button class="copiar" data-copiar="c-py">Copiar</button>
-        <div class="ok"><div class="cb"><strong>Deu certo se</strong> aparecer algo como <code>Python 3.12.10</code>.</div></div>
-        <div class="erro"><div class="cb"><strong>Disse "python não é reconhecido"?</strong> Você esqueceu a caixinha PATH. Rode o instalador de novo, escolha <strong>Modify</strong> e marque <strong>Add to environment variables</strong>. Feche e abra o PowerShell.</div></div>
-        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal com a versão do Python.</div></div>
+        <div class="dica"><div class="cb"><strong>Outro jeito, se o seu Windows tiver o winget:</strong> no PowerShell, digite o comando abaixo.</div></div>
+        <pre id="c-winget">winget install Python.Python.3.12</pre>
+<button class="copiar" data-copiar="c-winget">Copiar</button>
+        <h3>C) Fechar e abrir de novo</h3>
+        <div class="aviso"><div class="cb"><strong>Depois de instalar, feche o PowerShell e o Antigravity e abra os dois de novo.</strong> Eles só enxergam o Python que foi instalado antes de abrirem.</div></div>
+        <p>Abra um terminal novo e repita <code>python --version</code>.</p>
+        <h3>D) Instalar o Git (se faltar)</h3>
+        <p>O Git guarda as versões da sua pasta e só será usado no <strong>final</strong>. Você pode instalar agora ou na <a href="aluno.html#e6">Etapa 6 do manual</a>.</p>
+        <ol>
+          <li>Abra <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> e baixe o instalador.</li>
+          <li>Abra o arquivo e clique em <strong>Next</strong> até o fim. As opções padrão servem.</li>
+          <li>Feche e abra o terminal. Confira com <code>git --version</code>.</li>
+        </ol>
+        <div class="erro"><div class="cb"><strong>Continua dizendo "não é reconhecido"?</strong> Você esqueceu a caixinha <em>Add python.exe to PATH</em>. Rode o instalador de novo, escolha <strong>Modify</strong> e marque <strong>Add to environment variables</strong>. Depois feche e abra tudo de novo. Ainda não deu? Chame o professor.</div></div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> <code>python --version</code> mostrar uma versão <code>3.x</code> e <code>pip --version</code> mostrar uma versão.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal com a versão do Python e do pip.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="1"> Passo 1 feito</label>
       </div>
     </details>
@@ -118,6 +149,8 @@ Vamos criar, nesta pasta, um projeto chamado Oficina Digital: uma oficina de con
 O cliente abre um chamado num site. Uma API em Python guarda o pedido. Uma triagem faz o laudo. O técnico recebe aviso no Telegram. O cliente acompanha o chamado no site.
 
 As partes são: site (HTML, CSS e JavaScript), API (Python com FastAPI e banco SQLite), triagem com grafo de conhecimento, automação em Python, agente CrewAI com Gemini (no Google Colab) e bot do Telegram.
+
+As chaves e senhas ficarão num arquivo .env, que não vai para o GitHub.
 
 NÃO crie nenhum arquivo agora. Mostre só o plano, em passos curtos e na ordem certa, e a estrutura de pastas. Depois pergunte se pode começar.</pre>
 <button class="copiar" data-copiar="p-plano">Copiar pedido</button>
@@ -256,12 +289,19 @@ Explique como ligar, em um terminal separado.</pre>
           <li>Crie um <strong>novo notebook</strong> e dê o nome <code>agente-crewai</code>.</li>
         </ol>
         <h3>B) Pegar a chave do Gemini</h3>
+        <p>A <strong>chave do Gemini</strong> é uma senha que deixa o seu programa usar o Gemini. Ela se chama <em>chave de API</em>.</p>
+        <p><strong>Onde encontrar:</strong></p>
         <ol>
           <li>Abra <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> com a mesma conta Google.</li>
-          <li>Procure a opção de criar uma <strong>chave de API</strong> e crie uma.</li>
-          <li>Guarde a chave num papel. <strong>Não cole no chat do assistente.</strong></li>
+          <li>No menu da esquerda, procure <strong>Chaves de API</strong> (<em>API keys</em>). Se não achar, procure um botão <strong>Get API key</strong>.</li>
+          <li>Clique em <strong>Criar chave de API</strong> (<em>Create API key</em>). Se pedir um projeto, escolha o que aparecer.</li>
+          <li>A chave é um texto longo. Copie e guarde num papel. <strong>Não cole no chat do assistente.</strong></li>
         </ol>
-        <div class="aviso"><div class="cb"><strong>A chave é só sua.</strong> Quem tem a chave usa a sua cota. Não mande para ninguém e não escreva dentro do código.</div></div>
+        <div class="dica"><div class="cb"><strong>Não achou?</strong> Pergunte ao Gemini <strong>sem colar a chave</strong>. Use o pedido abaixo. Também tem o <a href="chaves.html">Guia das chaves</a>.</div></div>
+        <p class="term">Pedido: onde acho a chave do Gemini</p>
+<pre id="p-onde-gemini">Preciso de uma chave de API do Gemini para usar no Google Colab. Explique, em passos curtos, onde eu encontro essa chave no Google AI Studio e como guardar nos Segredos do Colab. NÃO peça que eu cole a chave aqui no chat.</pre>
+<button class="copiar" data-copiar="p-onde-gemini">Copiar pedido</button>
+        <div class="aviso"><div class="cb"><strong>A chave é só sua.</strong> Quem tem a chave usa a sua cota. Não mande para ninguém e não escreva dentro do código. <strong>Se vazar,</strong> apague a chave no AI Studio e crie outra.</div></div>
         <h3>C) Guardar a chave nos Segredos do Colab</h3>
         <ol>
           <li>Na barra da <strong>esquerda</strong> do Colab, clique no ícone de <strong>chave</strong> (<em>Secrets</em>, ou <em>Segredos</em>).</li>
@@ -314,31 +354,55 @@ Explique cada célula em uma frase. Diga quanto tempo a instalação pode levar 
     <details class="etapa" id="p9">
       <summary><span class="num">9</span><span>Criar o Rádio do Técnico (Telegram)</span></summary>
       <div class="corpo">
-        <p>O bot manda os chamados para o seu celular e aceita comandos. Esta parte também é <strong>opcional</strong>.</p>
-        <h3>A) Criar o bot (4 passos)</h3>
+        <p>O bot manda os chamados para o seu celular e aceita comandos. Esta parte também é <strong>opcional</strong>. Aqui você usa <strong>duas informações secretas</strong>: o <strong>token</strong> do bot e o seu <strong>Id</strong>.</p>
+        <h3>A) Criar o bot e achar o token</h3>
         <ol>
           <li>No Telegram, procure <strong>@BotFather</strong> (com selo azul de verificado). Envie <code>/start</code>.</li>
           <li>Envie <code>/newbot</code>.</li>
           <li>Digite o nome da oficina. Depois um usuário que termine em <code>bot</code>.</li>
-          <li>Ele mostra o <strong>token</strong>. Procure também <strong>@userinfobot</strong>, envie <code>/start</code> e anote o seu <strong>Id</strong> (um número).</li>
+          <li>No fim, o BotFather manda uma mensagem com o <strong>token</strong>: um texto longo com números, dois pontos e letras. <strong>Esse é o token.</strong></li>
           <li>Abra a conversa com o <strong>seu bot</strong> e envie <code>/start</code>.</li>
         </ol>
-        <div class="aviso"><div class="cb"><strong>O token é a chave da sua oficina.</strong> Não mande para ninguém, não cole no chat do assistente e não tire print dele.</div></div>
-        <h3>B) Pedir o código ao Gemini</h3>
+        <div class="dica"><div class="cb"><strong>Perdeu o token?</strong> No <strong>@BotFather</strong>, envie <code>/mybots</code>, escolha o seu bot e procure <strong>API Token</strong>. Para gerar um novo, envie <code>/token</code>.</div></div>
+        <h3>B) Achar o seu Id</h3>
+        <p>O <strong>Id</strong> é um número que identifica a sua conversa. O bot só obedece a quem tem esse número.</p>
+        <ol>
+          <li>No Telegram, procure <strong>@userinfobot</strong> e envie <code>/start</code>.</li>
+          <li>Ele responde com o seu <strong>Id</strong> (só números). Anote.</li>
+        </ol>
+        <div class="dica"><div class="cb"><strong>Prefere não usar outro bot?</strong> Peça ao Gemini um programa que mostra o seu Id quando você manda uma mensagem ao seu bot. Cole o pedido abaixo.</div></div>
+        <p class="term">Pedido: mostrar o meu Id</p>
+<pre id="p-id">Crie um programa pequeno em Python que mostra, na tela, o número do chat de quem mandar uma mensagem ao meu bot do Telegram. Leia o token do arquivo .env e NUNCA o escreva no código. Explique como rodar.</pre>
+<button class="copiar" data-copiar="p-id">Copiar pedido</button>
+        <div class="aviso"><div class="cb"><strong>O token é a chave da sua oficina.</strong> Não mande para ninguém, não cole no chat do assistente e não tire print dele. Se vazar, gere outro com <code>/token</code> no BotFather.</div></div>
+        <h3>C) Pedir o código ao Gemini</h3>
         <p class="term">Pedido do Telegram</p>
 <pre id="p-tele">Crie o aviso e os comandos do Telegram, sem biblioteca extra (use a API oficial por HTTP).
 Quando chegar um chamado, avise o técnico com o laudo.
 Aceite só comandos do chat do técnico: /abertos (lista a fila), /ver N (mostra o laudo), /andamento N e /concluir N.
-O token e o número do chat vêm de variáveis de ambiente. Se não estiverem definidas, só escreva o aviso na tela e continue funcionando.
+
+O token do bot e o número do chat devem vir de um arquivo .env (use python-dotenv), NUNCA escritos no código.
+Crie também um arquivo .env.example com os NOMES das variáveis e sem valores, e coloque .env no .gitignore.
+No fim, me diga os nomes das variáveis que você escolheu e em qual pasta o arquivo .env deve ficar.
+Se as variáveis faltarem, só escreva o aviso na tela e continue funcionando.
 Explique como testar no meu computador, sem endereço público (buscando as mensagens do bot).</pre>
 <button class="copiar" data-copiar="p-tele">Copiar pedido</button>
-        <h3>C) Dar o token ao programa</h3>
-        <p>As informações vão para a <strong>janela do terminal</strong>, nunca para um arquivo. Digite (trocando as partes em maiúsculas):</p>
-        <pre id="c-env">$env:TELEGRAM_TOKEN="COLE_O_TOKEN_AQUI"
-$env:TELEGRAM_CHAT_ID="COLE_SEU_ID_AQUI"
-$env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"</pre>
-<button class="copiar" data-copiar="c-env">Copiar</button>
-        <h3>D) Testar no celular</h3>
+        <h3>D) Guardar o token e o Id no arquivo .env</h3>
+        <p>As informações secretas ficam num arquivo chamado <code>.env</code>, na pasta indicada pelo assistente. <strong>Você mesmo escreve</strong> os valores, no editor do Antigravity. Nunca no chat.</p>
+        <ol>
+          <li>Na pasta do Antigravity, abra o arquivo <code>.env.example</code> que o assistente criou. Ele mostra os <strong>nomes</strong>, sem valores.</li>
+          <li>Crie um arquivo novo chamado <code>.env</code> na mesma pasta (se não souber, peça: <em>"Crie um arquivo .env vazio na pasta certa"</em>).</li>
+          <li>Escreva uma linha para cada nome, com o valor logo depois do sinal de igual, <strong>sem espaços e sem aspas</strong>. Exemplo com valores falsos:
+            <pre id="c-env">TELEGRAM_TOKEN=123456789:valor-do-seu-token
+TELEGRAM_CHAT_ID=123456789</pre>
+<button class="copiar" data-copiar="c-env">Copiar exemplo</button>
+          </li>
+          <li>Troque os valores falsos pelos seus. Salve com <code>Ctrl + S</code>.</li>
+          <li>Abra o arquivo <code>.gitignore</code> e confira que existe uma linha escrita <code>.env</code>. Assim o arquivo <strong>não vai</strong> para o GitHub.</li>
+        </ol>
+        <div class="aviso"><div class="cb"><strong>Os nomes mudam?</strong> Sim. Use <strong>os nomes que o assistente escolheu</strong> no <code>.env.example</code>. O exemplo acima é só um modelo.</div></div>
+        <p>Veja mais no <a href="chaves.html">Guia das chaves</a>.</p>
+        <h3>E) Testar no celular</h3>
         <table>
           <tr><th>Você envia</th><th>Resultado</th></tr>
           <tr><td><code>/abertos</code></td><td>Lista os serviços na fila</td></tr>
@@ -346,7 +410,7 @@ $env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"</pre>
           <tr><td><code>/andamento 1</code></td><td>Marca como em andamento</td></tr>
           <tr><td><code>/concluir 1</code></td><td>Dá baixa: serviço entregue</td></tr>
         </table>
-        <div class="erro"><div class="cb"><strong>O bot não responde?</strong> Veja: os programas estão ligados? A senha é igual onde o assistente mandou usar? O Id é o número do <code>@userinfobot</code>? Você enviou <code>/start</code> ao <strong>seu</strong> bot? As variáveis valem só para <strong>aquela janela</strong> do terminal.</div></div>
+        <div class="erro"><div class="cb"><strong>O bot não responde?</strong> Veja: o programa está ligado? O token e o Id estão certos no <code>.env</code>? Você reiniciou o programa depois de salvar o <code>.env</code>? Você enviou <code>/start</code> ao <strong>seu</strong> bot? Peça ajuda ao Gemini <strong>sem colar o token</strong>.</div></div>
         <div class="prova"><div class="cb"><strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta do bot (tape o token!).</div></div>
         <label class="marcar"><input type="checkbox" data-passo="9"> Passo 9 feito</label>
       </div>
@@ -383,7 +447,7 @@ $env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"</pre>
 
     <h2 class="titulo-sec">Regras de segurança</h2>
     <ul>
-      <li>Senha, token e chave são seus. Não mande em conversa, foto, print ou no chat do assistente.</li>
+      <li>Senha, token e chave são seus. Não mande em conversa, foto, print ou no chat do assistente. Veja o <a href="chaves.html">Guia das chaves</a>.</li>
       <li>Antes de qualquer print, <strong>tape o token</strong>.</li>
       <li>Leia antes de aceitar mudanças e comandos do assistente.</li>
       <li>Dados de cliente (nome, telefone) não vão para o GitHub.</li>

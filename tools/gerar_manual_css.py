@@ -74,6 +74,14 @@ CSS = """/* Manual do Aluno: mesmo conceito da página inicial (letra maior, ima
 .manual .btn-doc { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1.2rem; }
 .manual .btn-doc::after { content: ""; width: 1em; height: 1em; background: currentColor; @@ext@@ }
 
+@media (max-width: 640px) {
+  table.empilha tr:first-child { display: none; }
+  table.empilha, table.empilha tbody, table.empilha tr, table.empilha td { display: block; width: 100%; }
+  table.empilha { border: 0; }
+  table.empilha tr { border: 1px solid var(--borda); border-radius: var(--r-md); margin: 0 0 .8rem; padding: .4rem .2rem; background: var(--surface); }
+  table.empilha td { border: 0; padding: .35rem .8rem; }
+  table.empilha td::before { content: attr(data-l); display: block; font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--suave); }
+}
 @media (max-width: 960px) { .percurso { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) {
   .manual { font-size: 1.1rem; }

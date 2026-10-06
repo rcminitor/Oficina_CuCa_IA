@@ -37,6 +37,12 @@ Sem relatório. Escolha **uma** forma:
 - **Foto do celular** da tela do computador.
 - **Áudio de até 1 minuto** contando o que fez.
 
+## Chaves e senhas
+
+O projeto usa algumas informações secretas (chave do Gemini, token e Id do Telegram, login do GitHub). O **Guia das chaves** mostra onde achar cada uma, onde guardar e como pedir ajuda ao Gemini **sem mostrar o segredo**: https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html
+
+Se o computador **não tem o Python**, o Passo 1 do Tutorial confere e ensina a instalar (também o Git, para o final).
+
 ## Regras de segurança
 
 1. Senha, token e chave são **seus**. Não escreva no chat do assistente, em conversa, em foto ou no GitHub.

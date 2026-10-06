@@ -34,6 +34,7 @@
       <a class="aba" href="sobre.html">Sobre</a>
       <a class="aba" href="aluno.html" aria-current="page">Manual <span class="cont">6</span></a>
       <a class="aba" href="tutorial.html">Tutorial <span class="cont">10</span></a>
+      <a class="aba" href="chaves.html">Chaves</a>
       <a class="aba" href="grafo.html">Grafo</a>
       <a class="aba" href="painel.html">Painel de chamados</a>
     </nav>
@@ -142,7 +143,8 @@
           <li>Adicione também as páginas deste site. Procure a opção de adicionar <strong>site</strong> (<em>Website</em>) e cole um endereço de cada vez:
             <pre id="c-sites">https://rcminitor.github.io/Oficina_CuCa_IA/sobre.html
 https://rcminitor.github.io/Oficina_CuCa_IA/aluno.html
-https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html</pre>
+https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html
+https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html</pre>
             <button class="copiar" data-copiar="c-sites">Copiar endereços</button>
           </li>
         </ol>
@@ -258,6 +260,8 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
           <li><a href="tutorial.html#p8">O agente CrewAI, no Google Colab</a>: a dupla de especialistas. <em>Opcional.</em></li>
           <li><a href="tutorial.html#p9">O Rádio do Técnico (Telegram)</a>: avisos e comandos no celular. <em>Opcional.</em></li>
         </ol>
+        <div class="dica"><div class="cb"><strong>Você vai usar algumas chaves e senhas</strong> (do Gemini e do Telegram). O <a href="chaves.html">Guia das chaves</a> mostra onde achar cada uma, como guardar e como pedir ajuda ao Gemini <strong>sem mostrar o segredo</strong>.</div></div>
+        <div class="dica"><div class="cb"><strong>Não tem o Python instalado?</strong> O <a href="tutorial.html#p1">Passo 1 do tutorial</a> confere e ensina a instalar.</div></div>
         <p><a class="btn principal" href="tutorial.html">Abrir o tutorial <svg class="ic"><use href="#i-arrow"/></svg></a></p>
         <div class="dica"><div class="cb"><strong>Tem dúvida no caminho?</strong> Pergunte no seu caderno do NotebookLM (Etapa 2). Ele explica em áudio.</div></div>
         <div class="aviso"><div class="cb"><strong>Leia antes de aceitar</strong> o que o assistente propuser. <strong>Nunca cole senha, token ou chave</strong> no chat dele.</div></div>
@@ -281,6 +285,13 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
           <li>Abra seu e-mail (olhe também em <strong>Spam</strong>) e clique em <strong>Verify email address</strong>.</li>
         </ol>
         <div class="aviso"><div class="cb">Anote a senha em um caderno seu. Não mande a senha para ninguém.</div></div>
+        <h3>Instalar o Git (se faltar)</h3>
+        <p>O <strong>Git</strong> guarda as versões da sua pasta e leva para o GitHub. Confira no terminal com <code>git --version</code>. Se não aparecer uma versão:</p>
+        <ol>
+          <li>Abra <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com/download/win</a> e baixe o instalador.</li>
+          <li>Abra o arquivo e clique em <strong>Next</strong> até o fim. As opções padrão servem.</li>
+          <li>Feche e abra de novo o terminal e o Antigravity.</li>
+        </ol>
         <h3>Levar a sua pasta para o GitHub</h3>
         <p>Peça ao Gemini, no painel do Antigravity:</p>
         <pre id="p-git">Ajude-me a enviar esta pasta para o GitHub. Estamos no final do projeto.
@@ -291,6 +302,7 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
 5) Peça minha permissão antes de cada comando. Eu faço o login no GitHub. NUNCA peça nem aceite que eu cole senha ou token no chat.</pre>
         <button class="copiar" data-copiar="p-git">Copiar pedido</button>
         <div class="aviso"><div class="cb"><strong>Você mesmo faz o login no GitHub</strong>, no navegador. <strong>Nunca cole senha ou token</strong> no chat. Antes do envio, confirme que <strong>nenhum arquivo tem chave ou token</strong>.</div></div>
+        <div class="dica"><div class="cb"><strong>Sobre o login:</strong> o GitHub não aceita mais a senha da conta para enviar arquivos. O Git para Windows costuma abrir uma janela de login no <strong>navegador</strong>: entre ali. Se o assistente pedir um <em>token</em>, peça a ele para usar o login pelo navegador, ou chame o professor. Veja o <a href="chaves.html">Guia das chaves</a>.</div></div>
         <h3>Vídeos em português</h3>
         <p>Canal <strong>Curso em Vídeo</strong>, do Prof. Gustavo Guanabara. É um curso grátis que ensina Git e GitHub <strong>sem digitar comandos</strong>.</p>
         <p>
