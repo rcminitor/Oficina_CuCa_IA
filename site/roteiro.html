@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina Digital — Roteiro completo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css">
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="manual.css">
+  <script src="tema.js"></script>
+</head>
+<body class="manual">
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="index.html">Início</a>
+      <a class="aba" href="sobre.html">Sobre</a>
+      <a class="aba" href="roteiro.html" aria-current="page">Roteiro</a>
+      <a class="aba" href="aluno.html">Manual <span class="cont">6</span></a>
+      <a class="aba" href="tutorial.html">Tutorial <span class="cont">10</span></a>
+      <a class="aba" href="chaves.html">Chaves</a>
+      <a class="aba" href="grafo.html">Grafo</a>
+      <a class="aba" href="painel.html">Painel de chamados</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Roteiro completo</p>
+      <h1>Do zero ao fim, na ordem certa</h1>
+      <p class="lead">Esta página junta o <strong>Manual</strong> e o <strong>Tutorial</strong> numa lista só. Siga de cima para baixo. Cada linha leva ao lugar onde o passo está explicado.</p>
+    </section>
+
+    <h2 class="titulo-sec">Antes de começar</h2>
+    <p class="sub-sec">Separe estas coisas. Sem elas, alguns passos travam.</p>
+    <div class="provas">
+      <div class="prova-card"><h3>Computador</h3><p>Windows 10 de 64 bits ou mais novo, com internet. Mac e Linux: veja o quadro mais abaixo.</p></div>
+      <div class="prova-card"><h3>Conta Google</h3><p>Pessoal, de preferência <code>@gmail.com</code>, com 18 anos ou mais. Serve para Antigravity, NotebookLM, Colab e AI Studio.</p></div>
+      <div class="prova-card"><h3>Celular</h3><p>Com o Telegram instalado. Só é preciso nos passos opcionais.</p></div>
+      <div class="prova-card"><h3>Fone de ouvido</h3><p>Para o resumo em áudio do NotebookLM.</p></div>
+    </div>
+    <div class="dica"><div class="cb"><strong>Tempo total:</strong> cerca de 6 horas, em várias aulas. Os passos 11 e 12 são opcionais e somam uma hora e vinte minutos.</div></div>
+
+    <h2 class="titulo-sec">A ordem dos 13 passos</h2>
+    <p class="sub-sec">Marque no caderno cada passo que terminar. Se travar, vá ao quadro "Se travar" mais abaixo.</p>
+    <table class="empilha">
+      <tr><th>Nº</th><th>O que fazer</th><th>Onde</th><th>Tempo</th><th>Comprovante</th></tr>
+      <tr><td data-l="Nº"><strong>1</strong></td><td data-l="O que fazer">Instalar o Antigravity, criar a pasta <code>oficina-digital</code>, abrir a pasta e dizer olá ao Gemini.</td><td data-l="Onde"><a href="aluno.html#e1">Manual, Etapa 1</a></td><td data-l="Tempo">20 min</td><td data-l="Comprovante">Print do Antigravity com a pasta e a resposta</td></tr>
+      <tr><td data-l="Nº"><strong>2</strong></td><td data-l="O que fazer">Conferir e instalar o Python, o pip e o Git.</td><td data-l="Onde"><a href="tutorial.html#p1">Tutorial, Passo 1</a></td><td data-l="Tempo">15 min</td><td data-l="Comprovante">Print do terminal com as versões</td></tr>
+      <tr><td data-l="Nº"><strong>3</strong></td><td data-l="O que fazer">NotebookLM: criar o caderno, enviar os 4 documentos e ouvir o resumo em áudio.</td><td data-l="Onde"><a href="aluno.html#e2">Manual, Etapa 2</a></td><td data-l="Tempo">25 min</td><td data-l="Comprovante">Print do caderno ou áudio de 1 minuto</td></tr>
+      <tr><td data-l="Nº"><strong>4</strong></td><td data-l="O que fazer">Testar a Skill A e a Skill B com 3 chamados de treino.</td><td data-l="Onde"><a href="aluno.html#e3">Manual, Etapa 3</a></td><td data-l="Tempo">30 min</td><td data-l="Comprovante">Print das respostas e áudio</td></tr>
+      <tr><td data-l="Nº"><strong>5</strong></td><td data-l="O que fazer">Obsidian: criar 3 notas ligadas e ver o grafo com 3 cores.</td><td data-l="Onde"><a href="aluno.html#e4">Manual, Etapa 4</a></td><td data-l="Tempo">30 min</td><td data-l="Comprovante">Print do grafo</td></tr>
+      <tr><td data-l="Nº"><strong>6</strong></td><td data-l="O que fazer">Conferir o assistente e pedir o plano ao Gemini.</td><td data-l="Onde"><a href="tutorial.html#p2">Tutorial, Passos 2 e 3</a></td><td data-l="Tempo">15 min</td><td data-l="Comprovante">Print do plano</td></tr>
+      <tr><td data-l="Nº"><strong>7</strong></td><td data-l="O que fazer">Criar o site.</td><td data-l="Onde"><a href="tutorial.html#p4">Tutorial, Passo 4</a></td><td data-l="Tempo">20 min</td><td data-l="Comprovante">Print do site no navegador</td></tr>
+      <tr><td data-l="Nº"><strong>8</strong></td><td data-l="O que fazer">Criar a API e ligar.</td><td data-l="Onde"><a href="tutorial.html#p5">Tutorial, Passo 5</a></td><td data-l="Tempo">30 min</td><td data-l="Comprovante">Print do terminal com Uvicorn running</td></tr>
+      <tr><td data-l="Nº"><strong>9</strong></td><td data-l="O que fazer">Criar a triagem com o grafo e abrir um chamado de verdade.</td><td data-l="Onde"><a href="tutorial.html#p6">Tutorial, Passo 6</a></td><td data-l="Tempo">30 min</td><td data-l="Comprovante">Print do chamado com laudo</td></tr>
+      <tr><td data-l="Nº"><strong>10</strong></td><td data-l="O que fazer">Automação de reserva em Python.</td><td data-l="Onde"><a href="tutorial.html#p7">Tutorial, Passo 7</a></td><td data-l="Tempo">20 min</td><td data-l="Comprovante">Print do terminal</td></tr>
+      <tr><td data-l="Nº"><strong>11</strong></td><td data-l="O que fazer">Agente CrewAI no Google Colab, com a chave nos Segredos.</td><td data-l="Onde"><a href="tutorial.html#p8">Tutorial, Passo 8 (opcional)</a></td><td data-l="Tempo">40 min</td><td data-l="Comprovante">Print do laudo dos dois agentes</td></tr>
+      <tr><td data-l="Nº"><strong>12</strong></td><td data-l="O que fazer">Bot do Telegram, com token e Id no <code>.env</code>.</td><td data-l="Onde"><a href="tutorial.html#p9">Tutorial, Passo 9 (opcional)</a></td><td data-l="Tempo">40 min</td><td data-l="Comprovante">Print da conversa no celular</td></tr>
+      <tr><td data-l="Nº"><strong>13</strong></td><td data-l="O que fazer">Enviar a pasta ao GitHub, só no final.</td><td data-l="Onde"><a href="tutorial.html#p10">Tutorial, Passo 10 e Manual, Etapa 6</a></td><td data-l="Tempo">30 min</td><td data-l="Comprovante">Print do repositório</td></tr>
+    </table>
+
+    <h2 class="titulo-sec">Se travar</h2>
+    <h3>Não tenho permissão de administrador</h3>
+    <p>Em computador da escola, o instalador pode pedir uma senha que você não tem. Faça assim:</p>
+    <ol>
+      <li><strong>Python:</strong> no instalador, escolha <strong>Customize installation</strong> e desmarque <strong>Install for all users</strong>. Ele instala só para você e não pede administrador.</li>
+      <li><strong>Git:</strong> no instalador, escolha a opção de instalar só para o seu usuário, se ela aparecer.</li>
+      <li><strong>Antigravity:</strong> na página de download, procure a versão para o usuário atual, se houver.</li>
+      <li>Continuou pedindo senha? <strong>Não tente contornar.</strong> Chame o professor. Ele pode liberar a instalação ou indicar outro computador.</li>
+    </ol>
+    <h3>Uso Mac ou Linux</h3>
+    <p>O site foi escrito para Windows, mas o projeto roda nos três sistemas. As diferenças são pequenas:</p>
+    <table class="empilha">
+      <tr><th>No Windows</th><th>No Mac</th><th>No Linux</th></tr>
+      <tr><td data-l="Windows">Terminal: <strong>PowerShell</strong></td><td data-l="Mac">Terminal: abra o app <strong>Terminal</strong> (Cmd + Espaço, digite Terminal)</td><td data-l="Linux">Terminal: o do seu sistema (em geral Ctrl + Alt + T)</td></tr>
+      <tr><td data-l="Windows"><code>python --version</code></td><td data-l="Mac"><code>python3 --version</code></td><td data-l="Linux"><code>python3 --version</code></td></tr>
+      <tr><td data-l="Windows">Print: Windows + Shift + S</td><td data-l="Mac">Print: Cmd + Shift + 4</td><td data-l="Linux">Print: tecla Print Screen</td></tr>
+      <tr><td data-l="Windows">Instalar: python.org e git-scm.com</td><td data-l="Mac">Instalar: python.org. O Git é oferecido ao digitar <code>git --version</code>: aceite</td><td data-l="Linux">Instalar pelo gerenciador do sistema. Peça ao Gemini o comando da sua distribuição</td></tr>
+    </table>
+    <div class="aviso"><div class="cb"><strong>Nos pedidos prontos,</strong> troque a frase "para Windows" por "para Mac" ou "para Linux". O Gemini ajusta os comandos. Se um comando falhar, mostre o erro ao professor.</div></div>
+    <h3>Não consigo usar o Antigravity</h3>
+    <p>Menos de 18 anos, país não liberado ou conta de trabalho? Use o Gemini em <strong>gemini.google.com</strong>. Peça o código lá, salve nos arquivos da sua pasta e siga o resto igual. Avise o professor.</p>
+    <h3>A cota do Gemini acabou</h3>
+    <p>O uso gratuito renova toda semana. Espere renovar, ou continue pelo gemini.google.com.</p>
+    <h3>O assistente deu uma resposta estranha</h3>
+    <p>A IA pode errar. Peça: "Explique de novo, em palavras simples." Em dúvida, pergunte ao professor.</p>
+
+    <h2 class="titulo-sec">Palavras que você vai ouvir</h2>
+    <table class="empilha">
+      <tr><th>Palavra</th><th>Quer dizer</th></tr>
+      <tr><td data-l="Palavra"><strong>API</strong></td><td data-l="Quer dizer">Programa que recebe os pedidos do site e guarda os dados.</td></tr>
+      <tr><td data-l="Palavra"><strong>Banco de dados</strong></td><td data-l="Quer dizer">Arquivo onde ficam guardados os chamados.</td></tr>
+      <tr><td data-l="Palavra"><strong>Grafo</strong></td><td data-l="Quer dizer">Mapa de ligações: aparelho, sintoma, causa e peça.</td></tr>
+      <tr><td data-l="Palavra"><strong>Terminal</strong></td><td data-l="Quer dizer">Janela onde se escrevem comandos.</td></tr>
+      <tr><td data-l="Palavra"><strong>Ambiente virtual</strong></td><td data-l="Quer dizer">Caixa separada para as peças do projeto não bagunçarem o resto do computador.</td></tr>
+      <tr><td data-l="Palavra"><strong>Token / chave</strong></td><td data-l="Quer dizer">Senha de programa. Secreta. Veja o <a href="chaves.html">Guia das chaves</a>.</td></tr>
+      <tr><td data-l="Palavra"><strong>Commit e push</strong></td><td data-l="Quer dizer">Guardar uma versão da pasta e enviá-la ao GitHub.</td></tr>
+    </table>
+
+    <p><a href="aluno.html">Abrir o Manual</a> · <a href="tutorial.html">Abrir o Tutorial</a> · <a href="chaves.html">Guia das chaves</a></p>
+  </main>
+
+  <footer>Material de ensino. Os valores dos exemplos são falsos.</footer>
+
+  <script>
+    document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", async () => {
+      const texto = document.getElementById(b.dataset.copiar).innerText;
+      const original = b.textContent;
+      try { await navigator.clipboard.writeText(texto); b.textContent = "Copiado!"; }
+      catch (e) { b.textContent = "Selecione o texto e use Ctrl+C"; }
+      setTimeout(() => b.textContent = original, 2000);
+    }));
+  </script>
+</body>
+</html>
