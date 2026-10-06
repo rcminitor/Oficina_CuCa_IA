@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina Digital — Laboratório Autoguiado do Aluno</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header>
+    <div class="logo-area">
+      <h1>🖥️ Oficina Digital</h1>
+      <span class="subtitulo">Laboratório Autoguiado: Gemini Notebook + Grafo de Conhecimento + Automação + Telegram</span>
+    </div>
+
+    <!-- SELETOR E STATUS DA API (COMPATÍVEL COM GITHUB PAGES E LOCAL) -->
+    <div class="api-status-box">
+      <div class="api-status" id="indicador-api" onclick="abrirConfigApi()" title="Clique para alterar o endereço da API">
+        <span class="ponto-status" id="ponto-status"></span>
+        <span id="texto-status">Verificando API...</span>
+        <button type="button" class="btn-config-api" title="Configurar Servidor">⚙️ Alterar</button>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="sobre.html">ℹ️ Sobre o projeto</a>
+      <a href="aluno.html" class="btn-guia">📘 Manual do Aluno</a>
+      <a href="tutorial.html">🧰 Tutorial</a>
+      <a href="#missao-aluno">Sua Missão</a>
+      <a href="#chamado">Abrir Chamado</a>
+      <a href="#acompanhar">Acompanhar</a>
+      <a href="#telegram-comandos">Comandos Telegram</a>
+    </nav>
+  </header>
+
+  <!-- MODAL DE CONFIGURAÇÃO DA API (LOCAL VS NUVEM/RENDER) -->
+  <div id="modal-config-api" class="modal-overlay" style="display: none;">
+    <div class="modal-conteudo">
+      <div class="modal-cabecalho">
+        <h3>⚙️ Conexão com a API</h3>
+        <button type="button" class="btn-fechar-modal" onclick="fecharConfigApi()">✕</button>
+      </div>
+      <p class="modal-descricao">
+        Como o site pode rodar no <strong>GitHub Pages</strong> ou no seu computador, escolha onde a sua API está rodando:
+      </p>
+
+      <div class="opcoes-api">
+        <button type="button" class="btn-opcao-api" onclick="definirModoApi('local')">
+          💻 <strong>API no meu PC (Local)</strong>
+          <small>http://localhost:8000 (Você roda no terminal)</small>
+        </button>
+        <button type="button" class="btn-opcao-api" onclick="definirModoApi('nuvem')">
+          ☁️ <strong>API na Nuvem (Render)</strong>
+          <small>URL pública compartilhada pela turma</small>
+        </button>
+      </div>
+
+      <div class="campo-url-custom">
+        <label for="input-url-api"><strong>Endereço da API:</strong></label>
+        <input type="url" id="input-url-api" placeholder="http://localhost:8000">
+      </div>
+
+      <div class="modal-botoes">
+        <button type="button" class="btn-secundario" onclick="fecharConfigApi()">Cancelar</button>
+        <button type="button" class="btn-principal-modal" onclick="salvarConfigApi()">Salvar e Conectar</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- PAINEL DA MISSÃO AUTOGUIADA DO ALUNO -->
+    <section id="missao-aluno" class="secao-destaque">
+      <div class="cabecalho-secao">
+        <div>
+          <h2>🎯 Roteiro de Investigação do Aluno</h2>
+          <p class="intro-guia">Seu objetivo não é repetir uma receita: é compreender, tomar decisões, testar hipóteses e registrar evidências do funcionamento do sistema.</p>
+        </div>
+        <div class="progresso-container">
+          <span class="progresso-rotulo">Seu Progresso:</span>
+          <div class="barra-fundo"><div class="barra-preenchimento" id="barra-progresso"></div></div>
+          <span id="texto-progresso" class="progresso-percentual">0% Concluído</span>
+        </div>
+      </div>
+
+      <div class="contrato-aprendizagem">
+        <h3>Antes de começar</h3>
+        <p>Crie um diário de bordo com as seções <strong>hipótese</strong>, <strong>decisão</strong>, <strong>teste</strong>, <strong>resultado</strong> e <strong>próximo passo</strong>. Marque uma etapa somente quando conseguir explicar o que fez sem consultar uma resposta pronta.</p>
+        <div class="regras-investigacao">
+          <span>1. Investigue a documentação</span>
+          <span>2. Faça uma tentativa</span>
+          <span>3. Leia o erro</span>
+          <span>4. Registre a evidência</span>
+        </div>
+      </div>
+
+      <div class="checklist-passos">
+        <!-- PASSO 1 -->
+        <div class="item-passo" id="item-passo-1">
+          <div class="passo-cabecalho" onclick="alternarPasso(1)">
+            <input type="checkbox" id="check-passo-1" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-1" class="titulo-passo">
+              <strong>Desafio 1:</strong> Preparar e explicar o ambiente da API
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-1">
+            <div class="grade-desafio">
+              <div><strong>Problema</strong><p>Descubra como isolar as dependências Python, instalá-las e iniciar a aplicação definida em <code>api/main.py</code>.</p></div>
+              <div><strong>Investigue</strong><p>Para que servem um ambiente virtual, o arquivo <code>requirements.txt</code> e um servidor ASGI?</p></div>
+              <div><strong>Evidência</strong><p>Entregue uma captura do terminal, a URL da documentação automática e uma explicação de cada comando utilizado.</p></div>
+              <div><strong>Critério de conclusão</strong><p>A API responde, você identifica a porta usada e consegue explicar por que o ambiente é reproduzível.</p></div>
+            </div>
+            <details class="pista"><summary>Preciso de uma pista</summary><p>Pesquise na documentação do Python como criar um ambiente virtual e, na documentação do Uvicorn, como indicar o módulo e o objeto da aplicação.</p></details>
+          </div>
+        </div>
+
+        <!-- PASSO 2 -->
+        <div class="item-passo" id="item-passo-2">
+          <div class="passo-cabecalho" onclick="alternarPasso(2)">
+            <input type="checkbox" id="check-passo-2" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-2" class="titulo-passo">
+              <strong>Desafio 2:</strong> Investigar IA estruturada e grafo de conhecimento
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-2">
+            <div class="grade-desafio">
+              <div><strong>Problema</strong><p>Analise o notebook existente e adapte um exemplo para um defeito diferente dos casos demonstrados.</p></div>
+              <div><strong>Investigue</strong><p>Qual é a diferença entre resposta livre, saída validada por Pydantic, grafo de conhecimento e GraphRAG?</p></div>
+              <div><strong>Evidência</strong><p>Apresente o novo caso, as entidades extraídas, as relações do grafo e uma conclusão sobre o ganho obtido.</p></div>
+              <div><strong>Critério de conclusão</strong><p>Você consegue interpretar a saída, justificar o modelo de dados e apontar pelo menos uma limitação.</p></div>
+            </div>
+            <details class="pista"><summary>Preciso de uma pista</summary><p>Comece localizando no notebook onde o esquema de saída é definido. Altere apenas uma variável por vez e compare os resultados.</p></details>
+          </div>
+        </div>
+
+        <!-- PASSO 3 -->
+        <div class="item-passo" id="item-passo-3">
+          <div class="passo-cabecalho" onclick="alternarPasso(3)">
+            <input type="checkbox" id="check-passo-3" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-3" class="titulo-passo">
+              <strong>Desafio 3:</strong> Projetar a integração com o Telegram
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-3">
+            <div class="grade-desafio">
+              <div><strong>Problema</strong><p>Configure um canal para o técnico receber e consultar chamados sem expor credenciais no código ou no Git.</p></div>
+              <div><strong>Investigue</strong><p>Como um bot é autenticado? Qual a função do Chat ID? Por que segredos devem ficar em variáveis de ambiente?</p></div>
+              <div><strong>Evidência</strong><p>Desenhe o fluxo site → API → bot → técnico e demonstre uma mensagem de teste sem mostrar tokens.</p></div>
+              <div><strong>Critério de conclusão</strong><p>O bot responde, o segredo não aparece no repositório e você sabe revogá-lo caso seja exposto.</p></div>
+            </div>
+            <details class="pista"><summary>Preciso de uma pista</summary><p>Examine <code>api/.env.example</code>, <code>api/telegram.py</code> e <code>api/bot_local.py</code>. Identifique entradas, saídas e responsabilidades antes de executar qualquer arquivo.</p></details>
+          </div>
+        </div>
+
+        <!-- PASSO 4 -->
+        <div class="item-passo" id="item-passo-4">
+          <div class="passo-cabecalho" onclick="alternarPasso(4)">
+            <input type="checkbox" id="check-passo-4" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-4" class="titulo-passo">
+              <strong>Desafio 4:</strong> Compreender e validar a automação de triagem
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-4">
+            <div class="grade-desafio">
+              <div><strong>Problema</strong><p>Descubra como a automação encontra novos chamados, evita retrabalho e registra o resultado da triagem.</p></div>
+              <div><strong>Investigue</strong><p>Quais estados um chamado percorre? O que acontece se a IA, o banco ou a rede falhar durante o processamento?</p></div>
+              <div><strong>Evidência</strong><p>Produza um diagrama de estados e um teste controlado com logs do antes e depois.</p></div>
+              <div><strong>Critério de conclusão</strong><p>Você explica o ciclo de execução, identifica um risco e propõe uma melhoria de confiabilidade.</p></div>
+            </div>
+            <details class="pista"><summary>Preciso de uma pista</summary><p>Leia os argumentos disponíveis em <code>api/automacao_chamados.py</code> e trace as chamadas feitas ao banco, ao grafo e à IA.</p></details>
+          </div>
+        </div>
+
+        <!-- PASSO 5 -->
+        <div class="item-passo" id="item-passo-5">
+          <div class="passo-cabecalho" onclick="alternarPasso(5)">
+            <input type="checkbox" id="check-passo-5" class="check-missao" onchange="atualizarProgresso()">
+            <label for="check-passo-5" class="titulo-passo">
+              <strong>Desafio 5:</strong> Demonstrar e avaliar o sistema completo
+            </label>
+            <span class="seta-expandir">▼</span>
+          </div>
+          <div class="passo-corpo" id="corpo-passo-5">
+            <div class="grade-desafio">
+              <div><strong>Problema</strong><p>Crie seu próprio cenário de manutenção e acompanhe-o do cadastro até a conclusão, sem usar os exemplos rápidos da página.</p></div>
+              <div><strong>Investigue</strong><p>Em quais pontos os dados mudam? Que componente é responsável por cada transformação?</p></div>
+              <div><strong>Evidência</strong><p>Entregue um vídeo curto ou sequência de capturas, o diagnóstico gerado, os registros do grafo e uma análise crítica.</p></div>
+              <div><strong>Critério de conclusão</strong><p>O fluxo funciona de ponta a ponta e você consegue defender suas decisões, limitações e melhorias propostas.</p></div>
+            </div>
+            <details class="pista"><summary>Preciso de uma pista</summary><p>Teste primeiro cada componente isoladamente. Só depois integre dois componentes por vez até completar o ciclo.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="entrega-final">
+        <h3>📦 Entrega final do trabalho</h3>
+        <ul>
+          <li>Repositório organizado, sem credenciais ou arquivos gerados localmente.</li>
+          <li>Diário de bordo com decisões, erros encontrados e soluções justificadas.</li>
+          <li>Diagramas da arquitetura, do fluxo de dados e dos estados do chamado.</li>
+          <li>Demonstração do sistema e reflexão individual sobre aprendizagens e limitações.</li>
+        </ul>
+        <p><strong>Regra de ouro:</strong> funcionamento sem explicação não comprova aprendizagem; explicação sem evidência não comprova funcionamento.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO ABERTURA DE CHAMADO COM BOTÕES RÁPIDOS -->
+    <section id="chamado">
+      <div class="cabecalho-secao">
+        <h2>🛠️ Abrir Novo Chamado de Manutenção</h2>
+        <span class="tag-etapa">Testar no Navegador</span>
+      </div>
+
+      <div class="atalhos-exemplos">
+        <span class="atalhos-titulo">⚡ Clique em um caso para preencher automaticamente:</span>
+        <div class="botoes-exemplos">
+          <button type="button" class="btn-exemplo" onclick="preencherExemplo('dell')">
+            🔥 Dell G15 esquentando e desligando
+          </button>
+          <button type="button" class="btn-exemplo" onclick="preencherExemplo('nitro')">
+            💥 Acer Nitro 5 com tela azul
+          </button>
+          <button type="button" class="btn-exemplo" onclick="preencherExemplo('desktop')">
+            ⚡ Desktop reiniciando ao jogar
+          </button>
+        </div>
+      </div>
+
+      <form id="form-chamado">
+        <label>Nome do Cliente <input id="campo-nome" name="nome" required minlength="2" maxlength="80" placeholder="Ex.: Lucas Mendes"></label>
+        <label>E-mail ou Telefone <input id="campo-contato" name="contato" required minlength="5" maxlength="80" placeholder="Ex.: lucas@email.com"></label>
+        <label>Equipamento <input id="campo-equipamento" name="equipamento" required placeholder="Ex.: Notebook Dell G15" maxlength="80"></label>
+        <label>Relato do Problema <textarea id="campo-problema" name="problema" required minlength="10" maxlength="1000" placeholder="Descreva o defeito detalhadamente..."></textarea></label>
+        <button type="submit" id="btn-enviar" class="btn-principal">🚀 Enviar Chamado para Triagem IA</button>
+      </form>
+      <div id="resposta-chamado" class="mensagem-resultado" role="status"></div>
+    </section>
+
+    <!-- SEÇÃO ACOMPANHAMENTO E DIAGNÓSTICO -->
+    <section id="acompanhar">
+      <div class="cabecalho-secao">
+        <h2>🔍 Acompanhar Chamado & Diagnóstico Inteligente</h2>
+        <span class="tag-etapa">Retorno da IA & Grafo</span>
+      </div>
+
+      <form id="form-acompanhar">
+        <div class="consulta-linha">
+          <label class="label-consulta">
+            Número do Chamado
+            <input id="campo-id-consulta" name="id" type="number" min="1" required placeholder="Ex.: 1">
+          </label>
+          <button type="submit" class="btn-secundario">Consultar Status</button>
+          <button type="button" id="btn-ultimo" class="btn-link" style="display:none;" onclick="consultarUltimo()">
+            Consultar último (#<span id="txt-ultimo-id"></span>)
+          </button>
+        </div>
+      </form>
+
+      <div id="resultado-detalhes" class="painel-diagnostico" style="display: none;">
+        <div class="topo-diagnostico">
+          <h3 id="diag-titulo">Chamado #1</h3>
+          <div class="tags-status">
+            <span id="diag-status" class="badge-status">Status</span>
+            <span id="diag-prioridade" class="badge-prioridade">Prioridade</span>
+          </div>
+        </div>
+
+        <div class="linha-info"><strong>Equipamento:</strong> <span id="diag-equipamento">---</span></div>
+        <div class="linha-info"><strong>Data de Abertura:</strong> <span id="diag-data">---</span></div>
+
+        <div class="caixa-ia">
+          <div class="cabecalho-ia">
+            <span>🧠 Diagnóstico Enriquecido (Gemini + Grafo de Conhecimento):</span>
+          </div>
+          <pre id="diag-texto" class="texto-ia">Aguardando processamento pela IA...</pre>
+        </div>
+      </div>
+      <p id="resposta-acompanhar" class="mensagem-resultado" role="status"></p>
+    </section>
+
+    <!-- SEÇÃO COMANDOS TELEGRAM -->
+    <section id="telegram-comandos">
+      <div class="cabecalho-secao">
+        <h2>📱 Comandos do Técnico no Telegram</h2>
+        <span class="tag-etapa">No Celular</span>
+      </div>
+      <p>Envie estes comandos no chat com o seu bot do Telegram para gerenciar a bancada:</p>
+
+      <div class="tabela-comandos">
+        <div class="comando-item">
+          <code>/abertos</code>
+          <span>Lista todos os chamados abertos e em andamento com prioridade.</span>
+        </div>
+        <div class="comando-item">
+          <code>/ver [ID]</code>
+          <span>Exibe a ficha completa, dados do cliente e diagnóstico da IA.</span>
+        </div>
+        <div class="comando-item">
+          <code>/andamento [ID]</code>
+          <span>Muda o status para "Em andamento" (computador na bancada).</span>
+        </div>
+        <div class="comando-item">
+          <code>/concluir [ID]</code>
+          <span>Finaliza o atendimento e marca como "Concluído".</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Oficina Digital — Laboratório Autoguiado de IA com Gemini, Graphify (Grafos) e Telegram.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

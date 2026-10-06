@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Bancada de oficina com um notebook mostrando o grafo de aparelhos, sintomas e peças, e um celular com o bot do Telegram">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef0ff"/>
+      <stop offset="1" stop-color="#dfe3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="28" fill="url(#fundo)"/>
+
+  <!-- trilhas de circuito ao fundo -->
+  <g fill="none" stroke="#c3c8f5" stroke-width="3" stroke-linecap="round">
+    <path d="M30 70 H110 L140 100 H210"/>
+    <path d="M30 105 H70 L92 127"/>
+    <path d="M430 50 H520 L548 78 H612"/>
+    <path d="M470 88 H500"/>
+  </g>
+  <g fill="#c3c8f5"><circle cx="210" cy="100" r="5"/><circle cx="92" cy="127" r="5"/><circle cx="612" cy="78" r="5"/><circle cx="500" cy="88" r="5"/></g>
+
+  <!-- bancada -->
+  <ellipse cx="320" cy="406" rx="285" ry="12" fill="#312e81" opacity=".12"/>
+  <rect x="24" y="372" width="592" height="18" rx="9" fill="#312e81"/>
+  <rect x="24" y="372" width="592" height="6" rx="3" fill="#4338ca"/>
+
+  <!-- notebook -->
+  <rect x="146" y="124" width="308" height="198" rx="16" fill="#312e81"/>
+  <rect x="160" y="138" width="280" height="170" rx="9" fill="#fffdf8"/>
+  <rect x="112" y="322" width="376" height="20" rx="10" fill="#4338ca"/>
+  <rect x="268" y="322" width="64" height="7" rx="3.5" fill="#312e81"/>
+  <circle cx="300" cy="131" r="2.5" fill="#6d74e8"/>
+
+  <!-- grafo na tela -->
+  <g stroke="#a9aede" stroke-width="3" stroke-linecap="round">
+    <line x1="208" y1="190" x2="300" y2="190"/><line x1="300" y1="190" x2="392" y2="190"/>
+    <line x1="208" y1="262" x2="300" y2="262"/><line x1="300" y1="262" x2="392" y2="262"/>
+    <line x1="300" y1="190" x2="300" y2="262" stroke-dasharray="5 5"/>
+  </g>
+  <circle cx="208" cy="190" r="14" fill="#2563eb"/><circle cx="300" cy="190" r="12" fill="#f59e0b"/><circle cx="392" cy="190" r="12" fill="#16a34a"/>
+  <circle cx="208" cy="262" r="14" fill="#2563eb"/><circle cx="300" cy="262" r="12" fill="#f59e0b"/><circle cx="392" cy="262" r="12" fill="#16a34a"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11.5" font-weight="600" fill="#1c1917" text-anchor="middle">
+    <text x="208" y="220">Dell G15</text><text x="300" y="217">Desliga sozinho</text><text x="392" y="217">Pasta térmica</text>
+    <text x="208" y="292">Acer Nitro 5</text><text x="300" y="289">Tela azul</text><text x="392" y="289">Memória RAM</text>
+  </g>
+  <text x="300" y="158" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#4338ca" letter-spacing="1.2">APARELHO · SINTOMA · PEÇA</text>
+
+  <!-- celular com o bot -->
+  <rect x="462" y="176" width="126" height="200" rx="20" fill="#1c1917"/>
+  <rect x="471" y="194" width="108" height="164" rx="11" fill="#ffffff"/>
+  <rect x="505" y="183" width="40" height="5" rx="2.5" fill="#44403c"/>
+  <rect x="498" y="204" width="74" height="24" rx="11" fill="#4338ca"/>
+  <text x="535" y="220" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600" fill="#fff">/abertos</text>
+  <rect x="478" y="236" width="98" height="48" rx="11" fill="#eceaff"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10.5" fill="#1c1917">
+    <text x="486" y="254" font-weight="700">#1 Dell G15</text><text x="486" y="271">Prioridade ALTA</text>
+  </g>
+  <rect x="498" y="294" width="74" height="24" rx="11" fill="#16a34a"/>
+  <text x="535" y="310" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="600" fill="#fff">/concluir 1</text>
+
+  <!-- engrenagem -->
+  <g transform="translate(78 300)">
+    <circle r="40" fill="none" stroke="#f59e0b" stroke-width="13" stroke-dasharray="14 11"/>
+    <circle r="33" fill="#f59e0b"/><circle r="13" fill="#eef0ff"/>
+  </g>
+  <!-- chave de boca -->
+  <g transform="translate(46 150) rotate(-35)">
+    <rect x="-6" y="-8" width="12" height="104" rx="6" fill="#4338ca"/>
+    <circle cx="0" cy="-12" r="19" fill="#4338ca"/>
+    <rect x="-7.5" y="-40" width="15" height="19" fill="#dfe3ff"/>
+  </g>
+  <!-- pente de memória RAM -->
+  <rect x="44" y="346" width="100" height="24" rx="3" fill="#16a34a"/>
+  <g fill="#1c1917"><rect x="52" y="350" width="16" height="11" rx="1.5"/><rect x="72" y="350" width="16" height="11" rx="1.5"/><rect x="92" y="350" width="16" height="11" rx="1.5"/><rect x="112" y="350" width="16" height="11" rx="1.5"/></g>
+  <g fill="#fbbf24"><rect x="50" y="364" width="4" height="6"/><rect x="58" y="364" width="4" height="6"/><rect x="66" y="364" width="4" height="6"/><rect x="74" y="364" width="4" height="6"/><rect x="82" y="364" width="4" height="6"/><rect x="90" y="364" width="4" height="6"/><rect x="98" y="364" width="4" height="6"/><rect x="106" y="364" width="4" height="6"/><rect x="114" y="364" width="4" height="6"/><rect x="122" y="364" width="4" height="6"/><rect x="130" y="364" width="4" height="6"/></g>
+  <!-- chip -->
+  <g transform="translate(176 346)">
+    <rect width="36" height="26" rx="4" fill="#1c1917"/>
+    <circle cx="9" cy="9" r="3" fill="#6d74e8"/>
+    <g fill="#a8a29e"><rect x="-4" y="5" width="4" height="3"/><rect x="-4" y="12" width="4" height="3"/><rect x="-4" y="19" width="4" height="3"/><rect x="36" y="5" width="4" height="3"/><rect x="36" y="12" width="4" height="3"/><rect x="36" y="19" width="4" height="3"/></g>
+  </g>
+</svg>

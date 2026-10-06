@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 640" role="img" aria-label="Grafo da oficina em três colunas: aparelhos em azul, sintomas em laranja e peças em verde, ligados por linhas">
+<rect width="780" height="640" rx="24" fill="#fffdf8"/>
+<text x="118" y="52" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.4" fill="#2563eb">APARELHO</text>
+<text x="372" y="52" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.4" fill="#b45309">SINTOMA OU DEFEITO</text>
+<text x="648" y="52" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.4" fill="#15803d">PEÇA</text>
+<path d="M165.4 222.0 C245.0 222.0 245.0 152.0 324.6 152.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M165.4 222.0 C230.8 222.0 230.8 432.0 296.2 432.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M181.6 96.0 C251.1 96.0 251.1 208.0 320.6 208.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M181.6 96.0 C249.1 96.0 249.1 96.0 316.5 96.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M427.5 96.0 C487.7 96.0 487.7 96.0 548.0 96.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M463.9 264.0 C526.2 264.0 526.2 325.1 588.5 325.1" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M463.9 264.0 C495.8 264.0 495.8 233.5 527.7 233.5" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M463.9 264.0 C542.4 264.0 542.4 554.2 620.9 554.2" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M463.9 264.0 C524.2 264.0 524.2 279.3 584.4 279.3" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M423.4 208.0 C475.6 208.0 475.6 233.5 527.7 233.5" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M423.4 208.0 C503.9 208.0 503.9 279.3 584.4 279.3" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M439.6 376.0 C514.0 376.0 514.0 325.1 588.5 325.1" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M423.4 208.0 C506.0 208.0 506.0 325.1 588.5 325.1" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M419.4 152.0 C495.8 152.0 495.8 141.8 572.2 141.8" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M439.6 376.0 C518.1 376.0 518.1 370.9 596.5 370.9" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M439.6 376.0 C530.2 376.0 530.2 554.2 620.9 554.2" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M161.3 348.0 C224.8 348.0 224.8 320.0 288.1 320.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M419.4 152.0 C508.0 152.0 508.0 370.9 596.5 370.9" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M455.9 320.0 C526.2 320.0 526.2 370.9 596.5 370.9" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M419.4 152.0 C489.8 152.0 489.8 187.6 560.1 187.6" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M447.8 432.0 C528.2 432.0 528.2 416.7 608.7 416.7" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M451.8 488.0 C530.2 488.0 530.2 416.7 608.7 416.7" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M451.8 488.0 C518.1 488.0 518.1 508.4 584.4 508.4" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M451.8 488.0 C516.1 488.0 516.1 462.5 580.4 462.5" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M447.8 432.0 C516.1 432.0 516.1 508.4 584.4 508.4" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M447.8 432.0 C514.0 432.0 514.0 462.5 580.4 462.5" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M463.9 600.0 C503.9 600.0 503.9 600.0 543.9 600.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M177.6 474.0 C228.8 474.0 228.8 600.0 280.1 600.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M209.9 600.0 C251.1 600.0 251.1 544.0 292.2 544.0" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<path d="M451.8 544.0 C536.3 544.0 536.3 554.2 620.9 554.2" fill="none" stroke="#c3bdae" stroke-width="2"/>
+<rect x="70.6" y="206.0" width="94.8" height="32" rx="16" fill="#2563eb"/>
+<text x="118" y="227.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">Dell G15</text>
+<rect x="54.4" y="80.0" width="127.2" height="32" rx="16" fill="#2563eb"/>
+<text x="118" y="101.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">Acer Nitro 5</text>
+<rect x="548.0" y="80.0" width="200.1" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="101.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Cabo Flat EDP Nitro 5</text>
+<rect x="280.1" y="248.0" width="183.9" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="269.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Tela Azul (defeito)</text>
+<rect x="527.7" y="217.5" width="240.6" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="239.0" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Limpa Contato Isopropílico</text>
+<rect x="584.4" y="263.3" width="127.2" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="284.8" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Memória DDR4</text>
+<rect x="588.5" y="309.1" width="119.1" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="330.6" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Memória RAM</text>
+<rect x="320.6" y="192.0" width="102.9" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="213.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Tela azul</text>
+<rect x="316.5" y="80.0" width="111.0" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="101.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Tela preta</text>
+<rect x="572.2" y="125.8" width="151.5" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="147.3" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Carregador 130W</text>
+<rect x="304.4" y="360.0" width="135.3" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="381.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Falha de Boot</text>
+<rect x="74.7" y="332.0" width="86.7" height="32" rx="16" fill="#2563eb"/>
+<text x="118" y="353.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">Desktop</text>
+<rect x="596.5" y="354.9" width="102.9" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="376.4" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Fonte ATX</text>
+<rect x="560.1" y="171.6" width="175.8" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="193.1" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">MOSFET Canal N 30V</text>
+<rect x="324.6" y="136.0" width="94.8" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="157.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Não liga</text>
+<rect x="288.1" y="304.0" width="167.7" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="325.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Reinicia em jogos</text>
+<rect x="608.7" y="400.7" width="78.6" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="422.2" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Cooler</text>
+<rect x="292.2" y="472.0" width="159.6" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="493.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Superaquecimento</text>
+<rect x="296.2" y="416.0" width="151.5" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="437.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Desliga sozinho</text>
+<rect x="580.4" y="446.5" width="135.3" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="468.0" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Pasta Térmica</text>
+<rect x="584.4" y="492.4" width="127.2" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="513.9" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Thermal Pads</text>
+<rect x="543.9" y="584.0" width="208.2" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="605.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Bateria Original A1466</text>
+<rect x="280.1" y="584.0" width="183.9" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="605.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Bateria não carrega</text>
+<rect x="58.5" y="458.0" width="119.1" height="32" rx="16" fill="#2563eb"/>
+<text x="118" y="479.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">MacBook Air</text>
+<rect x="292.2" y="528.0" width="159.6" height="32" rx="16" fill="#b45309"/>
+<text x="372" y="549.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">Lentidão extrema</text>
+<rect x="26.0" y="584.0" width="183.9" height="32" rx="16" fill="#2563eb"/>
+<text x="118" y="605.5" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">Notebook (genérico)</text>
+<rect x="620.9" y="538.2" width="54.3" height="32" rx="16" fill="#15803d"/>
+<text x="648" y="559.7" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#fff">SSD</text>
+</svg>

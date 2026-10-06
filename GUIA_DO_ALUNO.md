@@ -60,7 +60,7 @@ uvicorn main:app --reload
 ```text
 INFO: Uvicorn running on http://127.0.0.1:8000
 ```
-5. **Abra o site:** na pasta `site`, dê **dois cliques** em `index.html`. No topo, a bolinha fica **verde** (`API Online`).
+5. **Abra o site:** na pasta `site`, dê **dois cliques** em `painel.html`. No topo, a bolinha fica **verde** (`API Online`).
 
 > 💡 **Deixe o Terminal 1 aberto.** Se fechar, a API desliga.
 
@@ -132,7 +132,7 @@ Para parar: `Ctrl + C`.
 
 ## 🎯 Etapa 5: O grande teste (você no controle)
 
-1. **No site** (`site/index.html`), em *Abrir Novo Chamado*, clique no botão rápido **`🔥 Dell G15 desligando em jogos`**.
+1. **No site** (`site/painel.html`), em *Abrir Novo Chamado*, clique no botão rápido **`🔥 Dell G15 desligando em jogos`**.
 2. Clique em **`🚀 Enviar Chamado para Triagem IA`** e anote o **número** do chamado.
 3. **📲 No Telegram**, o bot avisa com o laudo da IA, parecido com:
    ```text

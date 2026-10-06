@@ -55,7 +55,7 @@ pip install -r requirements.txt
 pytest                      # Executa os 5 testes automatizados
 uvicorn main:app --reload   # Inicia a API em http://localhost:8000
 ```
-Em seguida, abra o arquivo `site/index.html` com dois cliques no navegador para visualizar o site de atendimento.
+Em seguida, abra o arquivo `site/painel.html` com dois cliques no navegador para visualizar o site de atendimento.
 
 ---
 
