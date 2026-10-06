@@ -1,6 +1,7 @@
 # Gabarito do professor: o projeto de referência
 > **O aluno não usa este guia.** Ele constrói o próprio projeto com o Gemini, no Antigravity, seguindo o **[Tutorial](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html)**.
 > Este guia mostra como **rodar o projeto de referência** que está nas pastas `api/` e `site/`, para você comparar com o que o aluno criou.
+> Para testar o caminho do aluno de ponta a ponta, use a [folha de teste](docs/folha_de_teste.md). Para o Classroom, veja os [avisos prontos](docs/avisos_classroom.md).
 
 ---
 
