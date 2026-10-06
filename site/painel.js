@@ -105,11 +105,12 @@
       const r = await fetch(apiUrl + "/chamados", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        // envia os dois nomes: o gabarito usa "problema"; a Especificação, "relato"
+        body: JSON.stringify((d => ({ ...d, relato: d.problema }))(Object.fromEntries(new FormData(form)))),
       });
       if (!r.ok) throw new Error("a API respondeu com o código " + r.status);
       const resposta = await r.json();
-      const id = resposta.id;
+      const id = resposta.numero ?? resposta.id;
       ultimoId = String(id);
       gravarLS(CHAVE_ULTIMO, ultimoId);
       mostrarUltimo();
@@ -149,16 +150,18 @@
       const c = await r.json();
       mostrar("resposta-acompanhar", "", "");
 
-      $("res-titulo").textContent = "Chamado nº " + c.id;
+      $("res-titulo").textContent = "Chamado nº " + (c.numero ?? c.id ?? id);
       $("res-status").textContent = STATUS[c.status] || c.status || "Sem status";
       const prioridade = (c.prioridade || "").toLowerCase();
       $("res-prioridade").textContent = prioridade ? "Prioridade " + prioridade : "Sem prioridade";
       $("res-prioridade").dataset.nivel = prioridade;
       $("res-equipamento").textContent = c.equipamento || "-";
-      $("res-data").textContent = c.criado_em ? new Date(c.criado_em).toLocaleString("pt-BR") : "-";
+      const quando = c.data ?? c.criado_em;
+      $("res-data").textContent = quando ? new Date(quando).toLocaleString("pt-BR") : "-";
       const laudo = $("res-laudo");
-      if (c.diagnostico) {
-        laudo.textContent = c.diagnostico;
+      const texto = c.laudo ?? c.diagnostico;
+      if (texto) {
+        laudo.textContent = texto;
       } else {
         laudo.textContent = "A triagem ainda está trabalhando. Esta tela confere de novo sozinha.";
         if (tentativa < 5) temporizadorLaudo = setTimeout(() => carregarChamado(id, tentativa + 1), 2500);

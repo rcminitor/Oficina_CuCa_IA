@@ -146,7 +146,7 @@ python -c "import requests; print(requests.__version__)"</pre>
         <table>
           <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
           <tr><td><code>python</code> abre a Microsoft Store</td><td>É um atalho falso. Instale o Python pelo passo B. Depois, em <strong>Configurações</strong>, procure <strong>Aliases de execução de aplicativo</strong> e desligue os dois "python".</td></tr>
-          <tr><td><code>python</code> não é reconhecido, mas o Python está instalado</td><td>Tente <code>py --version</code>. Se funcionar, use <code>py</code> no lugar de <code>python</code>.</td></tr>
+          <tr><td><code>python</code> não é reconhecido, mas o Python está instalado</td><td>Tente <code>py --version</code>. Se funcionar, use <code>py</code> no lugar de <code>python</code>. Se houver mais de um Python instalado, o <code>py</code> pode mostrar uma versão diferente da do <code>python</code>. Use qualquer 3.11 ou mais nova.</td></tr>
           <tr><td><code>pip</code> não é reconhecido</td><td>Use <code>python -m pip</code> no lugar de <code>pip</code>.</td></tr>
           <tr><td>Aparece uma versão antiga do Python</td><td>Há duas instalações. Veja qual o terminal acha primeiro: <code>Get-Command python -All</code>. Chame o professor antes de apagar algo.</td></tr>
           <tr><td>O download ou o <code>pip install</code> falha</td><td>Confira a internet. Em rede da escola, pode haver bloqueio. Avise o professor.</td></tr>
@@ -229,7 +229,10 @@ NÃO crie nenhum arquivo agora. Mostre só o plano, em passos curtos e na ordem 
 Uma página (index.html) com letra grande e fácil de ler.
 - Formulário "Abrir chamado" com quatro campos: nome, contato (e-mail ou telefone), equipamento e relato do problema. Botão "Enviar chamado". Ao enviar, mostre o número do chamado.
 - Área "Acompanhar": a pessoa digita o número e vê o status, a prioridade e o laudo.
-- O site conversa com a API em http://localhost:8000 (POST /chamados e GET /chamados/{numero}). Se a API estiver desligada, mostre um aviso claro.
+- O site conversa com a API em http://localhost:8000. Use EXATAMENTE estes nomes de campo no JSON:
+  - POST /chamados: envia {"nome", "contato", "equipamento", "relato"} e recebe {"numero", "status"}.
+  - GET /chamados/{numero}: recebe {"numero", "equipamento", "status", "prioridade", "laudo", "data"}. Se "laudo" vier vazio, o laudo ainda está sendo feito: mostre "A triagem ainda está trabalhando".
+- Se a API estiver desligada, mostre um aviso claro.
 
 Explique cada arquivo em palavras simples. Ainda não crie a API.</pre>
 <button class="copiar" data-copiar="p-site">Copiar pedido</button>
@@ -253,8 +256,9 @@ Explique cada arquivo em palavras simples. Ainda não crie a API.</pre>
         <p class="term">Pedido da API</p>
 <pre id="p-api">Agora crie só a API, numa pasta chamada "api", com Python e FastAPI.
 - Banco de dados SQLite, num arquivo.
-- POST /chamados: recebe nome (mínimo 2 letras), contato (mínimo 5), equipamento (mínimo 2) e relato (mínimo 10, máximo 1000). Responde com o número e o status "aberto".
-- GET /chamados/{numero}: devolve equipamento, status, prioridade, laudo e data. NÃO devolva nome nem contato.
+- POST /chamados: recebe nome (mínimo 2 letras), contato (mínimo 5), equipamento (mínimo 2) e relato (mínimo 10, máximo 1000). Responde com {"numero": N, "status": "aberto"}.
+- GET /chamados/{numero}: devolve {"numero", "equipamento", "status", "prioridade", "laudo", "data"}. NÃO devolva nome nem contato. Enquanto o laudo não estiver pronto, "laudo" vem vazio (null). Se o número não existir, responda 404.
+- Use EXATAMENTE esses nomes de campo: o site do projeto depende deles.
 - Status possíveis: aberto, em_andamento, concluido.
 - Libere CORS para uso local.
 
@@ -638,7 +642,7 @@ TELEGRAM_CHAT_ID=123456789</pre>
           <li>Abra o <strong>site</strong>: dois cliques em <code>index.html</code>.</li>
           <li>Preencha um chamado com o relato <em>"Dell G15 desliga sozinho quando jogo"</em>.</li>
           <li>Anote o <strong>número</strong>. Em <strong>Acompanhar</strong>, digite o número e veja o laudo.</li>
-          <li>Prioridade <strong>média</strong> e causa <strong>pasta térmica</strong>? A triagem funcionou.</li>
+          <li>Prioridade <strong>alta</strong> e causa <strong>pasta térmica</strong>? A triagem funcionou.</li>
           <li>Teste um relato que o grafo não conhece. O laudo deve dizer <em>"necessário teste detalhado na bancada"</em>.</li>
           <li>Desligue a API e envie de novo. O site deve mostrar o <strong>aviso de API desligada</strong>.</li>
           <li>Se fez o Telegram, o aviso deve chegar no celular.</li>
