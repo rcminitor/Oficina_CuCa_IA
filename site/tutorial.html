@@ -117,7 +117,7 @@
 Vamos criar, nesta pasta, um projeto chamado Oficina Digital: uma oficina de conserto de computadores de mentirinha.
 O cliente abre um chamado num site. Uma API em Python guarda o pedido. Uma triagem faz o laudo. O técnico recebe aviso no Telegram. O cliente acompanha o chamado no site.
 
-As partes são: site (HTML, CSS e JavaScript), API (Python com FastAPI e banco SQLite), triagem com grafo de conhecimento, automação em Python, agente CrewAI com Gemini e bot do Telegram.
+As partes são: site (HTML, CSS e JavaScript), API (Python com FastAPI e banco SQLite), triagem com grafo de conhecimento, automação em Python, agente CrewAI com Gemini (no Google Colab) e bot do Telegram.
 
 NÃO crie nenhum arquivo agora. Mostre só o plano, em passos curtos e na ordem certa, e a estrutura de pastas. Depois pergunte se pode começar.</pre>
 <button class="copiar" data-copiar="p-plano">Copiar pedido</button>
@@ -247,35 +247,66 @@ Explique como ligar, em um terminal separado.</pre>
     </details>
 
     <details class="etapa" id="p8">
-      <summary><span class="num">8</span><span>Criar o agente CrewAI (a dupla de especialistas)</span></summary>
+      <summary><span class="num">8</span><span>Criar o agente CrewAI no Google Colab (a dupla de especialistas)</span></summary>
       <div class="corpo">
-        <p>O <strong>CrewAI</strong> junta dois agentes de IA: um <strong>atendente</strong> e um <strong>técnico</strong>. Esta parte é <strong>opcional</strong> e mais difícil. Se travar, pule para o passo 9.</p>
-        <h3>A) Pegar a chave do Gemini</h3>
+        <p>O <strong>CrewAI</strong> junta dois agentes de IA: um <strong>atendente</strong> e um <strong>técnico</strong>. Este passo é <strong>opcional</strong>. Ele roda no <strong>Google Colab</strong>, um caderno de código na nuvem do Google. Você <strong>não instala nada</strong> no seu computador.</p>
+        <h3>A) Abrir o Colab</h3>
         <ol>
-          <li>Abra <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> com a sua conta Google.</li>
+          <li>Abra <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a> e entre com a sua conta Google.</li>
+          <li>Crie um <strong>novo notebook</strong> e dê o nome <code>agente-crewai</code>.</li>
+        </ol>
+        <h3>B) Pegar a chave do Gemini</h3>
+        <ol>
+          <li>Abra <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> com a mesma conta Google.</li>
           <li>Procure a opção de criar uma <strong>chave de API</strong> e crie uma.</li>
           <li>Guarde a chave num papel. <strong>Não cole no chat do assistente.</strong></li>
         </ol>
-        <div class="aviso"><div class="cb"><strong>A chave é só sua.</strong> Quem tem a chave usa a sua cota. Não mande para ninguém e não coloque em arquivo da pasta.</div></div>
-        <h3>B) Pedir o agente</h3>
-        <p class="term">Pedido do agente CrewAI</p>
-<pre id="p-crew">Crie o agente CrewAI, com dois agentes que trabalham juntos:
-- "atendente de triagem": entende o relato do cliente e diz a urgência.
+        <div class="aviso"><div class="cb"><strong>A chave é só sua.</strong> Quem tem a chave usa a sua cota. Não mande para ninguém e não escreva dentro do código.</div></div>
+        <h3>C) Guardar a chave nos Segredos do Colab</h3>
+        <ol>
+          <li>Na barra da <strong>esquerda</strong> do Colab, clique no ícone de <strong>chave</strong> (<em>Secrets</em>, ou <em>Segredos</em>).</li>
+          <li>Clique em <strong>Adicionar novo segredo</strong>.</li>
+          <li>No nome, escreva <code>GEMINI_API_KEY</code>. No valor, cole a chave.</li>
+          <li>Ative a opção de <strong>acesso do notebook</strong> a esse segredo.</li>
+        </ol>
+        <div class="dica"><div class="cb">Assim a chave fica guardada na sua conta Google e <strong>não aparece no código</strong>. É o jeito seguro.</div></div>
+        <h3>D) Pedir o código ao Gemini</h3>
+        <p class="term">Pedido do agente CrewAI (para o Colab)</p>
+<pre id="p-crew">Crie o agente CrewAI para rodar no GOOGLE COLAB, e não no meu computador.
+
+Dois agentes que trabalham juntos:
+- "atendente de triagem": entende o relato do cliente e diz a urgência (alta, média ou baixa).
 - "técnico": sugere a causa provável e os próximos passos.
 
-Use o Gemini como modelo. A chave deve vir da variável de ambiente GEMINI_API_KEY e NUNCA ser escrita em arquivo.
-Só ligue o CrewAI se a variável MODELO_IA estiver definida. Se faltar chave ou der erro, volte para a triagem do grafo.
+Use o Gemini como modelo. A chave deve vir dos Segredos do Colab, assim:
+from google.colab import userdata
+userdata.get("GEMINI_API_KEY")
+NUNCA escreva a chave no código.
 
-Me diga como instalar o CrewAI e como definir as variáveis no terminal, SEM eu colar a chave aqui no chat.</pre>
+Escreva o código em células curtas e numeradas:
+1) instalar o CrewAI com !pip install
+2) ler a chave dos Segredos
+3) criar os dois agentes e as tarefas
+4) rodar com este relato de exemplo e mostrar o laudo: "Dell G15 esquenta muito e desliga sozinho quando eu jogo"
+
+Explique cada célula em uma frase. Diga quanto tempo a instalação pode levar e o que fazer se o Colab pedir para reiniciar a sessão.</pre>
 <button class="copiar" data-copiar="p-crew">Copiar pedido</button>
-        <h3>C) Definir a chave no terminal</h3>
-        <p>No terminal onde a API vai rodar, digite (trocando a parte em maiúsculas):</p>
-        <pre id="c-chave">$env:GEMINI_API_KEY="COLE_A_CHAVE_AQUI"</pre>
-<button class="copiar" data-copiar="c-chave">Copiar</button>
-        <p>O assistente vai dizer qual valor colocar em <code>MODELO_IA</code>. A chave vale só para <strong>aquela janela</strong> do terminal.</p>
-        <div class="erro"><div class="cb"><strong>A instalação do CrewAI demorou muito ou deu erro?</strong> É normal: ele é pesado. Avise o professor e siga para o passo 9. O projeto funciona sem ele.</div></div>
-        <div class="ok"><div class="cb"><strong>Deu certo se</strong> o chamado voltar com um laudo escrito pelo agente, ou o programa voltar sozinho para o grafo se algo falhar.</div></div>
-        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal ou do site com o laudo do agente, ou um áudio dizendo onde travou.</div></div>
+        <ol>
+          <li>Cole o pedido no painel do assistente do Antigravity. Se o Colab mostrar o ícone do <strong>Gemini</strong> no rodapé do notebook, você também pode pedir lá.</li>
+          <li>Copie <strong>uma célula de cada vez</strong> para o Colab (botão <strong>+ Código</strong>).</li>
+        </ol>
+        <h3>E) Rodar no Colab</h3>
+        <ol>
+          <li>Clique no botão de <strong>play</strong> de cada célula, <strong>na ordem</strong>.</li>
+          <li>A instalação pode levar <strong>alguns minutos</strong>. Espere terminar.</li>
+          <li>Se o Colab pedir para <strong>reiniciar a sessão</strong>, aceite e rode de novo a partir da célula 2.</li>
+        </ol>
+        <h3>F) Guardar o notebook na sua pasta</h3>
+        <p>No Colab: <strong>Arquivo</strong> → <strong>Fazer download</strong> → <code>.ipynb</code>. Coloque o arquivo na pasta <code>oficina-digital</code>. Assim ele vai junto para o GitHub no final.</p>
+        <div class="aviso"><div class="cb">Antes de enviar ao GitHub, confira que a sua chave <strong>não aparece escrita</strong> no notebook nem na saída das células.</div></div>
+        <div class="erro"><div class="cb"><strong>Deu erro ou travou?</strong> Copie a mensagem (sem a chave) e peça ao assistente para explicar e corrigir. Se mesmo assim não funcionar, <strong>pule para o passo 9</strong>. O projeto funciona sem esta parte.</div></div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> a última célula mostrar o laudo escrito pelos dois agentes para o Dell G15 que desliga sozinho.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print da última célula do Colab com o laudo, ou um áudio dizendo onde travou.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="8"> Passo 8 feito</label>
       </div>
     </details>

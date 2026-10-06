@@ -66,17 +66,21 @@ Casos de exemplo do grafo (use exatamente estes sete):
 - Se não houver nenhum, escreve: "Nenhum chamado pendente".
 - Para parar: `Ctrl + C`.
 
-### 2.5 Agente CrewAI (dupla de especialistas)
+### 2.5 Agente CrewAI (dupla de especialistas) no Google Colab
+- Roda no **Google Colab**, um caderno de código na nuvem do Google. **Não instala nada** no seu computador.
+- É **opcional** e **separado** da API: recebe um relato e devolve um laudo escrito pelos agentes.
 - Dois agentes de IA trabalhando juntos:
-  - **Atendente de triagem:** entende o relato e diz a urgência.
+  - **Atendente de triagem:** entende o relato e diz a urgência (alta, média ou baixa).
   - **Técnico:** sugere a causa provável e os próximos passos.
-- Usa o **Gemini** como modelo. A chave vem de uma **variável de ambiente** chamada `GEMINI_API_KEY`. A chave **nunca** fica escrita nos arquivos.
-- É opcional: só liga se uma variável `MODELO_IA` estiver definida. Se faltar chave ou der erro, o programa volta para a triagem do grafo.
+- Usa o **Gemini** como modelo.
+- A chave fica nos **Segredos do Colab**, com o nome `GEMINI_API_KEY`, e é lida no código com `userdata.get("GEMINI_API_KEY")`. A chave **nunca** fica escrita no código.
+- Teste de exemplo: o relato "Dell G15 esquenta muito e desliga sozinho quando eu jogo".
 
 ### 2.5.1 Como conseguir a chave do Gemini
 - Entre no Google AI Studio (`aistudio.google.com`) com a sua conta Google.
 - Crie uma chave de API.
-- **Nunca cole a chave no chat do assistente.** Digite no terminal: `$env:GEMINI_API_KEY="sua-chave"`.
+- No Colab, abra o ícone de **chave** (Segredos) na barra da esquerda, crie o segredo `GEMINI_API_KEY` e cole a chave.
+- **Nunca cole a chave no chat do assistente** nem escreva no código.
 
 ### 2.6 Bot do Telegram
 - Avisa o técnico quando chega um chamado, com o laudo.
