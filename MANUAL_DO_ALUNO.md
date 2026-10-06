@@ -13,7 +13,7 @@ Você é **técnico de bancada** em capacitação. Você **não baixa o projeto 
 | 2 | **Assistente que lê em voz alta** (NotebookLM) | Coloca os 4 documentos de estudo e as páginas do site como fonte e escuta o resumo em áudio. |
 | 3 | **Bancada de Testes de IA** (Gemini) | Testa a Skill A (triagem) e a Skill B (busca no histórico) e responde ao Desafio de Decisão. |
 | 4 | **Quadro de Fichas e Ligações** (Obsidian e Graphify) | Monta 3 notas ligadas e vê o grafo: azul é aparelho, laranja é sintoma, verde é peça. |
-| 5 | **Construa o projeto** (Gemini e Tutorial) | Pede ao Gemini, parte por parte: site, API, triagem com grafo, automação em Python, agente CrewAI e Telegram. |
+| 5 | **Construa o projeto** (Gemini e Tutorial) | Pede ao Gemini, parte por parte: site, API, triagem com grafo, automação em Python, agente CrewAI (no Google Colab) e Telegram. |
 | 6 | **Arquivo Digital Central** (GitHub, no final) | Cria a conta e leva a pasta para o GitHub, com a ajuda do Gemini. |
 
 O **Tutorial** (`tutorial.html`) tem os 10 passos da Etapa 5, com um **pedido pronto** para cada parte.
