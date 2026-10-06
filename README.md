@@ -12,7 +12,17 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 | Automação Python | Pipeline autônomo de chamados | `api/automacao_chamados.py` |
 | Laboratório do Aluno | Jupyter Notebook / Google Colab | `notebooks/laboratorio_gemini_graphify.ipynb` |
 
-> **Alunos adultos / iniciantes:** comece pelo [site](https://rcminitor.github.io/Oficina_CuCa_IA/) e pelo [Manual do Aluno](MANUAL_DO_ALUNO.md). O aluno cria a própria pasta, abre no Antigravity e **constrói o projeto com o Gemini**, guiado pelo NotebookLM; só no final leva a pasta ao GitHub. Documentos de estudo em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md). O projeto desta pasta (`api/`, `site/`) é o **gabarito do professor**.
+> **Alunos adultos / iniciantes:** comece pelo [Roteiro](https://rcminitor.github.io/Oficina_CuCa_IA/roteiro.html), que junta os 13 passos na ordem. O aluno cria a própria pasta, abre no Antigravity e **constrói o projeto com o Gemini**, guiado pelo [Manual](https://rcminitor.github.io/Oficina_CuCa_IA/aluno.html), pelo [Tutorial](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html) e pelo NotebookLM; só no final leva a pasta ao GitHub. As chaves e senhas estão no [Guia das chaves](https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html). Versão em texto: [MANUAL_DO_ALUNO.md](MANUAL_DO_ALUNO.md). Documentos de estudo em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md). O projeto desta pasta (`api/`, `site/`) é o **gabarito do professor**.
+
+## Material do professor
+
+| Arquivo | Para que serve |
+|---|---|
+| [`docs/folha_de_teste.md`](docs/folha_de_teste.md) | Percorrer o Roteiro como aluno e anotar o que não bate com as telas reais. |
+| [`docs/avisos_classroom.md`](docs/avisos_classroom.md) | Seis avisos prontos para o Google Classroom. |
+| [`GUIA_DO_ALUNO.md`](GUIA_DO_ALUNO.md) | Como rodar o projeto de referência (gabarito). |
+
+> **Diferença importante:** o gabarito lê as chaves das **variáveis de ambiente** (`$env:...`). O aluno, no Tutorial, guarda as chaves num arquivo `.env` que o próprio projeto dele lê com `python-dotenv`.
 
 ## Como rodar o projeto de referência (gabarito)
 
