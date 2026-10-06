@@ -332,6 +332,17 @@ Explique como ligar, em um terminal separado.</pre>
       <summary><span class="num">8</span><span>Criar o agente CrewAI no Google Colab (a dupla de especialistas)</span></summary>
       <div class="corpo">
         <p>O <strong>CrewAI</strong> junta dois agentes de IA: um <strong>atendente</strong> e um <strong>técnico</strong>. Este passo é <strong>opcional</strong>. Ele roda no <strong>Google Colab</strong>, um caderno de código na nuvem do Google. Você <strong>não instala nada</strong> no seu computador.</p>
+        <h3>Entenda a ideia antes de começar</h3>
+        <p>Pense numa oficina de verdade. O cliente chega e conta o problema. O <strong>atendente</strong> ouve e decide a urgência. Depois o <strong>técnico</strong> pega essa informação e diz o que fazer. O CrewAI faz o mesmo com duas IAs.</p>
+        <table>
+          <tr><th>Peça do CrewAI</th><th>Na oficina</th><th>O que você escreve</th></tr>
+          <tr><td><strong>Agente</strong></td><td>Cada funcionário</td><td>A <em>função</em> (<code>role</code>), o <em>objetivo</em> (<code>goal</code>) e a <em>história</em> (<code>backstory</code>): quem ele é e como trabalha.</td></tr>
+          <tr><td><strong>Tarefa</strong> (<em>task</em>)</td><td>A ordem de serviço</td><td>A <em>descrição</em> do que fazer e a <em>saída esperada</em> (<code>expected_output</code>): o formato exato da resposta.</td></tr>
+          <tr><td><strong>Equipe</strong> (<em>crew</em>)</td><td>A bancada toda</td><td>Quem trabalha, quais tarefas e em que ordem. O comando <code>kickoff</code> dá a largada.</td></tr>
+          <tr><td><strong>Ferramenta</strong> (<em>tool</em>)</td><td>As ferramentas da bancada</td><td>Deixam o agente buscar na internet ou num banco. Aqui <strong>não usamos</strong>.</td></tr>
+        </table>
+        <div class="dica"><div class="cb"><strong>Dica de ouro:</strong> a tarefa vale mais que o agente. Escreva a tarefa com clareza, diga o <strong>formato da resposta</strong> e dê <strong>uma coisa por tarefa</strong>. Se você pede pesquisar, analisar e escrever tudo junto, o resultado piora.</div></div>
+        <p>A ordem aqui é <strong>em sequência</strong> (<code>sequential</code>): primeiro o atendente, depois o técnico, que recebe o resultado do atendente.</p>
         <h3>A) Abrir o Colab</h3>
         <ol>
           <li>Abra <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a> e entre com a sua conta Google.</li>
@@ -363,20 +374,27 @@ Explique como ligar, em um terminal separado.</pre>
         <p class="term">Pedido do agente CrewAI (para o Colab)</p>
 <pre id="p-crew">Crie o agente CrewAI para rodar no GOOGLE COLAB, e não no meu computador.
 
-Dois agentes que trabalham juntos:
-- "atendente de triagem": entende o relato do cliente e diz a urgência (alta, média ou baixa).
-- "técnico": sugere a causa provável e os próximos passos.
+Dois agentes que trabalham em sequência (Process.sequential):
+1) "Atendente de triagem de uma oficina de informática". Objetivo: entender o relato do cliente e dizer a urgência (alta, média ou baixa). Dê a ele uma backstory curta: atende há anos, fala simples e não inventa nada.
+2) "Técnico de bancada". Objetivo: sugerir a causa provável e 3 próximos passos. Ele recebe o resultado do atendente.
 
-Use o Gemini como modelo. A chave deve vir dos Segredos do Colab, assim:
+Duas tarefas, uma para cada agente, cada uma com description e expected_output claros:
+- Tarefa do atendente: saída em 2 linhas, "Urgência: ..." e "Motivo: ...".
+- Tarefa do técnico: saída "Causa provável: ..." e uma lista de 3 passos curtos.
+O relato entra como variável {relato} no kickoff(inputs=...).
+
+Use o Gemini como modelo, com a classe LLM do CrewAI. Confirme qual é o nome de modelo Gemini válido hoje e me diga qual escolheu. Instale com !pip install "crewai[google-genai]".
+A chave vem dos Segredos do Colab:
 from google.colab import userdata
 userdata.get("GEMINI_API_KEY")
-NUNCA escreva a chave no código.
+NUNCA escreva a chave no código nem a mostre na saída.
 
 Escreva o código em células curtas e numeradas:
-1) instalar o CrewAI com !pip install
-2) ler a chave dos Segredos
-3) criar os dois agentes e as tarefas
-4) rodar com este relato de exemplo e mostrar o laudo: "Dell G15 esquenta muito e desliga sozinho quando eu jogo"
+1) instalar
+2) ler a chave dos Segredos e criar o modelo
+3) criar os dois agentes
+4) criar as duas tarefas e a equipe
+5) rodar com o relato "Dell G15 esquenta muito e desliga sozinho quando eu jogo" e mostrar o laudo com print(resultado.raw)
 
 Explique cada célula em uma frase. Diga quanto tempo a instalação pode levar e o que fazer se o Colab pedir para reiniciar a sessão.</pre>
 <button class="copiar" data-copiar="p-crew">Copiar pedido</button>
@@ -390,6 +408,96 @@ Explique cada célula em uma frase. Diga quanto tempo a instalação pode levar 
           <li>A instalação pode levar <strong>alguns minutos</strong>. Espere terminar.</li>
           <li>Se o Colab pedir para <strong>reiniciar a sessão</strong>, aceite e rode de novo a partir da célula 2.</li>
         </ol>
+        <p>O laudo aparece na saída da última célula. Deve ter as linhas <em>Urgência</em> e <em>Motivo</em>, e depois <em>Causa provável</em> e os 3 passos. O texto muda um pouco a cada vez: a IA não responde sempre igual.</p>
+
+        <h3>Entenda o código que o Gemini escreveu</h3>
+        <p>Abaixo está um <strong>modelo</strong> para você comparar com o seu. O seu pode ter nomes diferentes e estar certo. Confira se as mesmas peças aparecem.</p>
+        <details class="codigo">
+          <summary>Ver o código modelo, célula por célula</summary>
+          <div class="corpo">
+<pre>#  Célula 1: instalar (leva alguns minutos)
+!pip install -q "crewai[google-genai]"
+
+#  Célula 2: ler a chave dos Segredos e criar o modelo
+from google.colab import userdata
+from crewai import Agent, Task, Crew, Process, LLM
+llm = LLM(model="gemini/gemini-3.6-flash",
+          api_key=userdata.get("GEMINI_API_KEY"))
+
+#  Célula 3: os dois agentes
+atendente = Agent(
+    role="Atendente de triagem de uma oficina de informática",
+    goal="Entender o relato do cliente e dizer a urgência: alta, média ou baixa",
+    backstory="Você atende clientes há anos, fala simples e não inventa informação.",
+    llm=llm)
+tecnico = Agent(
+    role="Técnico de bancada",
+    goal="Sugerir a causa provável e os próximos passos",
+    backstory="Você conserta notebooks há 10 anos e explica de forma direta.",
+    llm=llm)
+
+#  Célula 4: as duas tarefas e a equipe
+t1 = Task(
+    description="Leia o relato: {relato}. Diga a urgência e explique em uma frase.",
+    expected_output="Duas linhas: 'Urgência: ...' e 'Motivo: ...'",
+    agent=atendente)
+t2 = Task(
+    description="Com a urgência já definida, sugira a causa provável e 3 passos para: {relato}",
+    expected_output="'Causa provável: ...' e uma lista de 3 passos curtos.",
+    agent=tecnico, context=[t1])
+equipe = Crew(agents=[atendente, tecnico], tasks=[t1, t2],
+              process=Process.sequential)
+
+#  Célula 5: rodar
+resultado = equipe.kickoff(inputs={"relato":
+    "Dell G15 esquenta muito e desliga sozinho quando eu jogo"})
+print(resultado.raw)</pre>
+            <div class="aviso"><div class="cb"><strong>O nome do modelo muda com o tempo.</strong> Se aparecer erro de modelo não encontrado, veja os nomes atuais em <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noopener">ai.google.dev/gemini-api/docs/models</a> e troque o texto depois de <code>gemini/</code>.</div></div>
+          </div>
+        </details>
+        <table>
+          <tr><th>Linha</th><th>O que faz</th></tr>
+          <tr><td><code>userdata.get(...)</code></td><td>Lê a chave dos Segredos. A chave não fica escrita no código.</td></tr>
+          <tr><td><code>Agent(role, goal, backstory)</code></td><td>Cria um funcionário de IA.</td></tr>
+          <tr><td><code>Task(description, expected_output)</code></td><td>Cria a ordem de serviço, com o formato da resposta.</td></tr>
+          <tr><td><code>context=[t1]</code></td><td>Entrega o resultado da primeira tarefa para a segunda.</td></tr>
+          <tr><td><code>Process.sequential</code></td><td>Uma tarefa depois da outra.</td></tr>
+          <tr><td><code>kickoff(inputs=...)</code></td><td>Dá a largada e preenche o <code>{relato}</code>.</td></tr>
+        </table>
+
+        <h3>Experimente mudar</h3>
+        <p>Mudar uma coisa e ver o resultado é o melhor jeito de aprender. Faça uma de cada vez e rode de novo as células 4 e 5.</p>
+        <ol>
+          <li><strong>Troque o relato.</strong> Por exemplo: "Acer Nitro 5 com tela azul". O laudo muda?</li>
+          <li><strong>Mude a backstory do técnico.</strong> Escreva "Você é muito caprichoso e sempre avisa o preço do conserto". O texto mudou?</li>
+          <li><strong>Mude a saída esperada.</strong> Peça "uma lista de 5 passos". A resposta obedeceu?</li>
+          <li><strong>Peça ao Gemini:</strong> "Por que o técnico respondeu isso? Explique em palavras simples."</li>
+        </ol>
+        <p>Pergunta para o seu áudio de comprovante: <em>o que mudou quando eu mudei a backstory?</em></p>
+
+        <h3>Se algo der errado no Colab</h3>
+        <table>
+          <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+          <tr><td>Erro de chave ou "secret not found"</td><td>Confira o nome <code>GEMINI_API_KEY</code>, sem espaço, e se o acesso do notebook ao segredo está ligado.</td></tr>
+          <tr><td>Erro dizendo que o modelo não existe (<em>404</em>)</td><td>O nome do modelo mudou. Veja os nomes atuais e troque.</td></tr>
+          <tr><td>Erro de limite ou cota (<em>429</em>)</td><td>Você usou muito num curto tempo. Espere alguns minutos e rode de novo.</td></tr>
+          <tr><td>O Colab pediu para reiniciar</td><td>Aceite. Rode de novo a partir da célula 2.</td></tr>
+          <tr><td>A instalação demora</td><td>É normal levar alguns minutos. Espere a célula terminar.</td></tr>
+          <tr><td>Erro "ModuleNotFoundError"</td><td>A célula 1 não rodou ou foi interrompida. Rode de novo.</td></tr>
+          <tr><td>A resposta veio fora do formato</td><td>Deixe a saída esperada mais clara e rode de novo.</td></tr>
+        </table>
+
+        <h3>O que o CrewAI faz além disso</h3>
+        <p>O CrewAI é muito maior que este exercício. Você não precisa usar estas partes agora. Só saiba que existem:</p>
+        <table>
+          <tr><th>Recurso</th><th>Para que serve</th></tr>
+          <tr><td><strong>Ferramentas</strong></td><td>Deixam o agente buscar na internet, ler arquivos ou consultar uma API.</td></tr>
+          <tr><td><strong>Memória</strong></td><td>O agente lembra de conversas e casos anteriores.</td></tr>
+          <tr><td><strong>Flows</strong></td><td>Controlam o caminho: "se a urgência for alta, faça isto". A equipe (crew) cuida da inteligência. O flow cuida da regra.</td></tr>
+          <tr><td><strong>Arquivos .yaml</strong></td><td>Em projetos maiores, agentes e tarefas ficam em arquivos de texto, separados do código.</td></tr>
+        </table>
+        <p>Quer saber mais? A documentação oficial está em <a href="https://docs.crewai.com" target="_blank" rel="noopener">docs.crewai.com</a>. É em inglês. Peça ao Gemini para explicar em português simples.</p>
+
         <h3>F) Guardar o notebook na sua pasta</h3>
         <p>No Colab: <strong>Arquivo</strong> → <strong>Fazer download</strong> → <code>.ipynb</code>. Coloque o arquivo na pasta <code>oficina-digital</code>. Assim ele vai junto para o GitHub no final.</p>
         <div class="aviso"><div class="cb">Antes de enviar ao GitHub, confira que a sua chave <strong>não aparece escrita</strong> no notebook nem na saída das células.</div></div>
