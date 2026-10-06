@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oficina Digital — Tutorial Passo a Passo</title>
+  <title>Oficina Digital — Tutorial: construa o projeto com o Gemini</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="aluno.css">
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="manual.css">
   <script src="tema.js"></script>
 </head>
-<body>
+<body class="manual">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    </defs>
+  </svg>
   <header class="barra-topo">
     <div class="topo-in">
       <a class="marca" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="marca-nome">Oficina Digital</span></a>
@@ -19,7 +26,7 @@
     <nav class="abas" aria-label="Seções do site">
       <a class="aba" href="index.html">Início</a>
       <a class="aba" href="sobre.html">Sobre</a>
-      <a class="aba" href="aluno.html">Manual <span class="cont">5</span></a>
+      <a class="aba" href="aluno.html">Manual <span class="cont">6</span></a>
       <a class="aba" href="tutorial.html" aria-current="page">Tutorial <span class="cont">10</span></a>
       <a class="aba" href="grafo.html">Grafo</a>
       <a class="aba" href="painel.html">Painel de chamados</a>
@@ -27,324 +34,337 @@
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Tutorial passo a passo</p>
-      <h1>Monte o projeto no seu computador</h1>
-      <p class="lead">Uma etapa de cada vez. Copie, cole e confira. Você é técnico de bancada em capacitação.</p>
+    <section class="hero-home">
+      <div>
+        <p class="eyebrow">Tutorial passo a passo</p>
+        <h1>Construa o projeto com o <em>Gemini</em></h1>
+        <p class="lead">Você cria uma pasta, abre no Antigravity e pede ao Gemini, passo a passo, o site, a API, a triagem, a automação e o agente. Só no final leva a pasta para o GitHub.</p>
+        <div class="acoes">
+          <a class="btn principal" href="#p1">Começar pelo Passo 1 <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn secundario" href="aluno.html">Voltar ao manual</a>
+        </div>
+        <ul class="numeros">
+          <li><strong>10</strong><span>passos</span></li>
+          <li><strong>2h+</strong><span>com calma</span></li>
+          <li><strong>1</strong><span>pasta, do começo ao fim</span></li>
+        </ul>
+      </div>
+      <img src="img/bancada.svg" alt="Bancada de oficina com um notebook mostrando o grafo e um celular com o bot do Telegram" width="640" height="480">
     </section>
-
-    <div class="legenda" aria-label="Legenda dos ícones">
-      <span>🔘 Faça</span><span>⚠️ Cuidado</span><span>💡 Dica</span><span>✅ Deu certo se…</span><span>🆘 Deu erro?</span><span>📸 Comprovante</span>
-    </div>
 
     <div class="progresso" role="status">
       <strong id="txt-prog">0 de 10 passos feitos</strong>
       <div class="barra"><div id="barra"></div></div>
+      <p class="como-usar">Antes de começar, faça as <strong>Etapas 1 a 4 do manual</strong>. Depois, faça um passo de cada vez, <strong>na ordem</strong>. Quando terminar, marque a caixinha <strong>"Passo feito"</strong> no fim dele. Os passos <strong>8</strong> e <strong>9</strong> são opcionais.</p>
     </div>
 
-    <div class="dica">
-      <strong>Você vai montar:</strong> um site onde o cliente abre um chamado → uma API que recebe → uma IA que diagnostica → um bot no Telegram que avisa o técnico.<br>
-      <strong>Tempo:</strong> cerca de 2 horas, sem pressa. <strong>Precisa de:</strong> computador com Windows, internet e conta Google e conta no Telegram (a partir do passo 9).
+    <h2 class="titulo-sec">Como este tutorial funciona</h2>
+    <div class="provas">
+      <div class="prova-card"><h3>Você pede, o Gemini cria</h3><p>Cada passo tem um <strong>pedido pronto</strong> com botão de copiar. Cole no painel do assistente.</p></div>
+      <div class="prova-card"><h3>Você lê e aprova</h3><p>O assistente pode mudar arquivos e rodar comandos. <strong>Leia antes de aceitar.</strong></p></div>
+      <div class="prova-card"><h3>Você confere</h3><p>Todo passo diz <strong>"Deu certo se"</strong> e pede um comprovante simples.</p></div>
     </div>
-    <div class="aviso">⚠️ <strong>Terminal</strong> é a janela preta onde você digita comandos. Cada bloco preto abaixo tem o botão <strong>📋 Copiar</strong>. Cole no terminal com <strong>botão direito do mouse</strong> e aperte <strong>Enter</strong>.</div>
 
-    <!-- PASSO 1 -->
+    <h2 class="titulo-sec">Os passos</h2>
+
     <details class="etapa" id="p1" open>
       <summary><span class="num">1</span><span>Instalar o Python</span></summary>
       <div class="corpo">
-        <p>O <strong>Python</strong> é a linguagem em que a API foi escrita. Você instala uma vez.</p>
+        <p>O <strong>Python</strong> é a linguagem em que o projeto vai ser escrito. Você instala uma vez.</p>
         <ol>
-          <li>🔘 Abra <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>.</li>
-          <li>🔘 Clique no botão amarelo <strong>Download Python</strong>. Prefira a versão <strong>3.12</strong> (ou 3.11).</li>
+          <li>Abra <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>.</li>
+          <li>Clique no botão amarelo <strong>Download Python</strong>. Prefira a versão <strong>3.12</strong> (ou 3.11).</li>
           <li>Abra o arquivo baixado.</li>
-          <li>⚠️ <strong>Marque a caixinha "Add python.exe to PATH"</strong> (embaixo, na primeira tela).</li>
-          <li>🔘 Clique em <strong>Install Now</strong>. Espere terminar.</li>
+          <li><strong>Marque a caixinha "Add python.exe to PATH"</strong> (embaixo, na primeira tela).</li>
+          <li>Clique em <strong>Install Now</strong> e espere terminar.</li>
         </ol>
-        <p>Agora abra o terminal: tecla <strong>Windows</strong>, digite <code>PowerShell</code>, Enter. Digite:</p>
+        <p>Abra o terminal: tecla <strong>Windows</strong>, digite <code>PowerShell</code>, Enter. Digite:</p>
         <pre id="c-py">python --version</pre>
-        <button class="copiar" data-copiar="c-py">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> aparecer algo como <code>Python 3.12.10</code>.</div>
-        <div class="erro">🆘 <strong>Disse "python não é reconhecido"?</strong> Você esqueceu a caixinha PATH. Rode o instalador de novo, escolha <strong>Modify</strong> e marque <strong>Add to environment variables</strong>. Feche e abra o PowerShell.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com a versão do Python.</div>
+<button class="copiar" data-copiar="c-py">Copiar</button>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> aparecer algo como <code>Python 3.12.10</code>.</div></div>
+        <div class="erro"><div class="cb"><strong>Disse "python não é reconhecido"?</strong> Você esqueceu a caixinha PATH. Rode o instalador de novo, escolha <strong>Modify</strong> e marque <strong>Add to environment variables</strong>. Feche e abra o PowerShell.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal com a versão do Python.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="1"> Passo 1 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 2 -->
     <details class="etapa" id="p2">
-      <summary><span class="num">2</span><span>Baixar a pasta do projeto</span></summary>
+      <summary><span class="num">2</span><span>Conferir a pasta e o assistente</span></summary>
       <div class="corpo">
+        <p>Você já fez a <a href="aluno.html#e1">Etapa 1 do manual</a>: criou a pasta <code>oficina-digital</code> e abriu no Antigravity. Confira antes de continuar.</p>
         <ol>
-          <li>🔘 Abra <a href="https://github.com/rcminitor/Oficina_CuCa_IA" target="_blank" rel="noopener">a pasta da oficina no GitHub</a>.</li>
-          <li>🔘 Clique no botão verde <strong>&lt;&gt; Code</strong> → <strong>Download ZIP</strong>.</li>
-          <li>Abra a pasta <strong>Downloads</strong>. Botão direito no ZIP → <strong>Extrair tudo</strong> → <strong>Extrair</strong>.</li>
-          <li>Entre nas pastas até ver os itens <code>api</code>, <code>site</code>, <code>notebooks</code> e <code>docs</code>.</li>
-          <li>🔘 Entre na pasta <code>api</code>. Clique com o <strong>botão direito em um espaço vazio</strong> → <strong>Abrir no Terminal</strong>.</li>
+          <li>O Antigravity está aberto com a pasta <code>oficina-digital</code>.</li>
+          <li>O <strong>painel do assistente</strong> aparece do lado direito do editor.</li>
+          <li>O Gemini respondeu ao seu primeiro olá.</li>
         </ol>
-        <pre id="c-ls">dir</pre>
-        <button class="copiar" data-copiar="c-ls">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> a lista mostrar <code>main.py</code>, <code>db.py</code> e <code>requirements.txt</code>.</div>
-        <div class="dica">💡 Esse terminal já está dentro da pasta <code>api</code>. Você não precisa digitar o caminho.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com a lista de arquivos.</div>
+        <div class="aviso"><div class="cb"><strong>Leia antes de aceitar.</strong> O assistente pode propor mudar arquivos ou rodar comandos. Só aceite se você entender. Em dúvida, pergunte ao professor.</div></div>
+        <div class="aviso"><div class="cb"><strong>Nunca escreva senha, token ou chave no chat do assistente.</strong> O que você escreve vai para o Google. Se for colar um erro, apague antes qualquer chave que apareça nele.</div></div>
+        <div class="dica"><div class="cb"><strong>Ficou com dúvida em algum passo?</strong> Pergunte no seu caderno do NotebookLM (Etapa 2 do manual). Ele explica em áudio.</div></div>
+        <div class="erro"><div class="cb"><strong>Ainda não fez a Etapa 1?</strong> Volte ao <a href="aluno.html#e1">manual</a> e faça primeiro. Sem a pasta aberta no Antigravity, os próximos passos não funcionam.</div></div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> o Antigravity abrir com a pasta e o Gemini responder.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do Antigravity com a pasta aberta e o painel do assistente.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="2"> Passo 2 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 3 -->
     <details class="etapa" id="p3">
-      <summary><span class="num">3</span><span>Instalar seu ajudante de código (Antigravity)</span></summary>
+      <summary><span class="num">3</span><span>Pedir o plano ao Gemini</span></summary>
       <div class="corpo">
-        <p>O <strong>Antigravity</strong> é um editor de código do Google com um <strong>assistente de IA</strong>. Ele lê os arquivos do projeto, explica o que cada um faz e ajuda a entender e corrigir erros.</p>
-        <div class="aviso">⚠️ <strong>Antes de baixar, confira:</strong>
-          <ul>
-            <li>Você tem uma <strong>conta Google pessoal</strong> (de preferência <code>@gmail.com</code>). Conta de trabalho ou de escola pode dar problema.</li>
-            <li>Você tem <strong>18 anos ou mais</strong>. Abaixo disso, o Antigravity não libera o uso.</li>
-            <li>Seu computador tem <strong>Windows 10 de 64 bits</strong> ou mais novo.</li>
-            <li>O Brasil está na lista de países liberados.</li>
-          </ul>
-        </div>
-        <h3>Instalar</h3>
-        <ol>
-          <li>🔘 Abra <a href="https://antigravity.google/download" target="_blank" rel="noopener">antigravity.google/download</a>.</li>
-          <li>🔘 Escolha <strong>Windows</strong> (versão <strong>x64</strong>). Se a página mostrar mais de um produto, escolha o <strong>Antigravity IDE</strong>.</li>
-          <li>Abra o arquivo baixado e siga as telas do instalador.</li>
-          <li>Ao abrir o programa, <strong>entre com a sua conta Google</strong>.</li>
-          <li>🔘 Abra a <strong>pasta do projeto</strong>: procure no menu a opção de abrir pasta (em inglês: <em>File → Open Folder</em>) e escolha a pasta que você extraiu no passo 2.</li>
-        </ol>
-        <h3>Como pedir ajuda ao assistente</h3>
-        <p>Abra o chat do assistente e escreva o pedido. Três pedidos prontos:</p>
-        <p class="term">💬 Entender um arquivo</p>
-        <pre id="c-ag1">Explique, em palavras simples e para um iniciante, o que o arquivo api/main.py faz.</pre>
-        <button class="copiar" data-copiar="c-ag1">📋 Copiar</button>
-        <p class="term">💬 Entender um erro</p>
-        <pre id="c-ag2">Apareceu este erro no terminal. Explique o que significa e como corrigir, passo a passo, para um iniciante:
+        <p>Antes de criar qualquer coisa, peça um <strong>plano</strong>. Assim você entende o caminho e não se perde.</p>
+        <p class="term">Pedido do plano</p>
+<pre id="p-plano">Sou aluno iniciante e leio pouco. Fale em frases curtas e palavras simples.
 
-COLE_O_ERRO_AQUI</pre>
-        <button class="copiar" data-copiar="c-ag2">📋 Copiar</button>
-        <p class="term">💬 Mudar algo no site</p>
-        <pre id="c-ag3">Quero mudar o texto de um botão do site. Mostre em qual arquivo fica e como alterar. Explique antes de mexer em qualquer arquivo.</pre>
-        <button class="copiar" data-copiar="c-ag3">📋 Copiar</button>
-        <div class="dica">💡 <strong>Quando der erro em qualquer passo deste tutorial</strong>, copie a mensagem do terminal e peça ajuda ao assistente com o segundo pedido acima.</div>
-        <h3>Cuidados</h3>
-        <ul>
-          <li>⚠️ <strong>Leia antes de aceitar.</strong> O assistente pode propor mudar arquivos ou rodar comandos. Só aceite se você entender. Em dúvida, pergunte ao professor.</li>
-          <li>⚠️ <strong>Nunca cole senha, token ou chave no chat do assistente.</strong> O que você escreve vai para o Google. Se for colar um erro, apague antes qualquer token que apareça nele.</li>
-          <li>O uso gratuito tem uma <strong>cota que renova toda semana</strong>. Se acabar, espere renovar.</li>
-          <li>Você pode desligar a coleta de dados nas <strong>configurações</strong> (<em>Settings</em>) do programa.</li>
-          <li>O assistente pode errar. Teste o que ele sugerir.</li>
-        </ul>
-        <div class="erro">🆘 <strong>Não consegue usar o Antigravity</strong> (menos de 18 anos, país não liberado, conta de trabalho ou a cota acabou)? Sem problema: abra <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>, cole o erro ou o trecho do código e peça a explicação. Ou chame o professor.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do Antigravity com a pasta do projeto aberta e uma resposta do assistente.</div>
+Vamos criar, nesta pasta, um projeto chamado Oficina Digital: uma oficina de conserto de computadores de mentirinha.
+O cliente abre um chamado num site. Uma API em Python guarda o pedido. Uma triagem faz o laudo. O técnico recebe aviso no Telegram. O cliente acompanha o chamado no site.
+
+As partes são: site (HTML, CSS e JavaScript), API (Python com FastAPI e banco SQLite), triagem com grafo de conhecimento, automação em Python, agente CrewAI com Gemini e bot do Telegram.
+
+NÃO crie nenhum arquivo agora. Mostre só o plano, em passos curtos e na ordem certa, e a estrutura de pastas. Depois pergunte se pode começar.</pre>
+<button class="copiar" data-copiar="p-plano">Copiar pedido</button>
+        <ol>
+          <li>Leia o plano com calma. Se não entender algo, pergunte: <em>"Explique a parte X de novo, mais simples."</em></li>
+          <li>Quando estiver claro, responda: <em>"Pode começar pelo site."</em></li>
+        </ol>
+        <div class="dica"><div class="cb">Quer ouvir sobre o projeto? Pergunte no seu caderno do NotebookLM (Etapa 2 do manual) e compare com o plano do Gemini.</div></div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> o Gemini mostrar uma lista de passos e uma estrutura com as pastas <code>site</code> e <code>api</code>.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do plano que o Gemini mostrou.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="3"> Passo 3 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 4 -->
     <details class="etapa" id="p4">
-      <summary><span class="num">4</span><span>Montar a bancada (ambiente do Python)</span></summary>
+      <summary><span class="num">4</span><span>Criar o site</span></summary>
       <div class="corpo">
-        <p>Você cria uma <strong>caixa separada</strong> para as peças do projeto (ambiente virtual) e instala as peças (pacotes).</p>
-        <p class="term">🖥️ Terminal 1 (o da pasta <code>api</code>):</p>
-        <pre id="c-venv">python -m venv .venv
-.venv\Scripts\activate</pre>
-        <button class="copiar" data-copiar="c-venv">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>(.venv)</code> no começo da linha.</div>
-        <div class="erro">🆘 <strong>Erro "a execução de scripts foi desabilitada"?</strong> Rode isto, só nesta janela, e tente o <code>activate</code> de novo:
-          <pre id="c-pol">Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</pre>
-          <button class="copiar" data-copiar="c-pol">📋 Copiar</button>
-        </div>
-        <p>Agora instale as peças. <strong>Use esta opção (rápida, para a aula):</strong></p>
-        <pre id="c-pip">pip install fastapi uvicorn pytest httpx pydantic google-genai networkx matplotlib</pre>
-        <button class="copiar" data-copiar="c-pip">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> o terminal voltar para a linha com <code>(.venv)</code> sem a palavra <code>ERROR</code>.</div>
-        <div class="dica">💡 Pode demorar alguns minutos. Espere. Não feche a janela.<br>
-        <strong>Opção completa:</strong> <code>pip install -r requirements.txt</code> instala também o CrewAI (a dupla de especialistas). É bem mais pesada e pode demorar muito. Só use se o professor pedir.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com <code>(.venv)</code> no começo da linha.</div>
+        <p>O <strong>site</strong> é a vitrine: o cliente preenche o chamado e acompanha o andamento.</p>
+        <p class="term">Pedido do site</p>
+<pre id="p-site">Agora crie só o SITE, numa pasta chamada "site".
+
+Uma página (index.html) com letra grande e fácil de ler.
+- Formulário "Abrir chamado" com quatro campos: nome, contato (e-mail ou telefone), equipamento e relato do problema. Botão "Enviar chamado". Ao enviar, mostre o número do chamado.
+- Área "Acompanhar": a pessoa digita o número e vê o status, a prioridade e o laudo.
+- O site conversa com a API em http://localhost:8000 (POST /chamados e GET /chamados/{numero}). Se a API estiver desligada, mostre um aviso claro.
+
+Explique cada arquivo em palavras simples. Ainda não crie a API.</pre>
+<button class="copiar" data-copiar="p-site">Copiar pedido</button>
+        <ol>
+          <li>Cole o pedido no painel do assistente e aperte Enter.</li>
+          <li>Leia o que ele vai criar. Aceite se entender.</li>
+          <li>Na pasta <code>site</code>, dê <strong>dois cliques</strong> em <code>index.html</code> para ver no navegador.</li>
+        </ol>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> a página abrir com o formulário e a área de acompanhar. O envio ainda não funciona: a API ainda não existe.</div></div>
+        <div class="dica"><div class="cb"><strong>Deu erro ou travou?</strong> Copie a mensagem do terminal e escreva para o assistente: <em>"Apareceu este erro. Explique em palavras simples e corrija passo a passo."</em></div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do site aberto no navegador.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="4"> Passo 4 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 5 -->
     <details class="etapa" id="p5">
-      <summary><span class="num">5</span><span>Testar a bancada</span></summary>
+      <summary><span class="num">5</span><span>Criar a API e ligar</span></summary>
       <div class="corpo">
-        <p>O projeto tem testes prontos. Eles conferem se tudo está no lugar.</p>
-        <p class="term">🖥️ Terminal 1:</p>
-        <pre id="c-test">pytest</pre>
-        <button class="copiar" data-copiar="c-test">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>5 passed</code> em verde.</div>
-        <div class="erro">🆘 <strong>Disse "pytest não é reconhecido"?</strong> Falta o <code>(.venv)</code>. Rode <code>.venv\Scripts\activate</code> de novo.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com <code>5 passed</code>.</div>
+        <p>A <strong>API</strong> é o programa que recebe os chamados e guarda no banco de dados. Ela precisa ficar <strong>ligada</strong> para o site funcionar.</p>
+        <p class="term">Pedido da API</p>
+<pre id="p-api">Agora crie só a API, numa pasta chamada "api", com Python e FastAPI.
+- Banco de dados SQLite, num arquivo.
+- POST /chamados: recebe nome (mínimo 2 letras), contato (mínimo 5), equipamento (mínimo 2) e relato (mínimo 10, máximo 1000). Responde com o número e o status "aberto".
+- GET /chamados/{numero}: devolve equipamento, status, prioridade, laudo e data. NÃO devolva nome nem contato.
+- Status possíveis: aberto, em_andamento, concluido.
+- Libere CORS para uso local.
+
+Crie o arquivo requirements.txt. Depois me diga, passo a passo, como criar o ambiente virtual, instalar as peças e ligar a API, e o que devo ver no terminal. Peça minha permissão antes de rodar qualquer comando.</pre>
+<button class="copiar" data-copiar="p-api">Copiar pedido</button>
+        <ol>
+          <li>Cole o pedido. O assistente cria a pasta <code>api</code> e os arquivos.</li>
+          <li>Ele vai pedir permissão para rodar comandos (criar o ambiente, instalar as peças, ligar a API). <strong>Leia cada um</strong> e aceite se entender.</li>
+          <li>A API fica rodando no terminal. <strong>Não feche esse terminal.</strong> Para parar: <code>Ctrl + C</code>.</li>
+        </ol>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> o terminal mostrar <code>Uvicorn running on http://127.0.0.1:8000</code>.</div></div>
+        <div class="dica"><div class="cb">Quer ver a API por dentro? Abra no navegador <code>http://localhost:8000/docs</code>.</div></div>
+        <div class="erro"><div class="cb"><strong>Disse que a porta 8000 está em uso?</strong> Outro programa usa essa porta. Peça ao assistente: <em>"Troque a API para a porta 8001 e ajuste o site."</em></div></div>
+        <div class="dica"><div class="cb"><strong>Deu erro ou travou?</strong> Copie a mensagem do terminal e escreva para o assistente: <em>"Apareceu este erro. Explique em palavras simples e corrija passo a passo."</em></div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal com <code>Uvicorn running</code>.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="5"> Passo 5 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 6 -->
     <details class="etapa" id="p6">
-      <summary><span class="num">6</span><span>Ligar a API (o coração da oficina)</span></summary>
+      <summary><span class="num">6</span><span>Criar a triagem e ver o site funcionando</span></summary>
       <div class="corpo">
-        <p>A <strong>API</strong> recebe os chamados e pede o laudo da IA. Vamos ligar o <strong>Grafo de Conhecimento</strong> (a memória da oficina). Ele funciona <strong>sem internet e sem chave</strong>.</p>
-        <p class="term">🖥️ Terminal 1:</p>
-        <pre id="c-api">$env:USAR_GRAFO="1"
-uvicorn main:app --reload</pre>
-        <button class="copiar" data-copiar="c-api">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>Uvicorn running on http://127.0.0.1:8000</code>.</div>
-        <div class="aviso">⚠️ <strong>Deixe este terminal aberto.</strong> Se fechar, a API desliga. Para parar de propósito: <code>Ctrl + C</code>.</div>
-        <div class="dica">💡 Quer ver a API por dentro? Abra no navegador <code>http://localhost:8000/docs</code>.</div>
-        <div class="erro">🆘 <strong>Disse que a porta 8000 está em uso?</strong> Outro programa usa essa porta. Troque por <code>uvicorn main:app --reload --port 8001</code>. No site (passo 7), clique em <strong>⚙️ Alterar</strong> e digite <code>http://localhost:8001</code>.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com <code>Uvicorn running</code>.</div>
+        <p>A <strong>triagem</strong> faz o laudo. Ela usa o <strong>grafo</strong>: a memória da oficina, que liga <strong>aparelho → sintoma → causa → peça</strong>.</p>
+        <p class="term">Pedido da triagem com o grafo</p>
+<pre id="p-grafo">Agora crie a triagem com um grafo de conhecimento, em Python simples, que funcione SEM internet e SEM chave.
+
+O grafo liga aparelho, sintoma, causa e peça. Use exatamente estes sete casos:
+1. Dell G15 | desliga sozinho | pasta térmica de fábrica ressecada e aletas obstruídas | Pasta Térmica Alta Condutividade, Thermal Pads
+2. Dell G15 | não liga | curto no circuito de carga (MOSFET de entrada) | MOSFET Canal N 30V, Carregador 130W
+3. Acer Nitro 5 | tela azul | oxidação nos contatos da memória RAM | Limpa Contato Isopropílico, Memória DDR4
+4. Acer Nitro 5 | tela preta | cabo flat da tela rompido ou solto na dobradiça | Cabo Flat EDP Nitro 5
+5. MacBook Air | bateria não carrega | ciclos da bateria esgotados ou conector oxidado | Bateria Original A1466
+6. Desktop | reinicia em jogos | fonte genérica sem potência suficiente | Fonte ATX 600W 80 Plus
+7. Notebook | lentidão extrema | HD mecânico antigo com setores ruins | SSD NVMe 500GB ou SATA
+
+Depois que um chamado é criado, faça o laudo em segundo plano: procure o aparelho e as palavras do relato no grafo.
+- Se achar um caso: prioridade "alta" quando o relato tiver "não liga" ou "desliga", senão "media". Use a causa e as peças do caso.
+- Se não achar: prioridade "media" e causa "necessário teste detalhado na bancada".
+Guarde a prioridade e o laudo no chamado.
+
+Crie também testes automáticos com pytest e me diga como rodar.</pre>
+<button class="copiar" data-copiar="p-grafo">Copiar pedido</button>
+        <h3>Teste no site</h3>
+        <ol>
+          <li>Com a API ligada, abra o <code>index.html</code> do site.</li>
+          <li>Preencha um chamado: equipamento <strong>Dell G15</strong>, relato <strong>"Esquenta muito e desliga sozinho quando eu jogo"</strong>.</li>
+          <li>Clique em <strong>Enviar chamado</strong> e anote o número.</li>
+          <li>Em <strong>Acompanhar</strong>, digite o número e consulte.</li>
+        </ol>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> o laudo mostrar prioridade <strong>ALTA</strong>, causa <strong>pasta térmica ressecada</strong> e as peças <em>Pasta Térmica Alta Condutividade</em> e <em>Thermal Pads</em>.</div></div>
+        <div class="dica"><div class="cb">Se o laudo não aparecer na hora, espere 5 segundos e consulte de novo.</div></div>
+        <div class="erro"><div class="cb"><strong>A API ou o site não responde?</strong> Veja se o terminal da API continua aberto. Se fechou, peça ao assistente: <em>"Como eu ligo a API de novo?"</em></div></div>
+        <div class="dica"><div class="cb"><strong>Deu erro ou travou?</strong> Copie a mensagem do terminal e escreva para o assistente: <em>"Apareceu este erro. Explique em palavras simples e corrija passo a passo."</em></div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do site mostrando o laudo do chamado.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="6"> Passo 6 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 7 -->
     <details class="etapa" id="p7">
-      <summary><span class="num">7</span><span>Abrir o site e mandar o primeiro chamado</span></summary>
+      <summary><span class="num">7</span><span>Criar a automação em Python</span></summary>
       <div class="corpo">
+        <p>A <strong>automação</strong> é um segundo robô, de reserva. Ele procura chamados que ficaram <strong>sem laudo</strong> e completa.</p>
+        <p class="term">Pedido da automação</p>
+<pre id="p-auto">Crie a automação em Python, um programa separado, de reserva.
+A cada 5 segundos ela procura chamados SEM laudo e preenche o laudo usando a mesma triagem com grafo. Se não houver nenhum, escreve "Nenhum chamado pendente no momento". Deve parar com Ctrl + C.
+Explique como ligar, em um terminal separado.</pre>
+<button class="copiar" data-copiar="p-auto">Copiar pedido</button>
         <ol>
-          <li>Na pasta do projeto, abra a pasta <code>site</code>.</li>
-          <li>🔘 Dê <strong>dois cliques</strong> em <code>painel.html</code>. O navegador abre o site.</li>
-          <li>Veja o topo: a bolinha deve estar <strong>verde</strong> (<em>API Online</em>).</li>
-          <li>🔘 Desça até <strong>Abrir Novo Chamado</strong>. Clique no botão rápido <strong>"Dell G15 desligando em jogos"</strong>. O formulário se preenche sozinho.</li>
-          <li>🔘 Clique em <strong>Enviar Chamado para Triagem IA</strong>. Anote o <strong>número</strong> do chamado.</li>
-          <li>🔘 Desça até <strong>Acompanhar</strong>. Digite o número e clique em <strong>Consultar Status</strong>.</li>
+          <li>Cole o pedido e aceite o que fizer sentido.</li>
+          <li>Ligue a automação num <strong>segundo terminal</strong>, como o assistente explicar. Deixe a API ligada no primeiro.</li>
         </ol>
-        <div class="ok">✅ <strong>Deu certo se</strong> o painel mostrar prioridade <strong>ALTA</strong> e a causa <strong>pasta térmica ressecada</strong>, com as peças <em>Pasta Térmica Alta Condutividade</em> e <em>Thermal Pads</em>.</div>
-        <div class="dica">💡 Olhe o Terminal 1. Aparece <code>[telegram desligado]</code> com o aviso. É normal: o bot ainda não foi ligado (passo 9).<br>
-        Se o laudo não aparecer na hora, espere 5 segundos e consulte de novo.</div>
-        <div class="erro">🆘 <strong>A bolinha está vermelha (API Offline)?</strong> O Terminal 1 fechou ou parou. Volte ao passo 6. Se usou outra porta, clique em <strong>⚙️ Alterar</strong> no site.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do painel de diagnóstico com prioridade e peças.</div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> aparecer <code>Nenhum chamado pendente no momento</code> a cada 5 segundos. Isso é normal: como a API já faz o laudo na hora, quase nunca sobra chamado sem laudo.</div></div>
+        <div class="dica"><div class="cb">Para parar a automação: <code>Ctrl + C</code>.</div></div>
+        <div class="dica"><div class="cb"><strong>Deu erro ou travou?</strong> Copie a mensagem do terminal e escreva para o assistente: <em>"Apareceu este erro. Explique em palavras simples e corrija passo a passo."</em></div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal da automação rodando.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="7"> Passo 7 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 8 -->
     <details class="etapa" id="p8">
-      <summary><span class="num">8</span><span>Bancada de Testes de IA (notebook)</span></summary>
+      <summary><span class="num">8</span><span>Criar o agente CrewAI (a dupla de especialistas)</span></summary>
       <div class="corpo">
-        <p>Aqui você vê, em blocos, como a IA lê um relato e como o grafo liga <strong>aparelho → sintoma → peça</strong>.</p>
+        <p>O <strong>CrewAI</strong> junta dois agentes de IA: um <strong>atendente</strong> e um <strong>técnico</strong>. Esta parte é <strong>opcional</strong> e mais difícil. Se travar, pule para o passo 9.</p>
+        <h3>A) Pegar a chave do Gemini</h3>
         <ol>
-          <li>🔘 Abra <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a> e entre com a conta Google.</li>
-          <li>🔘 <strong>Arquivo → Fazer upload do notebook</strong>. Escolha o arquivo <code>laboratorio_gemini_graphify.ipynb</code> da pasta <code>notebooks</code>.</li>
-          <li>🔘 Aperte o botão ▶️ de cada bloco, <strong>de cima para baixo</strong>, um de cada vez.</li>
+          <li>Abra <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> com a sua conta Google.</li>
+          <li>Procure a opção de criar uma <strong>chave de API</strong> e crie uma.</li>
+          <li>Guarde a chave num papel. <strong>Não cole no chat do assistente.</strong></li>
         </ol>
-        <div class="dica">💡 Se não tem a chave do Gemini, siga mesmo assim. Se um bloco travar ou pedir a chave, <strong>avise o professor</strong>.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print de um bloco rodado, com o resultado embaixo.</div>
+        <div class="aviso"><div class="cb"><strong>A chave é só sua.</strong> Quem tem a chave usa a sua cota. Não mande para ninguém e não coloque em arquivo da pasta.</div></div>
+        <h3>B) Pedir o agente</h3>
+        <p class="term">Pedido do agente CrewAI</p>
+<pre id="p-crew">Crie o agente CrewAI, com dois agentes que trabalham juntos:
+- "atendente de triagem": entende o relato do cliente e diz a urgência.
+- "técnico": sugere a causa provável e os próximos passos.
+
+Use o Gemini como modelo. A chave deve vir da variável de ambiente GEMINI_API_KEY e NUNCA ser escrita em arquivo.
+Só ligue o CrewAI se a variável MODELO_IA estiver definida. Se faltar chave ou der erro, volte para a triagem do grafo.
+
+Me diga como instalar o CrewAI e como definir as variáveis no terminal, SEM eu colar a chave aqui no chat.</pre>
+<button class="copiar" data-copiar="p-crew">Copiar pedido</button>
+        <h3>C) Definir a chave no terminal</h3>
+        <p>No terminal onde a API vai rodar, digite (trocando a parte em maiúsculas):</p>
+        <pre id="c-chave">$env:GEMINI_API_KEY="COLE_A_CHAVE_AQUI"</pre>
+<button class="copiar" data-copiar="c-chave">Copiar</button>
+        <p>O assistente vai dizer qual valor colocar em <code>MODELO_IA</code>. A chave vale só para <strong>aquela janela</strong> do terminal.</p>
+        <div class="erro"><div class="cb"><strong>A instalação do CrewAI demorou muito ou deu erro?</strong> É normal: ele é pesado. Avise o professor e siga para o passo 9. O projeto funciona sem ele.</div></div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> o chamado voltar com um laudo escrito pelo agente, ou o programa voltar sozinho para o grafo se algo falhar.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal ou do site com o laudo do agente, ou um áudio dizendo onde travou.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="8"> Passo 8 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 9 -->
     <details class="etapa" id="p9">
-      <summary><span class="num">9</span><span>Ligar o Rádio do Técnico (Telegram)</span></summary>
+      <summary><span class="num">9</span><span>Criar o Rádio do Técnico (Telegram)</span></summary>
       <div class="corpo">
-        <p>O bot manda os chamados para o seu celular e aceita comandos.</p>
-        <h3>A) Criar o bot</h3>
+        <p>O bot manda os chamados para o seu celular e aceita comandos. Esta parte também é <strong>opcional</strong>.</p>
+        <h3>A) Criar o bot (4 passos)</h3>
         <ol>
-          <li>📲 No Telegram, procure <strong>@BotFather</strong> (selo azul ✔️). Envie <code>/start</code>.</li>
+          <li>No Telegram, procure <strong>@BotFather</strong> (com selo azul de verificado). Envie <code>/start</code>.</li>
           <li>Envie <code>/newbot</code>.</li>
           <li>Digite o nome da oficina. Depois um usuário que termine em <code>bot</code>.</li>
-          <li>Ele mostra o <strong>token</strong> (um texto longo, parecido com <code>7123456789:AAH...</code>).</li>
-          <li>Procure <strong>@userinfobot</strong>, envie <code>/start</code> e anote o seu <strong>Id</strong> (um número).</li>
-          <li>🔘 Abra a conversa com o <strong>seu bot</strong> e envie <code>/start</code>. Sem isso ele não consegue falar com você.</li>
+          <li>Ele mostra o <strong>token</strong>. Procure também <strong>@userinfobot</strong>, envie <code>/start</code> e anote o seu <strong>Id</strong> (um número).</li>
+          <li>Abra a conversa com o <strong>seu bot</strong> e envie <code>/start</code>.</li>
         </ol>
-        <div class="aviso">⚠️ <strong>O token é a chave da sua oficina.</strong> Não mande para ninguém, não poste no Classroom, não tire print dele.</div>
-
-        <h3>B) Dar o token à API</h3>
-        <p>As informações vão para a <strong>janela do terminal</strong>. Não use o arquivo <code>.env</code>: o projeto não lê esse arquivo.</p>
-        <p class="term">🖥️ Terminal 1 — pare a API (<code>Ctrl + C</code>) e rode, trocando as partes em MAIÚSCULAS:</p>
-        <pre id="c-env">$env:USAR_GRAFO="1"
-$env:TELEGRAM_TOKEN="COLE_O_TOKEN_AQUI"
+        <div class="aviso"><div class="cb"><strong>O token é a chave da sua oficina.</strong> Não mande para ninguém, não cole no chat do assistente e não tire print dele.</div></div>
+        <h3>B) Pedir o código ao Gemini</h3>
+        <p class="term">Pedido do Telegram</p>
+<pre id="p-tele">Crie o aviso e os comandos do Telegram, sem biblioteca extra (use a API oficial por HTTP).
+Quando chegar um chamado, avise o técnico com o laudo.
+Aceite só comandos do chat do técnico: /abertos (lista a fila), /ver N (mostra o laudo), /andamento N e /concluir N.
+O token e o número do chat vêm de variáveis de ambiente. Se não estiverem definidas, só escreva o aviso na tela e continue funcionando.
+Explique como testar no meu computador, sem endereço público (buscando as mensagens do bot).</pre>
+<button class="copiar" data-copiar="p-tele">Copiar pedido</button>
+        <h3>C) Dar o token ao programa</h3>
+        <p>As informações vão para a <strong>janela do terminal</strong>, nunca para um arquivo. Digite (trocando as partes em maiúsculas):</p>
+        <pre id="c-env">$env:TELEGRAM_TOKEN="COLE_O_TOKEN_AQUI"
 $env:TELEGRAM_CHAT_ID="COLE_SEU_ID_AQUI"
-$env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"
-uvicorn main:app --reload</pre>
-        <button class="copiar" data-copiar="c-env">📋 Copiar</button>
-
-        <h3>C) Ligar a ponte do bot</h3>
-        <p>Abra um <strong>segundo terminal</strong>: de novo na pasta <code>api</code> (botão direito → <strong>Abrir no Terminal</strong>).</p>
-        <p class="term">🖥️ Terminal 2 — use a <strong>mesma senha</strong> do Terminal 1:</p>
-        <pre id="c-bot">.venv\Scripts\activate
-$env:TELEGRAM_TOKEN="COLE_O_TOKEN_AQUI"
-$env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"
-python bot_local.py</pre>
-        <button class="copiar" data-copiar="c-bot">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> o Terminal 2 mostrar <code>Repassando mensagens do bot para a API local</code>.</div>
-
-        <h3>D) Testar no celular 📲</h3>
-        <p>No Telegram, na conversa com o seu bot, envie:</p>
+$env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"</pre>
+<button class="copiar" data-copiar="c-env">Copiar</button>
+        <h3>D) Testar no celular</h3>
         <table>
           <tr><th>Você envia</th><th>Resultado</th></tr>
           <tr><td><code>/abertos</code></td><td>Lista os serviços na fila</td></tr>
-          <tr><td><code>/ver 1</code></td><td>Mostra o laudo da IA do chamado 1</td></tr>
+          <tr><td><code>/ver 1</code></td><td>Mostra o laudo do chamado 1</td></tr>
           <tr><td><code>/andamento 1</code></td><td>Marca como em andamento</td></tr>
           <tr><td><code>/concluir 1</code></td><td>Dá baixa: serviço entregue</td></tr>
         </table>
-        <div class="erro">🆘 <strong>O bot não responde?</strong>
-          <ul>
-            <li>Os <strong>2 terminais</strong> estão abertos e ligados?</li>
-            <li>A <strong>senha</strong> é igual nos dois?</li>
-            <li>O <strong>Id</strong> é o número do <strong>@userinfobot</strong>, e não o nome?</li>
-            <li>Você enviou <code>/start</code> ao <strong>seu bot</strong>?</li>
-          </ul>
-          Variáveis valem só para <strong>aquela janela</strong>. Se fechou o terminal, rode tudo de novo.
-        </div>
-        <div class="prova">📸 <strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta (tape o token!).</div>
+        <div class="erro"><div class="cb"><strong>O bot não responde?</strong> Veja: os programas estão ligados? A senha é igual onde o assistente mandou usar? O Id é o número do <code>@userinfobot</code>? Você enviou <code>/start</code> ao <strong>seu</strong> bot? As variáveis valem só para <strong>aquela janela</strong> do terminal.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta do bot (tape o token!).</div></div>
         <label class="marcar"><input type="checkbox" data-passo="9"> Passo 9 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 10 -->
     <details class="etapa" id="p10">
-      <summary><span class="num">10</span><span>O grande teste (e o robô opcional)</span></summary>
+      <summary><span class="num">10</span><span>Ver tudo funcionando</span></summary>
       <div class="corpo">
-        <h3>Teste de ponta a ponta</h3>
+        <p>Hora do teste de ponta a ponta. Confira cada item:</p>
         <ol>
-          <li>No <strong>site</strong>, abra um novo chamado (o botão rápido serve).</li>
-          <li>📲 No celular, o bot avisa com o laudo da IA.</li>
-          <li>📲 Envie <code>/abertos</code>, depois <code>/ver 2</code> (use o número do seu chamado).</li>
-          <li>📲 Envie <code>/andamento 2</code>.</li>
-          <li>No <strong>site</strong>, consulte o número: o status virou <strong>EM ANDAMENTO</strong>.</li>
-          <li>📲 Envie <code>/concluir 2</code> para dar baixa.</li>
+          <li>A <strong>API</strong> está ligada (terminal mostra <code>Uvicorn running</code>).</li>
+          <li>No <strong>site</strong>, você abre um chamado e recebe o número.</li>
+          <li>O <strong>laudo</strong> aparece em <strong>Acompanhar</strong>, com prioridade e causa.</li>
+          <li>Os <strong>testes</strong> passam (peça ao assistente: <em>"Rode os testes e me diga o resultado."</em>).</li>
+          <li>Se fez o Telegram: o <strong>aviso chega no celular</strong> e os comandos funcionam.</li>
         </ol>
-        <div class="ok">✅ <strong>Deu certo se</strong> o celular e o site mostrarem o mesmo status.</div>
-
-        <h3>Robô opcional: a automação</h3>
-        <p>É um segundo robô que procura chamados <strong>sem laudo</strong>. Como a API já faz o laudo na hora, ele quase sempre vai dizer <code>Nenhum chamado pendente</code>. Isso é normal.</p>
-        <p class="term">🖥️ Terminal 3 (pasta <code>api</code>):</p>
-        <pre id="c-auto">.venv\Scripts\activate
-python automacao_chamados.py --continuo --intervalo 5</pre>
-        <button class="copiar" data-copiar="c-auto">📋 Copiar</button>
-        <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>Buscando novos chamados pendentes...</code> a cada 5 segundos. Para parar: <code>Ctrl + C</code>.</div>
-
-        <div class="prova">📸 <strong>Comprovante final:</strong> foto do celular com <code>/ver</code> e print do site com o status do mesmo chamado.</div>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> as partes que você construiu conversam entre si: site, API, triagem e, se fez, automação, CrewAI e Telegram.</div></div>
+        <div class="dica"><div class="cb">Compare com o <strong>gabarito</strong>: o projeto de referência do professor está no <a href="https://github.com/rcminitor/Oficina_CuCa_IA" target="_blank" rel="noopener">GitHub da oficina</a>. O seu pode ficar diferente e estar certo. O que importa é cumprir a Especificação.</div></div>
+        <div class="dica"><div class="cb"><strong>Próximo passo: levar a pasta para o GitHub.</strong> É a <a href="aluno.html#e6">Etapa 6 do manual</a>, a última do projeto.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> foto ou print com o site mostrando um chamado e o laudo.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="10"> Passo 10 feito</label>
       </div>
     </details>
 
-    <h2>🆘 Socorro rápido</h2>
+    <h2 class="titulo-sec">Socorro rápido</h2>
     <table>
       <tr><th>Problema</th><th>O que fazer</th></tr>
-      <tr><td>Bolinha vermelha no site</td><td>Terminal 1 fechou. Rode o passo 6 de novo.</td></tr>
-      <tr><td>Sem <code>(.venv)</code> no terminal</td><td>Rode <code>.venv\Scripts\activate</code>.</td></tr>
-      <tr><td>Fechei o terminal</td><td>As variáveis (<code>$env:...</code>) somem. Rode de novo.</td></tr>
-      <tr><td>Chamado sem laudo</td><td>Espere 5 segundos e consulte de novo.</td></tr>
-      <tr><td>Não sei qual terminal é qual</td><td>Terminal 1 = API. Terminal 2 = bot. Terminal 3 = robô.</td></tr>
+      <tr><td>O site diz que a API está desligada</td><td>O terminal da API fechou. Peça ao assistente: "Como eu ligo a API de novo?"</td></tr>
+      <tr><td>Apareceu um erro no terminal</td><td>Copie o erro (sem chaves) e peça ao assistente para explicar e corrigir.</td></tr>
+      <tr><td>Fechei o terminal</td><td>As variáveis que você digitou somem. Digite de novo.</td></tr>
+      <tr><td>A cota do assistente acabou</td><td>Espere renovar (toda semana) ou use o Gemini no navegador.</td></tr>
+      <tr><td>Não sei qual terminal é qual</td><td>Peça ao assistente para listar os terminais abertos e o que cada um faz.</td></tr>
     </table>
 
-    <h2>⚠️ Regras de segurança</h2>
+    <h2 class="titulo-sec">Regras de segurança</h2>
     <ul>
-      <li>Senha e token são seus. Não mande em conversa, foto ou print.</li>
+      <li>Senha, token e chave são seus. Não mande em conversa, foto, print ou no chat do assistente.</li>
       <li>Antes de qualquer print, <strong>tape o token</strong>.</li>
+      <li>Leia antes de aceitar mudanças e comandos do assistente.</li>
       <li>Dados de cliente (nome, telefone) não vão para o GitHub.</li>
     </ul>
 
-    <p><a href="aluno.html">⬅️ Voltar ao Manual do Aluno</a> · <a href="painel.html">Ir ao painel de chamados</a></p>
+    <p><a href="aluno.html">Voltar ao Manual do Aluno</a> · <a href="painel.html">Ir ao painel de chamados</a></p>
   </main>
 
   <footer>Seu progresso fica salvo só neste aparelho. Envie os comprovantes ao professor.</footer>
 
   <script>
-    const CHAVE = "oficina_tutorial_passos";
+    const CHAVE = "oficina_tutorial_passos_v2";
     const TOTAL = 10;
     function ler() { try { return JSON.parse(localStorage.getItem(CHAVE)) || {}; } catch (e) { return {}; } }
     function salvar(v) { try { localStorage.setItem(CHAVE, JSON.stringify(v)); } catch (e) {} }
@@ -364,7 +384,7 @@ python automacao_chamados.py --continuo --intervalo 5</pre>
     });
     atualizar();
 
-    // Link direto do passo (tutorial.html#p6): abre o passo e leva até ele.
+    // Link direto do passo (tutorial.html#p5): abre o passo e leva até ele.
     function abrirPelaUrl() {
       const alvo = document.getElementById(location.hash.slice(1));
       if (alvo && alvo.tagName === "DETAILS") { alvo.open = true; alvo.scrollIntoView(); }
@@ -375,8 +395,8 @@ python automacao_chamados.py --continuo --intervalo 5</pre>
     document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", async () => {
       const texto = document.getElementById(b.dataset.copiar).innerText;
       const original = b.textContent;
-      try { await navigator.clipboard.writeText(texto); b.textContent = "✅ Copiado!"; }
-      catch (e) { b.textContent = "⚠️ Selecione o texto e use Ctrl+C"; }
+      try { await navigator.clipboard.writeText(texto); b.textContent = "Copiado!"; }
+      catch (e) { b.textContent = "Selecione o texto e use Ctrl+C"; }
       setTimeout(() => b.textContent = original, 2000);
     }));
   </script>

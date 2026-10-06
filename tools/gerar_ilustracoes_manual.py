@@ -33,7 +33,8 @@ SOMBRA = '<ellipse cx="320" cy="182" rx="260" ry="9" fill="#312e81" opacity=".1"
 
 
 def capa():
-    itens = [("GitHub", 108, True), ("NotebookLM", 164, True), ("Bancada de testes", 220, None), ("Obsidian", 276, False), ("Telegram", 332, False)]
+    itens = [("Pasta e Antigravity", 104, True), ("NotebookLM", 152, True), ("Bancada de testes", 200, None),
+             ("Obsidian", 248, False), ("Telegram", 296, False), ("GitHub", 344, False)]
     linhas = []
     for nome, y, feito in itens:
         if feito:
@@ -53,7 +54,27 @@ def capa():
         '<path d="M66 330 v-30 a44 44 0 0 1 88 0 v30" fill="none" stroke="#4338ca" stroke-width="12" stroke-linecap="round"/>'
         '<rect x="46" y="318" width="28" height="48" rx="12" fill="#312e81"/><rect x="138" y="318" width="28" height="48" rx="12" fill="#312e81"/>'
         '<ellipse cx="320" cy="396" rx="270" ry="10" fill="#312e81" opacity=".12"/>')
-    grava("manual-capa", svg(640, 420, "Prancheta com as cinco etapas do manual, duas já marcadas, e um fone de ouvido", corpo))
+    grava("manual-capa", svg(640, 420, "Prancheta com as seis etapas do manual, duas já marcadas, e um fone de ouvido", corpo))
+
+
+def etapa0():
+    corpo = (SOMBRA +
+             '<g transform="translate(36 56)"><path d="M0 14 a10 10 0 0 1 10 -10 h40 l14 16 h66 a10 10 0 0 1 10 10 v82 a10 10 0 0 1 -10 10 h-120 a10 10 0 0 1 -10 -10z" fill="#4338ca"/>'
+             '<rect x="0" y="36" width="140" height="66" rx="10" fill="#6d74e8"/></g>'
+             f'<text x="106" y="176" text-anchor="middle" {F} font-size="14" font-weight="700" fill="#312e81">oficina-digital</text>'
+             '<path d="M190 100 h28" stroke="#4338ca" stroke-width="4" stroke-linecap="round"/><polygon points="216,92 230,100 216,108" fill="#4338ca"/>'
+             '<rect x="244" y="20" width="372" height="160" rx="14" fill="#312e81"/>'
+             '<rect x="244" y="20" width="372" height="26" rx="14" fill="#1c1917"/><g fill="#6d74e8"><circle cx="262" cy="33" r="5"/><circle cx="278" cy="33" r="5"/><circle cx="294" cy="33" r="5"/></g>'
+             '<rect x="252" y="52" width="76" height="120" rx="6" fill="#3b3a8f"/>'
+             '<g stroke="#a9aede" stroke-width="5" stroke-linecap="round"><line x1="262" y1="68" x2="312" y2="68"/><line x1="262" y1="86" x2="300" y2="86"/><line x1="262" y1="104" x2="308" y2="104"/></g>'
+             '<rect x="336" y="52" width="140" height="120" rx="6" fill="#1c1917"/>'
+             '<g stroke-width="5" stroke-linecap="round"><line x1="348" y1="70" x2="420" y2="70" stroke="#f59e0b"/><line x1="360" y1="88" x2="446" y2="88" stroke="#4ade80"/><line x1="360" y1="106" x2="430" y2="106" stroke="#60a5fa"/><line x1="348" y1="124" x2="410" y2="124" stroke="#a9aede"/></g>'
+             '<rect x="484" y="52" width="124" height="120" rx="6" fill="#fffdf8"/>'
+             f'<text x="546" y="70" text-anchor="middle" {F} font-size="11" font-weight="700" fill="#4338ca" letter-spacing="1">GEMINI</text>'
+             '<rect x="492" y="80" width="108" height="34" rx="10" fill="#eceaff"/>'
+             f'<text x="500" y="94" {F} font-size="10.5" font-weight="600" fill="#1c1917">Olá! Como posso</text><text x="500" y="107" {F} font-size="10.5" font-weight="600" fill="#1c1917">ajudar você?</text>'
+             '<rect x="492" y="146" width="108" height="20" rx="10" fill="none" stroke="#c3c8f5" stroke-width="2"/>')
+    grava("pasta-antigravity", svg(640, 200, "Uma pasta chamada oficina-digital aberta no Antigravity, com o painel do assistente Gemini à direita", corpo))
 
 
 def etapa1():
@@ -104,25 +125,27 @@ def etapa4():
     grava("etapa4-obsidian", svg(640, 200, "Quadro com ligações entre aparelho em azul, sintoma em laranja e peça em verde", corpo))
 
 
-def etapa5():
-    corpo = (SOMBRA +
-             '<rect x="244" y="14" width="152" height="172" rx="22" fill="#1c1917"/><rect x="254" y="32" width="132" height="142" rx="12" fill="#ffffff"/><rect x="298" y="21" width="44" height="5" rx="2.5" fill="#44403c"/>'
-             f'<g {F} font-size="12.5" font-weight="600">'
-             '<rect x="300" y="42" width="78" height="24" rx="12" fill="#4338ca"/><text x="339" y="58" text-anchor="middle" fill="#fff">/abertos</text>'
-             '<rect x="262" y="72" width="104" height="38" rx="12" fill="#eceaff"/><text x="270" y="88" fill="#1c1917" font-weight="700">#1 Dell G15</text><text x="270" y="103" fill="#1c1917" font-weight="500">Prioridade ALTA</text>'
-             '<rect x="304" y="118" width="74" height="24" rx="12" fill="#4338ca"/><text x="341" y="134" text-anchor="middle" fill="#fff">/ver 1</text>'
-             '<rect x="296" y="148" width="82" height="24" rx="12" fill="#16a34a"/><text x="337" y="164" text-anchor="middle" fill="#fff">/concluir 1</text></g>'
-             '<g transform="translate(130 100)"><circle r="44" fill="#4338ca"/><path d="M-22 0 l44 -18 l-16 36 l-12 -10 l-6 14 l-4 -16z" fill="#fff"/></g>'
-             '<path d="M182 100 H236" fill="none" stroke="#a9aede" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"/>'
-             '<g transform="translate(520 118)"><rect x="-34" y="-20" width="68" height="62" rx="10" fill="#312e81"/><circle cx="-12" cy="10" r="14" fill="#6d74e8"/>'
-             '<rect x="8" y="-6" width="18" height="6" rx="3" fill="#6d74e8"/><rect x="8" y="6" width="18" height="6" rx="3" fill="#6d74e8"/>'
-             '<line x1="18" y1="-20" x2="40" y2="-70" stroke="#312e81" stroke-width="5" stroke-linecap="round"/></g>'
-             '<g fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round"><path d="M566 56 q12 -8 24 0"/><path d="M558 42 q20 -16 40 0"/></g>')
-    grava("etapa5-telegram", svg(640, 200, "Celular com o bot do Telegram e um rádio do técnico", corpo))
+def construa():
+    itens = [("Site", "#2563eb", False), ("API", "#4338ca", False), ("Triagem", "#b45309", False),
+             ("Automação", "#15803d", False), ("CrewAI", "#7c3aed", True), ("Telegram", "#0284c7", True)]
+    larg, gap = 92, 13
+    x0 = (640 - (len(itens) * larg + (len(itens) - 1) * gap)) / 2
+    partes = [f'<text x="320" y="40" text-anchor="middle" {F} font-size="14" font-weight="700" fill="#4338ca" letter-spacing="1.2">O GEMINI CRIA. VOCÊ LÊ, APROVA E TESTA.</text>']
+    for k, (nome, cor, opc) in enumerate(itens):
+        x = x0 + k * (larg + gap)
+        partes.append(f'<rect x="{x:.1f}" y="82" width="{larg}" height="44" rx="22" fill="{cor}"/>'
+                      f'<text x="{x + larg / 2:.1f}" y="109" text-anchor="middle" {F} font-size="15" font-weight="700" fill="#fff">{nome}</text>')
+        if k < len(itens) - 1:
+            ax = x + larg + 1
+            partes.append(f'<path d="M{ax:.1f} 104 h{gap - 4}" stroke="#4338ca" stroke-width="3" stroke-linecap="round"/>')
+        if opc:
+            partes.append(f'<text x="{x + larg / 2:.1f}" y="152" text-anchor="middle" {F} font-size="12.5" font-weight="600" fill="#6b645a">opcional</text>')
+    partes.append(f'<text x="{x0:.1f}" y="176" {F} font-size="12.5" fill="#6b645a">Cada parte tem um pedido pronto no Tutorial.</text>')
+    grava("construa-projeto", svg(640, 200, "O Gemini cria, em ordem, o site, a API, a triagem, a automação, o agente CrewAI e o Telegram", "".join(partes)))
 
 
 if __name__ == "__main__":
     DESTINO.mkdir(parents=True, exist_ok=True)
-    for fn in (capa, etapa1, etapa2, etapa3, etapa4, etapa5):
+    for fn in (capa, etapa0, etapa1, etapa2, etapa3, etapa4, construa):
         fn()
     print("ilustrações geradas em", DESTINO)

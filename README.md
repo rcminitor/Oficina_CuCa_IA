@@ -12,9 +12,9 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 | Automação Python | Pipeline autônomo de chamados | `api/automacao_chamados.py` |
 | Laboratório do Aluno | Jupyter Notebook / Google Colab | `notebooks/laboratorio_gemini_graphify.ipynb` |
 
-> 📘 **Alunos adultos / iniciantes:** comece pelo [Manual do Aluno](MANUAL_DO_ALUNO.md) (linguagem simples, áudio e prints). Documentos do NotebookLM em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md).
+> **Alunos adultos / iniciantes:** comece pelo [site](https://rcminitor.github.io/Oficina_CuCa_IA/) e pelo [Manual do Aluno](MANUAL_DO_ALUNO.md). O aluno cria a própria pasta, abre no Antigravity e **constrói o projeto com o Gemini**, guiado pelo NotebookLM; só no final leva a pasta ao GitHub. Documentos de estudo em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md). O projeto desta pasta (`api/`, `site/`) é o **gabarito do professor**.
 
-## 🚀 Como Rodar o Projeto (Guia do Aluno na pasta `Downloads`)
+## Como rodar o projeto de referência (gabarito)
 
 Como cada aluno desenvolverá a sua própria cópia do projeto, o fluxo padrão é baixar o código diretamente para a pasta **`Downloads`** da sua máquina:
 
