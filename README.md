@@ -20,6 +20,7 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 |---|---|
 | [`docs/folha_de_teste.md`](docs/folha_de_teste.md) | Percorrer o Roteiro como aluno e anotar o que não bate com as telas reais. |
 | [`docs/avisos_classroom.md`](docs/avisos_classroom.md) | Seis avisos prontos para o Google Classroom. |
+| [`docs/modelo_tarefas_classroom.md`](docs/modelo_tarefas_classroom.md) | Seis tarefas do Classroom com rubrica e o modelo do portfólio onde o aluno cola os comprovantes. |
 | [`GUIA_DO_ALUNO.md`](GUIA_DO_ALUNO.md) | Como rodar o projeto de referência (gabarito). |
 
 > **Diferença importante:** o gabarito lê as chaves das **variáveis de ambiente** (`$env:...`). O aluno, no Tutorial, guarda as chaves num arquivo `.env` que o próprio projeto dele lê com `python-dotenv`.
