@@ -1,0 +1,56 @@
+/* Manual do Aluno: mesmo conceito da página inicial (letra maior, imagens, sem emojis). */
+.manual { font-size: 1.2rem; }
+.manual .topo-in, .manual .abas, .manual main { max-width: 1060px; }
+.manual main { padding-top: 0; }
+.manual .hero-home { padding-top: 3rem; }
+.manual .hero-home h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); }
+.manual .hero-home img { border-radius: 24px; }
+
+.manual .progresso { padding: 1.3rem 1.5rem; border-radius: var(--r-lg); box-shadow: var(--sombra); margin: 2rem 0 1rem; }
+.manual .progresso strong { font-size: 1.2rem; }
+.manual .barra { height: 14px; margin-top: .7rem; }
+
+.manual h2.titulo-sec { font-size: clamp(1.6rem, 3.2vw, 2.1rem); margin: 3rem 0 1rem; }
+.percurso { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .9rem; }
+.percurso a { display: flex; flex-direction: column; gap: .35rem; height: 100%; text-decoration: none; color: var(--texto); background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.2rem 1.1rem; box-shadow: var(--sombra); transition: transform .15s, border-color .15s; }
+.percurso a:hover { transform: translateY(-3px); border-color: var(--acento); }
+.percurso .n { width: 40px; height: 40px; border-radius: 999px; background: var(--acento); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.1rem; margin-bottom: .4rem; }
+:root[data-theme="dark"] .percurso .n { background: #6d74e8; }
+.percurso strong { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.25; }
+.percurso span.f { color: var(--suave); font-size: .98rem; }
+
+.provas { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+.prova-card { background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.3rem; box-shadow: var(--sombra); }
+.prova-card .ico { width: 52px; height: 52px; border-radius: 14px; background: var(--verde-sup); color: var(--verde); display: grid; place-items: center; font-size: 1.7rem; margin-bottom: .8rem; }
+.prova-card h3 { margin: 0 0 .3rem; font-size: 1.2rem; }
+.prova-card p { margin: 0; color: var(--suave); font-size: 1.02rem; line-height: 1.5; }
+
+.manual .etapa > summary { font-size: 1.45rem; padding: 1.2rem 1.4rem; gap: 1.1rem; }
+.manual .num { width: 46px; height: 46px; font-size: 1.15rem; }
+.manual .corpo { font-size: 1.15rem; padding: 0 1.6rem 1.7rem; }
+.manual .corpo h3 { font-size: 1.25rem; margin-top: 1.8rem; }
+.manual .corpo li { margin: .7rem 0; }
+.manual .arte { display: block; width: 100%; height: auto; border-radius: 18px; margin: 1.4rem 0 .6rem; }
+.manual pre { font-size: 1.02rem; }
+
+.manual .aviso, .manual .dica, .manual .prova, .manual .ok, .manual .erro { display: grid; grid-template-columns: 1.7rem 1fr; gap: .9rem; align-items: start; padding: 1rem 1.2rem; }
+.manual .aviso::before, .manual .dica::before, .manual .prova::before, .manual .ok::before, .manual .erro::before { content: ""; width: 1.6rem; height: 1.6rem; margin-top: .1rem; background: currentColor; }
+.manual .cb { min-width: 0; }
+.manual .aviso::before { color: var(--laranja); -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M10.29%203.86L1.82%2018a2%202%200%200%200%201.71%203h16.94a2%202%200%200%200%201.71-3L13.71%203.86a2%202%200%200%200-3.42%200z%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%279%27%20x2%3D%2712%27%20y2%3D%2713%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%2717%27%20x2%3D%2712.01%27%20y2%3D%2717%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M10.29%203.86L1.82%2018a2%202%200%200%200%201.71%203h16.94a2%202%200%200%200%201.71-3L13.71%203.86a2%202%200%200%200-3.42%200z%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%279%27%20x2%3D%2712%27%20y2%3D%2713%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%2717%27%20x2%3D%2712.01%27%20y2%3D%2717%27/%3E%3C/svg%3E") center / contain no-repeat; }
+.manual .dica::before { color: var(--acento); -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%2710%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%2716%27%20x2%3D%2712%27%20y2%3D%2712%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%278%27%20x2%3D%2712.01%27%20y2%3D%278%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%2710%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%2716%27%20x2%3D%2712%27%20y2%3D%2712%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%278%27%20x2%3D%2712.01%27%20y2%3D%278%27/%3E%3C/svg%3E") center / contain no-repeat; }
+.manual .prova::before { color: var(--verde); -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M23%2019a2%202%200%200%201-2%202H3a2%202%200%200%201-2-2V8a2%202%200%200%201%202-2h4l2-3h6l2%203h4a2%202%200%200%201%202%202z%27/%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2713%27%20r%3D%274%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M23%2019a2%202%200%200%201-2%202H3a2%202%200%200%201-2-2V8a2%202%200%200%201%202-2h4l2-3h6l2%203h4a2%202%200%200%201%202%202z%27/%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2713%27%20r%3D%274%27/%3E%3C/svg%3E") center / contain no-repeat; }
+.manual .ok::before { color: var(--verde); -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M22%2011.08V12a10%2010%200%201%201-5.93-9.14%27/%3E%3Cpolyline%20points%3D%2722%204%2012%2014.01%209%2011.01%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M22%2011.08V12a10%2010%200%201%201-5.93-9.14%27/%3E%3Cpolyline%20points%3D%2722%204%2012%2014.01%209%2011.01%27/%3E%3C/svg%3E") center / contain no-repeat; }
+.manual .erro::before { color: var(--vermelho); -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M10.29%203.86L1.82%2018a2%202%200%200%200%201.71%203h16.94a2%202%200%200%200%201.71-3L13.71%203.86a2%202%200%200%200-3.42%200z%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%279%27%20x2%3D%2712%27%20y2%3D%2713%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%2717%27%20x2%3D%2712.01%27%20y2%3D%2717%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M10.29%203.86L1.82%2018a2%202%200%200%200%201.71%203h16.94a2%202%200%200%200%201.71-3L13.71%203.86a2%202%200%200%200-3.42%200z%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%279%27%20x2%3D%2712%27%20y2%3D%2713%27/%3E%3Cline%20x1%3D%2712%27%20y1%3D%2717%27%20x2%3D%2712.01%27%20y2%3D%2717%27/%3E%3C/svg%3E") center / contain no-repeat; }
+
+.manual .copiar { font-size: 1.05rem; }
+.manual .copiar::before { content: ""; width: 1.1em; height: 1.1em; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%279%27%20y%3D%279%27%20width%3D%2713%27%20height%3D%2713%27%20rx%3D%272%27/%3E%3Cpath%20d%3D%27M5%2015H4a2%202%200%200%201-2-2V4a2%202%200%200%201%202-2h9a2%202%200%200%201%202%202v1%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%279%27%20y%3D%279%27%20width%3D%2713%27%20height%3D%2713%27%20rx%3D%272%27/%3E%3Cpath%20d%3D%27M5%2015H4a2%202%200%200%201-2-2V4a2%202%200%200%201%202-2h9a2%202%200%200%201%202%202v1%27/%3E%3C/svg%3E") center / contain no-repeat; }
+.manual .btn-doc { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1.2rem; }
+.manual .btn-doc::after { content: ""; width: 1em; height: 1em; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M7%2017L17%207%27/%3E%3Cpolyline%20points%3D%277%207%2017%207%2017%2017%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M7%2017L17%207%27/%3E%3Cpolyline%20points%3D%277%207%2017%207%2017%2017%27/%3E%3C/svg%3E") center / contain no-repeat; }
+
+@media (max-width: 960px) { .percurso { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .manual { font-size: 1.1rem; }
+  .percurso { grid-template-columns: 1fr; }
+  .manual .corpo { padding: 0 1.1rem 1.4rem; }
+  .manual .etapa > summary { font-size: 1.25rem; padding: 1rem; }
+}
