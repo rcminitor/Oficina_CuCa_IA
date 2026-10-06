@@ -1,0 +1,64 @@
+/* Painel de chamados: usa os tokens de aluno.css (claro e escuro). */
+.painel main { max-width: 860px; padding-top: 1.5rem; }
+.painel .hero h1 { font-size: clamp(2rem, 4.6vw, 2.8rem); }
+.pc { background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.5rem 1.5rem 1.7rem; margin: 1.2rem 0; box-shadow: var(--sombra); overflow-wrap: anywhere; }
+.pc > h2 { margin: 0 0 .4rem; font-size: 1.5rem; }
+.sub-pc { color: var(--suave); margin: 0 0 1.2rem; }
+
+/* ---- estado da API ---- */
+.estado-linha { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.estado-texto { flex: 1; min-width: 12rem; }
+.estado-texto h2 { margin: 0; font-size: 1.2rem; }
+.estado-texto p { margin: .15rem 0 0; font-size: 1.05rem; color: var(--leve); }
+.ponto { width: 18px; height: 18px; border-radius: 50%; flex: none; background: var(--suave); box-shadow: 0 0 0 5px rgba(107, 100, 90, .18); }
+.ponto[data-estado="online"] { background: var(--verde); box-shadow: 0 0 0 5px rgba(21, 128, 61, .2); }
+.ponto[data-estado="offline"] { background: var(--vermelho); box-shadow: 0 0 0 5px rgba(185, 28, 28, .2); }
+.ajuda-api { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--borda); font-size: 1.05rem; line-height: 1.6; }
+.ajuda-api p { margin: .5rem 0; }
+.painel .btn { min-height: 52px; font-size: 1.05rem; padding: .6rem 1.4rem; }
+
+/* ---- formulários ---- */
+.painel label { display: block; font-weight: 600; margin: 1.1rem 0 .35rem; }
+.painel input, .painel textarea { width: 100%; font: inherit; font-size: 1.1rem; padding: .8rem 1rem; color: var(--texto); background: var(--bg); border: 1.5px solid var(--borda); border-radius: 12px; }
+.painel textarea { min-height: 8rem; resize: vertical; }
+.painel input:focus, .painel textarea:focus { outline: 3px solid var(--acento); outline-offset: 1px; border-color: var(--acento); }
+.painel input[aria-invalid="true"], .painel textarea[aria-invalid="true"] { border-color: var(--vermelho); }
+#form-chamado .btn, .linha-consulta .btn { margin-top: 1.3rem; }
+.exemplos { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .6rem; }
+.chip { font: inherit; font-size: 1rem; font-weight: 600; color: var(--acento); background: var(--acento-sup); border: 1px solid var(--acento); border-radius: 999px; padding: .55rem 1.1rem; min-height: 44px; cursor: pointer; }
+.chip:hover { background: var(--surface); }
+.linha-consulta { display: flex; gap: .8rem; align-items: stretch; flex-wrap: wrap; }
+.linha-consulta input { flex: 1; min-width: 9rem; }
+.linha-consulta .btn { margin-top: 0; }
+.btn-texto { margin-top: .9rem; font: inherit; font-size: 1.02rem; font-weight: 600; color: var(--acento); background: none; border: 0; padding: .4rem 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.mensagem { margin: 1rem 0 0; min-height: 1.4em; font-size: 1.05rem; line-height: 1.55; overflow-wrap: anywhere; }
+.mensagem.ok { color: var(--verde); font-weight: 600; }
+.mensagem.erro { color: var(--vermelho); font-weight: 600; }
+.mensagem .btn { margin-top: .8rem; }
+
+/* ---- resultado ---- */
+.resultado { margin-top: 1.4rem; border: 1px solid var(--borda); border-radius: var(--r-md); padding: 1.2rem 1.3rem; background: var(--bg); }
+.resultado-topo { display: flex; align-items: center; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
+.resultado-topo h3 { margin: 0; font-size: 1.35rem; }
+.selos { display: flex; gap: .5rem; flex-wrap: wrap; }
+.selo { font-size: .85rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 999px; border: 1px solid var(--borda); background: var(--surface); color: var(--leve); }
+.selo[data-nivel="alta"] { background: var(--vermelho-sup); border-color: var(--vermelho); color: var(--vermelho); }
+.selo[data-nivel="media"] { background: var(--laranja-sup); border-color: var(--laranja); color: var(--laranja); }
+.selo[data-nivel="baixa"] { background: var(--verde-sup); border-color: var(--verde); color: var(--verde); }
+.dados { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .8rem 1.5rem; margin: 1rem 0; }
+.dados dt { font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--suave); }
+.dados dd { margin: .15rem 0 0; font-size: 1.1rem; }
+.resultado h4 { margin: 1.2rem 0 .4rem; font-family: var(--font-serif); font-size: 1.1rem; }
+.laudo { background: var(--surface); color: var(--texto); border: 1px solid var(--borda); font-family: var(--font-sans); font-size: 1.08rem; line-height: 1.6; margin: 0; }
+
+/* ---- janela do endereço ---- */
+dialog { width: min(32rem, calc(100vw - 2rem)); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.5rem; background: var(--surface); color: var(--texto); box-shadow: var(--sombra); }
+dialog::backdrop { background: rgba(28, 25, 23, .55); }
+dialog h2 { margin: 0 0 .4rem; font-size: 1.4rem; }
+.dlg-acoes { display: flex; gap: .8rem; justify-content: flex-end; flex-wrap: wrap; margin-top: 1.3rem; }
+
+@media (max-width: 560px) {
+  .pc { padding: 1.2rem 1.1rem 1.4rem; }
+  .linha-consulta .btn { width: 100%; justify-content: center; }
+  .painel .btn { width: 100%; justify-content: center; }
+}
