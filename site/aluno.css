@@ -75,8 +75,10 @@ main { padding-top: 1.5rem; padding-bottom: 3rem; }
 .hero h1 { margin: 0 0 .5rem; font-size: 1.9rem; }
 .lead { margin: 0; color: var(--suave); }
 
-.legenda { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; font-size: .95rem; }
-.legenda span { background: var(--surface); border: 1px solid var(--borda); border-radius: 999px; padding: .2rem .8rem; color: var(--leve); }
+/* Legenda dos ícones: só texto, de propósito sem cara de botão (não é clicável). */
+.legenda { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem; margin: 1rem 0; padding: .7rem 0; border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); font-size: .95rem; color: var(--leve); }
+.legenda::before { content: "Legenda dos ícones"; width: 100%; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); }
+.legenda span { white-space: nowrap; cursor: default; }
 
 .progresso { background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-md); padding: 1rem 1.2rem; margin: 1rem 0; }
 .progresso strong { font-size: 1rem; }
