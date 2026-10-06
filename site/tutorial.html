@@ -95,7 +95,7 @@ Se algum faltar, explique em passos curtos, para Windows, como instalar. Peça m
         <h3>B) Instalar o Python (se faltar)</h3>
         <ol>
           <li>Abra <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>.</li>
-          <li>Clique no botão amarelo <strong>Download Python</strong>. Prefira a versão <strong>3.12</strong> (ou 3.11).</li>
+          <li>Clique no botão amarelo <strong>Download Python</strong>. Prefira a versão <strong>3.12</strong> (ou 3.11). Versões muito antigas deixam de receber correções. Por isso não use uma anterior à 3.11.</li>
           <li>Abra o arquivo baixado.</li>
           <li><strong>Marque a caixinha "Add python.exe to PATH"</strong> (embaixo, na primeira tela).</li>
           <li>Clique em <strong>Install Now</strong> e espere terminar.</li>
@@ -114,8 +114,56 @@ Se algum faltar, explique em passos curtos, para Windows, como instalar. Peça m
           <li>Feche e abra o terminal. Confira com <code>git --version</code>.</li>
         </ol>
         <div class="erro"><div class="cb"><strong>Continua dizendo "não é reconhecido"?</strong> Você esqueceu a caixinha <em>Add python.exe to PATH</em>. Rode o instalador de novo, escolha <strong>Modify</strong> e marque <strong>Add to environment variables</strong>. Depois feche e abra tudo de novo. Ainda não deu? Chame o professor.</div></div>
-        <div class="ok"><div class="cb"><strong>Deu certo se</strong> <code>python --version</code> mostrar uma versão <code>3.x</code> e <code>pip --version</code> mostrar uma versão.</div></div>
-        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal com a versão do Python e do pip.</div></div>
+        <h3>E) Teste o Python de verdade</h3>
+        <p>Ver a versão não basta. Rode um programinha seu. No PowerShell, digite:</p>
+        <pre id="c-ola">python -c "print('Olá, oficina!')"</pre>
+<button class="copiar" data-copiar="c-ola">Copiar</button>
+        <p>Deve aparecer <code>Olá, oficina!</code>. Agora instale uma peça de teste e use:</p>
+        <pre id="c-pip">python -m pip install requests
+python -c "import requests; print(requests.__version__)"</pre>
+<button class="copiar" data-copiar="c-pip">Copiar</button>
+        <p>Apareceu um número de versão? O <strong>pip</strong> funciona. Você vai usar isso na API.</p>
+
+        <h3>F) Os arquivos que você vai ver no projeto</h3>
+        <table>
+          <tr><th>Arquivo ou pasta</th><th>Para que serve</th><th>Vai para o GitHub?</th></tr>
+          <tr><td><code>requirements.txt</code></td><td>Lista das peças que o projeto usa.</td><td>Sim</td></tr>
+          <tr><td><code>.venv</code></td><td>Ambiente virtual: uma caixa só do projeto, com as peças dentro. Pode ser refeita a qualquer hora.</td><td>Não</td></tr>
+          <tr><td><code>.env</code></td><td>Suas chaves e senhas.</td><td><strong>Nunca</strong></td></tr>
+          <tr><td><code>.db</code></td><td>O banco de dados com os chamados.</td><td>Não</td></tr>
+        </table>
+
+        <h3>G) Ativar o ambiente virtual</h3>
+        <p>O Gemini vai criar o ambiente virtual no Passo 5. Para <strong>ligar</strong> o ambiente, o PowerShell usa este comando, dentro da pasta do projeto:</p>
+        <pre id="c-ativa">.venv\Scripts\Activate.ps1</pre>
+<button class="copiar" data-copiar="c-ativa">Copiar</button>
+        <p>Deu certo se o começo da linha do terminal mostrar <code>(.venv)</code>. Para desligar, digite <code>deactivate</code>.</p>
+        <div class="erro"><div class="cb"><strong>Apareceu "a execução de scripts foi desabilitada neste sistema"?</strong> O Windows bloqueou o script. Rode uma vez, só para o seu usuário, e tente de novo:<br><code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code><br>Se disser que não tem permissão, chame o professor. Não tente contornar.</div></div>
+
+        <h3>H) Se algo der errado</h3>
+        <table>
+          <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+          <tr><td><code>python</code> abre a Microsoft Store</td><td>É um atalho falso. Instale o Python pelo passo B. Depois, em <strong>Configurações</strong>, procure <strong>Aliases de execução de aplicativo</strong> e desligue os dois "python".</td></tr>
+          <tr><td><code>python</code> não é reconhecido, mas o Python está instalado</td><td>Tente <code>py --version</code>. Se funcionar, use <code>py</code> no lugar de <code>python</code>.</td></tr>
+          <tr><td><code>pip</code> não é reconhecido</td><td>Use <code>python -m pip</code> no lugar de <code>pip</code>.</td></tr>
+          <tr><td>Aparece uma versão antiga do Python</td><td>Há duas instalações. Veja qual o terminal acha primeiro: <code>Get-Command python -All</code>. Chame o professor antes de apagar algo.</td></tr>
+          <tr><td>O download ou o <code>pip install</code> falha</td><td>Confira a internet. Em rede da escola, pode haver bloqueio. Avise o professor.</td></tr>
+          <tr><td>O instalador pede senha de administrador</td><td>Veja "Se travar" no <a href="roteiro.html">Roteiro</a>.</td></tr>
+        </table>
+
+        <h3>Cola de comandos do dia a dia</h3>
+        <table>
+          <tr><th>Para quê</th><th>Comando</th></tr>
+          <tr><td>Ver a versão do Python</td><td><code>python --version</code></td></tr>
+          <tr><td>Rodar um arquivo</td><td><code>python nome.py</code></td></tr>
+          <tr><td>Ligar o ambiente virtual</td><td><code>.venv\Scripts\Activate.ps1</code></td></tr>
+          <tr><td>Desligar o ambiente</td><td><code>deactivate</code></td></tr>
+          <tr><td>Instalar as peças do projeto</td><td><code>python -m pip install -r requirements.txt</code></td></tr>
+          <tr><td>Ver o que está instalado</td><td><code>python -m pip list</code></td></tr>
+          <tr><td>Parar um programa que está rodando</td><td><code>Ctrl + C</code></td></tr>
+        </table>
+        <div class="ok"><div class="cb"><strong>Deu certo se</strong> <code>python --version</code> mostrar uma versão <code>3.x</code>, <code>pip --version</code> mostrar uma versão e o teste da parte E imprimir <code>Olá, oficina!</code>.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do terminal com a versão do Python e do pip e com o <code>Olá, oficina!</code>.</div></div>
         <label class="marcar"><input type="checkbox" data-passo="1"> Passo 1 feito</label>
       </div>
     </details>
