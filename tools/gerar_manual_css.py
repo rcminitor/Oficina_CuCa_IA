@@ -44,6 +44,8 @@ CSS = """/* Manual do Aluno: mesmo conceito da página inicial (letra maior, ima
 .percurso strong { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.25; }
 .percurso span.f { color: var(--suave); font-size: .98rem; }
 
+.como-usar { margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid var(--borda); font-size: 1.05rem; line-height: 1.55; color: var(--leve); }
+.sub-sec { color: var(--suave); font-size: 1.15rem; margin: -.4rem 0 1.4rem; max-width: 46rem; }
 .provas { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
 .prova-card { background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.3rem; box-shadow: var(--sombra); }
 .prova-card .ico { width: 52px; height: 52px; border-radius: 14px; background: var(--verde-sup); color: var(--verde); display: grid; place-items: center; font-size: 1.7rem; margin-bottom: .8rem; }
