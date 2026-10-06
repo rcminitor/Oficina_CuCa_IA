@@ -254,7 +254,7 @@ Exemplo para a turma (o professor roda na pasta do projeto):
 ⚠️ **O token é a chave da sua oficina. Nunca mande para ninguém. Nunca publique no GitHub.**
 
 Depois: procure `@userinfobot`, envie `/start` e anote o seu **Id** (número).
-No terminal, antes de ligar a API, digite os dados do bot (o projeto **não lê** o arquivo `.env`): `$env:TELEGRAM_TOKEN="..."`, `$env:TELEGRAM_CHAT_ID="..."` e `$env:TELEGRAM_SEGREDO_WEBHOOK="uma-senha"`. O passo a passo está no [Tutorial](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html#p8).
+No terminal, antes de ligar a API, digite os dados do bot (o projeto **não lê** o arquivo `.env`): `$env:TELEGRAM_TOKEN="..."`, `$env:TELEGRAM_CHAT_ID="..."` e `$env:TELEGRAM_SEGREDO_WEBHOOK="uma-senha"`. O passo a passo está no [Tutorial](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html#p9).
 
 ### 5.2 Comandos do dia a dia 📲
 | Você envia | Resultado |
