@@ -149,6 +149,16 @@ https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html</pre>
             <button class="copiar" data-copiar="c-sites">Copiar endereços</button>
           </li>
         </ol>
+        <h3>Antes de abrir o NotebookLM</h3>
+        <p>O <strong>caderno</strong> é uma pasta de estudo. Você coloca <strong>fontes</strong> (textos, páginas) e ele só responde com base nelas. Por isso ele erra menos que um chat comum.</p>
+        <table>
+          <tr><th>Palavra</th><th>Quer dizer</th></tr>
+          <tr><td><strong>Caderno</strong> (<em>notebook</em>)</td><td>Seu espaço de estudo.</td></tr>
+          <tr><td><strong>Fonte</strong> (<em>source</em>)</td><td>Cada documento ou página que você coloca nele.</td></tr>
+          <tr><td><strong>Resumo em áudio</strong></td><td>Dois locutores conversam sobre as fontes.</td></tr>
+          <tr><td><strong>Conversa</strong> (<em>chat</em>)</td><td>Campo onde você faz perguntas sobre as fontes.</td></tr>
+        </table>
+        <div class="dica"><div class="cb"><strong>Onde estão os 4 documentos?</strong> Na lista acima, cada um tem um link para baixar. Baixe todos para a pasta Downloads antes de enviar ao NotebookLM.</div></div>
         <h3>Ouvir o resumo em áudio</h3>
         <ol>
           <li>Clique em <strong>Resumo em áudio</strong> (<em>Audio Overview</em>). Espere alguns minutos.</li>
@@ -157,6 +167,15 @@ https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html</pre>
         <p>Pergunta pronta (copie e cole na conversa):</p>
         <pre id="p-nb">Meu cliente disse que o notebook desliga sozinho. Quais peças eu devo olhar primeiro? Responda em 5 linhas curtas.</pre>
         <button class="copiar" data-copiar="p-nb">Copiar pergunta</button>
+        <h3>Perguntas para treinar</h3>
+        <p>Depois do áudio, faça estas perguntas na conversa, uma de cada vez:</p>
+        <ol>
+          <li>"Quais são as 5 partes do projeto Oficina Digital? Responda em lista curta."</li>
+          <li>"O que é um grafo de conhecimento, em palavras simples?"</li>
+          <li>"Quais peças aparecem para o Dell G15?"</li>
+        </ol>
+        <p>Compare cada resposta com a Especificação. Bateu? Ótimo. Não bateu? Diga ao professor.</p>
+        <div class="erro"><div class="cb"><strong>Se travar:</strong> o botão do <em>Resumo em áudio</em> pode ficar cinza se você ainda não adicionou fontes. Adicione pelo menos uma. Se o áudio demorar mais de 10 minutos, atualize a página. Se o NotebookLM não abrir com a sua conta, veja se ela é uma conta Google pessoal.</div></div>
         <div class="aviso"><div class="cb">A IA pode errar. Confira a resposta na Especificação (documento 1) e nos documentos 2 e 3.</div></div>
         <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do caderno com as fontes, <strong>ou</strong> um áudio de 1 minuto: "o que eu aprendi ouvindo".</div></div>
         <label class="marcar"><input type="checkbox" data-etapa="2"> Etapa 2 feita</label>
@@ -238,6 +257,15 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
           <li>Menu da esquerda → ícone do <strong>grafo</strong> (bolinhas ligadas).</li>
           <li>No grafo, abra <strong>Grupos</strong> e crie 3 cores: <code>tag:#aparelho</code> azul, <code>tag:#sintoma</code> laranja, <code>tag:#solucao</code> verde.</li>
         </ol>
+        <h3>Se algo não funcionar no Obsidian</h3>
+        <table>
+          <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+          <tr><td>A ligação não vira bolinha no grafo</td><td>Confira se escreveu <code>[[</code> com dois colchetes de cada lado e se o nome é igual ao da nota.</td></tr>
+          <tr><td>Aparece uma bolinha cinza sem nota</td><td>A nota ainda não existe. Clique na ligação para criá-la.</td></tr>
+          <tr><td>As cores não aparecem</td><td>Em <strong>Grupos</strong>, escreva <code>tag:#aparelho</code> com o jogo da velha e escolha uma cor. Confira se a nota tem a etiqueta <code>#aparelho</code>.</td></tr>
+          <tr><td>Não acho o ícone do grafo</td><td>Aperte <strong>Ctrl + G</strong> para abrir o grafo.</td></tr>
+        </table>
+        <div class="dica"><div class="cb"><strong>Para que serve isso no projeto?</strong> O grafo do Obsidian é a versão desenhada à mão do que a triagem faz no Python: ligar aparelho, sintoma e solução. Quem entende o quadro entende o código da Etapa 5.</div></div>
         <div class="dica"><div class="cb"><strong>Graphify</strong> é o mesmo quadro, mas montado pelo programa. Ele lê uma pasta e desenha o grafo sozinho, e você pode fazer perguntas a ele. Neste projeto usamos também uma versão simples em Python.<br>No Graphify, a <strong>cor</strong> mostra o <strong>grupo de assunto</strong> (ele escolhe sozinho). O azul, laranja e verde da etapa acima você escolhe <strong>à mão no Obsidian</strong>. Use a caixa <strong>Search nodes</strong> para achar uma bolinha e clique nela para ver os detalhes.</div></div>
         <p><a class="btn-doc" href="grafo.html" target="_blank" rel="noopener">Ver o grafo da oficina (feito pelo Graphify)</a></p>
         <p>Este grafo foi montado pelo <a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">Graphify</a> a partir dos 3 documentos da oficina. Procure o <strong>Dell G15</strong> e siga: aparelho → sintoma → peça.</p>
@@ -304,6 +332,23 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
         <button class="copiar" data-copiar="p-git">Copiar pedido</button>
         <div class="aviso"><div class="cb"><strong>Você mesmo faz o login no GitHub</strong>, no navegador. <strong>Nunca cole senha ou token</strong> no chat. Antes do envio, confirme que <strong>nenhum arquivo tem chave ou token</strong>.</div></div>
         <div class="dica"><div class="cb"><strong>Sobre o login:</strong> o GitHub não aceita mais a senha da conta para enviar arquivos. O Git para Windows costuma abrir uma janela de login no <strong>navegador</strong>: entre ali. Se o assistente pedir um <em>token</em>, peça a ele para usar o login pelo navegador, ou chame o professor. Veja o <a href="chaves.html">Guia das chaves</a>.</div></div>
+        <h3>Depois do envio: confira no GitHub</h3>
+        <ol>
+          <li>Abra <strong>github.com</strong> e entre na sua conta.</li>
+          <li>Clique no seu repositório.</li>
+          <li>Veja se as pastas <code>site</code> e <code>api</code> aparecem.</li>
+          <li><strong>Confira que o arquivo <code>.env</code> NÃO aparece.</strong> Se aparecer, chame o professor <strong>agora</strong>: a chave vazou e precisa ser trocada.</li>
+        </ol>
+        <h3>Se algo der errado no envio</h3>
+        <table>
+          <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+          <tr><td><code>git</code> não é reconhecido</td><td>Instale o Git (acima) e feche e abra de novo o terminal.</td></tr>
+          <tr><td>Pediu nome e e-mail</td><td>O Git quer saber quem você é. Peça ao Gemini: "Configure meu nome e e-mail no Git, e me diga o que digitar".</td></tr>
+          <tr><td>Abriu a janela de login do navegador</td><td>É normal. Entre na sua conta do GitHub ali.</td></tr>
+          <tr><td>Pediu um token</td><td>Não cole nada no chat. Peça ao Gemini para usar o login pelo navegador, ou chame o professor.</td></tr>
+          <tr><td>Disse "rejected" ou "failed to push"</td><td>Copie a mensagem (sem chaves) e peça ao Gemini para explicar.</td></tr>
+          <tr><td>Enviou um arquivo errado</td><td>Não apague no GitHub. Chame o professor.</td></tr>
+        </table>
         <h3>Vídeos em português</h3>
         <p>Canal <strong>Curso em Vídeo</strong>, do Prof. Gustavo Guanabara. É um curso grátis que ensina Git e GitHub <strong>sem digitar comandos</strong>.</p>
         <p>
