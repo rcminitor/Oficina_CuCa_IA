@@ -1,0 +1,258 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Guia de comandos do Windows</title><style>*{box-sizing:border-box}body{font:16px/1.55 "Segoe UI",Arial,sans-serif;color:#20242a;margin:0;background:#edf0f3}main{max-width:1180px;margin:28px auto;padding:48px;background:white}h1{font-size:36px;line-height:1.15;margin:0 0 18px;color:#000}h2{font-size:25px;margin-top:40px;color:#000}p{max-width:95ch}nav{line-height:2}nav a{margin-right:18px;color:#245484}table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed;margin:18px 0}th,td{border:1px solid #d9d9d9;padding:12px;text-align:left;vertical-align:middle}th{background:#dfeaf4;color:#000}th:first-child{width:26%}tr:nth-child(even){background:#f7f9fb}code,pre{font-family:Consolas,monospace;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}button{float:right;margin:0 0 4px 8px;border:1px solid #bac6d0;border-radius:4px;background:white;padding:4px 8px;cursor:pointer;color:#334}small{color:#52606c}li{margin:6px 0}pre{border:1px solid #d9d9d9;padding:18px}footer{margin-top:40px;color:#52606c;font-size:13px}@media(max-width:760px){main{padding:22px;margin:0}table{font-size:12px}td,th{padding:7px}code{font-size:12px}button{float:none;display:block}}@media print{body{background:white}main{margin:0;padding:0;max-width:none}button,nav{display:none}h2{break-after:avoid}tr{break-inside:avoid}thead{display:table-header-group}table{font-size:10px}code{font-size:9px}th,td{padding:7px}@page{size:A4 landscape;margin:15mm}}</style><main>
+<h1>Guia de comandos do Windows</h1><p>Referência prática para usar o PowerShell e o Prompt de Comando. Reúne criação, organização, abertura e exclusão de arquivos, além de pesquisa, compactação e consultas do sistema. Escolha sua coluna e execute um comando por vez.</p><p><strong>Como abrir o terminal:</strong> procure PowerShell ou Prompt de Comando no menu Iniciar. Para as operações comuns na sua pasta pessoal, não é necessário executar como administrador. O Windows Terminal também pode abrir esses ambientes em abas.</p><p><strong>Como usar os exemplos:</strong> troque os nomes de exemplo pelos seus. Coloque caminhos com espaços entre aspas. Um caminho como <code>C:\Projetos\Aula</code> é completo; <code>notas.txt</code> aponta para a pasta atual. No CMD, <code>&gt;</code> substitui o conteúdo e <code>&gt;&gt;</code> acrescenta ao final.</p><button onclick="window.print()">Imprimir ou salvar como PDF</button><nav>
+<a href="#s0">Começar e navegar</a>
+<a href="#s1">Criar pastas e arquivos</a>
+<a href="#s2">Abrir ler e fechar documentos</a>
+<a href="#s3">Copiar mover e renomear</a>
+<a href="#s4">Excluir arquivos e pastas</a>
+<a href="#s5">Pesquisar arquivos e textos</a>
+<a href="#s6">Consultar o sistema e a rede</a>
+<a href="#s7">Ajuda e encerramento de aplicativos</a>
+<a href="#s8">Compactar e descompactar no PowerShell</a>
+</nav>
+<section id="s0"><h2>Começar e navegar</h2><p>O Windows Terminal é a janela que pode abrir PowerShell ou Prompt de Comando. Use a coluna correspondente à sua aba. Não copie o prefixo PS C:\...&gt; ou C:\...&gt; que aparece antes do comando.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Mostrar a pasta atual</td>
+<td><button class="copy">Copiar</button><code>pwd</code></td>
+<td><button class="copy">Copiar</button><code>cd</code></td>
+</tr>
+<tr><td>Listar arquivos e pastas</td>
+<td><button class="copy">Copiar</button><code>dir</code></td>
+<td><button class="copy">Copiar</button><code>dir</code></td>
+</tr>
+<tr><td>Listar também os itens ocultos</td>
+<td><button class="copy">Copiar</button><code>dir -Force</code></td>
+<td><button class="copy">Copiar</button><code>dir /a</code></td>
+</tr>
+<tr><td>Entrar em uma pasta</td>
+<td><button class="copy">Copiar</button><code>cd &quot;Minha Pasta&quot;</code></td>
+<td><button class="copy">Copiar</button><code>cd &quot;Minha Pasta&quot;</code></td>
+</tr>
+<tr><td>Voltar uma pasta</td>
+<td><button class="copy">Copiar</button><code>cd ..</code></td>
+<td><button class="copy">Copiar</button><code>cd ..</code></td>
+</tr>
+<tr><td>Ir para a raiz do disco atual</td>
+<td><button class="copy">Copiar</button><code>cd \</code></td>
+<td><button class="copy">Copiar</button><code>cd \</code></td>
+</tr>
+<tr><td>Ir para outro disco e pasta</td>
+<td><button class="copy">Copiar</button><code>cd &quot;D:\Projetos&quot;</code></td>
+<td><button class="copy">Copiar</button><code>cd /d &quot;D:\Projetos&quot;</code></td>
+</tr>
+<tr><td>Ir para sua pasta de usuário</td>
+<td><button class="copy">Copiar</button><code>cd $env:USERPROFILE</code></td>
+<td><button class="copy">Copiar</button><code>cd /d &quot;%USERPROFILE%&quot;</code></td>
+</tr>
+<tr><td>Mostrar árvore de pastas e arquivos</td>
+<td><button class="copy">Copiar</button><code>tree /F</code></td>
+<td><button class="copy">Copiar</button><code>tree /F</code></td>
+</tr>
+<tr><td>Limpar a tela</td>
+<td><button class="copy">Copiar</button><code>cls</code></td>
+<td><button class="copy">Copiar</button><code>cls</code></td>
+</tr>
+<tr><td>Fechar a sessão do terminal</td>
+<td><button class="copy">Copiar</button><code>exit</code></td>
+<td><button class="copy">Copiar</button><code>exit</code></td>
+</tr>
+</tbody></table></section>
+<section id="s1"><h2>Criar pastas e arquivos</h2><p>As pastas e arquivos são criados no local atual, salvo quando você informa um caminho completo. Os comandos que escrevem conteúdo abaixo substituem o conteúdo de um arquivo existente.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Criar uma pasta</td>
+<td><button class="copy">Copiar</button><code>mkdir &quot;Minha Pasta&quot;</code></td>
+<td><button class="copy">Copiar</button><code>mkdir &quot;Minha Pasta&quot;</code></td>
+</tr>
+<tr><td>Criar subpastas</td>
+<td><button class="copy">Copiar</button><code>New-Item -ItemType Directory -Path &quot;Projeto\Dados&quot; -Force</code></td>
+<td><button class="copy">Copiar</button><code>mkdir &quot;Projeto\Dados&quot;</code></td>
+</tr>
+<tr><td>Criar arquivo vazio</td>
+<td><button class="copy">Copiar</button><code>New-Item -ItemType File -Path &quot;notas.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>type nul &gt; &quot;notas.txt&quot;</code></td>
+</tr>
+<tr><td>Criar settings.local.json com JSON vazio</td>
+<td><button class="copy">Copiar</button><code>&#x27;{}&#x27; | Set-Content -Path &quot;settings.local.json&quot; -Encoding utf8</code></td>
+<td><button class="copy">Copiar</button><code>echo {} &gt; &quot;settings.local.json&quot;</code></td>
+</tr>
+<tr><td>Escrever uma linha de texto</td>
+<td><button class="copy">Copiar</button><code>&#x27;Primeira linha&#x27; | Set-Content -Path &quot;notas.txt&quot; -Encoding utf8</code></td>
+<td><button class="copy">Copiar</button><code>echo Primeira linha &gt; &quot;notas.txt&quot;</code></td>
+</tr>
+<tr><td>Acrescentar uma linha ao final</td>
+<td><button class="copy">Copiar</button><code>&#x27;Outra linha&#x27; | Add-Content -Path &quot;notas.txt&quot; -Encoding utf8</code></td>
+<td><button class="copy">Copiar</button><code>echo Outra linha &gt;&gt; &quot;notas.txt&quot;</code></td>
+</tr>
+</tbody></table></section>
+<section id="s2"><h2>Abrir ler e fechar documentos</h2><p>Abrir com o aplicativo padrão depende de haver um programa associado à extensão. Para salvar, use Ctrl + S no aplicativo. Para fechar a janela, use Alt + F4; no Word, Ctrl + W fecha o documento atual. O aplicativo pode pedir para salvar as alterações.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Abrir um documento no aplicativo padrão</td>
+<td><button class="copy">Copiar</button><code>Invoke-Item &quot;documento.docx&quot;</code></td>
+<td><button class="copy">Copiar</button><code>start &quot;&quot; &quot;documento.docx&quot;</code></td>
+</tr>
+<tr><td>Abrir texto no Bloco de Notas</td>
+<td><button class="copy">Copiar</button><code>notepad &quot;notas.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>notepad &quot;notas.txt&quot;</code></td>
+</tr>
+<tr><td>Ler texto no terminal</td>
+<td><button class="copy">Copiar</button><code>Get-Content &quot;notas.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>type &quot;notas.txt&quot;</code></td>
+</tr>
+<tr><td>Ler um arquivo longo por partes</td>
+<td><button class="copy">Copiar</button><code>Get-Content &quot;notas.txt&quot; | more</code></td>
+<td><button class="copy">Copiar</button><code>more &quot;notas.txt&quot;</code></td>
+</tr>
+<tr><td>Abrir a pasta atual no Explorador</td>
+<td><button class="copy">Copiar</button><code>explorer .</code></td>
+<td><button class="copy">Copiar</button><code>explorer .</code></td>
+</tr>
+<tr><td>Abrir um site no navegador padrão</td>
+<td><button class="copy">Copiar</button><code>Start-Process &quot;https://www.microsoft.com&quot;</code></td>
+<td><button class="copy">Copiar</button><code>start &quot;&quot; &quot;https://www.microsoft.com&quot;</code></td>
+</tr>
+</tbody></table></section>
+<section id="s3"><h2>Copiar mover e renomear</h2><p>Nos exemplos de movimentação, a pasta Destino deve existir. Copiar ou mover para um nome já existente pode substituir arquivos ou pedir confirmação. Para copiar pastas, robocopy /E inclui subpastas vazias; não use /MIR sem entender que ele pode apagar itens no destino.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Copiar um arquivo com outro nome</td>
+<td><button class="copy">Copiar</button><code>Copy-Item &quot;notas.txt&quot; &quot;copia.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>copy &quot;notas.txt&quot; &quot;copia.txt&quot;</code></td>
+</tr>
+<tr><td>Copiar um arquivo para outra pasta</td>
+<td><button class="copy">Copiar</button><code>Copy-Item &quot;notas.txt&quot; &quot;Destino\&quot;</code></td>
+<td><button class="copy">Copiar</button><code>copy &quot;notas.txt&quot; &quot;Destino\&quot;</code></td>
+</tr>
+<tr><td>Copiar pasta e conteúdo para uma nova pasta</td>
+<td><button class="copy">Copiar</button><code>Copy-Item &quot;Origem&quot; &quot;Copia&quot; -Recurse</code></td>
+<td><button class="copy">Copiar</button><code>robocopy &quot;Origem&quot; &quot;Copia&quot; /E</code></td>
+</tr>
+<tr><td>Mover arquivo para uma pasta</td>
+<td><button class="copy">Copiar</button><code>Move-Item &quot;notas.txt&quot; &quot;Destino\&quot;</code></td>
+<td><button class="copy">Copiar</button><code>move &quot;notas.txt&quot; &quot;Destino\&quot;</code></td>
+</tr>
+<tr><td>Mover uma pasta para outra existente</td>
+<td><button class="copy">Copiar</button><code>Move-Item &quot;Minha Pasta&quot; &quot;Destino\&quot;</code></td>
+<td><button class="copy">Copiar</button><code>move &quot;Minha Pasta&quot; &quot;Destino\&quot;</code></td>
+</tr>
+<tr><td>Renomear um arquivo</td>
+<td><button class="copy">Copiar</button><code>Rename-Item &quot;antigo.txt&quot; &quot;novo.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>ren &quot;antigo.txt&quot; &quot;novo.txt&quot;</code></td>
+</tr>
+<tr><td>Renomear uma pasta</td>
+<td><button class="copy">Copiar</button><code>Rename-Item &quot;Antiga&quot; &quot;Nova&quot;</code></td>
+<td><button class="copy">Copiar</button><code>ren &quot;Antiga&quot; &quot;Nova&quot;</code></td>
+</tr>
+</tbody></table></section>
+<section id="s4"><h2>Excluir arquivos e pastas</h2><p>A exclusão pelo terminal não envia os itens à Lixeira. Antes de excluir uma pasta inteira, confira a pasta atual e liste o conteúdo do caminho de destino. Os comandos abaixo usam nomes de exemplo; substitua apenas pelo caminho que deseja excluir.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Excluir um arquivo</td>
+<td><button class="copy">Copiar</button><code>Remove-Item -LiteralPath &quot;arquivo.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>del &quot;arquivo.txt&quot;</code></td>
+</tr>
+<tr><td>Excluir pedindo confirmação</td>
+<td><button class="copy">Copiar</button><code>Remove-Item -LiteralPath &quot;arquivo.txt&quot; -Confirm</code></td>
+<td><button class="copy">Copiar</button><code>del /p &quot;arquivo.txt&quot;</code></td>
+</tr>
+<tr><td>Excluir uma pasta vazia</td>
+<td><button class="copy">Copiar</button><code>Remove-Item -LiteralPath &quot;Pasta Vazia&quot;</code></td>
+<td><button class="copy">Copiar</button><code>rmdir &quot;Pasta Vazia&quot;</code></td>
+</tr>
+<tr><td>Excluir pasta e todo o conteúdo</td>
+<td><button class="copy">Copiar</button><code>Remove-Item -LiteralPath &quot;Minha Pasta&quot; -Recurse -Confirm</code></td>
+<td><button class="copy">Copiar</button><code>rmdir /s &quot;Minha Pasta&quot;</code></td>
+</tr>
+<tr><td>Simular a exclusão sem apagar</td>
+<td><button class="copy">Copiar</button><code>Remove-Item -LiteralPath &quot;Minha Pasta&quot; -Recurse -WhatIf</code></td>
+<td>Não há equivalente direto; confira com dir &quot;Minha Pasta&quot; /s</td>
+</tr>
+</tbody></table></section>
+<section id="s5"><h2>Pesquisar arquivos e textos</h2><p>O asterisco representa uma sequência de caracteres. Por exemplo, *.pdf seleciona nomes terminados em .pdf. As buscas recursivas percorrem as subpastas e podem demorar em pastas grandes.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Listar os PDFs da pasta atual</td>
+<td><button class="copy">Copiar</button><code>Get-ChildItem -Filter *.pdf -File</code></td>
+<td><button class="copy">Copiar</button><code>dir *.pdf /b /a-d</code></td>
+</tr>
+<tr><td>Buscar PDFs nas subpastas</td>
+<td><button class="copy">Copiar</button><code>Get-ChildItem -Filter *.pdf -File -Recurse</code></td>
+<td><button class="copy">Copiar</button><code>dir *.pdf /s /b /a-d</code></td>
+</tr>
+<tr><td>Buscar um arquivo pelo nome</td>
+<td><button class="copy">Copiar</button><code>Get-ChildItem -Filter &quot;relatorio.docx&quot; -File -Recurse</code></td>
+<td><button class="copy">Copiar</button><code>dir &quot;relatorio.docx&quot; /s /b /a-d</code></td>
+</tr>
+<tr><td>Buscar palavra dentro de texto</td>
+<td><button class="copy">Copiar</button><code>Select-String -Path &quot;notas.txt&quot; -Pattern &quot;palavra&quot; -SimpleMatch</code></td>
+<td><button class="copy">Copiar</button><code>findstr /i /n /c:&quot;palavra&quot; &quot;notas.txt&quot;</code></td>
+</tr>
+<tr><td>Ver se um caminho existe</td>
+<td><button class="copy">Copiar</button><code>Test-Path &quot;notas.txt&quot;</code></td>
+<td><button class="copy">Copiar</button><code>if exist &quot;notas.txt&quot; (echo Existe) else (echo Nao existe)</code></td>
+</tr>
+</tbody></table></section>
+<section id="s6"><h2>Consultar o sistema e a rede</h2><p>Esses comandos ajudam a consultar o computador. Uma falha de ping não prova que a internet caiu: alguns destinos bloqueiam esse tipo de resposta. Evite compartilhar resultados de rede sem conferir os endereços e nomes exibidos.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Mostrar o usuário atual</td>
+<td><button class="copy">Copiar</button><code>whoami</code></td>
+<td><button class="copy">Copiar</button><code>whoami</code></td>
+</tr>
+<tr><td>Mostrar o nome do computador</td>
+<td><button class="copy">Copiar</button><code>hostname</code></td>
+<td><button class="copy">Copiar</button><code>hostname</code></td>
+</tr>
+<tr><td>Consultar informações do Windows</td>
+<td><button class="copy">Copiar</button><code>systeminfo</code></td>
+<td><button class="copy">Copiar</button><code>systeminfo</code></td>
+</tr>
+<tr><td>Ver configuração de rede</td>
+<td><button class="copy">Copiar</button><code>ipconfig</code></td>
+<td><button class="copy">Copiar</button><code>ipconfig</code></td>
+</tr>
+<tr><td>Testar resposta de um endereço</td>
+<td><button class="copy">Copiar</button><code>ping example.com</code></td>
+<td><button class="copy">Copiar</button><code>ping example.com</code></td>
+</tr>
+<tr><td>Consultar o DNS de um domínio</td>
+<td><button class="copy">Copiar</button><code>nslookup example.com</code></td>
+<td><button class="copy">Copiar</button><code>nslookup example.com</code></td>
+</tr>
+<tr><td>Listar processos em execução</td>
+<td><button class="copy">Copiar</button><code>Get-Process</code></td>
+<td><button class="copy">Copiar</button><code>tasklist</code></td>
+</tr>
+<tr><td>Localizar um programa disponível</td>
+<td><button class="copy">Copiar</button><code>Get-Command notepad</code></td>
+<td><button class="copy">Copiar</button><code>where notepad</code></td>
+</tr>
+</tbody></table></section>
+<section id="s7"><h2>Ajuda e encerramento de aplicativos</h2><p>Prefira fechar documentos pela janela do aplicativo. Encerrar um processo pode perder alterações não salvas e afetar vários documentos. Os exemplos por nome atingem as instâncias correspondentes do Bloco de Notas; eles não selecionam um documento específico.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Consultar ajuda de um comando</td>
+<td><button class="copy">Copiar</button><code>Get-Help Copy-Item -Examples</code></td>
+<td><button class="copy">Copiar</button><code>copy /?</code></td>
+</tr>
+<tr><td>Ver comandos disponíveis</td>
+<td><button class="copy">Copiar</button><code>Get-Command</code></td>
+<td><button class="copy">Copiar</button><code>help</code></td>
+</tr>
+<tr><td>Consultar histórico da sessão</td>
+<td><button class="copy">Copiar</button><code>Get-History</code></td>
+<td><button class="copy">Copiar</button><code>doskey /history</code></td>
+</tr>
+<tr><td>Encerrar o Bloco de Notas</td>
+<td><button class="copy">Copiar</button><code>Stop-Process -Name notepad</code></td>
+<td><button class="copy">Copiar</button><code>taskkill /IM notepad.exe</code></td>
+</tr>
+</tbody></table></section>
+<section id="s8"><h2>Compactar e descompactar no PowerShell</h2><p>Execute os comandos desta seção em uma aba PowerShell. No CMD, abra uma sessão digitando powershell. Não inclua -Force ao compactar se você quiser evitar substituir um ZIP existente.</p><table><thead><tr><th>Ação</th><th>PowerShell</th><th>CMD</th></tr></thead><tbody>
+<tr><td>Criar um ZIP de uma pasta</td>
+<td><button class="copy">Copiar</button><code>Compress-Archive -Path &quot;Minha Pasta&quot; -DestinationPath &quot;backup.zip&quot;</code></td>
+<td>Use uma aba PowerShell.</td>
+</tr>
+<tr><td>Extrair um ZIP para uma pasta</td>
+<td><button class="copy">Copiar</button><code>Expand-Archive -Path &quot;backup.zip&quot; -DestinationPath &quot;Extraido&quot;</code></td>
+<td>Use uma aba PowerShell.</td>
+</tr>
+<tr><td>Salvar uma listagem em arquivo</td>
+<td><button class="copy">Copiar</button><code>Get-ChildItem | Out-File &quot;lista.txt&quot; -Encoding utf8</code></td>
+<td><button class="copy">Copiar</button><code>dir &gt; &quot;lista.txt&quot;</code></td>
+</tr>
+</tbody></table></section>
+<h2>Atalhos importantes</h2><ul><li><strong>Tab</strong> completa nomes de arquivos, pastas e comandos conforme o terminal.</li><li><strong>Setas para cima e para baixo</strong> percorrem os comandos anteriores.</li><li><strong>Ctrl + C</strong> interrompe o comando em execução quando não há texto selecionado.</li><li><strong>Ctrl + Shift + C e Ctrl + Shift + V</strong> copiam e colam no Windows Terminal. Em outras janelas, os atalhos podem depender das configurações.</li><li><strong>Ctrl + S</strong> salva o documento no aplicativo; não é um comando do terminal.</li><li><strong>Ctrl + W</strong> fecha o documento atual no Word; em outros programas, depende do aplicativo.</li><li><strong>Alt + F4</strong> fecha a janela ativa.</li></ul>
+<h2>Exemplo completo no seu projeto</h2><p>No PowerShell, execute estas linhas uma por vez para criar uma pasta de prática, criar o arquivo JSON e abri-lo no Bloco de Notas. A linha de gravação substitui o conteúdo caso o arquivo já exista.</p><pre>cd "C:\Users\rcmin\Projetos\Aula_03"
+mkdir "Pratica Terminal"
+cd "Pratica Terminal"
+'{}' | Set-Content -Path "settings.local.json" -Encoding utf8
+notepad "settings.local.json"</pre><p>Depois de editar, use Ctrl + S para salvar e Alt + F4 para fechar o Bloco de Notas. Para conferir o conteúdo no PowerShell:</p><pre>Get-Content "settings.local.json"</pre>
+<h2>Detalhes que evitam erros</h2><ul><li>No comando <code>start "" "documento.docx"</code>, as primeiras aspas vazias reservam o título da janela no CMD.</li><li><code>New-Item</code> sem <code>-Force</code> normalmente retorna erro se o arquivo já existir. Já <code>Set-Content</code> e o redirecionamento <code>&gt;</code> substituem conteúdo.</li><li>No Windows PowerShell 5.1, <code>-Encoding utf8</code> grava uma marca BOM; no PowerShell 7, grava UTF-8 sem BOM. Se um programa rejeitar o JSON, salve-o em UTF-8 sem BOM no editor.</li><li><code>Remove-Item</code> numa pasta não vazia sem <code>-Recurse</code> pode pedir confirmação. Para conferir sem apagar, use <code>-WhatIf</code>.</li><li>Use buscas com <code>*</code> para localizar arquivos, mas confira cuidadosamente qualquer curinga em comandos de exclusão.</li><li>Se aparecer “acesso negado”, confira o caminho, as permissões e se o arquivo está aberto em outro programa.</li></ul><footer>Guia de consulta local • PowerShell e CMD • Os botões apenas copiam os comandos; não os executam.</footer></main>
+<script>document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{const t=b.nextElementSibling.textContent;try{await navigator.clipboard.writeText(t);b.textContent='Copiado';setTimeout(()=>b.textContent='Copiar',1500)}catch(e){const s=window.getSelection(),r=document.createRange();r.selectNodeContents(b.nextElementSibling);s.removeAllRanges();s.addRange(r);b.textContent='Ctrl+C'}}));</script></html>

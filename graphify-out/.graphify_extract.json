@@ -1,0 +1,1124 @@
+{
+  "nodes": [
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns",
+      "label": "Guia Ilustrado de Defeitos Comuns",
+      "file_type": "document",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_02_catalogo_pecas",
+      "label": "Catálogo Simples de Peças e Funções",
+      "file_type": "document",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_03_historico_ordens_servico",
+      "label": "Histórico de Ordens de Serviço da Oficina",
+      "file_type": "document",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_prompts_skills",
+      "label": "Modelos de Prompts (Skills) — Bancada de Testes",
+      "file_type": "document",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_prompts_skills_skill_a",
+      "label": "Skill A — Triagem de Sintomas",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_prompts_skills_skill_b",
+      "label": "Skill B — Busca de Solução no Grafo (GraphRAG)",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_prompts_skills_graphrag",
+      "label": "GraphRAG",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_prompts_skills_notebooklm",
+      "label": "NotebookLM",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_dell_g15",
+      "label": "Dell G15",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_acer_nitro_5",
+      "label": "Acer Nitro 5",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_macbook_air",
+      "label": "MacBook Air",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_desktop",
+      "label": "Desktop",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_notebook_generico",
+      "label": "Notebook (genérico)",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_desliga_sozinho",
+      "label": "Desliga sozinho",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_nao_liga",
+      "label": "Não liga",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_tela_azul",
+      "label": "Tela azul",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_tela_preta",
+      "label": "Tela preta",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_bateria_nao_carrega",
+      "label": "Bateria não carrega",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_reinicia_em_jogos",
+      "label": "Reinicia em jogos",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_lentidao_extrema",
+      "label": "Lentidão extrema",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_pasta_termica",
+      "label": "Pasta Térmica",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_thermal_pads",
+      "label": "Thermal Pads",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_memoria_ram",
+      "label": "Memória RAM",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_memoria_ddr4",
+      "label": "Memória DDR4",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_ssd",
+      "label": "SSD",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_fonte_atx",
+      "label": "Fonte ATX",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_cooler",
+      "label": "Cooler",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_mosfet",
+      "label": "MOSFET Canal N 30V",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_carregador_130w",
+      "label": "Carregador 130W",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_limpa_contato",
+      "label": "Limpa Contato Isopropílico",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_cabo_flat",
+      "label": "Cabo Flat EDP Nitro 5",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_bateria",
+      "label": "Bateria Original A1466",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "label": "Superaquecimento",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "label": "Falha de Boot",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_entidades_defeito_tela_azul",
+      "label": "Tela Azul (defeito)",
+      "file_type": "concept",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns_regras_seguranca_bancada",
+      "label": "Regras de segurança de bancada",
+      "file_type": "rationale",
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "docs_notebooklm_entidades_dell_g15",
+      "target": "docs_notebooklm_entidades_desliga_sozinho",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_desliga_sozinho",
+      "target": "docs_notebooklm_entidades_pasta_termica",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_desliga_sozinho",
+      "target": "docs_notebooklm_entidades_thermal_pads",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_dell_g15",
+      "target": "docs_notebooklm_entidades_nao_liga",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_nao_liga",
+      "target": "docs_notebooklm_entidades_mosfet",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_nao_liga",
+      "target": "docs_notebooklm_entidades_carregador_130w",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_acer_nitro_5",
+      "target": "docs_notebooklm_entidades_tela_azul",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_tela_azul",
+      "target": "docs_notebooklm_entidades_limpa_contato",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_tela_azul",
+      "target": "docs_notebooklm_entidades_memoria_ddr4",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_acer_nitro_5",
+      "target": "docs_notebooklm_entidades_tela_preta",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_tela_preta",
+      "target": "docs_notebooklm_entidades_cabo_flat",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_macbook_air",
+      "target": "docs_notebooklm_entidades_bateria_nao_carrega",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_bateria_nao_carrega",
+      "target": "docs_notebooklm_entidades_bateria",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_desktop",
+      "target": "docs_notebooklm_entidades_reinicia_em_jogos",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_reinicia_em_jogos",
+      "target": "docs_notebooklm_entidades_fonte_atx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_notebook_generico",
+      "target": "docs_notebooklm_entidades_lentidao_extrema",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_lentidao_extrema",
+      "target": "docs_notebooklm_entidades_ssd",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_entidades_dell_g15",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_entidades_acer_nitro_5",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_entidades_macbook_air",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_entidades_desktop",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_entidades_notebook_generico",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "target": "docs_notebooklm_entidades_desliga_sozinho",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "target": "docs_notebooklm_entidades_pasta_termica",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "target": "docs_notebooklm_entidades_thermal_pads",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "target": "docs_notebooklm_entidades_cooler",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "target": "docs_notebooklm_entidades_nao_liga",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "target": "docs_notebooklm_entidades_memoria_ram",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "target": "docs_notebooklm_entidades_ssd",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "target": "docs_notebooklm_entidades_fonte_atx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_tela_azul",
+      "target": "docs_notebooklm_entidades_tela_azul",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_tela_azul",
+      "target": "docs_notebooklm_entidades_memoria_ram",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_tela_azul",
+      "target": "docs_notebooklm_entidades_limpa_contato",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_tela_azul",
+      "target": "docs_notebooklm_entidades_memoria_ddr4",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_defeito_tela_azul",
+      "target": "docs_notebooklm_entidades_ssd",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_memoria_ddr4",
+      "target": "docs_notebooklm_entidades_memoria_ram",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_tela_azul",
+      "target": "docs_notebooklm_entidades_memoria_ram",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_nao_liga",
+      "target": "docs_notebooklm_entidades_fonte_atx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_reinicia_em_jogos",
+      "target": "docs_notebooklm_entidades_fonte_atx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_lentidao_extrema",
+      "target": "docs_notebooklm_entidades_ssd",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_desliga_sozinho",
+      "target": "docs_notebooklm_entidades_cooler",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_entidades_desliga_sozinho",
+      "target": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_01_guia_defeitos_comuns",
+      "target": "docs_notebooklm_entidades_defeito_superaquecimento",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_01_guia_defeitos_comuns",
+      "target": "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_01_guia_defeitos_comuns",
+      "target": "docs_notebooklm_entidades_defeito_tela_azul",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_01_guia_defeitos_comuns",
+      "target": "docs_notebooklm_01_guia_defeitos_comuns_regras_seguranca_bancada",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_02_catalogo_pecas",
+      "target": "docs_notebooklm_entidades_pasta_termica",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_02_catalogo_pecas",
+      "target": "docs_notebooklm_entidades_memoria_ram",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_02_catalogo_pecas",
+      "target": "docs_notebooklm_entidades_ssd",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_02_catalogo_pecas",
+      "target": "docs_notebooklm_entidades_fonte_atx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_02_catalogo_pecas",
+      "target": "docs_notebooklm_entidades_cooler",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_a",
+      "target": "docs_prompts_skills_skill_b",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_notebooklm_03_historico_ordens_servico",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_prompts_skills_graphrag",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills",
+      "target": "docs_prompts_skills_skill_a",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills",
+      "target": "docs_prompts_skills_skill_b",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills",
+      "target": "docs_prompts_skills_notebooklm",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_notebooklm",
+      "target": "docs_notebooklm_01_guia_defeitos_comuns",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_notebooklm",
+      "target": "docs_notebooklm_02_catalogo_pecas",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_notebooklm",
+      "target": "docs_notebooklm_03_historico_ordens_servico",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_a",
+      "target": "docs_notebooklm_entidades_dell_g15",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_a",
+      "target": "docs_notebooklm_entidades_desliga_sozinho",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_notebooklm_entidades_pasta_termica",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_notebooklm_entidades_dell_g15",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_notebooklm_entidades_desliga_sozinho",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_a",
+      "target": "docs_notebooklm_01_guia_defeitos_comuns",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_02_catalogo_pecas",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_01_guia_defeitos_comuns",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_prompts_skills_notebooklm",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "fluxo_relato_skill_a_skill_b_peca",
+      "label": "Fluxo relato -> Skill A -> Skill B -> peça",
+      "nodes": [
+        "docs_prompts_skills_skill_a",
+        "docs_prompts_skills_skill_b",
+        "docs_notebooklm_03_historico_ordens_servico",
+        "docs_notebooklm_entidades_pasta_termica"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md"
+    },
+    {
+      "id": "os_101_dell_g15_superaquecimento",
+      "label": "Dell G15 desliga sozinho -> Pasta Térmica (OS 101/108)",
+      "nodes": [
+        "docs_notebooklm_entidades_dell_g15",
+        "docs_notebooklm_entidades_desliga_sozinho",
+        "docs_notebooklm_entidades_pasta_termica",
+        "docs_notebooklm_entidades_defeito_superaquecimento"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,201 @@
+{
+  "communities": {
+    "0": [
+      "docs_notebooklm_01_guia_defeitos_comuns",
+      "docs_notebooklm_01_guia_defeitos_comuns_regras_seguranca_bancada",
+      "docs_notebooklm_03_historico_ordens_servico",
+      "docs_notebooklm_entidades_dell_g15",
+      "docs_prompts_skills",
+      "docs_prompts_skills_graphrag",
+      "docs_prompts_skills_notebooklm",
+      "docs_prompts_skills_skill_a",
+      "docs_prompts_skills_skill_b"
+    ],
+    "1": [
+      "docs_notebooklm_entidades_acer_nitro_5",
+      "docs_notebooklm_entidades_cabo_flat",
+      "docs_notebooklm_entidades_defeito_tela_azul",
+      "docs_notebooklm_entidades_limpa_contato",
+      "docs_notebooklm_entidades_memoria_ddr4",
+      "docs_notebooklm_entidades_memoria_ram",
+      "docs_notebooklm_entidades_tela_azul",
+      "docs_notebooklm_entidades_tela_preta"
+    ],
+    "2": [
+      "docs_notebooklm_entidades_carregador_130w",
+      "docs_notebooklm_entidades_defeito_falha_de_boot",
+      "docs_notebooklm_entidades_desktop",
+      "docs_notebooklm_entidades_fonte_atx",
+      "docs_notebooklm_entidades_mosfet",
+      "docs_notebooklm_entidades_nao_liga",
+      "docs_notebooklm_entidades_reinicia_em_jogos"
+    ],
+    "3": [
+      "docs_notebooklm_02_catalogo_pecas",
+      "docs_notebooklm_entidades_cooler",
+      "docs_notebooklm_entidades_defeito_superaquecimento",
+      "docs_notebooklm_entidades_desliga_sozinho",
+      "docs_notebooklm_entidades_pasta_termica",
+      "docs_notebooklm_entidades_thermal_pads"
+    ],
+    "4": [
+      "docs_notebooklm_entidades_bateria",
+      "docs_notebooklm_entidades_bateria_nao_carrega",
+      "docs_notebooklm_entidades_macbook_air"
+    ],
+    "5": [
+      "docs_notebooklm_entidades_lentidao_extrema",
+      "docs_notebooklm_entidades_notebook_generico",
+      "docs_notebooklm_entidades_ssd"
+    ]
+  },
+  "cohesion": {
+    "0": 0.4166666666666667,
+    "1": 0.39285714285714285,
+    "2": 0.3333333333333333,
+    "3": 0.6,
+    "4": 0.6666666666666666,
+    "5": 0.6666666666666666
+  },
+  "gods": [
+    {
+      "id": "docs_notebooklm_03_historico_ordens_servico",
+      "label": "Histórico de Ordens de Serviço da Oficina",
+      "degree": 9
+    },
+    {
+      "id": "docs_prompts_skills_skill_b",
+      "label": "Skill B — Busca de Solução no Grafo (GraphRAG)",
+      "degree": 8
+    },
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns",
+      "label": "Guia Ilustrado de Defeitos Comuns",
+      "degree": 7
+    },
+    {
+      "id": "docs_notebooklm_02_catalogo_pecas",
+      "label": "Catálogo Simples de Peças e Funções",
+      "degree": 7
+    },
+    {
+      "id": "docs_notebooklm_entidades_desliga_sozinho",
+      "label": "Desliga sozinho",
+      "degree": 7
+    },
+    {
+      "id": "docs_notebooklm_entidades_defeito_tela_azul",
+      "label": "Tela Azul (defeito)",
+      "degree": 6
+    },
+    {
+      "id": "docs_prompts_skills_skill_a",
+      "label": "Skill A — Triagem de Sintomas",
+      "degree": 5
+    },
+    {
+      "id": "docs_prompts_skills_notebooklm",
+      "label": "NotebookLM",
+      "degree": 5
+    },
+    {
+      "id": "docs_notebooklm_entidades_dell_g15",
+      "label": "Dell G15",
+      "degree": 5
+    },
+    {
+      "id": "docs_notebooklm_entidades_nao_liga",
+      "label": "Não liga",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Skill A — Triagem de Sintomas",
+      "target": "Guia Ilustrado de Defeitos Comuns",
+      "source_files": [
+        "prompts_skills.md",
+        "notebooklm/01_guia_defeitos_comuns.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "NotebookLM",
+      "target": "Catálogo Simples de Peças e Funções",
+      "source_files": [
+        "prompts_skills.md",
+        "notebooklm/02_catalogo_pecas.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Skill A — Triagem de Sintomas",
+      "target": "Desliga sozinho",
+      "source_files": [
+        "prompts_skills.md",
+        "notebooklm/03_historico_ordens_servico.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Skill B — Busca de Solução no Grafo (GraphRAG)",
+      "target": "Desliga sozinho",
+      "source_files": [
+        "prompts_skills.md",
+        "notebooklm/03_historico_ordens_servico.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Skill B — Busca de Solução no Grafo (GraphRAG)",
+      "target": "Pasta Térmica",
+      "source_files": [
+        "prompts_skills.md",
+        "notebooklm/02_catalogo_pecas.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Histórico de Ordens de Serviço da Oficina` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.411) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Guia Ilustrado de Defeitos Comuns` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`?",
+      "why": "High betweenness centrality (0.197) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Catálogo Simples de Peças e Funções` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 5`?",
+      "why": "High betweenness centrality (0.156) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `Histórico de Ordens de Serviço da Oficina` (e.g. with `Guia Ilustrado de Defeitos Comuns` and `Catálogo Simples de Peças e Funções`) actually correct?",
+      "why": "`Histórico de Ordens de Serviço da Oficina` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `Guia Ilustrado de Defeitos Comuns` (e.g. with `Histórico de Ordens de Serviço da Oficina` and `Skill A — Triagem de Sintomas`) actually correct?",
+      "why": "`Guia Ilustrado de Defeitos Comuns` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `GraphRAG`, `MOSFET Canal N 30V`, `Carregador 130W` to the rest of the system?",
+      "why": "5 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

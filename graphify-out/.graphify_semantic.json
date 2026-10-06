@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "id": "docs_prompts_skills",
+      "label": "Modelos de Prompts (Skills)",
+      "file_type": "document",
+      "source_file": "docs/prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_prompts_skills_skill_a",
+      "label": "Skill A — Triagem de Sintomas",
+      "file_type": "concept",
+      "source_file": "docs/prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Extracts Model, Symptom, and Severity from customer reports."
+    },
+    {
+      "id": "docs_prompts_skills_skill_b",
+      "label": "Skill B — Busca de Solução no Grafo",
+      "file_type": "concept",
+      "source_file": "docs/prompts_skills.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Consults history to indicate probable parts and bench time."
+    },
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns",
+      "label": "Guia Ilustrado de Defeitos Comuns",
+      "file_type": "document",
+      "source_file": "docs/notebooklm/01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_02_catalogo_pecas",
+      "label": "Catálogo Simples de Peças e Funções",
+      "file_type": "document",
+      "source_file": "docs/notebooklm/02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_03_historico_ordens_servico",
+      "label": "Histórico de Ordens de Serviço",
+      "file_type": "document",
+      "source_file": "docs/notebooklm/03_historico_ordens_servico.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns_superaquecimento",
+      "label": "Defeito 1: Superaquecimento",
+      "file_type": "concept",
+      "source_file": "docs/notebooklm/01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns_falha_boot",
+      "label": "Defeito 2: Falha de Boot",
+      "file_type": "concept",
+      "source_file": "docs/notebooklm/01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_01_guia_defeitos_comuns_tela_azul",
+      "label": "Defeito 3: Tela Azul",
+      "file_type": "concept",
+      "source_file": "docs/notebooklm/01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_02_catalogo_pecas_pasta_termica",
+      "label": "Peça: Pasta Térmica",
+      "file_type": "concept",
+      "source_file": "docs/notebooklm/02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_02_catalogo_pecas_memoria_ram",
+      "label": "Peça: Memória RAM",
+      "file_type": "concept",
+      "source_file": "docs/notebooklm/02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    },
+    {
+      "id": "docs_notebooklm_02_catalogo_pecas_ssd",
+      "label": "Peça: SSD",
+      "file_type": "concept",
+      "source_file": "docs/notebooklm/02_catalogo_pecas.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "docs_prompts_skills_skill_b",
+      "target": "docs_notebooklm_03_historico_ordens_servico",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_prompts_skills_skill_a",
+      "target": "docs_prompts_skills_skill_b",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/prompts_skills.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_01_guia_defeitos_comuns_superaquecimento",
+      "target": "docs_notebooklm_02_catalogo_pecas_pasta_termica",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/notebooklm/01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_01_guia_defeitos_comuns_tela_azul",
+      "target": "docs_notebooklm_02_catalogo_pecas_memoria_ram",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/notebooklm/01_guia_defeitos_comuns.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_02_catalogo_pecas_pasta_termica",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/notebooklm/03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_02_catalogo_pecas_memoria_ram",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/notebooklm/03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_notebooklm_03_historico_ordens_servico",
+      "target": "docs_notebooklm_02_catalogo_pecas_ssd",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/notebooklm/03_historico_ordens_servico.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "diagnostic_workflow",
+      "label": "Fluxo de Diagnóstico Digital",
+      "nodes": [
+        "docs_prompts_skills_skill_a",
+        "docs_prompts_skills_skill_b",
+        "docs_notebooklm_03_historico_ordens_servico"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "docs/prompts_skills.md"
+    },
+    {
+      "id": "knowledge_base_triad",
+      "label": "Base de Conhecimento NotebookLM",
+      "nodes": [
+        "docs_notebooklm_01_guia_defeitos_comuns",
+        "docs_notebooklm_02_catalogo_pecas",
+        "docs_notebooklm_03_historico_ordens_servico"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/prompts_skills.md"
+    }
+  ],
+  "input_tokens": 3754,
+  "output_tokens": 1905,
+  "failed_chunks": 0,
+  "out_of_scope_dropped": 0,
+  "uncovered_files": [
+    "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\01_guia_defeitos_comuns.md",
+    "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\02_catalogo_pecas.md",
+    "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\notebooklm\\03_historico_ordens_servico.md",
+    "C:\\Users\\rcmin\\Projetos\\oficina-digital\\.claude\\worktrees\\oficina-digital-adultos-5de845\\docs\\prompts_skills.md"
+  ]
+}
