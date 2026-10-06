@@ -193,10 +193,12 @@ https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html</pre>
           <tr><td><strong>A</strong> — Triagem</td><td>Relato do cliente</td><td>Modelo + Sintoma + Gravidade</td></tr>
           <tr><td><strong>B</strong> — Busca no histórico</td><td>Modelo + Sintoma</td><td>Peça provável + tempo de bancada</td></tr>
         </table>
+        <div class="dica"><div class="cb"><strong>Para que serve:</strong> a mesma IA responde melhor quando recebe um <strong>pedido bem escrito</strong>. A Skill é um pedido pronto que diz o papel, o formato da resposta e o que fazer quando faltar informação. É o mesmo cuidado que você terá com o CrewAI no tutorial.</div></div>
         <ol>
           <li>Use o <strong>Gemini do Antigravity</strong> (painel à direita) ou abra <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>.</li>
           <li>Copie a <strong>Skill A</strong> e troque o relato.</li>
         </ol>
+        <p>O texto <code>"""COLE O RELATO AQUI"""</code> é um espaço em branco: apague essa frase e escreva o relato no lugar, <strong>mantendo as aspas triplas</strong> em volta.</p>
         <h3>Skill A — Triagem de Sintomas</h3>
         <pre id="p-a">Você é atendente de oficina de informática. Leia o relato do cliente.
 Responda SOMENTE neste formato, uma linha cada:
@@ -217,10 +219,29 @@ Se o histórico não tiver caso parecido, responda "sem histórico".
 
 Modelo: COLE_AQUI
 Sintoma: COLE_AQUI
-Histórico: """COLE AQUI A TABELA DO DOCUMENTO 3"""</pre>
+Histórico: """COLE AQUI A TABELA DO DOCUMENTO 4"""</pre>
         <button class="copiar" data-copiar="p-b">Copiar Skill B</button>
+        <h3>Onde pegar o histórico da Skill B</h3>
+        <p>Abra o <strong>documento 4 (Histórico de serviços)</strong> pelo link da Etapa 2. Selecione a <strong>tabela inteira</strong>, copie e cole no lugar de <code>COLE AQUI A TABELA DO DOCUMENTO 4</code>. Preencha também o modelo e o sintoma.</p>
+        <h3>Três chamados de treino, com a resposta esperada</h3>
+        <p>Teste estes três relatos. As palavras da IA mudam um pouco a cada vez. O que importa é o <strong>conteúdo</strong>.</p>
+        <table>
+          <tr><th>Relato do cliente</th><th>A Skill A deve dizer</th><th>A Skill B deve dizer</th></tr>
+          <tr><td>"Meu Dell G15 desliga sozinho quando eu jogo."</td><td>Modelo: Dell G15. Sintoma: desliga sozinho. Gravidade: média ou alta.</td><td>Peça: pasta térmica. Cerca de 35 a 40 min. Casos 101 e 108.</td></tr>
+          <tr><td>"O Acer Nitro 5 está com a tela toda preta."</td><td>Modelo: Acer Nitro 5. Sintoma: tela preta.</td><td>Peça: cabo flat. Cerca de 1 h. Caso 104.</td></tr>
+          <tr><td>"Meu computador está esquisito."</td><td>Modelo e sintoma: <strong>não informado</strong>.</td><td><strong>Sem histórico.</strong></td></tr>
+        </table>
+        <div class="dica"><div class="cb"><strong>O terceiro é o mais importante.</strong> A IA boa diz "não sei". Se ela inventou um modelo ou uma peça, a Skill falhou: aperte <strong>"tente de novo"</strong> ou reescreva o relato.</div></div>
+        <h3>Se algo não deu certo</h3>
+        <table>
+          <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+          <tr><td>A IA respondeu com muito texto, fora do formato</td><td>Escreva: "Responda SOMENTE no formato pedido, sem explicar."</td></tr>
+          <tr><td>A Skill B inventou uma peça</td><td>Confira se colou a <strong>tabela</strong>. Sem ela a IA chuta.</td></tr>
+          <tr><td>A Skill B respondeu "sem histórico" num caso que está na tabela</td><td>Confira se o <strong>modelo</strong> está escrito igual ao da tabela (por exemplo, "Dell G15").</td></tr>
+          <tr><td>Apareceram as aspas triplas na resposta</td><td>Sem problema. Pode ignorar.</td></tr>
+        </table>
         <h3>Desafio de Decisão</h3>
-        <p>Faça 3 chamados de treino. Depois conte por áudio:</p>
+        <p>Depois dos 3 chamados de treino, conte por áudio:</p>
         <ul>
           <li>Em qual chamado usei a <strong>Skill A</strong>? Por quê?</li>
           <li>Em qual usei a <strong>Skill B</strong>? Por quê?</li>
@@ -280,6 +301,16 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
       <div class="corpo">
         <img class="arte" src="img/construa-projeto.svg" alt="O Gemini cria, em ordem, o site, a API, a triagem, a automação, o agente e o Telegram" width="640" height="200" loading="lazy">
         <p>Agora você <strong>constrói</strong>. Peça ao Gemini, <strong>parte por parte</strong>, e ele cria os arquivos na sua pasta. Você lê, aprova e testa. O <a href="tutorial.html">Tutorial</a> tem um <strong>pedido pronto</strong> para cada parte, com botão de copiar.</p>
+        <h3>Como funciona cada parte</h3>
+        <p>O jeito de trabalhar é <strong>sempre o mesmo</strong>, em quatro movimentos:</p>
+        <table>
+          <tr><th>Movimento</th><th>O que você faz</th></tr>
+          <tr><td><strong>1. Pedir</strong></td><td>Copie o pedido pronto do Tutorial e cole no painel do Gemini.</td></tr>
+          <tr><td><strong>2. Ler</strong></td><td>Veja o que ele quer criar ou rodar. Só aceite se entender.</td></tr>
+          <tr><td><strong>3. Testar</strong></td><td>Abra o site, ligue a API, rode o programa e veja o resultado.</td></tr>
+          <tr><td><strong>4. Provar</strong></td><td>Tire o print que o passo pede e marque a caixinha.</td></tr>
+        </table>
+        <p><strong>Tempo:</strong> uns 20 a 40 minutos por parte. O projeto inteiro, em várias aulas.</p>
         <h3>O que você vai criar</h3>
         <ol>
           <li><a href="tutorial.html#p4">O site</a>: o formulário do chamado.</li>
@@ -289,6 +320,25 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
           <li><a href="tutorial.html#p8">O agente CrewAI, no Google Colab</a>: a dupla de especialistas. <em>Opcional.</em></li>
           <li><a href="tutorial.html#p9">O Rádio do Técnico (Telegram)</a>: avisos e comandos no celular. <em>Opcional.</em></li>
         </ol>
+        <h3>Quando o resultado não é o esperado</h3>
+        <table>
+          <tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+          <tr><td>O código do Gemini deu erro</td><td>Copie a mensagem do terminal (sem chaves) e escreva: "Apareceu este erro. Explique em palavras simples e corrija passo a passo."</td></tr>
+          <tr><td>Você não entendeu o que ele quer fazer</td><td>Escreva: "Explique de novo, em palavras simples, antes de continuar."</td></tr>
+          <tr><td>O Gemini mudou arquivos que você não pediu</td><td>Recuse a mudança e peça: "Faça só o que pedi, nada além."</td></tr>
+          <tr><td>O Gemini sugeriu instalar o Node.js</td><td>Responda: "Use só Python e HTML, sem Node."</td></tr>
+          <tr><td>O Gemini pediu a sua senha ou chave no chat</td><td><strong>Não envie.</strong> Peça: "Mostre onde eu coloco a chave sem escrever aqui."</td></tr>
+          <tr><td>A cota do Gemini acabou</td><td>Espere renovar (toda semana) ou use o gemini.google.com.</td></tr>
+          <tr><td>Travou há mais de 15 minutos</td><td>Chame o professor. Não fique parado.</td></tr>
+        </table>
+        <h3>Como saber que terminou</h3>
+        <ul>
+          <li>Você abre um chamado no site e recebe um <strong>número</strong>.</li>
+          <li>Em <strong>Acompanhar</strong>, esse número mostra status, prioridade e laudo.</li>
+          <li>A API está ligada e o terminal mostra <code>Uvicorn running</code>.</li>
+          <li>As partes opcionais (CrewAI e Telegram) funcionam, ou você anotou onde travou.</li>
+        </ul>
+        <p>O projeto de referência do professor está no <strong>gabarito</strong>. O seu pode ser diferente e estar certo: o que vale é cumprir a Especificação.</p>
         <div class="dica"><div class="cb"><strong>Você vai usar algumas chaves e senhas</strong> (do Gemini e do Telegram). O <a href="chaves.html">Guia das chaves</a> mostra onde achar cada uma, como guardar e como pedir ajuda ao Gemini <strong>sem mostrar o segredo</strong>.</div></div>
         <div class="dica"><div class="cb"><strong>Não tem o Python instalado?</strong> O <a href="tutorial.html#p1">Passo 1 do tutorial</a> confere e ensina a instalar.</div></div>
         <p><a class="btn principal" href="tutorial.html">Abrir o tutorial <svg class="ic"><use href="#i-arrow"/></svg></a></p>
