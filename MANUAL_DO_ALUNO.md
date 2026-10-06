@@ -61,7 +61,10 @@ Um **repositório** = uma pasta de trabalho dentro do GitHub.
 
 ### 🎬 Vídeos em português (calmos, para iniciante)
 > Procure no YouTube pelo **nome do canal + o título abaixo**. Confira a data: prefira vídeo recente.
-- **Curso em Vídeo — Prof. Gustavo Guanabara:** procure *"Curso de Git e GitHub para iniciantes"*.
+- **Curso em Vídeo — Prof. Gustavo Guanabara** (grátis, sem digitar comandos):
+  - [O que é GitHub? Pra que ele serve?](https://www.youtube.com/watch?v=hcZ0qtwvN1w) (37 min)
+  - [Curso completo, 13 vídeos](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
+  - 💡 Os vídeos têm cerca de 6 anos: a tela do GitHub pode estar diferente.
 - Busca geral: *"GitHub para iniciantes criar conta e repositório"*.
 
 ---
