@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina Digital — Sobre o Projeto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css">
+  <script src="tema.js"></script>
+  <style>
+    .passos { list-style: none; padding: 0; margin: 1rem 0 0; counter-reset: p; }
+    .passos li { display: flex; gap: .9rem; align-items: flex-start; margin: .9rem 0; }
+    .passos li > div { flex: 1; min-width: 0; }
+    .duas { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; margin: 1rem 0; }
+    @media (max-width: 640px) { .duas { grid-template-columns: 1fr; } }
+    .duas > div { border: 1px solid; border-radius: var(--r-md); padding: .4rem 1.1rem 1rem; overflow-wrap: anywhere; }
+    .duas .faz { background: var(--verde-sup); border-color: var(--verde); }
+    .duas .nao { background: var(--laranja-sup); border-color: var(--laranja); }
+    .duas h3 { margin: .8rem 0 .3rem; font-size: 1.1rem; }
+    .duas ul { padding-left: 1.2rem; margin: 0; }
+    .duas li { margin: .5rem 0; }
+    .cartao { background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.2rem 1.3rem; margin: 1rem 0; box-shadow: var(--sombra); overflow-wrap: anywhere; }
+    .cartao > h2 { margin-top: 0; font-size: 1.35rem; }
+  </style>
+</head>
+<body>
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo">🛠️</span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="sobre.html" aria-current="page">Sobre</a>
+      <a class="aba" href="aluno.html">Manual <span class="cont">5</span></a>
+      <a class="aba" href="tutorial.html">Tutorial <span class="cont">9</span></a>
+      <a class="aba" href="grafo.html">Grafo</a>
+      <a class="aba" href="index.html">Painel de chamados</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Sobre o projeto</p>
+      <h1>O que é a Oficina Digital</h1>
+      <p class="lead">Uma <strong>oficina de conserto de computadores de mentirinha</strong>, onde a inteligência artificial ajuda a organizar os chamados. Você aprende montando cada peça.</p>
+    </section>
+
+    <section class="cartao">
+      <h2>O caminho de um chamado</h2>
+      <ol class="passos">
+        <li><span class="num">1</span><div><strong>O cliente abre o chamado no site.</strong><br>Ele escreve o nome, o contato, o aparelho e o defeito.</div></li>
+        <li><span class="num">2</span><div><strong>A API guarda o chamado.</strong><br>É um programa no seu computador que recebe o pedido e dá um número.</div></li>
+        <li><span class="num">3</span><div><strong>A IA faz um laudo.</strong><br>Ela diz a prioridade, a causa provável e os próximos passos.</div></li>
+        <li><span class="num">4</span><div><strong>O técnico recebe no Telegram.</strong><br>Ele vê o aviso no celular e usa comandos: <code>/abertos</code>, <code>/ver 1</code>, <code>/andamento 1</code>, <code>/concluir 1</code>.</div></li>
+        <li><span class="num">5</span><div><strong>O cliente acompanha no site.</strong><br>Ele digita o número e vê o status e o laudo.</div></li>
+      </ol>
+    </section>
+
+    <section class="cartao">
+      <h2>Para que serve</h2>
+      <p>Para você <strong>aprender IA e automação com um caso de oficina</strong>. Você usa seis ferramentas, cada uma com um nome de trabalho:</p>
+      <table>
+        <tr><th>Ferramenta</th><th>Na oficina</th></tr>
+        <tr><td>GitHub</td><td>Arquivo Digital Central</td></tr>
+        <tr><td>NotebookLM</td><td>Assistente que lê em voz alta</td></tr>
+        <tr><td>Gemini Notebook</td><td>Bancada de Testes de IA</td></tr>
+        <tr><td>Obsidian e Graphify</td><td>Quadro de Fichas e Ligações</td></tr>
+        <tr><td>CrewAI</td><td>Dupla de especialistas</td></tr>
+        <tr><td>Telegram</td><td>Rádio do Técnico</td></tr>
+      </table>
+    </section>
+
+    <section class="cartao">
+      <h2>Como a IA faz o laudo</h2>
+      <p>O projeto tem <strong>três jeitos</strong> de fazer a triagem. O padrão é o mais simples:</p>
+      <table>
+        <tr><th>Jeito</th><th>O que faz</th></tr>
+        <tr><td><strong>Simples</strong> (padrão)</td><td>Procura palavras-chave no relato. Não usa IA.</td></tr>
+        <tr><td><strong>Grafo de Conhecimento</strong></td><td>Consulta uma memória de casos da oficina: aparelho → sintoma → causa → peça. Com a chave do Gemini, a IA refina a resposta. Sem a chave, usa regras locais.</td></tr>
+        <tr><td><strong>CrewAI</strong></td><td>Dois agentes de IA: um atendente e um técnico.</td></tr>
+      </table>
+    </section>
+
+    <div class="duas">
+      <div class="faz">
+        <h3>✅ O que ele faz</h3>
+        <ul>
+          <li>Recebe chamados e guarda o histórico.</li>
+          <li>Gera um laudo de apoio na hora.</li>
+          <li>Avisa o técnico no celular.</li>
+          <li>Mostra como a IA, o grafo e o bot se conectam.</li>
+        </ul>
+      </div>
+      <div class="nao">
+        <h3>⚠️ O que ele não faz</h3>
+        <ul>
+          <li><strong>Não é diagnóstico de verdade.</strong> O laudo é um ponto de partida para estudar. Sempre confira na bancada.</li>
+          <li><strong>O grafo é pequeno:</strong> só 7 casos de exemplo, escritos no código.</li>
+          <li><strong>Ele não aprende.</strong> Um chamado novo não entra na memória, e ela volta ao início quando a API reinicia.</li>
+          <li>Sem a chave do Gemini, a resposta vem de regras simples.</li>
+          <li>O bot do Telegram só funciona com o seu computador ligado.</li>
+          <li>Não está pronto para clientes reais: não tem login nem proteção de dados.</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="cartao">
+      <h2>Por onde começar</h2>
+      <p>
+        <a class="btn-doc" href="aluno.html">📘 Manual do Aluno</a>
+        <a class="btn-doc" href="tutorial.html">🧰 Tutorial passo a passo</a>
+        <a class="btn-doc" href="grafo.html">🕸️ Ver o grafo da oficina</a>
+        <a class="btn-doc" href="index.html">🛠️ Painel de chamados</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>Material de ensino. Os dados e os casos da oficina são de exemplo.</footer>
+</body>
+</html>
