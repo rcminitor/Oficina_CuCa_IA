@@ -35,7 +35,11 @@ Caminho de um chamado:
 - Guarda os chamados num banco de dados **SQLite** (um arquivo).
 - Duas rotas:
   - `POST /chamados`: cria um chamado e responde com o número e o status `aberto`.
+    - Envia: `{"nome", "contato", "equipamento", "relato"}`.
+    - Recebe: `{"numero", "status"}`.
   - `GET /chamados/{numero}`: devolve equipamento, status, prioridade, laudo e data. **Não devolve** nome nem contato.
+    - Recebe: `{"numero", "equipamento", "status", "prioridade", "laudo", "data"}`. Enquanto o laudo não estiver pronto, `laudo` vem vazio. Se o número não existir, responde 404.
+  - **Use exatamente estes nomes de campo.** O site e a API são criados em passos separados e só conversam se os nomes forem iguais.
 - Regras dos campos: nome com pelo menos 2 letras; contato com pelo menos 5; equipamento com pelo menos 2; relato com pelo menos 10 e no máximo 1000.
 - Status possíveis: `aberto`, `em_andamento`, `concluido`.
 - Deve aceitar pedidos vindos do arquivo do site aberto no navegador (CORS liberado para uso local).
