@@ -19,7 +19,7 @@
     <nav class="abas" aria-label="Seções do site">
       <a class="aba" href="sobre.html">Sobre</a>
       <a class="aba" href="aluno.html">Manual <span class="cont">5</span></a>
-      <a class="aba" href="tutorial.html" aria-current="page">Tutorial <span class="cont">9</span></a>
+      <a class="aba" href="tutorial.html" aria-current="page">Tutorial <span class="cont">10</span></a>
       <a class="aba" href="grafo.html">Grafo</a>
       <a class="aba" href="index.html">Painel de chamados</a>
     </nav>
@@ -37,13 +37,13 @@
     </div>
 
     <div class="progresso" role="status">
-      <strong id="txt-prog">0 de 9 passos feitos</strong>
+      <strong id="txt-prog">0 de 10 passos feitos</strong>
       <div class="barra"><div id="barra"></div></div>
     </div>
 
     <div class="dica">
       <strong>Você vai montar:</strong> um site onde o cliente abre um chamado → uma API que recebe → uma IA que diagnostica → um bot no Telegram que avisa o técnico.<br>
-      <strong>Tempo:</strong> cerca de 1 hora e meia, sem pressa. <strong>Precisa de:</strong> computador com Windows, internet e conta no Telegram (a partir do passo 7).
+      <strong>Tempo:</strong> cerca de 2 horas, sem pressa. <strong>Precisa de:</strong> computador com Windows, internet e conta Google e conta no Telegram (a partir do passo 9).
     </div>
     <div class="aviso">⚠️ <strong>Terminal</strong> é a janela preta onde você digita comandos. Cada bloco preto abaixo tem o botão <strong>📋 Copiar</strong>. Cole no terminal com <strong>botão direito do mouse</strong> e aperte <strong>Enter</strong>.</div>
 
@@ -91,7 +91,56 @@
 
     <!-- PASSO 3 -->
     <details class="etapa" id="p3">
-      <summary><span class="num">3</span><span>Montar a bancada (ambiente do Python)</span></summary>
+      <summary><span class="num">3</span><span>Instalar seu ajudante de código (Antigravity)</span></summary>
+      <div class="corpo">
+        <p>O <strong>Antigravity</strong> é um editor de código do Google com um <strong>assistente de IA</strong>. Ele lê os arquivos do projeto, explica o que cada um faz e ajuda a entender e corrigir erros.</p>
+        <div class="aviso">⚠️ <strong>Antes de baixar, confira:</strong>
+          <ul>
+            <li>Você tem uma <strong>conta Google pessoal</strong> (de preferência <code>@gmail.com</code>). Conta de trabalho ou de escola pode dar problema.</li>
+            <li>Você tem <strong>18 anos ou mais</strong>. Abaixo disso, o Antigravity não libera o uso.</li>
+            <li>Seu computador tem <strong>Windows 10 de 64 bits</strong> ou mais novo.</li>
+            <li>O Brasil está na lista de países liberados.</li>
+          </ul>
+        </div>
+        <h3>Instalar</h3>
+        <ol>
+          <li>🔘 Abra <a href="https://antigravity.google/download" target="_blank" rel="noopener">antigravity.google/download</a>.</li>
+          <li>🔘 Escolha <strong>Windows</strong> (versão <strong>x64</strong>). Se a página mostrar mais de um produto, escolha o <strong>Antigravity IDE</strong>.</li>
+          <li>Abra o arquivo baixado e siga as telas do instalador.</li>
+          <li>Ao abrir o programa, <strong>entre com a sua conta Google</strong>.</li>
+          <li>🔘 Abra a <strong>pasta do projeto</strong>: procure no menu a opção de abrir pasta (em inglês: <em>File → Open Folder</em>) e escolha a pasta que você extraiu no passo 2.</li>
+        </ol>
+        <h3>Como pedir ajuda ao assistente</h3>
+        <p>Abra o chat do assistente e escreva o pedido. Três pedidos prontos:</p>
+        <p class="term">💬 Entender um arquivo</p>
+        <pre id="c-ag1">Explique, em palavras simples e para um iniciante, o que o arquivo api/main.py faz.</pre>
+        <button class="copiar" data-copiar="c-ag1">📋 Copiar</button>
+        <p class="term">💬 Entender um erro</p>
+        <pre id="c-ag2">Apareceu este erro no terminal. Explique o que significa e como corrigir, passo a passo, para um iniciante:
+
+COLE_O_ERRO_AQUI</pre>
+        <button class="copiar" data-copiar="c-ag2">📋 Copiar</button>
+        <p class="term">💬 Mudar algo no site</p>
+        <pre id="c-ag3">Quero mudar o texto de um botão do site. Mostre em qual arquivo fica e como alterar. Explique antes de mexer em qualquer arquivo.</pre>
+        <button class="copiar" data-copiar="c-ag3">📋 Copiar</button>
+        <div class="dica">💡 <strong>Quando der erro em qualquer passo deste tutorial</strong>, copie a mensagem do terminal e peça ajuda ao assistente com o segundo pedido acima.</div>
+        <h3>Cuidados</h3>
+        <ul>
+          <li>⚠️ <strong>Leia antes de aceitar.</strong> O assistente pode propor mudar arquivos ou rodar comandos. Só aceite se você entender. Em dúvida, pergunte ao professor.</li>
+          <li>⚠️ <strong>Nunca cole senha, token ou chave no chat do assistente.</strong> O que você escreve vai para o Google. Se for colar um erro, apague antes qualquer token que apareça nele.</li>
+          <li>O uso gratuito tem uma <strong>cota que renova toda semana</strong>. Se acabar, espere renovar.</li>
+          <li>Você pode desligar a coleta de dados nas <strong>configurações</strong> (<em>Settings</em>) do programa.</li>
+          <li>O assistente pode errar. Teste o que ele sugerir.</li>
+        </ul>
+        <div class="erro">🆘 <strong>Não consegue usar o Antigravity</strong> (menos de 18 anos, país não liberado, conta de trabalho ou a cota acabou)? Sem problema: abra <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a>, cole o erro ou o trecho do código e peça a explicação. Ou chame o professor.</div>
+        <div class="prova">📸 <strong>Comprovante:</strong> print do Antigravity com a pasta do projeto aberta e uma resposta do assistente.</div>
+        <label class="marcar"><input type="checkbox" data-passo="3"> Passo 3 feito</label>
+      </div>
+    </details>
+
+    <!-- PASSO 4 -->
+    <details class="etapa" id="p4">
+      <summary><span class="num">4</span><span>Montar a bancada (ambiente do Python)</span></summary>
       <div class="corpo">
         <p>Você cria uma <strong>caixa separada</strong> para as peças do projeto (ambiente virtual) e instala as peças (pacotes).</p>
         <p class="term">🖥️ Terminal 1 (o da pasta <code>api</code>):</p>
@@ -110,13 +159,13 @@
         <div class="dica">💡 Pode demorar alguns minutos. Espere. Não feche a janela.<br>
         <strong>Opção completa:</strong> <code>pip install -r requirements.txt</code> instala também o CrewAI (a dupla de especialistas). É bem mais pesada e pode demorar muito. Só use se o professor pedir.</div>
         <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com <code>(.venv)</code> no começo da linha.</div>
-        <label class="marcar"><input type="checkbox" data-passo="3"> Passo 3 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="4"> Passo 4 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 4 -->
-    <details class="etapa" id="p4">
-      <summary><span class="num">4</span><span>Testar a bancada</span></summary>
+    <!-- PASSO 5 -->
+    <details class="etapa" id="p5">
+      <summary><span class="num">5</span><span>Testar a bancada</span></summary>
       <div class="corpo">
         <p>O projeto tem testes prontos. Eles conferem se tudo está no lugar.</p>
         <p class="term">🖥️ Terminal 1:</p>
@@ -125,13 +174,13 @@
         <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>5 passed</code> em verde.</div>
         <div class="erro">🆘 <strong>Disse "pytest não é reconhecido"?</strong> Falta o <code>(.venv)</code>. Rode <code>.venv\Scripts\activate</code> de novo.</div>
         <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com <code>5 passed</code>.</div>
-        <label class="marcar"><input type="checkbox" data-passo="4"> Passo 4 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="5"> Passo 5 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 5 -->
-    <details class="etapa" id="p5">
-      <summary><span class="num">5</span><span>Ligar a API (o coração da oficina)</span></summary>
+    <!-- PASSO 6 -->
+    <details class="etapa" id="p6">
+      <summary><span class="num">6</span><span>Ligar a API (o coração da oficina)</span></summary>
       <div class="corpo">
         <p>A <strong>API</strong> recebe os chamados e pede o laudo da IA. Vamos ligar o <strong>Grafo de Conhecimento</strong> (a memória da oficina). Ele funciona <strong>sem internet e sem chave</strong>.</p>
         <p class="term">🖥️ Terminal 1:</p>
@@ -141,15 +190,15 @@ uvicorn main:app --reload</pre>
         <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>Uvicorn running on http://127.0.0.1:8000</code>.</div>
         <div class="aviso">⚠️ <strong>Deixe este terminal aberto.</strong> Se fechar, a API desliga. Para parar de propósito: <code>Ctrl + C</code>.</div>
         <div class="dica">💡 Quer ver a API por dentro? Abra no navegador <code>http://localhost:8000/docs</code>.</div>
-        <div class="erro">🆘 <strong>Disse que a porta 8000 está em uso?</strong> Outro programa usa essa porta. Troque por <code>uvicorn main:app --reload --port 8001</code>. No site (passo 6), clique em <strong>⚙️ Alterar</strong> e digite <code>http://localhost:8001</code>.</div>
+        <div class="erro">🆘 <strong>Disse que a porta 8000 está em uso?</strong> Outro programa usa essa porta. Troque por <code>uvicorn main:app --reload --port 8001</code>. No site (passo 7), clique em <strong>⚙️ Alterar</strong> e digite <code>http://localhost:8001</code>.</div>
         <div class="prova">📸 <strong>Comprovante:</strong> print do terminal com <code>Uvicorn running</code>.</div>
-        <label class="marcar"><input type="checkbox" data-passo="5"> Passo 5 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="6"> Passo 6 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 6 -->
-    <details class="etapa" id="p6">
-      <summary><span class="num">6</span><span>Abrir o site e mandar o primeiro chamado</span></summary>
+    <!-- PASSO 7 -->
+    <details class="etapa" id="p7">
+      <summary><span class="num">7</span><span>Abrir o site e mandar o primeiro chamado</span></summary>
       <div class="corpo">
         <ol>
           <li>Na pasta do projeto, abra a pasta <code>site</code>.</li>
@@ -160,17 +209,17 @@ uvicorn main:app --reload</pre>
           <li>🔘 Desça até <strong>Acompanhar</strong>. Digite o número e clique em <strong>Consultar Status</strong>.</li>
         </ol>
         <div class="ok">✅ <strong>Deu certo se</strong> o painel mostrar prioridade <strong>ALTA</strong> e a causa <strong>pasta térmica ressecada</strong>, com as peças <em>Pasta Térmica Alta Condutividade</em> e <em>Thermal Pads</em>.</div>
-        <div class="dica">💡 Olhe o Terminal 1. Aparece <code>[telegram desligado]</code> com o aviso. É normal: o bot ainda não foi ligado (passo 8).<br>
+        <div class="dica">💡 Olhe o Terminal 1. Aparece <code>[telegram desligado]</code> com o aviso. É normal: o bot ainda não foi ligado (passo 9).<br>
         Se o laudo não aparecer na hora, espere 5 segundos e consulte de novo.</div>
-        <div class="erro">🆘 <strong>A bolinha está vermelha (API Offline)?</strong> O Terminal 1 fechou ou parou. Volte ao passo 5. Se usou outra porta, clique em <strong>⚙️ Alterar</strong> no site.</div>
+        <div class="erro">🆘 <strong>A bolinha está vermelha (API Offline)?</strong> O Terminal 1 fechou ou parou. Volte ao passo 6. Se usou outra porta, clique em <strong>⚙️ Alterar</strong> no site.</div>
         <div class="prova">📸 <strong>Comprovante:</strong> print do painel de diagnóstico com prioridade e peças.</div>
-        <label class="marcar"><input type="checkbox" data-passo="6"> Passo 6 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="7"> Passo 7 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 7 -->
-    <details class="etapa" id="p7">
-      <summary><span class="num">7</span><span>Bancada de Testes de IA (notebook)</span></summary>
+    <!-- PASSO 8 -->
+    <details class="etapa" id="p8">
+      <summary><span class="num">8</span><span>Bancada de Testes de IA (notebook)</span></summary>
       <div class="corpo">
         <p>Aqui você vê, em blocos, como a IA lê um relato e como o grafo liga <strong>aparelho → sintoma → peça</strong>.</p>
         <ol>
@@ -180,13 +229,13 @@ uvicorn main:app --reload</pre>
         </ol>
         <div class="dica">💡 Se não tem a chave do Gemini, siga mesmo assim. Se um bloco travar ou pedir a chave, <strong>avise o professor</strong>.</div>
         <div class="prova">📸 <strong>Comprovante:</strong> print de um bloco rodado, com o resultado embaixo.</div>
-        <label class="marcar"><input type="checkbox" data-passo="7"> Passo 7 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="8"> Passo 8 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 8 -->
-    <details class="etapa" id="p8">
-      <summary><span class="num">8</span><span>Ligar o Rádio do Técnico (Telegram)</span></summary>
+    <!-- PASSO 9 -->
+    <details class="etapa" id="p9">
+      <summary><span class="num">9</span><span>Ligar o Rádio do Técnico (Telegram)</span></summary>
       <div class="corpo">
         <p>O bot manda os chamados para o seu celular e aceita comandos.</p>
         <h3>A) Criar o bot</h3>
@@ -239,13 +288,13 @@ python bot_local.py</pre>
           Variáveis valem só para <strong>aquela janela</strong>. Se fechou o terminal, rode tudo de novo.
         </div>
         <div class="prova">📸 <strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta (tape o token!).</div>
-        <label class="marcar"><input type="checkbox" data-passo="8"> Passo 8 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="9"> Passo 9 feito</label>
       </div>
     </details>
 
-    <!-- PASSO 9 -->
-    <details class="etapa" id="p9">
-      <summary><span class="num">9</span><span>O grande teste (e o robô opcional)</span></summary>
+    <!-- PASSO 10 -->
+    <details class="etapa" id="p10">
+      <summary><span class="num">10</span><span>O grande teste (e o robô opcional)</span></summary>
       <div class="corpo">
         <h3>Teste de ponta a ponta</h3>
         <ol>
@@ -267,14 +316,14 @@ python automacao_chamados.py --continuo --intervalo 5</pre>
         <div class="ok">✅ <strong>Deu certo se</strong> aparecer <code>Buscando novos chamados pendentes...</code> a cada 5 segundos. Para parar: <code>Ctrl + C</code>.</div>
 
         <div class="prova">📸 <strong>Comprovante final:</strong> foto do celular com <code>/ver</code> e print do site com o status do mesmo chamado.</div>
-        <label class="marcar"><input type="checkbox" data-passo="9"> Passo 9 feito</label>
+        <label class="marcar"><input type="checkbox" data-passo="10"> Passo 10 feito</label>
       </div>
     </details>
 
     <h2>🆘 Socorro rápido</h2>
     <table>
       <tr><th>Problema</th><th>O que fazer</th></tr>
-      <tr><td>Bolinha vermelha no site</td><td>Terminal 1 fechou. Rode o passo 5 de novo.</td></tr>
+      <tr><td>Bolinha vermelha no site</td><td>Terminal 1 fechou. Rode o passo 6 de novo.</td></tr>
       <tr><td>Sem <code>(.venv)</code> no terminal</td><td>Rode <code>.venv\Scripts\activate</code>.</td></tr>
       <tr><td>Fechei o terminal</td><td>As variáveis (<code>$env:...</code>) somem. Rode de novo.</td></tr>
       <tr><td>Chamado sem laudo</td><td>Espere 5 segundos e consulte de novo.</td></tr>
@@ -295,7 +344,7 @@ python automacao_chamados.py --continuo --intervalo 5</pre>
 
   <script>
     const CHAVE = "oficina_tutorial_passos";
-    const TOTAL = 9;
+    const TOTAL = 10;
     function ler() { try { return JSON.parse(localStorage.getItem(CHAVE)) || {}; } catch (e) { return {}; } }
     function salvar(v) { try { localStorage.setItem(CHAVE, JSON.stringify(v)); } catch (e) {} }
 
@@ -314,7 +363,7 @@ python automacao_chamados.py --continuo --intervalo 5</pre>
     });
     atualizar();
 
-    // Link direto do passo (tutorial.html#p5): abre o passo e leva até ele.
+    // Link direto do passo (tutorial.html#p6): abre o passo e leva até ele.
     function abrirPelaUrl() {
       const alvo = document.getElementById(location.hash.slice(1));
       if (alvo && alvo.tagName === "DETAILS") { alvo.open = true; alvo.scrollIntoView(); }
