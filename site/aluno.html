@@ -8,9 +8,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="aluno.css">
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="manual.css">
   <script src="tema.js"></script>
 </head>
-<body>
+<body class="manual">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    </defs>
+  </svg>
+
   <header class="barra-topo">
     <div class="topo-in">
       <a class="marca" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="marca-nome">Oficina Digital</span></a>
@@ -27,58 +38,83 @@
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Manual do aluno</p>
-      <h1>Seu manual de técnico de bancada</h1>
-      <p class="lead">Pouca leitura. Muito áudio, imagem e clique. Cada etapa tem um comprovante simples.</p>
+    <section class="hero-home">
+      <div>
+        <p class="eyebrow">Manual do aluno</p>
+        <h1>Seu manual de <em>técnico de bancada</em></h1>
+        <p class="lead">Pouca leitura. Muito áudio, imagem e clique. Cada etapa termina com um comprovante simples: um print, uma foto ou um áudio.</p>
+        <div class="acoes">
+          <a class="btn principal" href="#e1">Começar pela Etapa 1 <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn secundario" href="tutorial.html">Ver o tutorial</a>
+        </div>
+        <ul class="numeros">
+          <li><strong>5</strong><span>etapas</span></li>
+          <li><strong>3</strong><span>formas de comprovar</span></li>
+          <li><strong>0</strong><span>relatórios para escrever</span></li>
+        </ul>
+      </div>
+      <img src="img/manual-capa.svg" alt="Prancheta com as cinco etapas do manual, duas já marcadas, e um fone de ouvido" width="640" height="420">
     </section>
-
-    <div class="legenda" aria-label="Legenda dos ícones">
-      <span>🔘 Clique aqui</span><span>⚠️ Cuidado</span><span>💡 Dica</span><span>🔊 Ouça aqui</span><span>📲 No celular</span><span>📸 Comprovante</span>
-    </div>
 
     <div class="progresso" role="status">
       <strong id="txt-prog">0 de 5 etapas feitas</strong>
       <div class="barra"><div id="barra"></div></div>
     </div>
 
-    <div class="aviso">🧰 <strong>Quer montar o projeto no seu computador?</strong> Siga o <a href="tutorial.html">Tutorial Passo a Passo</a>.</div>
-    <div class="dica">🤖 <strong>Precisa de ajuda com o código?</strong> Instale o <strong>Antigravity</strong>, um editor com assistente de IA. O passo a passo está no <a href="tutorial.html#p3">Passo 3 do tutorial</a>.</div>
+    <h2 class="titulo-sec">Seu percurso</h2>
+    <ol class="percurso">
+      <li><a href="#e1"><span class="n">1</span><strong>Arquivo Digital Central</strong><span class="f">GitHub</span></a></li>
+      <li><a href="#e2"><span class="n">2</span><strong>Assistente que lê em voz alta</strong><span class="f">NotebookLM</span></a></li>
+      <li><a href="#e3"><span class="n">3</span><strong>Bancada de Testes de IA</strong><span class="f">Gemini e Skills</span></a></li>
+      <li><a href="#e4"><span class="n">4</span><strong>Quadro de Fichas e Ligações</strong><span class="f">Obsidian e Graphify</span></a></li>
+      <li><a href="#e5"><span class="n">5</span><strong>Rádio do Técnico</strong><span class="f">Telegram</span></a></li>
+    </ol>
 
-    <div class="dica">📸 <strong>Como provar cada etapa:</strong> um print da tela, uma foto do celular ou um áudio de até 1 minuto. Não precisa escrever relatório.</div>
+    <h2 class="titulo-sec">Como provar cada etapa</h2>
+    <div class="provas">
+      <div class="prova-card"><span class="ico"><svg class="ic"><use href="#i-monitor"/></svg></span><h3>Print da tela</h3><p>Aperte as teclas <strong>Windows + Shift + S</strong> e escolha a área.</p></div>
+      <div class="prova-card"><span class="ico"><svg class="ic"><use href="#i-camera"/></svg></span><h3>Foto do celular</h3><p>Tire uma foto da tela do computador ou do próprio celular.</p></div>
+      <div class="prova-card"><span class="ico"><svg class="ic"><use href="#i-mic"/></svg></span><h3>Áudio de até 1 minuto</h3><p>Conte com a sua voz o que você fez. Não precisa escrever.</p></div>
+    </div>
+
+    <div class="dica"><div class="cb"><strong>Quer montar o projeto no seu computador?</strong> Siga o <a href="tutorial.html">Tutorial Passo a Passo</a>.</div></div>
+    <div class="dica"><div class="cb"><strong>Precisa de ajuda com o código?</strong> Instale o <strong>Antigravity</strong>, um editor com assistente de IA. O passo a passo está no <a href="tutorial.html#p3">Passo 3 do tutorial</a>.</div></div>
+
+    <h2 class="titulo-sec">As 5 etapas</h2>
 
     <!-- ETAPA 1 -->
     <details class="etapa" id="e1" open>
       <summary><span class="num">1</span><span>Arquivo Digital Central <small>(GitHub)</small></span></summary>
       <div class="corpo">
+        <img class="arte" src="img/etapa1-github.svg" alt="Uma nuvem com pastas de trabalho compartilhadas" width="640" height="200" loading="lazy">
         <p>O <strong>GitHub</strong> é uma <strong>pasta compartilhada na internet</strong>. Nada se perde. Um <strong>repositório</strong> é uma pasta de trabalho dentro dele.</p>
         <h3>Criar a conta (grátis)</h3>
         <ol>
-          <li>🔘 Abra <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</li>
-          <li>🔘 Clique em <strong>Sign up</strong> (canto de cima, à direita).</li>
+          <li>Abra <a href="https://github.com" target="_blank" rel="noopener">github.com</a>.</li>
+          <li>Clique em <strong>Sign up</strong> (canto de cima, à direita).</li>
           <li>Preencha <strong>e-mail</strong>, <strong>senha</strong> e <strong>nome de usuário</strong>.</li>
           <li>Resolva o teste "não sou robô". Clique em <strong>Create account</strong>.</li>
         </ol>
-        <div class="aviso">⚠️ Anote a senha em um caderno seu. Não mande a senha para ninguém.</div>
+        <div class="aviso"><div class="cb">Anote a senha em um caderno seu. Não mande a senha para ninguém.</div></div>
         <h3>Confirmar o e-mail</h3>
         <ol>
-          <li>Abra seu e-mail. 💡 Olhe também em <strong>Spam</strong>.</li>
-          <li>🔘 Clique em <strong>Verify email address</strong>.</li>
+          <li>Abra seu e-mail. Olhe também em <strong>Spam</strong>.</li>
+          <li>Clique em <strong>Verify email address</strong>.</li>
         </ol>
         <h3>Pegar a pasta do projeto</h3>
         <ol>
-          <li>🔘 Abra <a href="https://github.com/rcminitor/Oficina_CuCa_IA" target="_blank" rel="noopener">a pasta da oficina</a>.</li>
-          <li>🔘 Clique no botão verde <strong>&lt;&gt; Code</strong> → <strong>Download ZIP</strong>.</li>
+          <li>Abra <a href="https://github.com/rcminitor/Oficina_CuCa_IA" target="_blank" rel="noopener">a pasta da oficina</a>.</li>
+          <li>Clique no botão verde <strong>&lt;&gt; Code</strong> → <strong>Download ZIP</strong>.</li>
           <li>Na pasta Downloads: botão direito no ZIP → <strong>Extrair tudo</strong>.</li>
         </ol>
-        <h3>🎬 Vídeos em português</h3>
+        <h3>Vídeos em português</h3>
         <p>Canal <strong>Curso em Vídeo</strong>, do Prof. Gustavo Guanabara. É um curso grátis que ensina Git e GitHub <strong>sem digitar comandos</strong>.</p>
         <p>
-          <a class="btn-doc" href="https://www.youtube.com/watch?v=hcZ0qtwvN1w" target="_blank" rel="noopener">▶️ O que é GitHub? Pra que ele serve? (37 min)</a>
-          <a class="btn-doc" href="https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA" target="_blank" rel="noopener">▶️ Curso completo (13 vídeos)</a>
+          <a class="btn-doc" href="https://www.youtube.com/watch?v=hcZ0qtwvN1w" target="_blank" rel="noopener">O que é GitHub? Pra que ele serve? (37 min)</a>
+          <a class="btn-doc" href="https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA" target="_blank" rel="noopener">Curso completo (13 vídeos)</a>
         </p>
-        <div class="dica">💡 Os vídeos têm cerca de 6 anos: a tela do GitHub pode estar diferente da que você vê. Para a aula, o passo a passo acima já basta. O vídeo é para quem quer entender melhor.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print da sua página do GitHub com seu nome de usuário.</div>
+        <div class="dica"><div class="cb">Os vídeos têm cerca de 6 anos: a tela do GitHub pode estar diferente da que você vê. Para a aula, o passo a passo acima já basta. O vídeo é para quem quer entender melhor.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print da sua página do GitHub com seu nome de usuário.</div></div>
         <label class="marcar"><input type="checkbox" data-etapa="1"> Etapa 1 feita</label>
       </div>
     </details>
@@ -87,28 +123,29 @@
     <details class="etapa" id="e2">
       <summary><span class="num">2</span><span>Assistente que lê em voz alta <small>(NotebookLM)</small></span></summary>
       <div class="corpo">
+        <img class="arte" src="img/etapa2-audio.svg" alt="Três documentos e um fone de ouvido com ondas de som" width="640" height="200" loading="lazy">
         <p>O NotebookLM lê seus documentos e <strong>explica em áudio</strong>. Você estuda de fone de ouvido.</p>
         <h3>Os 3 documentos de bancada</h3>
         <p>
-          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/01_guia_defeitos_comuns.md" target="_blank" rel="noopener">📄 1. Defeitos comuns</a>
-          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/02_catalogo_pecas.md" target="_blank" rel="noopener">📄 2. Catálogo de peças</a>
-          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/03_historico_ordens_servico.md" target="_blank" rel="noopener">📄 3. Histórico de serviços</a>
+          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/01_guia_defeitos_comuns.md" target="_blank" rel="noopener">1. Defeitos comuns</a>
+          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/02_catalogo_pecas.md" target="_blank" rel="noopener">2. Catálogo de peças</a>
+          <a class="btn-doc" href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/docs/notebooklm/03_historico_ordens_servico.md" target="_blank" rel="noopener">3. Histórico de serviços</a>
         </p>
         <ol>
-          <li>🔘 Abra <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a> e entre com a conta Google.</li>
-          <li>🔘 Clique em <strong>Novo caderno</strong>.</li>
-          <li>🔘 <strong>Adicionar fonte</strong> → envie os 3 arquivos (baixe cada um antes).</li>
+          <li>Abra <a href="https://notebooklm.google.com" target="_blank" rel="noopener">notebooklm.google.com</a> e entre com a conta Google.</li>
+          <li>Clique em <strong>Novo caderno</strong>.</li>
+          <li><strong>Adicionar fonte</strong> → envie os 3 arquivos (baixe cada um antes).</li>
         </ol>
-        <h3>🔊 Ouvir o resumo em áudio</h3>
+        <h3>Ouvir o resumo em áudio</h3>
         <ol>
-          <li>🔘 Clique em <strong>Resumo em áudio</strong> (<em>Audio Overview</em>). Espere alguns minutos.</li>
-          <li>🔘 Clique em <strong>Play</strong>. Coloque o fone.</li>
+          <li>Clique em <strong>Resumo em áudio</strong> (<em>Audio Overview</em>). Espere alguns minutos.</li>
+          <li>Clique em <strong>Play</strong>. Coloque o fone.</li>
         </ol>
         <p>Pergunta pronta (copie e cole na conversa):</p>
         <pre id="p-nb">Meu cliente disse que o notebook desliga sozinho. Quais peças eu devo olhar primeiro? Responda em 5 linhas curtas.</pre>
-        <button class="copiar" data-copiar="p-nb">📋 Copiar pergunta</button>
-        <div class="aviso">⚠️ A IA pode errar. Confira a resposta nos documentos 1 e 2.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do caderno com os 3 documentos, <strong>ou</strong> 🔊 áudio de 1 minuto: "o que eu aprendi ouvindo".</div>
+        <button class="copiar" data-copiar="p-nb">Copiar pergunta</button>
+        <div class="aviso"><div class="cb">A IA pode errar. Confira a resposta nos documentos 1 e 2.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do caderno com os 3 documentos, <strong>ou</strong> um áudio de 1 minuto: "o que eu aprendi ouvindo".</div></div>
         <label class="marcar"><input type="checkbox" data-etapa="2"> Etapa 2 feita</label>
       </div>
     </details>
@@ -117,6 +154,7 @@
     <details class="etapa" id="e3">
       <summary><span class="num">3</span><span>Bancada de Testes de IA <small>(Gemini Notebook)</small></span></summary>
       <div class="corpo">
+        <img class="arte" src="img/etapa3-skills.svg" alt="Um relato do cliente passa pela Skill A, de triagem, e depois pela Skill B, que indica a peça" width="640" height="200" loading="lazy">
         <p>Aqui você <strong>testa</strong> a IA antes de usar no trabalho de verdade. Duas ferramentas de prompt (Skills):</p>
         <table>
           <tr><th>Skill</th><th>Entra</th><th>Sai</th></tr>
@@ -124,7 +162,7 @@
           <tr><td><strong>B</strong> — Busca no histórico</td><td>Modelo + Sintoma</td><td>Peça provável + tempo de bancada</td></tr>
         </table>
         <ol>
-          <li>🔘 Abra <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> (ou o Colab, se o professor pedir).</li>
+          <li>Abra <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> (ou o Colab, se o professor pedir).</li>
           <li>Copie a <strong>Skill A</strong> e troque o relato.</li>
         </ol>
         <h3>Skill A — Triagem de Sintomas</h3>
@@ -136,7 +174,7 @@ Gravidade: BAIXA, MÉDIA ou ALTA
 Se faltar informação, escreva "não informado". Não invente.
 
 Relato: """COLE O RELATO AQUI"""</pre>
-        <button class="copiar" data-copiar="p-a">📋 Copiar Skill A</button>
+        <button class="copiar" data-copiar="p-a">Copiar Skill A</button>
         <h3>Skill B — Busca no histórico (GraphRAG)</h3>
         <pre id="p-b">Você é técnico de bancada. Use APENAS o histórico abaixo.
 Dado o modelo e o sintoma, diga:
@@ -148,16 +186,16 @@ Se o histórico não tiver caso parecido, responda "sem histórico".
 Modelo: COLE_AQUI
 Sintoma: COLE_AQUI
 Histórico: """COLE AQUI A TABELA DO DOCUMENTO 3"""</pre>
-        <button class="copiar" data-copiar="p-b">📋 Copiar Skill B</button>
-        <h3>🧠 Desafio de Decisão</h3>
+        <button class="copiar" data-copiar="p-b">Copiar Skill B</button>
+        <h3>Desafio de Decisão</h3>
         <p>Faça 3 chamados de treino. Depois conte por áudio:</p>
         <ul>
           <li>Em qual chamado usei a <strong>Skill A</strong>? Por quê?</li>
           <li>Em qual usei a <strong>Skill B</strong>? Por quê?</li>
           <li>Em qual usei <strong>as duas juntas</strong>? Por quê?</li>
         </ul>
-        <div class="dica">💡 A Skill B funciona melhor quando recebe o modelo e o sintoma já limpos pela Skill A.</div>
-        <div class="prova">📸 <strong>Comprovante:</strong> print das respostas <strong>e</strong> o áudio de 1 minuto.</div>
+        <div class="dica"><div class="cb">A Skill B funciona melhor quando recebe o modelo e o sintoma já limpos pela Skill A.</div></div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print das respostas <strong>e</strong> o áudio de 1 minuto.</div></div>
         <label class="marcar"><input type="checkbox" data-etapa="3"> Etapa 3 feita</label>
       </div>
     </details>
@@ -166,6 +204,7 @@ Histórico: """COLE AQUI A TABELA DO DOCUMENTO 3"""</pre>
     <details class="etapa" id="e4">
       <summary><span class="num">4</span><span>Quadro de Fichas e Ligações <small>(Obsidian)</small></span></summary>
       <div class="corpo">
+        <img class="arte" src="img/etapa4-obsidian.svg" alt="Quadro com ligações entre aparelho em azul, sintoma em laranja e peça em verde" width="640" height="200" loading="lazy">
         <p>O <strong>Obsidian</strong> guarda fichas e <strong>desenha as ligações</strong> entre elas.</p>
         <table>
           <tr><th>Cor</th><th>O que é</th><th>Exemplo</th></tr>
@@ -174,22 +213,22 @@ Histórico: """COLE AQUI A TABELA DO DOCUMENTO 3"""</pre>
           <tr><td><span class="no" style="background:#43a047"></span>Verde</td><td>Solução / Peça</td><td>Troca de pasta térmica</td></tr>
         </table>
         <ol>
-          <li>🔘 Baixe em <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a> (grátis) e instale.</li>
-          <li>🔘 <strong>Create new vault</strong>, nome: <code>Oficina</code>.</li>
+          <li>Baixe em <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a> (grátis) e instale.</li>
+          <li><strong>Create new vault</strong>, nome: <code>Oficina</code>.</li>
           <li>Crie 3 notas. O texto com <code>[[ ]]</code> cria a ligação:</li>
         </ol>
         <pre id="p-ob">Nota "Notebook Dell G15":  #aparelho  Sintoma: [[Desliga sozinho]]
 Nota "Desliga sozinho":    #sintoma   Solução: [[Troca de pasta térmica]]
 Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
-        <button class="copiar" data-copiar="p-ob">📋 Copiar modelo das notas</button>
+        <button class="copiar" data-copiar="p-ob">Copiar modelo das notas</button>
         <ol start="4">
-          <li>🔘 Menu da esquerda → ícone do <strong>grafo</strong> (bolinhas ligadas).</li>
+          <li>Menu da esquerda → ícone do <strong>grafo</strong> (bolinhas ligadas).</li>
           <li>No grafo, abra <strong>Grupos</strong> e crie 3 cores: <code>tag:#aparelho</code> azul, <code>tag:#sintoma</code> laranja, <code>tag:#solucao</code> verde.</li>
         </ol>
-        <div class="dica">💡 <strong>Graphify</strong> é o mesmo quadro, mas montado pelo programa. Ele lê uma pasta e desenha o grafo sozinho, e você pode fazer perguntas a ele. Neste projeto usamos também uma versão simples em Python.<br>No Graphify, a <strong>cor</strong> mostra o <strong>grupo de assunto</strong> (ele escolhe sozinho). O azul, laranja e verde da etapa acima você escolhe <strong>à mão no Obsidian</strong>. Use a caixa <strong>Search nodes</strong> para achar uma bolinha e clique nela para ver os detalhes.</div>
-        <p>🔘 <a class="btn-doc" href="grafo.html" target="_blank" rel="noopener">🕸️ Ver o grafo da oficina (feito pelo Graphify)</a></p>
+        <div class="dica"><div class="cb"><strong>Graphify</strong> é o mesmo quadro, mas montado pelo programa. Ele lê uma pasta e desenha o grafo sozinho, e você pode fazer perguntas a ele. Neste projeto usamos também uma versão simples em Python.<br>No Graphify, a <strong>cor</strong> mostra o <strong>grupo de assunto</strong> (ele escolhe sozinho). O azul, laranja e verde da etapa acima você escolhe <strong>à mão no Obsidian</strong>. Use a caixa <strong>Search nodes</strong> para achar uma bolinha e clique nela para ver os detalhes.</div></div>
+        <p><a class="btn-doc" href="grafo.html" target="_blank" rel="noopener">Ver o grafo da oficina (feito pelo Graphify)</a></p>
         <p>Este grafo foi montado pelo <a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">Graphify</a> a partir dos 3 documentos da oficina. Procure o <strong>Dell G15</strong> e siga: aparelho → sintoma → peça.</p>
-        <div class="prova">📸 <strong>Comprovante:</strong> print do grafo com 3 cores e pelo menos 5 bolinhas.</div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> print do grafo com 3 cores e pelo menos 5 bolinhas.</div></div>
         <label class="marcar"><input type="checkbox" data-etapa="4"> Etapa 4 feita</label>
       </div>
     </details>
@@ -198,16 +237,17 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
     <details class="etapa" id="e5">
       <summary><span class="num">5</span><span>Rádio do Técnico <small>(Telegram + CrewAI)</small></span></summary>
       <div class="corpo">
+        <img class="arte" src="img/etapa5-telegram.svg" alt="Celular com o bot do Telegram e um rádio do técnico" width="640" height="200" loading="lazy">
         <p><strong>CrewAI</strong> é a <strong>dupla</strong>: o atendente recebe o cliente e o técnico diagnostica. O <strong>Telegram</strong> é o rádio no seu celular.</p>
-        <h3>📲 Criar o bot em 4 passos</h3>
+        <h3>Criar o bot em 4 passos</h3>
         <ol>
-          <li>No Telegram, procure <strong>@BotFather</strong> (tem selo azul ✔️). Envie <code>/start</code>.</li>
+          <li>No Telegram, procure <strong>@BotFather</strong> (com selo azul de verificado). Envie <code>/start</code>.</li>
           <li>Envie <code>/newbot</code>.</li>
           <li>Digite o nome da oficina. Depois um usuário que termina em <code>bot</code>.</li>
           <li>Ele mostra o <strong>token</strong> (a chave do bot).</li>
         </ol>
-        <div class="aviso">⚠️ O token é a chave da sua oficina. Não mande para ninguém. Não publique no GitHub. Tape o token antes de tirar print.</div>
-        <h3>📲 Comandos do dia a dia</h3>
+        <div class="aviso"><div class="cb">O token é a chave da sua oficina. Não mande para ninguém. Não publique no GitHub. Tape o token antes de tirar print.</div></div>
+        <h3>Comandos do dia a dia</h3>
         <table>
           <tr><th>Você envia</th><th>Resultado</th></tr>
           <tr><td><code>/abertos</code></td><td>Mostra os serviços na fila</td></tr>
@@ -216,15 +256,15 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
           <tr><td><code>/concluir 1</code></td><td>Dá baixa: serviço entregue</td></tr>
         </table>
         <p>Para ligar o bot e a automação, siga o <a href="https://github.com/rcminitor/Oficina_CuCa_IA/blob/main/GUIA_DO_ALUNO.md" target="_blank" rel="noopener">guia técnico</a> com o professor.</p>
-        <div class="prova">📸 <strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta do bot.</div>
+        <div class="prova"><div class="cb"><strong>Comprovante:</strong> foto do celular com <code>/abertos</code> e a resposta do bot.</div></div>
         <label class="marcar"><input type="checkbox" data-etapa="5"> Etapa 5 feita</label>
       </div>
     </details>
 
-    <h2>📚 Estudar mais</h2>
+    <h2 class="titulo-sec">Estudar mais</h2>
     <ul>
-      <li>🔧 Bancada: no YouTube, procure <strong>MW Informática</strong> e <strong>Emerson BR</strong>. Termos: "como trocar pasta térmica notebook", "tela azul Windows o que fazer".</li>
-      <li>🤖 IA sem matemática: procure "o que é inteligência artificial explicado simples".</li>
+      <li>Bancada: no YouTube, procure <strong>MW Informática</strong> e <strong>Emerson BR</strong>. Termos: "como trocar pasta térmica notebook", "tela azul Windows o que fazer".</li>
+      <li>IA sem matemática: procure "o que é inteligência artificial explicado simples".</li>
     </ul>
 
     <p><a href="painel.html">Ir para o painel de chamados da oficina</a></p>
@@ -263,8 +303,8 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
     document.querySelectorAll(".copiar").forEach(b => b.addEventListener("click", async () => {
       const texto = document.getElementById(b.dataset.copiar).innerText;
       const original = b.textContent;
-      try { await navigator.clipboard.writeText(texto); b.textContent = "✅ Copiado!"; }
-      catch (e) { b.textContent = "⚠️ Selecione o texto e use Ctrl+C"; }
+      try { await navigator.clipboard.writeText(texto); b.textContent = "Copiado!"; }
+      catch (e) { b.textContent = "Selecione o texto e use Ctrl+C"; }
       setTimeout(() => b.textContent = original, 2000);
     }));
   </script>
