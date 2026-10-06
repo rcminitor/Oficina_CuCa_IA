@@ -64,3 +64,7 @@
   .manual .corpo { padding: 0 1.1rem 1.4rem; }
   .manual .etapa > summary { font-size: 1.25rem; padding: 1rem; }
 }
+
+/* bloco de código recolhível */
+details.codigo { margin: 14px 0; }
+details.codigo > summary { cursor: pointer; font-weight: 600; padding: 10px 0; }
