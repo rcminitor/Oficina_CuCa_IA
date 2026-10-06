@@ -1,8 +1,6 @@
-# 🎓 Guia Técnico do Aluno: Oficina Digital
-> **Objetivo:** colocar no ar, no seu computador, um sistema de assistência técnica inteligente:
-> **Site ➔ API FastAPI ➔ Grafo de Conhecimento ➔ Bot do Telegram** (e, opcional, a Automação Python).
-
-> 📘 **Prefere ver passo a passo, com botão de copiar?** Use o **[Tutorial no site](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html)**. Este guia é a versão em texto, para consulta.
+# Gabarito do professor: o projeto de referência
+> **O aluno não usa este guia.** Ele constrói o próprio projeto com o Gemini, no Antigravity, seguindo o **[Tutorial](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html)**.
+> Este guia mostra como **rodar o projeto de referência** que está nas pastas `api/` e `site/`, para você comparar com o que o aluno criou.
 
 ---
 
