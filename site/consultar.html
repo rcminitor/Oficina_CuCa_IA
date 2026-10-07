@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Escolha entre o Manual e o Tutorial da Oficina Digital para tirar dúvidas e continuar o projeto.">
+  <title>Oficina Digital — Consultar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css?v=20261007-3">
+  <link rel="stylesheet" href="manual.css">
+  <script src="tema.js"></script>
+  <style>
+    .hub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0; }
+    .hub-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.4rem; box-shadow: var(--sombra); }
+    .hub-card h2 { margin: 0 0 .4rem; font-size: 1.5rem; }
+    .hub-card p { color: var(--suave); }
+    .hub-card .btn-doc { margin-top: auto; align-self: flex-start; }
+    .escolha { background: var(--acento-sup); border: 1px solid var(--acento); border-radius: var(--r-md); padding: 1rem 1.2rem; }
+    @media (max-width: 700px) { .hub-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="manual">
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo">🔧</span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="index.html">Início</a>
+      <a class="aba" href="roteiro.html">Começar</a>
+      <a class="aba" href="trilha.html">Aprender</a>
+      <a class="aba" href="consultar.html" aria-current="page">Consultar</a>
+      <a class="aba" href="ferramentas.html">Ferramentas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Ajuda para continuar</p>
+      <h1>O que você precisa consultar?</h1>
+      <p class="lead">Escolha somente uma opção. Você pode voltar aqui quando surgir outra dúvida.</p>
+    </section>
+
+    <p class="escolha"><strong>Quer entender?</strong> Abra o Manual. <strong>Quer construir?</strong> Abra o Tutorial.</p>
+
+    <section class="hub-grid" aria-label="Materiais de consulta">
+      <article class="hub-card">
+        <p class="eyebrow">Entender</p>
+        <h2>Manual do Aluno</h2>
+        <p>Explica as etapas, as ferramentas, os documentos e os conceitos usados no projeto.</p>
+        <a class="btn-doc" href="aluno.html">Abrir o Manual</a>
+      </article>
+      <article class="hub-card">
+        <p class="eyebrow">Construir</p>
+        <h2>Tutorial passo a passo</h2>
+        <p>Mostra os pedidos para o Gemini e os testes necessários para montar cada parte do projeto.</p>
+        <a class="btn-doc" href="tutorial.html">Abrir o Tutorial</a>
+      </article>
+    </section>
+  </main>
+
+  <footer>Material de ensino. Os dados e os casos da oficina são de exemplo.</footer>
+</body>
+</html>
