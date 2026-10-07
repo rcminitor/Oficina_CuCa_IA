@@ -1,0 +1,32 @@
+/* Página "Começar o curso": três perguntas e um único botão Continuar */
+.comecar main { padding-top: 1.2rem; padding-bottom: 1rem; }
+.comecar .hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); }
+.perguntas { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: 1rem; }
+.pergunta { display: grid; grid-template-columns: auto 1fr; gap: 1.1rem; padding: 1.4rem 1.3rem; background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); box-shadow: var(--sombra); }
+.pergunta-n { width: 48px; height: 48px; border-radius: 999px; background: var(--acento-sup); color: var(--acento); display: grid; place-items: center; font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; }
+.pergunta-corpo { min-width: 0; }
+.pergunta h2 { margin: .35rem 0 .6rem; font-size: 1.5rem; }
+.pergunta p { margin: .5rem 0; max-width: 62ch; }
+.mini-caminho { margin: .6rem 0 .9rem; padding-left: 1.4rem; }
+.mini-caminho li { margin: .2rem 0; }
+.nota-cores { color: var(--leve); }
+.mais { margin-top: .9rem !important; font-size: 1rem; }
+.checklist { list-style: none; padding: 0; margin: .4rem 0 .8rem; display: grid; gap: .45rem; }
+.checklist li { position: relative; padding-left: 1.9rem; }
+.checklist li::before { content: ""; position: absolute; left: 0; top: .32em; width: 1.15rem; height: 1.15rem; border: 2px solid var(--verde); border-radius: 5px; }
+.pergunta--tarefa { border: 2px solid var(--acento); }
+.pergunta--tarefa .pergunta-n { background: var(--acento); color: #fff; }
+:root[data-theme="dark"] .pergunta--tarefa .pergunta-n { background: #6d74e8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pergunta--tarefa .pergunta-n { background: #6d74e8; } }
+.tarefa { font-size: 1.2rem; }
+.tarefa-dados { display: flex; flex-wrap: wrap; gap: .6rem 2rem; margin: .8rem 0 0; }
+.tarefa-dados dt { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--suave); }
+.tarefa-dados dd { margin: 0; }
+.continuar-unico { margin: 1.6rem 0 2.5rem; text-align: center; }
+.continuar-unico .btn { font-size: 1.3rem; padding: .9rem 2.6rem; }
+.continuar-unico p { margin: .8rem auto 0; color: var(--suave); max-width: 46ch; }
+@media (max-width: 560px) {
+  .pergunta { grid-template-columns: 1fr; gap: .4rem; padding: 1.1rem 1rem; }
+  .pergunta-n { width: 40px; height: 40px; font-size: 1.2rem; }
+  .continuar-unico .btn { width: 100%; justify-content: center; }
+}

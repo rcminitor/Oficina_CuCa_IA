@@ -8,14 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="aluno.css?v=20261007-4">
+  <link rel="stylesheet" href="aluno.css?v=20261007-5">
   <link rel="stylesheet" href="inicio.css">
   <link rel="stylesheet" href="manual.css">
-  <link rel="stylesheet" href="painel.css">
-  <script src="tema.js"></script>
-  <script src="caminho.js?v=20261007-1" defer></script>
+  <link rel="stylesheet" href="painel.css?v=20261007-1">
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="caminho.js?v=20261007-2" defer></script>
 </head>
 <body class="manual painel">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
   <header class="barra-topo">
     <div class="topo-in">
       <a class="marca" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="marca-nome">Oficina Digital</span></a>
@@ -23,41 +24,52 @@
     </div>
     <nav class="abas" aria-label="Seções do site">
       <a class="aba" href="index.html">Início</a>
-      <a class="aba" href="roteiro.html">Começar</a>
+      <a class="aba" href="comecar.html">Começar</a>
       <a class="aba" href="trilha.html">Aprender</a>
       <a class="aba" href="consultar.html">Consultar</a>
-      <a class="aba" href="ferramentas.html" aria-current="page">Ferramentas</a>
+      <a class="aba" href="ferramentas.html" aria-current="true">Ferramentas</a>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     <section class="hero">
       <p class="eyebrow">Painel de chamados</p>
       <h1>Teste a sua oficina</h1>
-      <p class="lead">Este painel conversa com a <strong>API que você criou</strong> no Tutorial. Abra um chamado, veja o laudo e acompanhe o andamento.</p>
+      <p class="lead">Experimente primeiro com dados fictícios. Quando sua API estiver pronta, conecte-a na configuração avançada.</p>
     </section>
 
-    <!-- Estado da API -->
-    <section class="pc estado" aria-labelledby="t-api">
+    <section class="pc modo-demo" aria-labelledby="t-demo">
+      <div>
+        <p class="eyebrow">Pronto para usar</p>
+        <h2 id="t-demo">Modo demonstração</h2>
+        <p>Use chamados fictícios para conhecer o painel. Nenhum dado será enviado para uma API.</p>
+      </div>
+      <button class="btn principal" id="btn-demo" type="button">Experimentar com dados de exemplo</button>
+      <p class="estado-modo" id="estado-modo" role="status" aria-live="polite">Modo demonstração ativo</p>
+    </section>
+
+    <details class="pc configuracao-avancada" id="configuracao-avancada">
+      <summary>Configuração avançada</summary>
+      <p class="sub-pc">Use esta área somente para testar a API construída no Tutorial.</p>
       <div class="estado-linha">
         <span class="ponto" id="ponto-api" data-estado="verificando" aria-hidden="true"></span>
         <div class="estado-texto">
           <h2 id="t-api">Sua API</h2>
-          <p id="texto-api" role="status" aria-live="polite">Verificando...</p>
+          <p id="texto-api" role="status" aria-live="polite">Abra esta área para verificar a conexão.</p>
         </div>
-        <button class="btn secundario" id="btn-alterar-api" type="button">Alterar endereço</button>
+        <button class="btn secundario" id="btn-alterar-api" type="button">Conectar à minha API</button>
       </div>
       <div class="ajuda-api" id="ajuda-api" hidden>
         <p><strong>A API está desligada?</strong> Ligue a API do <a href="tutorial.html#p5">Passo 5 do tutorial</a> e deixe o terminal aberto. O endereço padrão é <code>http://localhost:8000</code>.</p>
         <p>Ela está ligada, mas o painel diz <em>offline</em>? O navegador pode bloquear uma página da internet de falar com o seu computador. Nesse caso, use o <strong>site que você criou</strong> no <a href="tutorial.html#p4">Passo 4</a>.</p>
       </div>
-    </section>
+    </details>
 
     <h2 class="titulo-sec">Como usar</h2>
     <div class="provas">
-      <div class="prova-card"><h3>1. Ligue a API</h3><p>Deixe o terminal da API aberto. Quando ela estiver ligada, a bolinha fica <strong>verde</strong>.</p></div>
-      <div class="prova-card"><h3>2. Abra um chamado</h3><p>Preencha o formulário ou clique em um caso de exemplo. Anote o <strong>número</strong>.</p></div>
-      <div class="prova-card"><h3>3. Acompanhe</h3><p>Digite o número e veja a prioridade e o laudo da triagem.</p></div>
+      <div class="prova-card"><h3>1. Experimente</h3><p>Clique no botão de demonstração para abrir um chamado fictício completo.</p></div>
+      <div class="prova-card"><h3>2. Abra um chamado</h3><p>Use um caso de exemplo ou escreva um novo chamado simulado.</p></div>
+      <div class="prova-card"><h3>3. Acompanhe</h3><p>Digite o número e veja o status, a prioridade e o laudo.</p></div>
     </div>
 
     <!-- Abrir chamado -->
@@ -141,8 +153,8 @@
     </form>
   </dialog>
 
-  <footer>Material de ensino. Os chamados ficam na API do seu computador, não neste site.</footer>
+  <footer>Material de ensino. No modo demonstração, todos os dados são fictícios.</footer>
 
-  <script src="painel.js"></script>
+  <script src="painel.js?v=20261007-1"></script>
 </body>
 </html>

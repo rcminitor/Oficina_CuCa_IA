@@ -8,12 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="aluno.css?v=20261007-4">
+  <link rel="stylesheet" href="aluno.css?v=20261007-5">
   <link rel="stylesheet" href="inicio.css">
-  <script src="tema.js"></script>
-  <script src="caminho.js?v=20261007-1" defer></script>
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="caminho.js?v=20261007-2" defer></script>
 </head>
 <body class="home">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
   <!-- Ícones (traço simples, herdam a cor do texto) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
@@ -44,21 +45,21 @@
     </div>
     <nav class="abas" aria-label="Seções do site">
       <a class="aba" href="index.html" aria-current="page">Início</a>
-      <a class="aba" href="roteiro.html">Começar</a>
+      <a class="aba" href="comecar.html">Começar</a>
       <a class="aba" href="trilha.html">Aprender</a>
       <a class="aba" href="consultar.html">Consultar</a>
       <a class="aba" href="ferramentas.html">Ferramentas</a>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     <section class="hero-home">
       <div>
         <p class="eyebrow">Capacitação prática em tecnologia</p>
         <h1>Aprenda tecnologia como um <em>técnico de bancada</em></h1>
         <p class="lead">Uma oficina de computadores de mentirinha. Você cria a sua pasta, abre no Antigravity e constrói o projeto com a ajuda do Gemini. Pouca leitura. Muito áudio, imagem e passo a passo.</p>
         <div class="acoes">
-          <a class="btn principal" href="aluno.html">Começar pelo Manual <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn principal" href="comecar.html">Começar o curso <svg class="ic"><use href="#i-arrow"/></svg></a>
           <a class="btn secundario" href="tutorial.html">Ver o tutorial</a>
         </div>
         <ul class="numeros">
@@ -87,11 +88,11 @@
       <p class="sub">Seis ferramentas de verdade. Cada uma ganha um nome de oficina, para ficar fácil de lembrar.</p>
       <div class="grade">
         <article class="ferr"><span class="ico"><svg class="ic"><use href="#i-code"/></svg></span><div><h3>Antigravity e Gemini</h3><p class="papel">Ajudante de código</p><p>Um editor com assistente de IA. Você constrói o projeto pedindo a ele.</p></div></article>
-        <article class="ferr"><span class="ico"><svg class="ic"><use href="#i-phones"/></svg></span><div><h3>NotebookLM</h3><p class="papel">Assistente que lê em voz alta</p><p>Você estuda ouvindo, sem ler páginas.</p></div></article>
-        <article class="ferr"><span class="ico"><svg class="ic"><use href="#i-graph"/></svg></span><div><h3>Obsidian e Graphify</h3><p class="papel">Quadro de Fichas e Ligações</p><p>Liga o defeito à peça que já deu certo.</p></div></article>
-        <article class="ferr"><span class="ico"><svg class="ic"><use href="#i-users"/></svg></span><div><h3>CrewAI</h3><p class="papel">Dupla de Especialistas</p><p>Um atendente e um técnico virtuais.</p></div></article>
-        <article class="ferr"><span class="ico"><svg class="ic"><use href="#i-send"/></svg></span><div><h3>Telegram</h3><p class="papel">Rádio do Técnico</p><p>Chamados e avisos direto no celular.</p></div></article>
-        <article class="ferr"><span class="ico"><svg class="ic"><use href="#i-folder"/></svg></span><div><h3>GitHub</h3><p class="papel">Arquivo Digital Central</p><p>No final, guarda a sua pasta na internet. Nada se perde.</p></div></article>
+        <article class="ferr" data-ferramenta="notebooklm"><span class="ico"><svg class="ic"><use href="#i-phones"/></svg></span><div><h3>NotebookLM</h3><p class="papel">Assistente que lê em voz alta</p><p>Você estuda ouvindo, sem ler páginas.</p></div></article>
+        <article class="ferr" data-ferramenta="obsidian"><span class="ico"><svg class="ic"><use href="#i-graph"/></svg></span><div><h3>Obsidian e Graphify</h3><p class="papel">Quadro de Fichas e Ligações</p><p>Liga o defeito à peça que já deu certo.</p></div></article>
+        <article class="ferr" data-ferramenta="crewai"><span class="ico"><svg class="ic"><use href="#i-users"/></svg></span><div><h3>CrewAI</h3><p class="papel">Dupla de Especialistas</p><p>Um atendente e um técnico virtuais.</p></div></article>
+        <article class="ferr" data-ferramenta="telegram"><span class="ico"><svg class="ic"><use href="#i-send"/></svg></span><div><h3>Telegram</h3><p class="papel">Rádio do Técnico</p><p>Chamados e avisos direto no celular.</p></div></article>
+        <article class="ferr" data-ferramenta="github"><span class="ico"><svg class="ic"><use href="#i-folder"/></svg></span><div><h3>GitHub</h3><p class="papel">Arquivo Digital Central</p><p>No final, guarda a sua pasta na internet. Nada se perde.</p></div></article>
       </div>
     </section>
 
@@ -114,8 +115,9 @@
 
     <section class="sec" id="comece">
       <h2>Comece por aqui</h2>
-      <p class="sub">Escolha por onde quer entrar. Se é a primeira vez, vá pelo Sobre e depois pelo Manual.</p>
+      <p class="sub">Escolha por onde quer entrar. Se é a primeira vez, use <a href="comecar.html">Começar o curso</a>.</p>
       <div class="entradas">
+        <a class="entrada" href="comecar.html"><span class="ico"><svg class="ic"><use href="#i-check"/></svg></span><h3>Começar o curso</h3><p>Três perguntas rápidas e a sua primeira tarefa. Um botão só: Continuar.</p><span class="ir">Começar <svg class="ic"><use href="#i-arrow"/></svg></span></a>
         <a class="entrada" href="sobre.html"><span class="ico"><svg class="ic"><use href="#i-info"/></svg></span><h3>Sobre o projeto</h3><p>O que a oficina faz, para que serve e o que ela não faz.</p><span class="ir">Ler <svg class="ic"><use href="#i-arrow"/></svg></span></a>
         <a class="entrada" href="roteiro.html"><span class="ico"><svg class="ic"><use href="#i-book"/></svg></span><h3>Roteiro completo</h3><p>Os 13 passos do zero ao fim, numa lista só, com tempo e comprovante.</p><span class="ir">Abrir <svg class="ic"><use href="#i-arrow"/></svg></span></a>
         <a class="entrada" href="aluno.html"><span class="ico"><svg class="ic"><use href="#i-book"/></svg></span><h3>Manual do Aluno</h3><p>6 etapas curtas, com áudio, imagem e comprovante simples.</p><span class="ir">Abrir <svg class="ic"><use href="#i-arrow"/></svg></span></a>

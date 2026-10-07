@@ -1,18 +1,17 @@
 (() => {
   "use strict";
 
+  // Ordem em que o site conduz o aluno. Páginas de consulta (Sobre, Roteiro,
+  // Consultar, Ferramentas) ficam fora da sequência e não mostram a barra.
   const paginas = [
     { arquivo: "index.html", nome: "Início" },
-    { arquivo: "sobre.html", nome: "Conhecer o projeto" },
-    { arquivo: "roteiro.html", nome: "Começar" },
-    { arquivo: "trilha.html", nome: "Aprender" },
-    { arquivo: "consultar.html", nome: "Escolher uma consulta" },
+    { arquivo: "comecar.html", nome: "Começar o curso", semBarra: true },
     { arquivo: "aluno.html", nome: "Ler o Manual" },
-    { arquivo: "tutorial.html", nome: "Seguir o Tutorial" },
-    { arquivo: "ferramentas.html", nome: "Escolher uma ferramenta" },
     { arquivo: "chaves.html", nome: "Preparar as chaves" },
+    { arquivo: "tutorial.html", nome: "Seguir o Tutorial" },
     { arquivo: "grafo.html", nome: "Explorar o Grafo" },
-    { arquivo: "painel.html", nome: "Testar o Painel" }
+    { arquivo: "painel.html", nome: "Testar o Painel" },
+    { arquivo: "trilha.html", nome: "Ir além: a Trilha" }
   ];
 
   const arquivoAtual = location.pathname.split("/").pop() || "index.html";
@@ -20,6 +19,7 @@
   if (indice < 0) return;
 
   const atual = paginas[indice];
+  if (atual.semBarra) return; // a própria página já tem o botão "Continuar"
   const anterior = indice > 0 ? paginas[indice - 1] : null;
   const proxima = indice < paginas.length - 1 ? paginas[indice + 1] : paginas[0];
   const chave = `oficina-concluida-${atual.arquivo}`;

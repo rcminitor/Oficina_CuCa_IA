@@ -8,13 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="aluno.css?v=20261007-4">
+  <link rel="stylesheet" href="aluno.css?v=20261007-5">
   <link rel="stylesheet" href="inicio.css">
   <link rel="stylesheet" href="manual.css">
-  <script src="tema.js"></script>
-  <script src="caminho.js?v=20261007-1" defer></script>
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="caminho.js?v=20261007-2" defer></script>
 </head>
 <body class="manual">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
@@ -27,14 +28,14 @@
     </div>
     <nav class="abas" aria-label="Seções do site">
       <a class="aba" href="index.html">Início</a>
-      <a class="aba" href="roteiro.html">Começar</a>
+      <a class="aba" href="comecar.html">Começar</a>
       <a class="aba" href="trilha.html">Aprender</a>
-      <a class="aba" href="consultar.html" aria-current="page">Consultar</a>
+      <a class="aba" href="consultar.html" aria-current="true">Consultar</a>
       <a class="aba" href="ferramentas.html">Ferramentas</a>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     <section class="hero-home">
       <div>
         <p class="eyebrow">Tutorial passo a passo</p>
@@ -354,8 +355,8 @@ Explique como ligar, em um terminal separado.</pre>
       </div>
     </details>
 
-    <details class="etapa" id="p8">
-      <summary><span class="num">8</span><span>Criar o agente CrewAI no Google Colab (a dupla de especialistas)</span></summary>
+    <details class="etapa" id="p8" data-ferramenta="crewai">
+      <summary><span class="num">8</span><span>Criar o agente CrewAI no Google Colab (a dupla de especialistas) <span class="selo-ferr">CrewAI</span></span></summary>
       <div class="corpo">
         <p>O <strong>CrewAI</strong> junta dois agentes de IA: um <strong>atendente</strong> e um <strong>técnico</strong>. Este passo é <strong>opcional</strong>. Ele roda no <strong>Google Colab</strong>, um caderno de código na nuvem do Google. Você <strong>não instala nada</strong> no seu computador.</p>
         <h3>Entenda a ideia antes de começar</h3>
@@ -535,8 +536,8 @@ print(resultado.raw)</pre>
       </div>
     </details>
 
-    <details class="etapa" id="p9">
-      <summary><span class="num">9</span><span>Criar o Rádio do Técnico (Telegram)</span></summary>
+    <details class="etapa" id="p9" data-ferramenta="telegram">
+      <summary><span class="num">9</span><span>Criar o Rádio do Técnico <span class="selo-ferr">Telegram</span></span></summary>
       <div class="corpo">
         <p>O bot manda os chamados para o seu celular e aceita comandos. Esta parte também é <strong>opcional</strong>. Aqui você usa <strong>duas informações secretas</strong>: o <strong>token</strong> do bot e o seu <strong>Id</strong>.</p>
         <h3>Entenda como funciona</h3>
@@ -623,8 +624,8 @@ TELEGRAM_CHAT_ID=123456789</pre>
       </div>
     </details>
 
-    <details class="etapa" id="p10">
-      <summary><span class="num">10</span><span>Ver tudo funcionando</span></summary>
+    <details class="etapa" id="p10" data-ferramenta="github">
+      <summary><span class="num">10</span><span>Ver tudo funcionando e guardar <span class="selo-ferr">GitHub</span></span></summary>
       <div class="corpo">
         <p>Hora do teste de ponta a ponta. Confira cada item:</p>
         <ol>

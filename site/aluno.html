@@ -8,13 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="aluno.css?v=20261007-4">
+  <link rel="stylesheet" href="aluno.css?v=20261007-5">
   <link rel="stylesheet" href="inicio.css">
   <link rel="stylesheet" href="manual.css">
-  <script src="tema.js"></script>
-  <script src="caminho.js?v=20261007-1" defer></script>
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="caminho.js?v=20261007-2" defer></script>
 </head>
 <body class="manual">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
@@ -33,14 +34,14 @@
     </div>
     <nav class="abas" aria-label="Seções do site">
       <a class="aba" href="index.html">Início</a>
-      <a class="aba" href="roteiro.html">Começar</a>
+      <a class="aba" href="comecar.html">Começar</a>
       <a class="aba" href="trilha.html">Aprender</a>
-      <a class="aba" href="consultar.html" aria-current="page">Consultar</a>
+      <a class="aba" href="consultar.html" aria-current="true">Consultar</a>
       <a class="aba" href="ferramentas.html">Ferramentas</a>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
     <section class="hero-home">
       <div>
         <p class="eyebrow">Manual do aluno</p>
@@ -68,11 +69,11 @@
     <h2 class="titulo-sec">Seu percurso</h2>
     <ol class="percurso">
       <li><a href="#e1"><span class="n">1</span><strong>Sua pasta e o ajudante de código</strong><span class="f">Antigravity</span></a></li>
-      <li><a href="#e2"><span class="n">2</span><strong>Assistente que lê em voz alta</strong><span class="f">NotebookLM</span></a></li>
+      <li data-ferramenta="notebooklm"><a href="#e2"><span class="n">2</span><strong>Assistente que lê em voz alta</strong><span class="f"><span class="selo-ferr">NotebookLM</span></span></a></li>
       <li><a href="#e3"><span class="n">3</span><strong>Bancada de Testes de IA</strong><span class="f">Gemini e Skills</span></a></li>
-      <li><a href="#e4"><span class="n">4</span><strong>Quadro de Fichas e Ligações</strong><span class="f">Obsidian e Graphify</span></a></li>
+      <li data-ferramenta="obsidian"><a href="#e4"><span class="n">4</span><strong>Quadro de Fichas e Ligações</strong><span class="f"><span class="selo-ferr">Obsidian</span> e Graphify</span></a></li>
       <li><a href="#e5"><span class="n">5</span><strong>Construa o projeto</strong><span class="f">Gemini e Tutorial</span></a></li>
-      <li><a href="#e6"><span class="n">6</span><strong>Arquivo Digital Central</strong><span class="f">GitHub, no final</span></a></li>
+      <li data-ferramenta="github"><a href="#e6"><span class="n">6</span><strong>Arquivo Digital Central</strong><span class="f"><span class="selo-ferr">GitHub</span> no final</span></a></li>
     </ol>
 
     <h2 class="titulo-sec">Como provar cada etapa</h2>
@@ -124,8 +125,8 @@
     </details>
 
     <!-- ETAPA 2 -->
-    <details class="etapa" id="e2">
-      <summary><span class="num">2</span><span>Assistente que lê em voz alta <small>(NotebookLM)</small></span></summary>
+    <details class="etapa" id="e2" data-ferramenta="notebooklm">
+      <summary><span class="num">2</span><span>Assistente que lê em voz alta <span class="selo-ferr">NotebookLM</span></span></summary>
       <div class="corpo">
         <img class="arte" src="img/etapa2-audio.svg" alt="Três documentos e um fone de ouvido com ondas de som" width="640" height="200" loading="lazy">
         <p>O NotebookLM lê os documentos e <strong>explica em áudio</strong>. Aqui ele ensina o que você vai construir. Você estuda de fone de ouvido.</p>
@@ -276,8 +277,8 @@ Histórico: """COLE AQUI A TABELA DO DOCUMENTO 4"""</pre>
     </details>
 
     <!-- ETAPA 4 -->
-    <details class="etapa" id="e4">
-      <summary><span class="num">4</span><span>Quadro de Fichas e Ligações <small>(Obsidian)</small></span></summary>
+    <details class="etapa" id="e4" data-ferramenta="obsidian">
+      <summary><span class="num">4</span><span>Quadro de Fichas e Ligações <span class="selo-ferr">Obsidian</span></span></summary>
       <div class="corpo">
         <img class="arte" src="img/etapa4-obsidian.svg" alt="Quadro com ligações entre aparelho em azul, sintoma em laranja e peça em verde" width="640" height="200" loading="lazy">
         <p>O <strong>Obsidian</strong> guarda fichas e <strong>desenha as ligações</strong> entre elas.</p>
@@ -372,8 +373,8 @@ Nota "Troca de pasta térmica": #solucao  Tempo de bancada: 40 minutos.</pre>
     </details>
 
     <!-- ETAPA 6 -->
-    <details class="etapa" id="e6">
-      <summary><span class="num">6</span><span>Arquivo Digital Central <small>(GitHub, no final)</small></span></summary>
+    <details class="etapa" id="e6" data-ferramenta="github">
+      <summary><span class="num">6</span><span>Arquivo Digital Central <span class="selo-ferr">GitHub</span> <small>(no final)</small></span></summary>
       <div class="corpo">
         <img class="arte" src="img/etapa1-github.svg" alt="Uma nuvem com pastas de trabalho compartilhadas" width="640" height="200" loading="lazy">
         <p>Só agora, no <strong>final</strong>, entra o <strong>GitHub</strong>: uma <strong>pasta compartilhada na internet</strong>. Nada se perde. Você vai levar a sua pasta <code>oficina-digital</code> para lá, com a ajuda do Gemini.</p>

@@ -33,3 +33,9 @@ th { background: var(--acento-sup); }
 .rodape-trilha a { color: inherit; }
 @media (max-width: 720px) { .aviso-apoio { grid-template-columns: 1fr; } .glossario dl { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+.trilha-topo { padding: 1.4rem 0 .4rem; }
+.trilha-topo h1 { margin: 0 0 .5rem; font-size: clamp(1.8rem, 4.5vw, 2.5rem); }
+.trilha-topo .lead { max-width: 60ch; margin-bottom: 1rem; }
+.missao > .selo-ferr { margin-bottom: .5rem; }
+.recursos-grid h3.com-ico-ferr { justify-content: flex-start; }
