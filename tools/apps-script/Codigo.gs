@@ -196,6 +196,14 @@ function doGet(e) {
     const status = ult < 2 ? [] : aba.getRange(2, COL.STATUS, ult - 1, 1).getValues().map((v) => v[0]);
     info.fila = { pendentes: status.filter((x) => x === "pendente").length, corrigidas: status.filter((x) => x === "corrigida").length, coladas: status.filter((x) => x === "colada").length };
     info.gatilho = ScriptApp.getProjectTriggers().some((t) => t.getHandlerFunction() === "corrigirPendentes");
+    if (e.parameter.abas === "1") {
+      const pl = SpreadsheetApp.getActiveSpreadsheet();
+      info.abas = pl.getSheets().map((sh) => ({
+        nome: sh.getName(), linhas: sh.getLastRow(), colunas: sh.getLastColumn(),
+        formulaA: sh.getRange("A1:A3").getFormulas().map((r) => r[0]),
+        amostra: sh.getLastRow() ? sh.getRange(1, 1, Math.min(4, sh.getLastRow()), Math.min(12, Math.max(1, sh.getLastColumn()))).getDisplayValues() : []
+      }));
+    }
     if (e.parameter.modelos !== "1") return json_(info);
     const chave = props.getProperty("GEMINI_API_KEY");
     const corpo = { contents: [{ role: "user", parts: [{ text: "Responda só: ok" }] }], generationConfig: { temperature: 0 } };
@@ -441,6 +449,7 @@ function corrigirPendentes() {
   const lock = LockService.getScriptLock();
   if (!lock.tryLock(1000)) return;
   try {
+    try { manutencao_(); } catch (erro) { console.warn("Manutenção: " + erro); }
     const aba = abaRespostas_();
     const ultima = aba.getLastRow();
     if (ultima < 2) return;
@@ -495,23 +504,49 @@ function abaRespostas_() {
   return aba;
 }
 
-/** Rode uma vez pelo editor: cria as abas Respostas e Painel. */
+/** Separador de argumentos das fórmulas conforme o idioma da planilha (pt_BR usa ";"). */
+function sep_() {
+  const local = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetLocale() || "";
+  return /^(en|ja|zh|ko|th|he|hi)/.test(local) ? "," : ";";
+}
+
+/** Cria ou recria as abas Respostas, Painel e Coladas. */
 function configurar() {
   abaRespostas_();
   const planilha = SpreadsheetApp.getActiveSpreadsheet();
+  const S = sep_();
   let painel = planilha.getSheetByName("Painel");
   if (!painel) painel = planilha.insertSheet("Painel");
   painel.clear();
   painel.getRange("A1").setValue("Resumo por aluno e missão (considera todos os envios)").setFontWeight("bold");
   painel.getRange("A3").setFormula(
-    "=QUERY(Respostas!A:V, \"select B, C, D, avg(I), count(F), max(N), max(P), max(Q), max(K) " +
+    "=IFERROR(QUERY(Respostas!A:X" + S + " \"select B, C, D, avg(I), count(F), max(N), max(P), max(Q), max(K) " +
     "where B is not null group by B, C, D order by B, D " +
     "label avg(I) 'Nota média', count(F) 'Respostas enviadas', max(N) 'Leitura (s)', max(P) 'Leituras rápidas', " +
-    "max(Q) 'Saídas da página', max(K) 'Maior indício de IA'\", 1)"
+    "max(Q) 'Saídas da página', max(K) 'Maior indício de IA'\"" + S + " 1)" + S + " \"Ainda não há respostas corrigidas.\")"
   );
-  const coladas = planilha.getSheetByName("Coladas") || planilha.insertSheet("Coladas");
+  let coladas = planilha.getSheetByName("Coladas");
+  if (!coladas) coladas = planilha.insertSheet("Coladas");
   coladas.clear();
-  coladas.getRange("A1").setFormula("=QUERY(Respostas!A:V, \"select A, B, C, D, F, H where M = 'SIM'\", 1)");
+  coladas.getRange("A1").setFormula("=QUERY(Respostas!A:X" + S + " \"select A, B, C, D, F, H where M = 'SIM'\"" + S + " 1)");
+  // Remove a aba vazia criada junto com a planilha.
+  ["Página1", "Sheet1", "Planilha1"].forEach((nome) => {
+    const aba = planilha.getSheetByName(nome);
+    if (aba && aba.getLastRow() === 0 && planilha.getSheets().length > 1) planilha.deleteSheet(aba);
+  });
+}
+
+/** Ajustes que rodam sozinhos uma vez (chamado pela correção automática). */
+function manutencao_() {
+  const props = PropertiesService.getScriptProperties();
+  if (props.getProperty("VERSAO_ABAS") === "3") return;
+  // Apaga as linhas de teste criadas na instalação.
+  const aba = abaRespostas_();
+  for (let linha = aba.getLastRow(); linha >= 2; linha--) {
+    if (aba.getRange(linha, 2).getValue() === "TESTE (Claude)") aba.deleteRow(linha);
+  }
+  configurar();
+  props.setProperty("VERSAO_ABAS", "3");
 }
 
 function json_(obj) {
