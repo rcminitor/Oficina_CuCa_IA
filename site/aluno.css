@@ -70,6 +70,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -
 
 @media (min-width: 768px) {
   .topo-in, .abas, main { width: calc(100% - 4rem); }
+  .aba { flex: 1 1 auto; justify-content: center; }
 }
 @media (min-width: 768px) and (max-width: 1200px) {
   .abas { gap: .22rem; }
