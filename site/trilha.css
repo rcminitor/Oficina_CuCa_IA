@@ -1,6 +1,6 @@
 .trilha-main { max-width: 1080px; margin: 0 auto; padding: 1.25rem; }
-.aviso-adulto { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; padding: 1.2rem; border: 3px solid var(--laranja); border-radius: 12px; background: var(--surface); }
-.selo-adulto, .checkpoint { display: inline-block; padding: .35rem .65rem; border-radius: 999px; background: var(--laranja); color: #fff; font-weight: 800; }
+.aviso-apoio { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; padding: 1.2rem; border: 3px solid var(--laranja); border-radius: 12px; background: var(--surface); }
+.selo-apoio, .checkpoint { display: inline-block; padding: .35rem .65rem; border-radius: 999px; background: var(--laranja); color: #fff; font-weight: 800; }
 .controles-leitura { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 1rem 0; padding: .8rem; background: var(--acento-sup); border-radius: 10px; }
 .controles-leitura p { margin: 0; }
 .controles-leitura button, [data-copiar], .ouvir-missao { border: 0; border-radius: 7px; padding: .65rem .85rem; background: var(--acento); color: #fff; font-weight: 700; cursor: pointer; }
@@ -31,5 +31,5 @@ th { background: var(--acento-sup); }
 .glossario dd { margin: 0; }
 .rodape-trilha { padding: 1.2rem; text-align: center; background: var(--texto); color: var(--surface); }
 .rodape-trilha a { color: inherit; }
-@media (max-width: 720px) { .aviso-adulto { grid-template-columns: 1fr; } .glossario dl { grid-template-columns: 1fr; } }
+@media (max-width: 720px) { .aviso-apoio { grid-template-columns: 1fr; } .glossario dl { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

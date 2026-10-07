@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Trilha infantil, acessível e supervisionada para aprender IA, fontes, GitHub, Obsidian, Graphiti, CrewAI e Telegram sem receber o trabalho pronto.">
+  <meta name="description" content="Trilha acessível e passo a passo para adultos iniciantes aprenderem IA, fontes, GitHub, Obsidian, Graphiti, CrewAI e Telegram sem receber o trabalho pronto.">
   <title>Trilha do Aluno — Oficina Digital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
       <a class="aba" href="index.html">Início</a>
       <a class="aba" href="aluno.html">Manual <span class="cont">6</span></a>
       <a class="aba" href="tutorial.html">Tutorial <span class="cont">10</span></a>
-      <a class="aba" href="trilha.html" aria-current="page">Trilha infantil <span class="cont">15</span></a>
+      <a class="aba" href="trilha.html" aria-current="page">Trilha passo a passo <span class="cont">15</span></a>
       <a class="aba" href="#documentos">Documentos</a>
       <a class="aba" href="#prompts">Prompts</a>
       <a class="aba" href="#estudar">Onde estudar</a>
@@ -30,20 +30,20 @@
   </header>
 
   <main class="trilha-main">
-    <section class="aviso-adulto" aria-labelledby="titulo-adulto">
+    <section class="aviso-apoio" aria-labelledby="titulo-apoio">
       <div>
-        <span class="selo-adulto">🔒 ADULTO JUNTO</span>
-        <h2 id="titulo-adulto">Esta criança não fará contas nem guardará senhas sozinha</h2>
-        <p>O adulto cuida de cadastro, idade, telefone, instalação, chaves, tokens e publicação. A criança cuida da pergunta, das fontes, das escolhas, dos testes e da explicação.</p>
+        <span class="selo-apoio">🤝 APOIO QUANDO PRECISAR</span>
+        <h2 id="titulo-apoio">Você fará o trabalho. O professor ou monitor ajudará nas partes de segurança.</h2>
+        <p>Você cuida da pergunta, das fontes, das escolhas, dos testes e da explicação. Peça apoio para cadastro, instalação, chaves, tokens e publicação quando tiver dúvida.</p>
       </div>
       <details>
-        <summary>Regras importantes para o adulto</summary>
+        <summary>Regras importantes de segurança</summary>
         <ul>
-          <li>GitHub não permite conta para menores de 13 anos. Abaixo dessa idade, trabalhe localmente e publique pelo responsável.</li>
-          <li>Google, Gemini e NotebookLM dependem da idade, do país e da conta escolar ou familiar. Nunca altere a idade para liberar um serviço.</li>
-          <li>Obsidian deve ser usado localmente, sem Sync, Publish ou plugins comunitários.</li>
-          <li>Telegram, BotFather, telefone e token ficam sob controle do adulto.</li>
-          <li>Graphiti e CrewAI são demonstrações mediadas: a criança planeja; o adulto executa a infraestrutura.</li>
+          <li>Use seu próprio e-mail e uma senha forte. Não compartilhe a senha.</li>
+          <li>Nunca publique telefone, documentos, endereço, senha, chave de API ou token.</li>
+          <li>Comece o Obsidian localmente. Sync, Publish e plugins são opcionais e devem ser avaliados com calma.</li>
+          <li>O token do Telegram funciona como senha. Guarde no arquivo <code>.env</code>, que não vai para o GitHub.</li>
+          <li>Graphiti e CrewAI exigem mais configuração. Faça primeiro o desenho e só depois execute com apoio técnico.</li>
         </ul>
       </details>
     </section>
@@ -69,31 +69,31 @@
     <section class="missoes" aria-labelledby="titulo-missoes">
       <h2 id="titulo-missoes">15 missões pequenas</h2>
 
-      <article class="missao" id="m0"><h3>0. Proteja o que é secreto</h3><p><strong>Meta:</strong> separar o que pode ser publicado do que deve ficar secreto.</p><p><strong>Faça:</strong> desenhe dois cofres: “público” e “secreto”. Classifique nome completo, escola, foto, senha, token, código e desenho.</p><p><strong>Mostre:</strong> um áudio dizendo “não publico ___ porque ___”.</p><details><summary>Quero uma pista</summary><p>Token e senha abrem portas. Eles ficam no cofre secreto.</p></details><span class="checkpoint">Adulto confere antes de continuar</span></article>
+      <article class="missao" id="m0"><h3>0. Proteja o que é secreto</h3><p><strong>Meta:</strong> separar o que pode ser publicado do que deve ficar secreto.</p><p><strong>Faça:</strong> crie duas listas: “público” e “secreto”. Classifique nome completo, telefone, endereço, foto, senha, token, código e desenho.</p><p><strong>Mostre:</strong> um áudio dizendo “não publico ___ porque ___”.</p><details><summary>Quero uma pista</summary><p>Token e senha abrem portas. Eles ficam na lista secreta.</p></details><span class="checkpoint">Peça uma conferência antes da primeira publicação</span></article>
 
       <article class="missao" id="m1"><h3>1. Faça uma pergunta sua</h3><p><strong>Meta:</strong> escolher um problema pequeno que você quer entender.</p><p><strong>Faça:</strong> desenhe uma pessoa que precisa de ajuda e complete: “Como posso ajudar ___ a ___?”</p><p><strong>Documento:</strong> <code>docs/pergunta-do-projeto.md</code>.</p><p><strong>Explique:</strong> como você saberá que ajudou?</p></article>
 
-      <article class="missao" id="m2"><h3>2. Monte seu caderno no Obsidian</h3><p><strong>Meta:</strong> guardar ideias e mostrar como elas se ligam.</p><p><strong>Adulto:</strong> instala o <a href="https://obsidian.md/download" target="_blank" rel="noopener">Obsidian oficial</a>, sem criar conta.</p><p><strong>Faça:</strong> crie notas chamadas Pergunta, Ideias, Erros, Glossário, Fonte 1 e Fonte 2. Ligue cada nota a pelo menos outra.</p><p><strong>Mostre:</strong> uma captura do grafo local e diga por que ligou duas notas.</p><details><summary>Quero uma pista</summary><p>Use <code>[[Nome da nota]]</code> para criar uma ligação.</p></details></article>
+      <article class="missao" id="m2"><h3>2. Monte seu caderno no Obsidian</h3><p><strong>Meta:</strong> guardar ideias e mostrar como elas se ligam.</p><p><strong>Faça:</strong> baixe o <a href="https://obsidian.md/download" target="_blank" rel="noopener">Obsidian oficial</a>. Se a instalação parecer difícil, peça ajuda ao professor ou monitor. Não é necessário criar conta.</p><p>Crie notas chamadas Pergunta, Ideias, Erros, Glossário, Fonte 1 e Fonte 2. Ligue cada nota a pelo menos outra.</p><p><strong>Mostre:</strong> uma captura do grafo local e diga por que ligou duas notas.</p><details><summary>Quero uma pista</summary><p>Use <code>[[Nome da nota]]</code> para criar uma ligação.</p></details></article>
 
       <article class="missao" id="m3"><h3>3. Escolha documentos que ajudam</h3><p><strong>Meta:</strong> aprender a usar fontes, não respostas prontas.</p><p><strong>Inclua:</strong> enunciado da missão, rubrica simples, glossário, 2 ou 3 textos curtos aprovados, uma tabela quando ajudar e uma ficha de perguntas.</p><p><strong>Não inclua:</strong> trabalho de colega, livro inteiro sem licença, conversa privada, foto de pessoa, dado pessoal ou resposta pronta.</p><p><strong>Documento:</strong> <code>docs/fontes.md</code> com título, autor/site, link, data, duas ideias e “por que confio ou duvido”.</p></article>
 
-      <article class="missao" id="m4"><h3>4. Estude as fontes no NotebookLM</h3><p><strong>Meta:</strong> fazer perguntas e conferir a citação.</p><p><strong>Adulto:</strong> confirma se a conta pode usar o <a href="https://notebooklm.google/" target="_blank" rel="noopener">NotebookLM</a> e cria o espaço.</p><p><strong>Faça:</strong> adicione apenas as fontes aprovadas, faça uma pergunta curta, abra a citação e compare com o documento.</p><p><strong>Explique:</strong> qual trecho apoia a resposta? O que a fonte não respondeu?</p></article>
+      <article class="missao" id="m4"><h3>4. Estude as fontes no NotebookLM</h3><p><strong>Meta:</strong> fazer perguntas e conferir a citação.</p><p><strong>Faça:</strong> entre no <a href="https://notebooklm.google/" target="_blank" rel="noopener">NotebookLM</a> com sua conta Google e crie um notebook. Se não conseguir entrar, peça apoio.</p><p>Adicione apenas as fontes escolhidas, faça uma pergunta curta, abra a citação e compare com o documento.</p><p><strong>Explique:</strong> qual trecho apoia a resposta? O que a fonte não respondeu?</p></article>
 
-      <article class="missao" id="m5"><h3>5. Use o Gemini Notebook e o notebook de código</h3><p><strong>Meta:</strong> perceber que existem cadernos diferentes e escolher o certo.</p><p><strong>Gemini Notebook:</strong> caderno de projeto com fontes e perguntas. <strong>NotebookLM:</strong> ambiente dedicado ao estudo apoiado em fontes. <strong>Notebook de código:</strong> arquivo <code>.ipynb</code> com texto e células que executam Python.</p><h4>Parte A — caderno com fontes</h4><ol><li>O adulto confirma se a conta permite usar o Gemini Notebook.</li><li>Crie um caderno com nome curto, sem nome de criança ou escola.</li><li>Inclua o enunciado, a rubrica simples, o glossário, dois ou três textos curtos aprovados, uma tabela quando ajudar e a ficha de perguntas.</li><li>Faça a mesma pergunta usada no NotebookLM.</li><li>Abra a citação. Compare com a fonte original.</li><li>Registre duas diferenças e uma dúvida.</li></ol><p><strong>Não inclua:</strong> resposta pronta, trabalho de colega, livro inteiro sem licença, conversa privada, foto de pessoa ou dado pessoal.</p><h4>Parte B — notebook de código</h4><ol><li>O adulto abre <code>notebooks/laboratorio_gemini_graphify.ipynb</code> no Google Colab.</li><li>A criança encontra o botão ▶ e executa uma célula de cada vez.</li><li>Antes de clicar, diz o que acha que vai acontecer.</li><li>Depois, aponta a entrada, a saída e algo que mudou.</li><li>Registra um erro e como investigou.</li></ol><p><strong>Explique:</strong> qual caderno você usou em cada parte e por quê? Por que uma resposta bonita não prova que está correta?</p><span class="checkpoint">Adulto confirma a conta e cuida de chaves e instalações</span></article>
+      <article class="missao" id="m5"><h3>5. Use o Gemini Notebook e o notebook de código</h3><p><strong>Meta:</strong> perceber que existem cadernos diferentes e escolher o certo.</p><p><strong>Gemini Notebook:</strong> caderno de projeto com fontes e perguntas. <strong>NotebookLM:</strong> ambiente dedicado ao estudo apoiado em fontes. <strong>Notebook de código:</strong> arquivo <code>.ipynb</code> com texto e células que executam Python.</p><h4>Parte A — caderno com fontes</h4><ol><li>Entre no Gemini Notebook com sua conta. Se o recurso não aparecer, peça apoio ao professor.</li><li>Crie um caderno com nome curto, sem telefone, endereço ou documento pessoal.</li><li>Inclua o enunciado, a rubrica simples, o glossário, dois ou três textos curtos escolhidos, uma tabela quando ajudar e a ficha de perguntas.</li><li>Faça a mesma pergunta usada no NotebookLM.</li><li>Abra a citação. Compare com a fonte original.</li><li>Registre duas diferenças e uma dúvida.</li></ol><p><strong>Não inclua:</strong> resposta pronta, trabalho de colega, livro inteiro sem licença, conversa privada, foto de pessoa ou dado pessoal.</p><h4>Parte B — notebook de código</h4><ol><li>Abra <code>notebooks/laboratorio_gemini_graphify.ipynb</code> no Google Colab.</li><li>Encontre o botão ▶ e execute uma célula de cada vez.</li><li>Antes de clicar, diga o que acha que vai acontecer.</li><li>Depois, aponte a entrada, a saída e algo que mudou.</li><li>Registre um erro e como investigou.</li></ol><p><strong>Explique:</strong> qual caderno você usou em cada parte e por quê? Por que uma resposta bonita não prova que está correta?</p><span class="checkpoint">Peça apoio para chaves, instalações ou mensagens de erro difíceis</span></article>
 
       <article class="missao" id="m6"><h3>6. Melhore um prompt</h3><p><strong>Meta:</strong> pedir ajuda sem pedir a resposta final.</p><p><strong>Faça:</strong> complete objetivo, fonte, formato e regra de incerteza. Teste, confira e melhore uma parte.</p><p><strong>Documento:</strong> <code>docs/prompts.md</code> com antes, depois, fonte conferida e o que mudou.</p><p><strong>Explique:</strong> qual mudança deixou o pedido mais seguro ou claro?</p></article>
 
       <article class="missao" id="m7"><h3>7. Escolha prompt, skill ou ambos</h3><p><strong>Prompt:</strong> ajuda em um pedido pontual. <strong>Skill:</strong> organiza uma rotina que será repetida. <strong>Ambos:</strong> a skill guarda o método e o prompt adapta um caso.</p><p><strong>Faça:</strong> escolha uma opção, teste e complete: “Usei ___ porque ___. Minha prova é ___. Um humano ainda precisa ___.”</p><p><strong>Documento:</strong> <code>docs/prompts-ou-skill.md</code>.</p></article>
 
-      <article class="missao" id="m8"><h3>8. Aprenda Git e GitHub desde o início</h3><p><strong>Git:</strong> guarda a memória das mudanças. <strong>GitHub:</strong> hospeda e compartilha o repositório.</p><h4>Parte do adulto — criar a conta, somente quando a idade permitir</h4><ol><li>Leia os termos e confira a idade mínima. Menor de 13 anos não cria conta.</li><li>Abra <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.</li><li>O adulto informa o próprio e-mail ou a conta permitida, cria uma senha forte e escolhe um nome de usuário sem nome completo, escola ou ano de nascimento.</li><li>Abra o e-mail de verificação e digite o código somente no site <code>github.com</code>.</li><li>Entre na conta e ative a autenticação em dois fatores com o adulto.</li><li>Não publique ainda. Primeiro faça a missão de segurança.</li></ol><h4>Parte da criança — entender antes de clicar</h4><ol><li>Mostre onde aparecem o nome do repositório, os arquivos e o <code>README.md</code>.</li><li>Aprenda cinco cartões: arquivo, repositório, commit, branch e push.</li><li>Crie ou use o repositório preparado pelo adulto.</li><li>Mude uma frase pequena e veja o antes e o depois.</li><li>Revise a lista de arquivos. Pare se aparecer <code>.env</code>, token, banco local, foto ou dado pessoal.</li><li>Escreva uma mensagem de commit que diga o que mudou e por quê.</li><li>O adulto autoriza o envio. Depois a criança confere a mudança no site.</li></ol><details><summary>Frases para eu explicar</summary><p>“Meu repositório guarda ___. Meu commit mostra ___. Eu não publiquei ___ porque ___. Usei uma branch quando ___.”</p></details><p><strong>Explique:</strong> o que a “fotografia da mudança” guarda e por quê?</p><span class="checkpoint">Adulto cria a conta, ativa a proteção e autoriza publicação</span></article>
+      <article class="missao" id="m8"><h3>8. Aprenda Git e GitHub desde o início</h3><p><strong>Git:</strong> guarda a memória das mudanças. <strong>GitHub:</strong> hospeda e compartilha o repositório.</p><h4>Parte A — criar sua conta</h4><ol><li>Abra <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.</li><li>Informe seu e-mail.</li><li>Crie uma senha forte e exclusiva.</li><li>Escolha um nome de usuário que você consiga lembrar. Evite telefone, documento ou endereço.</li><li>Abra o e-mail de verificação e digite o código somente no site <code>github.com</code>.</li><li>Entre na conta e ative a autenticação em dois fatores. Peça apoio se esta parte parecer difícil.</li><li>Não publique ainda. Primeiro faça a missão de segurança.</li></ol><h4>Parte B — entender antes de clicar</h4><ol><li>Mostre onde aparecem o nome do repositório, os arquivos e o <code>README.md</code>.</li><li>Aprenda cinco cartões: arquivo, repositório, commit, branch e push.</li><li>Crie um repositório ou use o repositório preparado para a turma.</li><li>Mude uma frase pequena e veja o antes e o depois.</li><li>Revise a lista de arquivos. Pare se aparecer <code>.env</code>, token, banco local, foto ou dado pessoal.</li><li>Escreva uma mensagem de commit que diga o que mudou e por quê.</li><li>Envie a mudança. Depois confira no site do GitHub.</li></ol><details><summary>Frases para eu explicar</summary><p>“Meu repositório guarda ___. Meu commit mostra ___. Eu não publiquei ___ porque ___. Usei uma branch quando ___.”</p></details><p><strong>Explique:</strong> o que a “fotografia da mudança” guarda e por quê?</p><span class="checkpoint">Peça uma revisão antes da primeira publicação</span></article>
 
       <article class="missao" id="m9"><h3>9. Crie uma skill somente se precisar</h3><p><strong>Meta:</strong> transformar uma rotina repetível em instruções.</p><p><strong>Faça:</strong> escreva objetivo, quando usar, entradas, passos, limites, checagem e um exemplo de outro assunto.</p><p><strong>Explique:</strong> o que continua exigindo julgamento humano?</p></article>
 
-      <article class="missao" id="m10"><h3>10. Desenhe o Graphiti antes do código</h3><p><strong>Meta:</strong> transformar fatos em coisas ligadas por setas e perceber mudanças no tempo.</p><p><strong>Faça:</strong> use três fatos fictícios. Desenhe nós, relações, fonte e data. Depois o adulto executa o <a href="https://help.getzep.com/graphiti/getting-started/quick-start" target="_blank" rel="noopener">exemplo oficial do Graphiti</a>.</p><p><strong>Documentos:</strong> <code>graphiti/episodios.json</code> e <code>graphiti/grafo-esperado.md</code>.</p><p><strong>Explique:</strong> o resultado confirmou sua previsão?</p></article>
+      <article class="missao" id="m10"><h3>10. Desenhe o Graphiti antes do código</h3><p><strong>Meta:</strong> transformar fatos em coisas ligadas por setas e perceber mudanças no tempo.</p><p><strong>Faça:</strong> use três fatos fictícios. Desenhe nós, relações, fonte e data. Depois execute o <a href="https://help.getzep.com/graphiti/getting-started/quick-start" target="_blank" rel="noopener">exemplo oficial do Graphiti</a> com apoio técnico, se necessário.</p><p><strong>Documentos:</strong> <code>graphiti/episodios.json</code> e <code>graphiti/grafo-esperado.md</code>.</p><p><strong>Explique:</strong> o resultado confirmou sua previsão?</p></article>
 
-      <article class="missao" id="m11"><h3>11. Faça um teatro de CrewAI</h3><p><strong>Meta:</strong> entender agentes antes de programar.</p><p>Uma criança faz o papel de <strong>pesquisador</strong>. Outra faz o papel de <strong>conferidor</strong>. Cada uma recebe uma tarefa, uma entrada, uma saída e um limite.</p><p><strong>Adulto:</strong> demonstra no máximo dois agentes com a <a href="https://docs.crewai.com/core-concepts/Agents" target="_blank" rel="noopener">documentação do CrewAI</a>.</p><p><strong>Documentos:</strong> configurações YAML e <code>docs/por-que-estes-agentes.md</code>.</p><p><strong>Explique:</strong> por que não basta um agente? Onde um humano confere?</p></article>
+      <article class="missao" id="m11"><h3>11. Simule uma equipe do CrewAI</h3><p><strong>Meta:</strong> entender agentes antes de programar.</p><p>Um aluno faz o papel de <strong>pesquisador</strong>. Outro faz o papel de <strong>conferidor</strong>. Cada pessoa recebe uma tarefa, uma entrada, uma saída e um limite.</p><p>Depois, demonstre no máximo dois agentes com a <a href="https://docs.crewai.com/core-concepts/Agents" target="_blank" rel="noopener">documentação do CrewAI</a>. Peça apoio para instalar e configurar.</p><p><strong>Documentos:</strong> configurações YAML e <code>docs/por-que-estes-agentes.md</code>.</p><p><strong>Explique:</strong> por que não basta um agente? Onde uma pessoa confere?</p></article>
 
-      <article class="missao" id="m12"><h3>12. Planeje o bot do Telegram</h3><p><strong>Meta:</strong> desenhar uma conversa segura entre pessoa, programa e resposta.</p><p><strong>Criança:</strong> planeja <code>/start</code>, <code>/ajuda</code> e um comando do projeto, usando dados fictícios.</p><p><strong>Adulto:</strong> controla telefone, conta, BotFather, servidor e token seguindo o <a href="https://core.telegram.org/bots/tutorial" target="_blank" rel="noopener">tutorial oficial</a>.</p><p><strong>Documentos:</strong> <code>telegram/comandos.md</code> e <code>telegram/testes.md</code>.</p><span class="checkpoint">Token é senha: nunca aparece no site ou no GitHub</span></article>
+      <article class="missao" id="m12"><h3>12. Planeje o bot do Telegram</h3><p><strong>Meta:</strong> desenhar uma conversa segura entre pessoa, programa e resposta.</p><p><strong>Faça:</strong> planeje <code>/start</code>, <code>/ajuda</code> e um comando do projeto, usando dados fictícios.</p><p>Depois, crie e teste o bot seguindo o <a href="https://core.telegram.org/bots/tutorial" target="_blank" rel="noopener">tutorial oficial</a>. Peça ajuda para configurar servidor e variáveis de ambiente.</p><p><strong>Documentos:</strong> <code>telegram/comandos.md</code> e <code>telegram/testes.md</code>.</p><span class="checkpoint">Token é senha: nunca aparece no site ou no GitHub</span></article>
 
       <article class="missao" id="m13"><h3>13. Ligue duas partes de cada vez</h3><p><strong>Meta:</strong> testar sem se perder.</p><p>Teste primeiro cada peça. Depois ligue apenas duas: mensagem → programa; programa → banco; banco → resposta. Registre onde deu erro e o que mudou.</p><p><strong>Explique:</strong> onde o sistema pode errar e quem deve perceber?</p></article>
 
@@ -116,7 +116,7 @@
         <tr><td><code>crew/config/</code></td><td>Papéis e tarefas de no máximo dois agentes.</td></tr>
         <tr><td><code>telegram/</code></td><td>Comandos e testes com dados fictícios.</td></tr>
         <tr><td><code>.env.example</code> e <code>.gitignore</code></td><td>Nomes vazios e proteção de segredos.</td></tr>
-        <tr><td><code>docs/seguranca.md</code></td><td>Privacidade, autoria, segredos e aprovação adulta.</td></tr>
+        <tr><td><code>docs/seguranca.md</code></td><td>Privacidade, autoria, segredos e revisão de segurança.</td></tr>
       </tbody></table></div>
     </section>
 
@@ -157,39 +157,39 @@ Espere minha nova tentativa.</pre><button type="button" data-copiar="prompt-revi
       <h2>Exemplo de skill — outro assunto</h2>
       <p>Este exemplo ensina a forma sem resolver o projeto.</p>
       <pre id="skill-exemplo">---
-name: arrumar-mochila
-description: Ajuda a conferir a mochila antes da escola.
+name: preparar-reuniao
+description: Ajuda a conferir os materiais antes de uma reunião.
 ---
 # Quando usar
-Na noite anterior a uma aula.
+Antes de uma reunião de trabalho ou estudo.
 # Entradas
-Horário do dia seguinte e lista de materiais.
+Assunto, horário, participantes e lista de materiais.
 # Passos
-1. Ler uma aula por vez.
-2. Separar o material.
-3. Marcar o que entrou.
-4. Conferir novamente.
+1. Ler o assunto e o horário.
+2. Separar os documentos necessários.
+3. Anotar duas perguntas.
+4. Conferir local, link e materiais.
 # Limite
-Um adulto confere remédios, documentos e objetos frágeis.
+Não envia convites nem compartilha documentos sem autorização.
 # Checagem
-Comparar a mochila com o horário sem olhar a lista marcada.</pre>
+Comparar os materiais com a pauta da reunião.</pre>
       <button type="button" data-copiar="skill-exemplo">Copiar exemplo</button>
       <p><strong>Agora pense:</strong> qual rotina do seu projeto realmente se repete? Se ela não se repete, talvez um prompt seja suficiente.</p>
     </section>
 
     <section id="estudar" class="secao-trilha">
       <h2>Onde estudar antes de fazer</h2>
-      <p>O adulto abre e confere cada link. Vídeos devem ter legenda e ser vistos em pequenos trechos.</p>
+      <p>Abra um recurso por vez. Prefira vídeos com legenda, pause depois de cada ação e repita no seu computador.</p>
       <div class="recursos-grid">
-        <article><h3>GitHub</h3><a href="https://docs.github.com/pt/get-started/onboarding/getting-started-with-your-github-account" target="_blank" rel="noopener">Site oficial: conta e primeiros passos</a><a href="https://docs.github.com/en/get-started/start-your-journey" target="_blank" rel="noopener">Site oficial: jornada inicial</a><a href="https://www.youtube.com/watch?v=5BYm7UdCrX0" target="_blank" rel="noopener">Vídeo em português: Criando o primeiro Repositório — Curso em Vídeo</a><small>Assista com um adulto. Pause depois de cada clique.</small></article>
+        <article><h3>GitHub</h3><a href="https://docs.github.com/pt/get-started/onboarding/getting-started-with-your-github-account" target="_blank" rel="noopener">Site oficial: conta e primeiros passos</a><a href="https://docs.github.com/en/get-started/start-your-journey" target="_blank" rel="noopener">Site oficial: jornada inicial</a><a href="https://www.youtube.com/watch?v=5BYm7UdCrX0" target="_blank" rel="noopener">Vídeo em português: Criando o primeiro Repositório — Curso em Vídeo</a><small>Pause depois de cada clique e repita a ação.</small></article>
         <article><h3>Obsidian</h3><a href="https://help.obsidian.md/" target="_blank" rel="noopener">Site oficial: ajuda do Obsidian</a><a href="https://www.youtube.com/watch?v=BgzRGat8WfE" target="_blank" rel="noopener">Vídeo em português: Obsidian para Iniciantes</a><small>Veja somente até criar um cofre, uma nota e uma ligação.</small></article>
-        <article><h3>NotebookLM</h3><a href="https://support.google.com/notebooklm/" target="_blank" rel="noopener">Site oficial: ajuda do NotebookLM</a><a href="https://www.youtube.com/watch?v=Pm8NKFfu9Ec" target="_blank" rel="noopener">Vídeo em português: NotebookLM — tutorial completo</a><small>O adulto seleciona apenas o trecho sobre fontes e citações.</small></article>
+        <article><h3>NotebookLM</h3><a href="https://support.google.com/notebooklm/" target="_blank" rel="noopener">Site oficial: ajuda do NotebookLM</a><a href="https://www.youtube.com/watch?v=Pm8NKFfu9Ec" target="_blank" rel="noopener">Vídeo em português: NotebookLM — tutorial completo</a><small>Comece pelos trechos sobre fontes, perguntas e citações.</small></article>
         <article><h3>Gemini Notebook e Colab</h3><a href="https://support.google.com/gemini/answer/16972047" target="_blank" rel="noopener">Site oficial: ajuda do Gemini Notebook</a><a href="https://support.google.com/gemininotebook/answer/16215270" target="_blank" rel="noopener">Site oficial: adicionar fontes</a><a href="https://colab.research.google.com/notebooks/welcome.ipynb" target="_blank" rel="noopener">Notebook visual: primeiros passos no Google Colab</a></article>
-        <article><h3>Graphiti</h3><a href="https://help.getzep.com/graphiti/getting-started/welcome" target="_blank" rel="noopener">Site oficial: o que é Graphiti</a><a href="https://www.youtube.com/watch?v=sygRBjILDn8" target="_blank" rel="noopener">Vídeo em inglês: Temporal Knowledge Graphs — Zep AI</a><small>Use como demonstração visual do professor. A criança desenha o grafo antes do código.</small></article>
-        <article><h3>CrewAI</h3><a href="https://docs.crewai.com/core-concepts/Agents" target="_blank" rel="noopener">Site oficial: agentes e papéis</a><a href="https://www.youtube.com/watch?v=vIzlj0oObM0" target="_blank" rel="noopener">Vídeo em português: Montando uma Equipe IA com CrewAI</a><small>Material técnico: o adulto escolhe um trecho curto depois do teatro de papéis.</small></article>
+        <article><h3>Graphiti</h3><a href="https://help.getzep.com/graphiti/getting-started/welcome" target="_blank" rel="noopener">Site oficial: o que é Graphiti</a><a href="https://www.youtube.com/watch?v=sygRBjILDn8" target="_blank" rel="noopener">Vídeo em inglês: Temporal Knowledge Graphs — Zep AI</a><small>Use como demonstração visual. Desenhe o grafo antes do código.</small></article>
+        <article><h3>CrewAI</h3><a href="https://docs.crewai.com/core-concepts/Agents" target="_blank" rel="noopener">Site oficial: agentes e papéis</a><a href="https://www.youtube.com/watch?v=vIzlj0oObM0" target="_blank" rel="noopener">Vídeo em português: Montando uma Equipe IA com CrewAI</a><small>É um material técnico. Comece pela simulação de papéis e assista a um trecho curto.</small></article>
         <article><h3>Telegram</h3><a href="https://core.telegram.org/bots/tutorial" target="_blank" rel="noopener">Tutorial oficial de bots</a><a href="https://core.telegram.org/bots/faq" target="_blank" rel="noopener">Perguntas frequentes</a></article>
-        <article><h3>FastAPI e ambiente Python</h3><a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" rel="noopener">Site oficial: tutorial do FastAPI</a><a href="https://fastapi.tiangolo.com/virtual-environments/" target="_blank" rel="noopener">Site oficial: ambiente virtual</a><small>O adulto executa; a criança identifica pasta, pacote, servidor, entrada e resposta.</small></article>
-        <article><h3>Segurança</h3><a href="https://docs.github.com/en/get-started/learning-to-code/storing-your-secrets-safely" target="_blank" rel="noopener">Guardar segredos</a><a href="https://support.google.com/gemini/answer/16109150?hl=pt-BR" target="_blank" rel="noopener">Gemini para famílias</a></article>
+        <article><h3>FastAPI e ambiente Python</h3><a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" rel="noopener">Site oficial: tutorial do FastAPI</a><a href="https://fastapi.tiangolo.com/virtual-environments/" target="_blank" rel="noopener">Site oficial: ambiente virtual</a><small>Identifique pasta, pacote, servidor, entrada e resposta. Peça apoio se a instalação falhar.</small></article>
+        <article><h3>Segurança</h3><a href="https://docs.github.com/en/get-started/learning-to-code/storing-your-secrets-safely" target="_blank" rel="noopener">Site oficial: como guardar segredos</a></article>
       </div>
     </section>
 
