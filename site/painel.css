@@ -5,6 +5,15 @@
 .pc > h2 { margin: 0 0 .4rem; font-size: 1.5rem; }
 .sub-pc { color: var(--suave); margin: 0 0 1.2rem; }
 
+/* ---- modo demonstração ---- */
+.modo-demo { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .7rem 1.2rem; border-color: var(--verde); background: var(--verde-sup); }
+.modo-demo h2 { margin: .1rem 0 .25rem; }
+.modo-demo p { margin: 0; }
+.estado-modo { grid-column: 1 / -1; color: var(--verde); font-weight: 700; }
+body[data-modo-painel="api"] .estado-modo { color: var(--acento); }
+.configuracao-avancada > summary { cursor: pointer; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; }
+.configuracao-avancada[open] > summary { margin-bottom: 1rem; }
+
 /* ---- estado da API ---- */
 .estado-linha { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .estado-texto { flex: 1; min-width: 12rem; }
@@ -59,6 +68,8 @@ dialog h2 { margin: 0 0 .4rem; font-size: 1.4rem; }
 
 @media (max-width: 560px) {
   .pc { padding: 1.2rem 1.1rem 1.4rem; }
+  .modo-demo { grid-template-columns: 1fr; }
+  .estado-modo { grid-column: auto; }
   .linha-consulta .btn { width: 100%; justify-content: center; }
   .painel .btn { width: 100%; justify-content: center; }
 }
