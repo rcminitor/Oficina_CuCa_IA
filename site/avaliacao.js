@@ -19,7 +19,7 @@
   const limparDadosPessoais = () => {
     try {
       Object.keys(localStorage)
-        .filter((k) => (k.startsWith("oficina_") || k.startsWith("oficina-concluida-")) && k !== "oficina_tema")
+        .filter((k) => (k.startsWith("oficina_") || k.startsWith("oficina-concluida-") || k.startsWith("oficina-verificacao-") || k.startsWith("oficina-coladas-") || k.startsWith("oficina-enviada-")) && k !== "oficina_tema")
         .forEach((k) => localStorage.removeItem(k));
     } catch (_) {}
   };

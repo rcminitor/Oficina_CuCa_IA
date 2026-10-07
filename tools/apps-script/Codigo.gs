@@ -251,6 +251,7 @@ function consultarEnvio_(envioId) {
 function doPost(e) {
   try {
     const dados = JSON.parse(e.postData.contents);
+    if (dados.tipo === "verificacao") return json_(receberVerificacao_(dados));
     validar_(dados);
     const turma = buscarNaTurma_(dados.matricula);
     if (turma === false) return json_({ ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma. Confira o número ou fale com o professor." });
@@ -524,6 +525,45 @@ function abaRespostas_() {
   return aba;
 }
 
+
+// ---------- Verificação de etapa (5 perguntas no fim de cada página do caminho) ----------
+const CAB_VERIF = ["Data", "Aluno", "Matrícula", "Página", "Etapa", "O que fez", "Ferramenta ou fonte", "Dificuldade", "Como resolveu ou conferiu", "Comprovante", "Colou em"];
+const NOMES_VERIF = { fez: "O que fez", escolha: "Ferramenta ou fonte", dificuldade: "Dificuldade", conferencia: "Como resolveu ou conferiu", comprovante: "Comprovante" };
+
+function abaVerificacoes_() {
+  const planilha = SpreadsheetApp.getActiveSpreadsheet();
+  let aba = planilha.getSheetByName("Verificações");
+  if (!aba) {
+    aba = planilha.insertSheet("Verificações");
+    aba.getRange(1, 1, 1, CAB_VERIF.length).setValues([CAB_VERIF]).setFontWeight("bold");
+    aba.setFrozenRows(1);
+    aba.getRange("C:C").setNumberFormat("@");
+  }
+  return aba;
+}
+
+function receberVerificacao_(d) {
+  if (!d.aluno || !d.matricula || !d.pagina || !d.respostas) return { ok: false, erro: "Envio incompleto." };
+  const turma = buscarNaTurma_(d.matricula);
+  if (turma === false) return { ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma." };
+  if (!dentroDoLimite_(d.matricula)) return { ok: false, erro: "limite", mensagem: "Muitos envios seguidos." };
+  const nome = turma && turma.nome ? turma.nome : String(d.aluno).slice(0, 120);
+  const r = d.respostas || {};
+  const corta = (t) => String(t || "").slice(0, 1000);
+  const coladas = (Array.isArray(d.coladas) ? d.coladas : []).map((k) => NOMES_VERIF[k] || k).join(", ");
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    const aba = abaVerificacoes_();
+    aba.appendRow([new Date(), nome, String(d.matricula).slice(0, 40), String(d.pagina).slice(0, 60), String(d.titulo || "").slice(0, 80),
+      corta(r.fez), corta(r.escolha), corta(r.dificuldade), corta(r.conferencia), corta(r.comprovante), coladas]);
+  } finally {
+    lock.releaseLock();
+  }
+  try { atualizarPainel_(); } catch (erro) { console.warn("Painel: " + erro); }
+  return { ok: true };
+}
+
 const LIMITE_ENVIOS_POR_HORA = 30;
 
 function normalizarMatricula_(m) {
@@ -599,13 +639,26 @@ function atualizarPainel_() {
     });
   }
 
+  // Etapas do caminho verificadas por aluno (aba Verificações).
+  const verif = planilha.getSheetByName("Verificações");
+  const etapasPorAluno = {};
+  if (verif && verif.getLastRow() >= 2) {
+    verif.getRange(2, 1, verif.getLastRow() - 1, 4).getValues().forEach((v) => {
+      const mat = normalizarMatricula_(v[2]);
+      if (!mat) return;
+      (etapasPorAluno[mat] = etapasPorAluno[mat] || {})[v[3]] = true;
+      if (!alunos[mat]) alunos[mat] = { nome: v[1], matricula: String(v[2]), missoes: {} };
+    });
+  }
+
   const COR = { boa: "#d1f2dc", media: "#fff1c2", baixa: "#fde0dc", fila: "#e5e7eb", alerta: "#f9c6c0", vazia: "#ffffff" };
   const linhas = [], cores = [], notasCel = [];
   Object.keys(alunos).sort((x, y) =>
     String(alunos[x].turma || "~").localeCompare(String(alunos[y].turma || "~"), "pt-BR") ||
     String(alunos[x].nome).localeCompare(String(alunos[y].nome), "pt-BR")).forEach((mat) => {
     const a = alunos[mat];
-    const linha = [a.nome, a.matricula, a.turma || "", 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", "", ""];
+    const etapas = Object.keys(etapasPorAluno[mat] || {}).length;
+    const linha = [a.nome, a.matricula, a.turma || "", etapas, 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", "", "", ""];
     const finais = [];
     missoes.forEach((m) => {
       const info = a.missoes[m];
@@ -629,8 +682,8 @@ function atualizarPainel_() {
       if (rapidas) avisos.push(rapidas + " leitura(s) rápida(s)");
       nota.push("Último envio: " + media + "/10 · " + tentativas + " envio(s)" + (avisos.length ? "\n⚠ " + avisos.join(", ") : ""));
     });
-    linha[3] = finais.length;
-    linha[4] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
+    linha[4] = finais.length;
+    linha[5] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
     linhas.push(linha); cores.push(cor); notasCel.push(nota);
   });
 
@@ -643,18 +696,18 @@ function atualizarPainel_() {
   });
   painel.getRange(1, 1).setValue("Painel da turma: última nota de cada missão (passe o mouse na célula para ver tentativas e alertas)").setFontWeight("bold");
   painel.getRange(2, 1).setValue("Verde ≥ 7 · Amarelo 5 a 6,9 · Rosa < 5 · Vermelho = colou ou indício de IA · Cinza = correção na fila · Atualiza a cada 5 minutos.").setFontColor("#555555");
-  const cab = ["Aluno", "Matrícula", "Turma", "Missões feitas", "Média"].concat(titulos);
+  const cab = ["Aluno", "Matrícula", "Turma", "Etapas verificadas", "Missões feitas", "Média"].concat(titulos);
   painel.getRange(4, 1, 1, cab.length).setValues([cab]).setFontWeight("bold").setBackground("#eef0ff");
   if (linhas.length) {
     const r = painel.getRange(5, 1, linhas.length, cab.length);
     r.setValues(linhas); r.setBackgrounds(cores); r.setNotes(notasCel);
-    painel.getRange(5, 6, linhas.length, missoes.length).setHorizontalAlignment("center");
+    painel.getRange(5, 7, linhas.length, missoes.length).setHorizontalAlignment("center");
   } else {
     painel.getRange(5, 1).setValue("Ainda não há respostas.");
   }
   painel.setFrozenRows(4); painel.setFrozenColumns(2);
   painel.setColumnWidth(1, 220);
-  painel.getRange(4, 6, 1, missoes.length).setHorizontalAlignment("center");
+  painel.getRange(4, 7, 1, missoes.length).setHorizontalAlignment("center");
 }
 
 function atualizarPainel() { atualizarPainel_(); }
@@ -669,6 +722,7 @@ function sep_() {
 function configurar() {
   abaRespostas_();
   abaTurma_();
+  abaVerificacoes_();
   const planilha = SpreadsheetApp.getActiveSpreadsheet();
   const S = sep_();
   atualizarPainel_();

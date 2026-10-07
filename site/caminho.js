@@ -55,6 +55,7 @@
         <label>4. Como resolveu ou conferiu?<textarea data-resposta="conferencia" rows="2" placeholder="Eu resolvi ou conferi..."></textarea></label>
         <label>5. Qual comprovante guardou?<textarea data-resposta="comprovante" rows="2" placeholder="Guardei um print, foto ou áudio de..."></textarea></label>
       </div>
+      <div class="ident-verificacao"></div>
       <p class="estado-verificacao" role="status" aria-live="polite"></p>
     </details>
     <div class="acoes-etapa">
@@ -81,16 +82,100 @@
     return campos.every((campo) => campo.value.trim().length >= 3);
   }
 
+  // ---------- Envio das respostas ao professor (planilha) ----------
+  const lerJSON = (k, padrao) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : padrao; } catch (_) { return padrao; } };
+  const gravarJSON = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} };
+  const escapar = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const urlEnvio = () => (window.OFICINA_AVALIACAO || {}).url || "";
+  if (!window.OFICINA_AVALIACAO) {
+    const cfg = document.createElement("script");
+    cfg.src = "avaliacao-config.js?v=2";
+    cfg.onload = () => { desenharIdentidade(); atualizarLiberacao(); };
+    document.head.append(cfg);
+  }
+  const aluno = () => { const a = lerJSON("oficina_aluno", {}); return a.confirmado && a.nome && a.matricula ? a : null; };
+  const coladas = new Set(lerJSON(`oficina-coladas-${atual.arquivo}`, []));
+  campos.forEach((campo) => {
+    const marcar = () => { coladas.add(campo.dataset.resposta); gravarJSON(`oficina-coladas-${atual.arquivo}`, [...coladas]); };
+    campo.addEventListener("paste", marcar);
+    campo.addEventListener("drop", marcar);
+    campo.addEventListener("input", () => {
+      if (!campo.value.trim()) { coladas.delete(campo.dataset.resposta); gravarJSON(`oficina-coladas-${atual.arquivo}`, [...coladas]); }
+    });
+  });
+  const caixaIdent = secao.querySelector(".ident-verificacao");
+  function limparAluno() {
+    try {
+      Object.keys(localStorage)
+        .filter((k) => (k.startsWith("oficina_") || k.startsWith("oficina-concluida-") || k.startsWith("oficina-verificacao-") || k.startsWith("oficina-coladas-") || k.startsWith("oficina-enviada-")) && k !== "oficina_tema")
+        .forEach((k) => localStorage.removeItem(k));
+    } catch (_) {}
+  }
+  function desenharIdentidade() {
+    if (!urlEnvio()) { caixaIdent.innerHTML = ""; return; }
+    const a = aluno();
+    if (a) {
+      caixaIdent.innerHTML = `<p class="ident-linha">Suas respostas vão para o professor como <strong>${escapar(a.nome)}</strong> (${escapar(a.matricula)}). <button type="button" class="ident-sair">Não sou eu</button></p>`;
+      caixaIdent.querySelector(".ident-sair").addEventListener("click", () => { limparAluno(); location.reload(); });
+      return;
+    }
+    caixaIdent.innerHTML = `
+      <form class="ident-mini" novalidate>
+        <p><strong>Quem é você?</strong> Suas respostas vão para o professor.</p>
+        <label>Nome <input name="nome" autocomplete="off"></label>
+        <label>Matrícula <input name="matricula" autocomplete="off" inputmode="numeric"></label>
+        <button type="submit">Confirmar</button>
+        <span class="ident-mini-status" role="status" aria-live="polite"></span>
+      </form>`;
+    const form = caixaIdent.querySelector("form");
+    const st = caixaIdent.querySelector(".ident-mini-status");
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const nome = form.nome.value.trim(), matricula = form.matricula.value.trim();
+      if (!nome || !matricula) { st.textContent = "Escreva nome e matrícula."; return; }
+      st.textContent = "Conferindo…";
+      let nomeOficial = "";
+      try {
+        const r = await (await fetch(`${urlEnvio()}?matricula=${encodeURIComponent(matricula)}`)).json();
+        if (!r.ok) { st.textContent = r.mensagem || "Matrícula não encontrada."; return; }
+        nomeOficial = r.nome || "";
+      } catch (_) { /* sem internet: segue e o envio confere depois */ }
+      gravarJSON("oficina_aluno", { nome: nomeOficial || nome, matricula, confirmado: true });
+      gravarJSON("oficina_ultimo_uso", Date.now());
+      desenharIdentidade();
+      atualizarLiberacao();
+    });
+  }
+  function enviarVerificacao() {
+    const a = aluno();
+    if (!urlEnvio() || !a) return;
+    const dados = {
+      tipo: "verificacao", aluno: a.nome, matricula: a.matricula,
+      pagina: atual.arquivo, titulo: atual.nome,
+      respostas: Object.fromEntries(campos.map((c) => [c.dataset.resposta, c.value.trim()])),
+      coladas: [...coladas]
+    };
+    const assinatura = JSON.stringify([a.matricula, dados.respostas, dados.coladas]);
+    if (lerJSON(`oficina-enviada-${atual.arquivo}`, "") === assinatura) return;   // já enviado igual
+    gravarJSON(`oficina-enviada-${atual.arquivo}`, assinatura);
+    try {
+      fetch(urlEnvio(), { method: "POST", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) });
+    } catch (_) { /* tenta de novo na próxima vez */ }
+  }
+
   function atualizarLiberacao() {
     const respostasProntas = verificacaoCompleta();
-    const liberado = respostasProntas && checkbox.checked;
+    const identificado = !urlEnvio() || !!aluno();
+    const liberado = respostasProntas && checkbox.checked && identificado;
     continuar.classList.toggle("bloqueada", !liberado);
     continuar.setAttribute("aria-disabled", liberado ? "false" : "true");
     estadoVerificacao.textContent = !respostasProntas
       ? "Responda às cinco perguntas para continuar."
-      : checkbox.checked
-        ? "Verificação completa. Você pode avançar."
-        : "Agora marque “Sim, concluí” para liberar o próximo passo.";
+      : !identificado
+        ? "Agora diga seu nome e sua matrícula acima."
+        : checkbox.checked
+          ? "Verificação completa. Você pode avançar."
+          : "Agora marque “Sim, concluí” para liberar o próximo passo.";
     verificacao.classList.toggle("completa", respostasProntas);
   }
 
@@ -101,10 +186,10 @@
   }));
 
   continuar.addEventListener("click", (evento) => {
-    if (continuar.getAttribute("aria-disabled") !== "true") return;
+    if (continuar.getAttribute("aria-disabled") !== "true") { enviarVerificacao(); return; }
     evento.preventDefault();
     verificacao.open = true;
-    (campos.find((campo) => campo.value.trim().length < 3) || checkbox).focus();
+    (campos.find((campo) => campo.value.trim().length < 3) || secao.querySelector(".ident-mini input") || checkbox).focus();
     verificacao.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
@@ -119,6 +204,7 @@
     atualizarLiberacao();
   });
 
+  desenharIdentidade();
   atualizarLiberacao();
 
   const rodape = document.querySelector("footer");
