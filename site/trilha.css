@@ -1,0 +1,35 @@
+.trilha-main { max-width: 1080px; margin: 0 auto; padding: 1.25rem; }
+.aviso-adulto { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; padding: 1.2rem; border: 3px solid var(--laranja); border-radius: 12px; background: var(--surface); }
+.selo-adulto, .checkpoint { display: inline-block; padding: .35rem .65rem; border-radius: 999px; background: var(--laranja); color: #fff; font-weight: 800; }
+.controles-leitura { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 1rem 0; padding: .8rem; background: var(--acento-sup); border-radius: 10px; }
+.controles-leitura p { margin: 0; }
+.controles-leitura button, [data-copiar], .ouvir-missao { border: 0; border-radius: 7px; padding: .65rem .85rem; background: var(--acento); color: #fff; font-weight: 700; cursor: pointer; }
+.ouvir-missao { float: right; margin: 0 0 .5rem .5rem; }
+.leitura-grande { font-size: 125%; }
+.frase-curta { max-width: 48ch; }
+.mapa-ilhas { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: .6rem; }
+.mapa-ilhas a { display: block; padding: .9rem; border: 2px solid var(--borda); border-radius: 10px; text-align: center; background: var(--surface); color: var(--texto); text-decoration: none; font-weight: 700; }
+.missoes { margin-top: 1.5rem; }
+.missao, .secao-trilha { margin: 1rem 0; padding: 1rem; border: 1px solid var(--borda); border-left: 5px solid var(--acento); border-radius: 10px; background: var(--surface); box-shadow: var(--sombra); }
+.missao h3, .secao-trilha h2 { margin-top: 0; }
+.missao h4 { margin: 1rem 0 .35rem; color: var(--acento); }
+.missao p { max-width: 75ch; }
+.missao details { padding: .65rem; border-radius: 7px; background: var(--acento-sup); }
+.missao summary { cursor: pointer; font-weight: 700; }
+.checkpoint { margin-top: .5rem; font-size: .8rem; }
+.tabela-responsiva { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .7rem; border: 1px solid var(--borda); text-align: left; vertical-align: top; }
+th { background: var(--acento-sup); }
+.modelos-grid, .recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .8rem; }
+.modelos-grid article, .recursos-grid article { padding: .9rem; border: 1px solid var(--borda); border-radius: 8px; background: var(--bg); }
+.modelos-grid pre, #skill-exemplo { white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; background: var(--surface); border: 1px solid var(--borda); border-radius: 6px; }
+.recursos-grid a { display: block; margin: .5rem 0; }
+.recursos-grid small { display: block; margin-top: .65rem; color: var(--suave); }
+.glossario dl { display: grid; grid-template-columns: minmax(100px, 160px) 1fr; gap: .5rem 1rem; }
+.glossario dt { font-weight: 800; }
+.glossario dd { margin: 0; }
+.rodape-trilha { padding: 1.2rem; text-align: center; background: var(--texto); color: var(--surface); }
+.rodape-trilha a { color: inherit; }
+@media (max-width: 720px) { .aviso-adulto { grid-template-columns: 1fr; } .glossario dl { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
