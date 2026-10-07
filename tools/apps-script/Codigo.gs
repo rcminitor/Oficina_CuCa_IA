@@ -557,12 +557,12 @@ function abaTurma_() {
   let aba = planilha.getSheetByName("Turma");
   if (!aba) {
     aba = planilha.insertSheet("Turma");
-    aba.getRange("A1:B1").setValues([["Matrícula", "Nome"]]).setFontWeight("bold");
+    aba.getRange("A1:C1").setValues([["Matrícula", "Nome", "Turma"]]).setFontWeight("bold");
     aba.setFrozenRows(1);
     aba.getRange("A2:A").setNumberFormat("@");
-    aba.getRange("D1").setValue("Cole as matrículas na coluna A (e os nomes na B). Enquanto esta aba estiver vazia, qualquer matrícula é aceita. Com a lista preenchida, só essas matrículas conseguem enviar, e o nome oficial daqui é usado no registro.");
-    aba.getRange("D1").setWrap(true);
-    aba.setColumnWidth(4, 420);
+    aba.getRange("E1").setValue("Cole as matrículas na coluna A, os nomes na B e o código da turma na C. Enquanto esta aba estiver vazia, qualquer matrícula é aceita. Com a lista preenchida, só essas matrículas conseguem enviar, e o nome oficial daqui é usado no registro.");
+    aba.getRange("E1").setWrap(true);
+    aba.setColumnWidth(5, 420);
   }
   return aba;
 }
@@ -591,18 +591,21 @@ function atualizarPainel_() {
   // Alunos da turma que ainda não enviaram nada.
   const turma = planilha.getSheetByName("Turma");
   if (turma && turma.getLastRow() >= 2) {
-    turma.getRange(2, 1, turma.getLastRow() - 1, 2).getDisplayValues().forEach((l) => {
+    turma.getRange(2, 1, turma.getLastRow() - 1, 3).getDisplayValues().forEach((l) => {
       const mat = normalizarMatricula_(l[0]);
       if (mat && !alunos[mat]) alunos[mat] = { nome: l[1] || "", matricula: l[0], missoes: {} };
       else if (mat) { alunos[mat].matricula = l[0]; if (l[1]) alunos[mat].nome = l[1]; }
+      if (mat) alunos[mat].turma = l[2] || "";
     });
   }
 
   const COR = { boa: "#d1f2dc", media: "#fff1c2", baixa: "#fde0dc", fila: "#e5e7eb", alerta: "#f9c6c0", vazia: "#ffffff" };
   const linhas = [], cores = [], notasCel = [];
-  Object.keys(alunos).sort((x, y) => String(alunos[x].nome).localeCompare(String(alunos[y].nome), "pt-BR")).forEach((mat) => {
+  Object.keys(alunos).sort((x, y) =>
+    String(alunos[x].turma || "~").localeCompare(String(alunos[y].turma || "~"), "pt-BR") ||
+    String(alunos[x].nome).localeCompare(String(alunos[y].nome), "pt-BR")).forEach((mat) => {
     const a = alunos[mat];
-    const linha = [a.nome, a.matricula, 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", ""];
+    const linha = [a.nome, a.matricula, a.turma || "", 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", "", ""];
     const finais = [];
     missoes.forEach((m) => {
       const info = a.missoes[m];
@@ -626,8 +629,8 @@ function atualizarPainel_() {
       if (rapidas) avisos.push(rapidas + " leitura(s) rápida(s)");
       nota.push("Último envio: " + media + "/10 · " + tentativas + " envio(s)" + (avisos.length ? "\n⚠ " + avisos.join(", ") : ""));
     });
-    linha[2] = finais.length;
-    linha[3] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
+    linha[3] = finais.length;
+    linha[4] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
     linhas.push(linha); cores.push(cor); notasCel.push(nota);
   });
 
@@ -640,18 +643,18 @@ function atualizarPainel_() {
   });
   painel.getRange(1, 1).setValue("Painel da turma: última nota de cada missão (passe o mouse na célula para ver tentativas e alertas)").setFontWeight("bold");
   painel.getRange(2, 1).setValue("Verde ≥ 7 · Amarelo 5 a 6,9 · Rosa < 5 · Vermelho = colou ou indício de IA · Cinza = correção na fila · Atualiza a cada 5 minutos.").setFontColor("#555555");
-  const cab = ["Aluno", "Matrícula", "Missões feitas", "Média"].concat(titulos);
+  const cab = ["Aluno", "Matrícula", "Turma", "Missões feitas", "Média"].concat(titulos);
   painel.getRange(4, 1, 1, cab.length).setValues([cab]).setFontWeight("bold").setBackground("#eef0ff");
   if (linhas.length) {
     const r = painel.getRange(5, 1, linhas.length, cab.length);
     r.setValues(linhas); r.setBackgrounds(cores); r.setNotes(notasCel);
-    painel.getRange(5, 5, linhas.length, missoes.length).setHorizontalAlignment("center");
+    painel.getRange(5, 6, linhas.length, missoes.length).setHorizontalAlignment("center");
   } else {
     painel.getRange(5, 1).setValue("Ainda não há respostas.");
   }
   painel.setFrozenRows(4); painel.setFrozenColumns(2);
   painel.setColumnWidth(1, 220);
-  painel.getRange(4, 5, 1, missoes.length).setHorizontalAlignment("center");
+  painel.getRange(4, 6, 1, missoes.length).setHorizontalAlignment("center");
 }
 
 function atualizarPainel() { atualizarPainel_(); }
