@@ -82,6 +82,18 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -
 .acoes-etapa a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .6rem 1.1rem; border-radius: 999px; text-decoration: none; }
 .acao-voltar { border: 1px solid var(--borda); background: var(--surface); color: var(--texto); }
 .acao-continuar { margin-left: auto; border: 1px solid var(--acento); background: var(--acento); color: #fff; }
+.acao-continuar.bloqueada { border-color: var(--borda); background: var(--hover); color: var(--suave); cursor: not-allowed; }
+.verificacao-etapa { margin: 1rem 0; padding: .8rem 1rem; border: 1px solid var(--borda); border-radius: var(--r-md); background: var(--bg); }
+.verificacao-etapa > summary { cursor: pointer; font-weight: 750; }
+.verificacao-etapa > p { margin: .45rem 0 .8rem; color: var(--suave); }
+.verificacao-etapa.completa { border-color: var(--verde); }
+.perguntas-verificacao { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+.perguntas-verificacao label { display: flex; flex-direction: column; gap: .35rem; font-size: .95rem; font-weight: 700; }
+.perguntas-verificacao label:last-child { grid-column: 1 / -1; }
+.perguntas-verificacao textarea { width: 100%; min-height: 78px; resize: vertical; padding: .7rem .8rem; border: 1px solid var(--borda); border-radius: var(--r-sm); background: var(--surface); color: var(--texto); font: inherit; font-weight: 400; line-height: 1.45; }
+.perguntas-verificacao textarea:focus { border-color: var(--acento); }
+.estado-verificacao { min-height: 1.5rem; margin-bottom: 0 !important; font-weight: 700; color: var(--acento) !important; }
+.verificacao-etapa.completa .estado-verificacao { color: var(--verde) !important; }
 .navegacao-etapa--compacta { margin-top: .5rem; margin-bottom: .5rem; padding: .7rem 1rem; }
 .navegacao-etapa--compacta h2 { font-size: 1.05rem; }
 .navegacao-etapa--compacta .barra-caminho { margin: .4rem 0 .6rem; }
@@ -100,6 +112,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -
   .acoes-etapa { flex-direction: column-reverse; }
   .acoes-etapa a { width: 100%; }
   .acao-continuar { margin-left: 0; }
+  .perguntas-verificacao { grid-template-columns: 1fr; }
+  .perguntas-verificacao label:last-child { grid-column: auto; }
 }
 
 @media (max-width: 767px) {

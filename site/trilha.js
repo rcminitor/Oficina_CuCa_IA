@@ -27,7 +27,7 @@ document.querySelectorAll("article.missao").forEach((missao) => {
     caixa.className = "audio-missao";
     caixa.innerHTML = `<span>🎧 Ouça a missão (resumo do NotebookLM)</span>
       <audio controls preload="none" src="${arquivo}">Seu navegador não toca este áudio.</audio>`;
-    const titulo = missao.querySelector("h3");
-    titulo.after(caixa);
+    const referencia = missao.querySelector(".faixa-missao") || missao.querySelector("h3");
+    referencia.after(caixa);
   }).catch(() => {});
 });

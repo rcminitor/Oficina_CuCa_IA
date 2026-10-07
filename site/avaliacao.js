@@ -87,7 +87,24 @@
       location.reload();
     });
   }
-  secaoMissoes.before(painel);
+  // Guia "Como estudar" + identificação logo abaixo do título da página.
+  const topo = document.querySelector(".trilha-topo") || secaoMissoes;
+  const guia = document.createElement("section");
+  guia.className = "guia-estudo";
+  guia.setAttribute("aria-labelledby", "titulo-guia");
+  guia.innerHTML = `
+    <h2 id="titulo-guia">Como estudar nesta página</h2>
+    <ol class="guia-passos">
+      <li><strong>Diga quem você é.</strong> Escreva seu nome e sua matrícula no quadro abaixo e clique em <em>Começar</em>.</li>
+      <li><strong>Abra a sua missão.</strong> Faça uma de cada vez, na ordem. O botão abaixo leva você à próxima.</li>
+      <li><strong>Leia com calma ou ouça o áudio.</strong> Leitura muito rápida não vale: o site pede para ler de novo.</li>
+      <li><strong>Faça a atividade</strong> que está em <em>Faça</em> e guarde a prova pedida em <em>Mostre</em>.</li>
+      <li><strong>Responda as 2 perguntas com suas palavras</strong> e clique em <em>Enviar respostas</em>. A nota aparece na própria missão em alguns minutos.</li>
+    </ol>
+    <p class="guia-progresso" aria-live="polite"></p>
+    <a class="guia-proxima" href="#m0">Ir para a próxima missão →</a>`;
+  topo.after(guia);
+  guia.after(painel);
 
   // ---------- Tempo de leitura por missão ----------
   const estado = {};          // por missão: tempo, saídas, tempo fora, leituras rápidas
@@ -154,6 +171,47 @@
   document.addEventListener("visibilitychange", () => (document.visibilityState === "hidden" ? saiu() : voltou()));
   window.addEventListener("blur", saiu);
   window.addEventListener("focus", voltou);
+
+  // ---------- Situação de cada missão e próxima missão ----------
+  const situacaoDe = (id) => {
+    if (!confirmado) return { tipo: "afazer", texto: "A fazer" };
+    const nota = ler(chave(`nota_${id}`), null);
+    if (nota && nota.notaMissao !== undefined && nota.notaMissao !== null) return { tipo: "feita", texto: `Enviada · ${String(nota.notaMissao).replace(".", ",")}/10` };
+    if (ler(chave(`pendente_${id}`), null)) return { tipo: "fila", texto: "Enviada · nota na fila" };
+    return { tipo: "afazer", texto: "A fazer" };
+  };
+  const atualizarSituacao = () => {
+    let feitas = 0, proxima = null;
+    missoes.forEach((m) => {
+      const sit = situacaoDe(m.id);
+      const etiqueta = m.querySelector(".situacao-missao");
+      if (etiqueta) { etiqueta.textContent = sit.texto; etiqueta.className = `situacao-missao situacao-${sit.tipo}`; }
+      if (sit.tipo === "afazer") { if (!proxima) proxima = m; } else feitas += 1;
+    });
+    const prog = guia.querySelector(".guia-progresso");
+    const botaoProx = guia.querySelector(".guia-proxima");
+    if (!confirmado) {
+      prog.textContent = "";
+      botaoProx.href = "#titulo-identificacao";
+      botaoProx.textContent = "Começar: dizer quem eu sou →";
+    } else if (proxima) {
+      prog.innerHTML = `<strong>${feitas} de ${missoes.length}</strong> missões enviadas.`;
+      botaoProx.href = `#${proxima.id}`;
+      botaoProx.textContent = `Ir para a próxima missão: ${proxima.querySelector("h3").textContent.trim()} →`;
+    } else {
+      prog.innerHTML = `<strong>Parabéns!</strong> Você enviou as ${missoes.length} missões.`;
+      botaoProx.href = "#m14";
+      botaoProx.textContent = "Rever a última missão →";
+    }
+  };
+  missoes.forEach((m) => {
+    const titulo = m.querySelector("h3");
+    const faixa = document.createElement("div");
+    faixa.className = "faixa-missao";
+    faixa.innerHTML = `<span class="situacao-missao"></span>
+      <span class="passos-missao" aria-label="Passos da missão"><span>① Leia ou ouça</span><span>② Faça</span><span>③ Responda e envie</span></span>`;
+    titulo.after(faixa);
+  });
 
   // ---------- Perguntas ----------
   const INSERCAO_COLADA = new Set(["insertFromPaste", "insertFromDrop", "insertFromPasteAsQuotation", "insertFromYank"]);
@@ -272,9 +330,11 @@
           guardar(chave(`pendente_${missao.id}`), dados.envioId);
           mostrarFila();
           acompanharFila(dados.envioId);
+          atualizarSituacao();
         } else {
           guardar(chave(`nota_${missao.id}`), dados);
           mostrarResultado(dados, false);
+          atualizarSituacao();
         }
       } catch (_) {
         status.textContent = "Não foi possível enviar agora. Suas respostas continuam guardadas aqui. Tente de novo em instantes.";
@@ -301,6 +361,7 @@
             try { localStorage.removeItem(chave(`pendente_${missao.id}`)); } catch (_) {}
             guardar(chave(`nota_${missao.id}`), dados);
             mostrarResultado(dados, false);
+            atualizarSituacao();
           }
         } catch (_) { /* tenta de novo na próxima volta */ }
       }, 30000);
@@ -321,4 +382,5 @@
       status.innerHTML = `<strong>Nota da missão: ${media}</strong>${antigo ? " (último envio)" : ""}. Você pode melhorar as respostas e enviar de novo.`;
     }
   });
+  atualizarSituacao();
 })();

@@ -74,3 +74,18 @@ th { background: var(--acento-sup); }
 .ident-status { margin: .6rem 0 0; }
 .ident-status.alerta { padding: .5rem .7rem; border-radius: 8px; background: var(--laranja-sup); border-left: 4px solid var(--laranja); }
 .quiz-pergunta textarea:disabled { opacity: .6; cursor: not-allowed; }
+/* Guia de estudo e situação das missões */
+.guia-estudo { margin: 0 0 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: var(--acento-sup); border: 1px solid color-mix(in srgb, var(--acento) 30%, transparent); }
+.guia-estudo h2 { margin: 0 0 .5rem; font-size: 1.35rem; }
+.guia-passos { margin: 0 0 .7rem; padding-left: 1.4rem; display: grid; gap: .35rem; max-width: 75ch; }
+.guia-progresso { margin: .2rem 0 .7rem; }
+.guia-progresso:empty { display: none; }
+.guia-proxima { display: inline-block; padding: .75rem 1.2rem; border-radius: 999px; background: var(--acento); color: #fff; font-weight: 700; text-decoration: none; }
+:root[data-theme="dark"] .guia-proxima { background: #6d74e8; }
+.faixa-missao { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; margin: .1rem 0 .8rem; }
+.situacao-missao { padding: .2rem .65rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1.5px solid var(--borda); }
+.situacao-afazer { color: var(--suave); }
+.situacao-fila { background: var(--hover); color: var(--texto); }
+.situacao-feita { background: var(--verde-sup); color: var(--verde); border-color: var(--verde); }
+.passos-missao { display: inline-flex; flex-wrap: wrap; gap: .3rem; font-size: .85rem; color: var(--suave); }
+.passos-missao span + span::before { content: "→ "; }
