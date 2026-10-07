@@ -197,12 +197,15 @@ function doGet(e) {
     const status = ult < 2 ? [] : aba.getRange(2, COL.STATUS, ult - 1, 1).getValues().map((v) => v[0]);
     info.fila = { pendentes: status.filter((x) => x === "pendente").length, corrigidas: status.filter((x) => x === "corrigida").length, coladas: status.filter((x) => x === "colada").length };
     info.gatilho = ScriptApp.getProjectTriggers().some((t) => t.getHandlerFunction() === "corrigirPendentes");
+    if (e.parameter.painel === "1") {
+      try { atualizarPainel_(); info.painel = "ok"; } catch (erro) { info.painel = String(erro && erro.stack || erro); }
+    }
     if (e.parameter.abas === "1") {
       const pl = SpreadsheetApp.getActiveSpreadsheet();
       info.abas = pl.getSheets().map((sh) => ({
         nome: sh.getName(), linhas: sh.getLastRow(), colunas: sh.getLastColumn(),
         formulaA: sh.getRange("A1:A3").getFormulas().map((r) => r[0]),
-        amostra: sh.getLastRow() ? sh.getRange(1, 1, Math.min(4, sh.getLastRow()), Math.min(12, Math.max(1, sh.getLastColumn()))).getDisplayValues() : []
+        amostra: sh.getLastRow() ? sh.getRange(1, 1, Math.min(6, sh.getLastRow()), Math.min(12, Math.max(1, sh.getLastColumn()))).getDisplayValues() : []
       }));
     }
     if (e.parameter.modelos !== "1") return json_(info);
@@ -514,6 +517,7 @@ function abaRespostas_() {
     aba = planilha.insertSheet(ABA_RESPOSTAS);
     aba.getRange(1, 1, 1, CABECALHO.length).setValues([CABECALHO]).setFontWeight("bold");
     aba.setFrozenRows(1);
+    aba.getRange("C:C").setNumberFormat("@");   // matrícula como texto (mantém zeros à esquerda)
   } else if (aba.getLastColumn() < CABECALHO.length) {
     aba.getRange(1, 1, 1, CABECALHO.length).setValues([CABECALHO]).setFontWeight("bold");
   }
@@ -523,7 +527,7 @@ function abaRespostas_() {
 const LIMITE_ENVIOS_POR_HORA = 30;
 
 function normalizarMatricula_(m) {
-  return String(m || "").replace(/[\s.\-\/]/g, "").toUpperCase();
+  return String(m === null || m === undefined ? "" : m).replace(/[\s.\-\/]/g, "").toUpperCase();
 }
 
 /** null = turma vazia (aceita todos); false = não está na turma; {nome} = encontrado. */
@@ -685,14 +689,15 @@ function manutencao_() {
     const v = resp.getRange(linha, 1, 1, 2).getValues()[0];
     if (v[1] === "TESTE (Claude)" && v[0] instanceof Date && v[0].getTime() < limite) resp.deleteRow(linha);
   }
-  if (props.getProperty("VERSAO_ABAS") === "4") return;
+  if (props.getProperty("VERSAO_ABAS") === "5") return;
+  abaRespostas_().getRange("C2:C").setNumberFormat("@");
   // Apaga as linhas de teste criadas na instalação.
   const aba = abaRespostas_();
   for (let linha = aba.getLastRow(); linha >= 2; linha--) {
     if (aba.getRange(linha, 2).getValue() === "TESTE (Claude)") aba.deleteRow(linha);
   }
   configurar();
-  props.setProperty("VERSAO_ABAS", "4");
+  props.setProperty("VERSAO_ABAS", "5");
 }
 
 function json_(obj) {
