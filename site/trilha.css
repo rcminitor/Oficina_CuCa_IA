@@ -39,3 +39,6 @@ th { background: var(--acento-sup); }
 .trilha-topo .lead { max-width: 60ch; margin-bottom: 1rem; }
 .missao > .selo-ferr { margin-bottom: .5rem; }
 .recursos-grid h3.com-ico-ferr { justify-content: flex-start; }
+.audio-missao { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin: .4rem 0 .8rem; padding: .7rem .9rem; border-radius: 10px; background: color-mix(in srgb, var(--f-notebooklm) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--f-notebooklm) 35%, var(--surface)); }
+.audio-missao span { font-weight: 700; color: var(--f-notebooklm); }
+.audio-missao audio { width: 100%; max-width: 420px; }

@@ -1,22 +1,4 @@
-const botaoOuvir = document.getElementById("ouvir-pagina");
-const botaoParar = document.getElementById("parar-audio");
 const botaoFonte = document.getElementById("alternar-fonte");
-
-function textoDaSecaoAtual() {
-  const id = window.location.hash ? document.querySelector(window.location.hash) : null;
-  const alvo = id || document.querySelector("main section");
-  return alvo?.innerText || "";
-}
-
-botaoOuvir?.addEventListener("click", () => {
-  window.speechSynthesis.cancel();
-  const fala = new SpeechSynthesisUtterance(textoDaSecaoAtual());
-  fala.lang = "pt-BR";
-  fala.rate = 0.85;
-  window.speechSynthesis.speak(fala);
-});
-
-botaoParar?.addEventListener("click", () => window.speechSynthesis.cancel());
 
 botaoFonte?.addEventListener("click", () => {
   document.body.classList.toggle("leitura-grande");
@@ -34,17 +16,18 @@ document.querySelectorAll("[data-copiar]").forEach((botao) => {
   });
 });
 
+// Áudio de cada missão: resumo gerado no NotebookLM, em site/audio/missao-NN.m4a.
+// O tocador só aparece quando o arquivo da missão já existe.
 document.querySelectorAll("article.missao").forEach((missao) => {
-  const ouvir = document.createElement("button");
-  ouvir.type = "button";
-  ouvir.className = "ouvir-missao";
-  ouvir.textContent = "🔊 Ouvir esta missão";
-  ouvir.addEventListener("click", () => {
-    window.speechSynthesis.cancel();
-    const fala = new SpeechSynthesisUtterance(missao.innerText);
-    fala.lang = "pt-BR";
-    fala.rate = 0.85;
-    window.speechSynthesis.speak(fala);
-  });
-  missao.insertBefore(ouvir, missao.children[1] || null);
+  const numero = missao.id.replace("m", "").padStart(2, "0");
+  const arquivo = `audio/missao-${numero}.m4a`;
+  fetch(arquivo, { method: "HEAD" }).then((resposta) => {
+    if (!resposta.ok) return;
+    const caixa = document.createElement("div");
+    caixa.className = "audio-missao";
+    caixa.innerHTML = `<span>🎧 Ouça a missão (resumo do NotebookLM)</span>
+      <audio controls preload="none" src="${arquivo}">Seu navegador não toca este áudio.</audio>`;
+    const titulo = missao.querySelector("h3");
+    titulo.after(caixa);
+  }).catch(() => {});
 });
