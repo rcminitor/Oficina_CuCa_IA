@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="aluno.css?v=20261007-9">
   <link rel="stylesheet" href="inicio.css">
-  <link rel="stylesheet" href="comecar.css">
+  <link rel="stylesheet" href="comecar.css?v=2">
   <script src="tema.js?v=20261007-2"></script>
   <script src="caminho.js?v=20261007-5" defer></script>
 </head>
@@ -34,8 +34,8 @@
   <main id="conteudo" tabindex="-1">
     <section class="hero">
       <p class="eyebrow">Começar o curso</p>
-      <h1>Três perguntas antes de pôr a mão na massa</h1>
-      <p class="lead">Leia as três respostas. Leva uns 5 minutos. No fim, um único botão leva você à primeira tarefa.</p>
+      <h1>Antes de começar: o que você vai fazer</h1>
+      <p class="lead">Leia as quatro respostas com calma. Leva uns 7 minutos. No fim, diga quem você é e clique em <strong>Continuar</strong>.</p>
     </section>
 
     <ol class="perguntas">
@@ -80,8 +80,33 @@
         </div>
       </li>
 
-      <li class="pergunta pergunta--tarefa" id="primeira-tarefa">
+      <li class="pergunta" id="como-funciona">
         <span class="pergunta-n" aria-hidden="true">3</span>
+        <div class="pergunta-corpo">
+          <h2>Como vou trabalhar e ser acompanhado?</h2>
+          <p>Depois desta página vêm <strong>6 etapas</strong>, uma por página: Manual, Chaves, Tutorial, Grafo, Painel e, por último, a Trilha. Em cada etapa você repete o mesmo ritmo:</p>
+          <ol class="ritmo">
+            <li><strong>Leia ou ouça</strong> a etapa com calma.</li>
+            <li><strong>Faça a atividade</strong> no seu computador, pedindo ajuda ao Gemini quando precisar.</li>
+            <li><strong>Guarde um comprovante</strong>: um print, uma foto ou um áudio curto. <a href="comprovantes.html">Veja exemplos de bons comprovantes</a>.</li>
+            <li><strong>Responda as 5 perguntas</strong> no fim da página: o que fez, que ferramenta usou, o que foi difícil, como conferiu e qual comprovante guardou.</li>
+            <li>Marque <strong>“Sim, concluí”</strong> e clique em <strong>Continuar</strong>.</li>
+          </ol>
+          <p>Na <strong>Trilha</strong>, a última etapa, há 15 missões pequenas. Cada uma termina com <strong>2 perguntas que recebem nota de 0 a 10</strong>.</p>
+          <div class="regras">
+            <h3>Combinados</h3>
+            <ul>
+              <li><strong>Escreva com suas palavras.</strong> Frases simples valem mais do que texto bonito. Resposta que parece feita por IA volta para você reescrever.</li>
+              <li><strong>Leia com calma.</strong> Se passar rápido demais por uma missão, o site pede para ler de novo.</li>
+              <li><strong>O professor acompanha.</strong> Suas respostas, suas notas e o tempo de leitura vão para ele, junto com o seu nome e a sua matrícula.</li>
+              <li><strong>Computador do laboratório?</strong> Ao terminar, clique em <em>Não sou eu / Sair</em> para o próximo colega começar do zero.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="pergunta pergunta--tarefa" id="primeira-tarefa">
+        <span class="pergunta-n" aria-hidden="true">4</span>
         <div class="pergunta-corpo">
           <h2>Qual é minha primeira tarefa?</h2>
           <p class="tarefa"><strong>Etapa 1 do Manual:</strong> instalar o Antigravity, criar a pasta <code>oficina-digital</code>, abrir a pasta e dizer olá ao Gemini.</p>
@@ -89,12 +114,13 @@
             <div><dt>Tempo</dt><dd>cerca de 20 minutos</dd></div>
             <div><dt>Comprovante</dt><dd>um print do Antigravity com a pasta e a resposta do Gemini</dd></div>
           </dl>
+          <div class="quem-sou" id="quem-sou"></div>
         </div>
       </li>
     </ol>
 
     <div class="continuar-unico">
-      <a class="btn principal" href="aluno.html#e1">Continuar <span aria-hidden="true">→</span></a>
+      <a class="btn principal" id="comecar-continuar" href="aluno.html#e1">Continuar <span aria-hidden="true">→</span></a>
       <p>Depois, cada página termina com um botão <strong>Continuar</strong> que leva ao próximo passo.</p>
     </div>
   </main>
@@ -102,5 +128,7 @@
   <footer class="rodape">
     <p>Material de ensino. Os dados e os casos da oficina são de exemplo.</p>
   </footer>
+  <script src="avaliacao-config.js?v=2"></script>
+  <script src="comecar.js?v=1"></script>
 </body>
 </html>

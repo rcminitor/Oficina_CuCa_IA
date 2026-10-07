@@ -30,3 +30,20 @@
   .pergunta-n { width: 40px; height: 40px; font-size: 1.2rem; }
   .continuar-unico .btn { width: 100%; justify-content: center; }
 }
+/* Rotina, combinados e identificação */
+.ritmo { margin: .5rem 0 .9rem; padding-left: 1.4rem; display: grid; gap: .35rem; }
+.regras { margin-top: .9rem; padding: .9rem 1rem; border-radius: var(--r-md); background: var(--acento-sup); }
+.regras h3 { margin: 0 0 .4rem; font-size: 1.1rem; }
+.regras ul { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; }
+.quem-sou { margin-top: 1rem; }
+.quem-sou:empty { display: none; }
+.quem-sou-form { display: flex; flex-wrap: wrap; align-items: end; gap: .6rem 1rem; padding: 1rem; border: 2px dashed var(--acento); border-radius: var(--r-md); background: var(--bg); }
+.quem-sou-form h3 { flex: 1 1 100%; margin: 0; font-size: 1.15rem; }
+.quem-sou-form p { flex: 1 1 100%; margin: 0 !important; }
+.quem-sou-form label { display: grid; gap: .25rem; font-weight: 700; flex: 1 1 200px; }
+.quem-sou-form input { font: inherit; padding: .6rem .7rem; border: 1px solid var(--borda); border-radius: var(--r-sm); background: var(--surface); color: var(--texto); }
+.quem-sou-form button, .quem-sou-sair { border: 0; border-radius: 999px; padding: .65rem 1.2rem; min-height: 44px; background: var(--acento); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.quem-sou-sair { margin-left: .5rem; min-height: 36px; padding: .35rem .9rem; background: var(--surface); color: var(--texto); border: 1px solid var(--borda); }
+.quem-sou-status { font-weight: 700; color: var(--laranja); }
+.quem-sou-status:empty { display: none; }
+.quem-sou-ok { margin: 0; padding: .7rem .9rem; border-radius: var(--r-md); background: var(--verde-sup); }

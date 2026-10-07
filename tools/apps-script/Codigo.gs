@@ -466,8 +466,7 @@ function corrigirPendentes() {
     try { manutencao_(); } catch (erro) { console.warn("Manutenção: " + erro); }
     const aba = abaRespostas_();
     const ultima = aba.getLastRow();
-    if (ultima < 2) return;
-    const valores = aba.getRange(2, 1, ultima - 1, CABECALHO.length).getValues();
+    const valores = ultima < 2 ? [] : aba.getRange(2, 1, ultima - 1, CABECALHO.length).getValues();
     const envios = {};
     valores.forEach((v, i) => {
       const status = v[COL.STATUS - 1];
@@ -494,6 +493,7 @@ function corrigirPendentes() {
         if (resultados) { resultados.forEach((r, i) => atualizarLinhas_(grupo[i].linha, [r])); mudou = true; }
       } catch (erro) { console.warn("Fila: " + erro); }
     });
+    try { if (corrigirVerificacoes_(90000)) mudou = true; } catch (erro) { console.warn("Verificações: " + erro); }
     // Só redesenha o painel quando chegou envio novo ou saiu nota.
     const props = PropertiesService.getScriptProperties();
     if (mudou || props.getProperty("PAINEL_LINHAS") !== String(ultima)) {
@@ -527,7 +527,9 @@ function abaRespostas_() {
 
 
 // ---------- Verificação de etapa (5 perguntas no fim de cada página do caminho) ----------
-const CAB_VERIF = ["Data", "Aluno", "Matrícula", "Página", "Etapa", "O que fez", "Ferramenta ou fonte", "Dificuldade", "Como resolveu ou conferiu", "Comprovante", "Colou em"];
+const CAB_VERIF = ["Data", "Aluno", "Matrícula", "Página", "Etapa", "O que fez", "Ferramenta ou fonte", "Dificuldade", "Como resolveu ou conferiu", "Comprovante", "Colou em",
+  "Nota", "Comentário", "Indício de IA (0-100)", "Motivo do indício", "Status"];
+const CV = { ETAPA: 5, RESP: 6, COLOU: 11, NOTA: 12, STATUS: 16 };
 const NOMES_VERIF = { fez: "O que fez", escolha: "Ferramenta ou fonte", dificuldade: "Dificuldade", conferencia: "Como resolveu ou conferiu", comprovante: "Comprovante" };
 
 function abaVerificacoes_() {
@@ -538,6 +540,8 @@ function abaVerificacoes_() {
     aba.getRange(1, 1, 1, CAB_VERIF.length).setValues([CAB_VERIF]).setFontWeight("bold");
     aba.setFrozenRows(1);
     aba.getRange("C:C").setNumberFormat("@");
+  } else if (aba.getLastColumn() < CAB_VERIF.length) {
+    aba.getRange(1, 1, 1, CAB_VERIF.length).setValues([CAB_VERIF]).setFontWeight("bold");
   }
   return aba;
 }
@@ -556,12 +560,72 @@ function receberVerificacao_(d) {
   try {
     const aba = abaVerificacoes_();
     aba.appendRow([new Date(), nome, String(d.matricula).slice(0, 40), String(d.pagina).slice(0, 60), String(d.titulo || "").slice(0, 80),
-      corta(r.fez), corta(r.escolha), corta(r.dificuldade), corta(r.conferencia), corta(r.comprovante), coladas]);
+      corta(r.fez), corta(r.escolha), corta(r.dificuldade), corta(r.conferencia), corta(r.comprovante), coladas,
+      "", "", "", "", "pendente"]);
   } finally {
     lock.releaseLock();
   }
   try { atualizarPainel_(); } catch (erro) { console.warn("Painel: " + erro); }
   return { ok: true };
+}
+
+
+/** Corrige com o Gemini as verificações na fila (chamado pela correção automática). */
+function corrigirVerificacoes_(limiteMs) {
+  const aba = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Verificações");
+  if (!aba || aba.getLastRow() < 2) return false;
+  const valores = aba.getRange(2, 1, aba.getLastRow() - 1, CAB_VERIF.length).getValues();
+  const inicio = Date.now();
+  let mudou = false;
+  valores.forEach((v, i) => {
+    if (v[CV.STATUS - 1] !== "pendente" || Date.now() - inicio > limiteMs) return;
+    const nomes = ["O que fez", "Ferramenta ou fonte", "Dificuldade", "Como resolveu ou conferiu", "Comprovante"];
+    const coladas = String(v[CV.COLOU - 1] || "");
+    const itens = nomes.map((n, j) => n + (coladas.indexOf(n) >= 0 ? " (COLADA — vale zero)" : "") + ": \"\"\"" + String(v[CV.RESP - 1 + j]) + "\"\"\"").join("\n");
+    const prompt = [
+      "Você avalia a reflexão de um adulto iniciante sobre a etapa \"" + v[CV.ETAPA - 1] + "\" de um curso de tecnologia (oficina de computadores com IA).",
+      "Ele respondeu 5 perguntas sobre o que fez. Dê uma nota inteira de 0 a 10 para o conjunto:",
+      "valorize respostas concretas e coerentes com a etapa, que digam o que fez, a ferramenta usada, uma dificuldade real, como conferiu e qual comprovante guardou.",
+      "Respostas vagas (\"fiz tudo\", \"nada\", \"ok\") valem pouco. Respostas marcadas como COLADA valem zero. Não desconte erros de português.",
+      "Escreva um comentário de no máximo duas frases curtas, em português do Brasil, direto ao aluno, com o que está bom e o que detalhar.",
+      "Estime de 0 a 100 o indício de que o texto foi gerado por IA (linguagem genérica e polida demais, conectivos típicos, sem marca pessoal). Na dúvida, use valores baixos.",
+      "Explique o indício em uma frase curta (para o professor).",
+      "",
+      itens
+    ].join("\n");
+    try {
+      const r = gerarJson_(prompt, {
+        type: "OBJECT",
+        properties: { nota: { type: "INTEGER" }, comentario: { type: "STRING" }, indicio_ia: { type: "INTEGER" }, motivo_ia: { type: "STRING" } },
+        required: ["nota", "comentario", "indicio_ia", "motivo_ia"]
+      }, 120000);
+      aba.getRange(i + 2, CV.NOTA, 1, 5).setValues([[
+        Math.max(0, Math.min(10, Math.round(r.nota))), String(r.comentario || "").slice(0, 400),
+        Math.max(0, Math.min(100, Math.round(r.indicio_ia))), String(r.motivo_ia || "").slice(0, 300), "corrigida"
+      ]]);
+      mudou = true;
+    } catch (erro) { console.warn("Verificação: " + erro); }
+  });
+  return mudou;
+}
+
+/** Chama o Gemini (com modelos reserva) e devolve o JSON pedido. */
+function gerarJson_(prompt, schema, limiteMs) {
+  const props = PropertiesService.getScriptProperties();
+  const chave = props.getProperty("GEMINI_API_KEY");
+  if (!chave) throw new Error("GEMINI_API_KEY não configurada.");
+  const modelos = [props.getProperty("MODELO") || "gemini-3.8-flash", props.getProperty("MODELO_RESERVA") || "gemini-3.7-flash", props.getProperty("MODELO_LEVE") || "gemini-3.5-flash-lite"];
+  const corpo = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, responseMimeType: "application/json", responseSchema: schema } };
+  const inicio = Date.now();
+  let ultimoErro = "";
+  for (const m of modelos) {
+    if (Date.now() - inicio > limiteMs) break;
+    let resp = chamarModelo_(m, corpo, chave, true);
+    if (resp.getResponseCode() === 400 && /thinking/i.test(resp.getContentText())) resp = chamarModelo_(m, corpo, chave, false);
+    if (resp.getResponseCode() === 200) return JSON.parse(JSON.parse(resp.getContentText()).candidates[0].content.parts[0].text);
+    ultimoErro = "Gemini " + resp.getResponseCode() + " (" + m + ")";
+  }
+  throw new Error(ultimoErro || "Gemini sem resposta.");
 }
 
 const LIMITE_ENVIOS_POR_HORA = 30;
@@ -643,10 +707,10 @@ function atualizarPainel_() {
   const verif = planilha.getSheetByName("Verificações");
   const etapasPorAluno = {};
   if (verif && verif.getLastRow() >= 2) {
-    verif.getRange(2, 1, verif.getLastRow() - 1, 4).getValues().forEach((v) => {
+    verif.getRange(2, 1, verif.getLastRow() - 1, CV.NOTA).getValues().forEach((v) => {
       const mat = normalizarMatricula_(v[2]);
       if (!mat) return;
-      (etapasPorAluno[mat] = etapasPorAluno[mat] || {})[v[3]] = true;
+      (etapasPorAluno[mat] = etapasPorAluno[mat] || {})[v[3]] = v[CV.NOTA - 1] === "" ? null : Number(v[CV.NOTA - 1]);   // último envio de cada página
       if (!alunos[mat]) alunos[mat] = { nome: v[1], matricula: String(v[2]), missoes: {} };
     });
   }
@@ -657,8 +721,11 @@ function atualizarPainel_() {
     String(alunos[x].turma || "~").localeCompare(String(alunos[y].turma || "~"), "pt-BR") ||
     String(alunos[x].nome).localeCompare(String(alunos[y].nome), "pt-BR")).forEach((mat) => {
     const a = alunos[mat];
-    const etapas = Object.keys(etapasPorAluno[mat] || {}).length;
-    const linha = [a.nome, a.matricula, a.turma || "", etapas, 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", "", "", ""];
+    const ep = etapasPorAluno[mat] || {};
+    const etapas = Object.keys(ep).length;
+    const notasEt = Object.keys(ep).map((k) => ep[k]).filter((n) => n !== null && !isNaN(n));
+    const mediaEt = notasEt.length ? Math.round((notasEt.reduce((x, y) => x + y, 0) / notasEt.length) * 10) / 10 : "";
+    const linha = [a.nome, a.matricula, a.turma || "", etapas, mediaEt, 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", "", "", "", ""];
     const finais = [];
     missoes.forEach((m) => {
       const info = a.missoes[m];
@@ -682,8 +749,8 @@ function atualizarPainel_() {
       if (rapidas) avisos.push(rapidas + " leitura(s) rápida(s)");
       nota.push("Último envio: " + media + "/10 · " + tentativas + " envio(s)" + (avisos.length ? "\n⚠ " + avisos.join(", ") : ""));
     });
-    linha[4] = finais.length;
-    linha[5] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
+    linha[5] = finais.length;
+    linha[6] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
     linhas.push(linha); cores.push(cor); notasCel.push(nota);
   });
 
@@ -696,18 +763,18 @@ function atualizarPainel_() {
   });
   painel.getRange(1, 1).setValue("Painel da turma: última nota de cada missão (passe o mouse na célula para ver tentativas e alertas)").setFontWeight("bold");
   painel.getRange(2, 1).setValue("Verde ≥ 7 · Amarelo 5 a 6,9 · Rosa < 5 · Vermelho = colou ou indício de IA · Cinza = correção na fila · Atualiza a cada 5 minutos.").setFontColor("#555555");
-  const cab = ["Aluno", "Matrícula", "Turma", "Etapas verificadas", "Missões feitas", "Média"].concat(titulos);
+  const cab = ["Aluno", "Matrícula", "Turma", "Etapas verificadas", "Nota das etapas", "Missões da Trilha", "Média da Trilha"].concat(titulos);
   painel.getRange(4, 1, 1, cab.length).setValues([cab]).setFontWeight("bold").setBackground("#eef0ff");
   if (linhas.length) {
     const r = painel.getRange(5, 1, linhas.length, cab.length);
     r.setValues(linhas); r.setBackgrounds(cores); r.setNotes(notasCel);
-    painel.getRange(5, 7, linhas.length, missoes.length).setHorizontalAlignment("center");
+    painel.getRange(5, 8, linhas.length, missoes.length).setHorizontalAlignment("center");
   } else {
     painel.getRange(5, 1).setValue("Ainda não há respostas.");
   }
   painel.setFrozenRows(4); painel.setFrozenColumns(2);
   painel.setColumnWidth(1, 220);
-  painel.getRange(4, 7, 1, missoes.length).setHorizontalAlignment("center");
+  painel.getRange(4, 8, 1, missoes.length).setHorizontalAlignment("center");
 }
 
 function atualizarPainel() { atualizarPainel_(); }
