@@ -1,4 +1,4 @@
-.trilha-main { max-width: 1080px; margin: 0 auto; padding: 1.25rem; }
+.trilha-main { max-width: var(--largura-site); margin: 0 auto; padding: 1.25rem 1rem; }
 .aviso-apoio { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; padding: 1.2rem; border: 3px solid var(--laranja); border-radius: 12px; background: var(--surface); }
 .selo-apoio, .checkpoint { display: inline-block; padding: .35rem .65rem; border-radius: 999px; background: var(--laranja); color: #fff; font-weight: 800; }
 .controles-leitura { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 1rem 0; padding: .8rem; background: var(--acento-sup); border-radius: 10px; }

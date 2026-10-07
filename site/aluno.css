@@ -14,6 +14,7 @@
   --codigo-bg: #1c1917; --codigo-tx: #f3f1ec;
   --sombra: 0 1px 2px rgba(28,25,23,.04), 0 8px 24px -12px rgba(28,25,23,.12);
   --r-sm: 8px; --r-md: 12px; --r-lg: 18px;
+  --largura-site: 1120px;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -49,9 +50,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -
 
 /* ---- Barra do topo + abas ---- */
 .barra-topo { position: sticky; top: 0; z-index: 20; background: var(--glass); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borda); }
-.topo-in, main { max-width: 860px; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
-.abas { margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
-body .barra-topo .topo-in, body .barra-topo .abas { width: 100%; max-width: 1240px; }
+.topo-in, .abas, main { width: 100%; max-width: var(--largura-site); margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
 .topo-in { display: flex; align-items: center; justify-content: space-between; padding-top: .7rem; padding-bottom: .3rem; }
 .marca { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--texto); }
 .logo { width: 38px; height: 38px; border-radius: 10px; background: var(--acento); display: grid; place-items: center; font-size: 1.15rem; }

@@ -1,5 +1,5 @@
 /* Painel de chamados: usa os tokens de aluno.css (claro e escuro). */
-.painel main { max-width: 860px; padding-top: 1.5rem; }
+.painel main { max-width: var(--largura-site); padding-top: 1.5rem; }
 .painel .hero h1 { font-size: clamp(2rem, 4.6vw, 2.8rem); }
 .pc { background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); padding: 1.5rem 1.5rem 1.7rem; margin: 1.2rem 0; box-shadow: var(--sombra); overflow-wrap: anywhere; }
 .pc > h2 { margin: 0 0 .4rem; font-size: 1.5rem; }
