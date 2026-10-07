@@ -115,7 +115,7 @@ main { padding-top: 1.5rem; padding-bottom: 3rem; }
 /* ---- Terminal e código ---- */
 .term { margin: 1.2rem 0 .3rem; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--acento); }
 pre { background: var(--codigo-bg); color: var(--codigo-tx); padding: 1rem 1.1rem; border-radius: var(--r-md); white-space: pre-wrap; word-break: break-word; font-family: var(--font-mono); font-size: .95rem; line-height: 1.55; margin: .3rem 0 .5rem; border: 1px solid var(--borda); }
-code { font-family: var(--font-mono); font-size: .9em; background: var(--hover); border: 1px solid var(--borda); padding: 0 .35rem; border-radius: 6px; }
+code { max-width: 100%; font-family: var(--font-mono); font-size: .9em; background: var(--hover); border: 1px solid var(--borda); padding: 0 .35rem; border-radius: 6px; overflow-wrap: anywhere; word-break: break-word; }
 pre code { background: none; border: 0; padding: 0; }
 .copiar { display: inline-flex; align-items: center; gap: .4rem; background: transparent; color: var(--acento); border: 1px solid var(--acento); border-radius: 999px; padding: .5rem 1.1rem; min-height: 44px; font: inherit; font-size: .95rem; font-weight: 600; cursor: pointer; margin-bottom: .6rem; }
 .copiar:hover { background: var(--acento-sup); }
