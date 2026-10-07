@@ -2,7 +2,7 @@
   "use strict";
 
   const etapas = [
-    { arquivo: "index.html", nome: "Conhecer a oficina", descricao: "Entender o projeto e escolher por onde começar.", comprovante: "Explique com sua voz o que a oficina faz." },
+    { arquivo: "comecar.html", nome: "Começar o curso", descricao: "Conhecer a sequência e escolher o primeiro passo.", comprovante: "Explique com sua voz qual será o seu primeiro passo." },
     { arquivo: "aluno.html", nome: "Fazer o Manual", descricao: "Preparar as ferramentas e praticar as primeiras atividades.", comprovante: "Guarde o print, a foto ou o áudio pedido no Manual." },
     { arquivo: "chaves.html", nome: "Proteger as chaves", descricao: "Aprender o que pode ser mostrado e o que precisa ficar secreto.", comprovante: "Guarde a lista do que é público e do que é secreto." },
     { arquivo: "tutorial.html", nome: "Construir o projeto", descricao: "Seguir o Tutorial e criar cada parte com o Gemini.", comprovante: "Guarde um print da parte funcionando e explique o que você fez." },

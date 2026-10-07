@@ -102,6 +102,13 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -
   .acao-continuar { margin-left: 0; }
 }
 
+@media (max-width: 767px) {
+  html { scroll-padding-top: 12rem; }
+  .barra-topo .abas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; overflow: visible; -webkit-mask-image: none !important; mask-image: none !important; }
+  .barra-topo .aba { min-width: 0; justify-content: center; padding: .45rem .3rem; text-align: center; white-space: normal; }
+  .barra-topo .abas-dica { display: none !important; }
+}
+
 main { padding-top: 1.5rem; padding-bottom: 3rem; }
 
 /* ---- Abertura ---- */

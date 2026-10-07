@@ -4,7 +4,6 @@
   // Ordem em que o site conduz o aluno. Páginas de consulta (Sobre, Roteiro,
   // Consultar, Ferramentas) ficam fora da sequência e não mostram a barra.
   const paginas = [
-    { arquivo: "index.html", nome: "Início" },
     { arquivo: "comecar.html", nome: "Começar o curso", semBarra: true },
     { arquivo: "aluno.html", nome: "Ler o Manual" },
     { arquivo: "chaves.html", nome: "Preparar as chaves" },
