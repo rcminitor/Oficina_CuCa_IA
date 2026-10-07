@@ -115,15 +115,14 @@
     if (!urlEnvio()) { caixaIdent.innerHTML = ""; return; }
     const a = aluno();
     if (a) {
-      caixaIdent.innerHTML = `<p class="ident-linha">Suas respostas vão para o professor como <strong>${escapar(a.nome)}</strong> (${escapar(a.matricula)}). <button type="button" class="ident-sair">Não sou eu</button></p>`;
+      caixaIdent.innerHTML = `<p class="ident-linha">Suas respostas vão para o professor como <strong>${escapar(a.nome)}</strong>. <button type="button" class="ident-sair">Não sou eu</button></p>`;
       caixaIdent.querySelector(".ident-sair").addEventListener("click", () => { limparAluno(); location.reload(); });
       return;
     }
     caixaIdent.innerHTML = `
       <form class="ident-mini" novalidate>
         <p><strong>Quem é você?</strong> Suas respostas vão para o professor.</p>
-        <label>Nome <input name="nome" autocomplete="off"></label>
-        <label>Matrícula <input name="matricula" autocomplete="off" inputmode="numeric"></label>
+        <label>Seu nome completo <small>(ou sua matrícula)</small> <input name="quem" autocomplete="off"></label>
         <button type="submit">Confirmar</button>
         <span class="ident-mini-status" role="status" aria-live="polite"></span>
       </form>`;
@@ -131,16 +130,14 @@
     const st = caixaIdent.querySelector(".ident-mini-status");
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      const nome = form.nome.value.trim(), matricula = form.matricula.value.trim();
-      if (!nome || !matricula) { st.textContent = "Escreva nome e matrícula."; return; }
-      st.textContent = "Conferindo…";
-      let nomeOficial = "";
-      try {
-        const r = await (await fetch(`${urlEnvio()}?matricula=${encodeURIComponent(matricula)}`)).json();
-        if (!r.ok) { st.textContent = r.mensagem || "Matrícula não encontrada."; return; }
-        nomeOficial = r.nome || "";
-      } catch (_) { /* sem internet: segue e o envio confere depois */ }
-      gravarJSON("oficina_aluno", { nome: nomeOficial || nome, matricula, confirmado: true });
+      const quem = form.quem.value.trim();
+      if (!quem) { st.textContent = "Escreva seu nome completo."; return; }
+      st.textContent = "Procurando você na turma…";
+      let r;
+      try { r = await (await fetch(`${urlEnvio()}?quem=${encodeURIComponent(quem)}`)).json(); }
+      catch (_) { st.textContent = "Sem conexão. Tente de novo em instantes."; return; }
+      if (!r.ok) { st.textContent = r.mensagem || "Não achei você na turma."; return; }
+      gravarJSON("oficina_aluno", { nome: r.nome || quem, matricula: r.id, confirmado: true });
       gravarJSON("oficina_ultimo_uso", Date.now());
       desenharIdentidade();
       atualizarLiberacao();
@@ -172,7 +169,7 @@
     estadoVerificacao.textContent = !respostasProntas
       ? "Responda às cinco perguntas para continuar."
       : !identificado
-        ? "Agora diga seu nome e sua matrícula acima."
+        ? "Agora escreva seu nome completo acima."
         : checkbox.checked
           ? "Verificação completa. Você pode avançar."
           : "Agora marque “Sim, concluí” para liberar o próximo passo.";

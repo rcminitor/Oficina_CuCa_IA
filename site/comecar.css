@@ -47,3 +47,4 @@
 .quem-sou-status { font-weight: 700; color: var(--laranja); }
 .quem-sou-status:empty { display: none; }
 .quem-sou-ok { margin: 0; padding: .7rem .9rem; border-radius: var(--r-md); background: var(--verde-sup); }
+.quem-sou-form label small { font-weight: 400; color: var(--suave); }

@@ -221,10 +221,11 @@ function doGet(e) {
     return json_(info);
   }
   if (e && e.parameter && e.parameter.envio) return json_(consultarEnvio_(String(e.parameter.envio)));
+  if (e && e.parameter && e.parameter.quem !== undefined) return json_(identificar_(String(e.parameter.quem).slice(0, 120)));
   if (e && e.parameter && e.parameter.matricula) {
     const t = buscarNaTurma_(String(e.parameter.matricula));
     if (t === false) return json_({ ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma. Confira o número ou fale com o professor." });
-    return json_({ ok: true, nome: t && t.nome ? t.nome : "" });
+    return json_({ ok: true, nome: t && t.nome ? t.nome : "", id: t ? idAluno_(t.matricula) : String(e.parameter.matricula) });
   }
   return json_({ ok: true, servico: "Oficina Digital — avaliação" });
 }
@@ -256,6 +257,7 @@ function doPost(e) {
     const turma = buscarNaTurma_(dados.matricula);
     if (turma === false) return json_({ ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma. Confira o número ou fale com o professor." });
     if (turma && turma.nome) dados.aluno = turma.nome;   // usa o nome oficial da turma
+    if (turma && turma.matricula) dados.matricula = turma.matricula;   // grava a matrícula real, não o código
     if (!dentroDoLimite_(dados.matricula)) return json_({ ok: false, erro: "limite", mensagem: "Muitos envios seguidos. Espere alguns minutos e tente de novo." });
     const envioId = Utilities.getUuid();
     const linhaInicial = gravar_(dados, envioId);
@@ -552,6 +554,7 @@ function receberVerificacao_(d) {
   if (turma === false) return { ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma." };
   if (!dentroDoLimite_(d.matricula)) return { ok: false, erro: "limite", mensagem: "Muitos envios seguidos." };
   const nome = turma && turma.nome ? turma.nome : String(d.aluno).slice(0, 120);
+  if (turma && turma.matricula) d.matricula = turma.matricula;
   const r = d.respostas || {};
   const corta = (t) => String(t || "").slice(0, 1000);
   const coladas = (Array.isArray(d.coladas) ? d.coladas : []).map((k) => NOMES_VERIF[k] || k).join(", ");
@@ -634,16 +637,57 @@ function normalizarMatricula_(m) {
   return String(m === null || m === undefined ? "" : m).replace(/[\s.\-\/]/g, "").toUpperCase();
 }
 
-/** null = turma vazia (aceita todos); false = não está na turma; {nome} = encontrado. */
-function buscarNaTurma_(matricula) {
+/** Código interno do aluno (não revela a matrícula). */
+function idAluno_(matricula) {
+  const props = PropertiesService.getScriptProperties();
+  let sal = props.getProperty("SAL_ID");
+  if (!sal) { sal = Utilities.getUuid(); props.setProperty("SAL_ID", sal); }
+  const bytes = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, sal + "|" + normalizarMatricula_(matricula));
+  return "A" + bytes.slice(0, 6).map((b) => ((b + 256) % 256).toString(16).padStart(2, "0")).join("").toUpperCase();
+}
+
+function linhasTurma_() {
   const aba = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Turma");
-  if (!aba || aba.getLastRow() < 2) return null;
-  const alvo = normalizarMatricula_(matricula);
-  const linhas = aba.getRange(2, 1, aba.getLastRow() - 1, 2).getDisplayValues();
-  const cadastradas = linhas.filter((l) => normalizarMatricula_(l[0]));
-  if (!cadastradas.length) return null;
-  const achou = cadastradas.find((l) => normalizarMatricula_(l[0]) === alvo);
-  return achou ? { nome: String(achou[1] || "").trim() } : false;
+  if (!aba || aba.getLastRow() < 2) return [];
+  return aba.getRange(2, 1, aba.getLastRow() - 1, 3).getDisplayValues().filter((l) => normalizarMatricula_(l[0]));
+}
+
+/** null = turma vazia (aceita todos); false = não está na turma; {nome, matricula} = encontrado.
+ *  Aceita a matrícula ou o código interno do aluno. */
+function buscarNaTurma_(valor) {
+  const linhas = linhasTurma_();
+  if (!linhas.length) return null;
+  const alvo = normalizarMatricula_(valor);
+  const achou = linhas.find((l) => normalizarMatricula_(l[0]) === alvo || idAluno_(l[0]) === alvo);
+  return achou ? { nome: String(achou[1] || "").trim(), matricula: String(achou[0]).trim() } : false;
+}
+
+function semAcento_(t) {
+  return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** Identifica o aluno pelo nome (ou pela matrícula). Nunca devolve a matrícula. */
+function identificar_(texto) {
+  const linhas = linhasTurma_();
+  const bruto = String(texto || "").trim();
+  if (!bruto) return { ok: false, mensagem: "Escreva seu nome completo." };
+  if (!linhas.length) {
+    return /\d{4,}/.test(bruto) ? { ok: true, nome: "", id: bruto } : { ok: false, mensagem: "O professor ainda não cadastrou a turma. Use a sua matrícula." };
+  }
+  if (/^[\d\s.\-\/]{4,}$/.test(bruto)) {
+    const t = buscarNaTurma_(bruto);
+    return t ? { ok: true, nome: t.nome, id: idAluno_(t.matricula) } : { ok: false, mensagem: "Matrícula não encontrada na turma. Confira o número ou escreva seu nome completo." };
+  }
+  const ignorar = { de: 1, da: 1, do: 1, das: 1, dos: 1, e: 1 };
+  const partes = semAcento_(bruto).split(" ").filter((p) => p && !ignorar[p]);
+  if (!partes.length) return { ok: false, mensagem: "Escreva seu nome completo." };
+  const candidatos = linhas.filter((l) => {
+    const nome = semAcento_(l[1]).split(" ");
+    return partes.every((p) => nome.indexOf(p) >= 0);
+  });
+  if (candidatos.length === 1) return { ok: true, nome: String(candidatos[0][1]).trim(), id: idAluno_(candidatos[0][0]) };
+  if (candidatos.length > 1) return { ok: false, mensagem: "Há mais de um aluno com esse nome. Escreva também o seu sobrenome." };
+  return { ok: false, mensagem: "Não achei esse nome na turma. Confira a escrita ou use a sua matrícula." };
 }
 
 /** Até LIMITE_ENVIOS_POR_HORA envios por matrícula por hora. */

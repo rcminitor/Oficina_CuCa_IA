@@ -25,7 +25,7 @@
     if (!url) { caixa.innerHTML = ""; return; }
     const a = aluno();
     if (a) {
-      caixa.innerHTML = `<p class="quem-sou-ok">✅ Você está como <strong>${esc(a.nome)}</strong> (matrícula ${esc(a.matricula)}). <button type="button" class="quem-sou-sair">Não sou eu</button></p>`;
+      caixa.innerHTML = `<p class="quem-sou-ok">✅ Você está como <strong>${esc(a.nome)}</strong>. <button type="button" class="quem-sou-sair">Não sou eu</button></p>`;
       caixa.querySelector(".quem-sou-sair").addEventListener("click", () => { limpar(); desenhar(); });
       return;
     }
@@ -33,8 +33,7 @@
       <form class="quem-sou-form" novalidate>
         <h3>Diga quem você é</h3>
         <p>Assim o professor recebe as suas respostas e notas.</p>
-        <label>Nome <input name="nome" autocomplete="off"></label>
-        <label>Matrícula <input name="matricula" autocomplete="off" inputmode="numeric"></label>
+        <label>Seu nome completo <small>(ou sua matrícula, se souber)</small> <input name="quem" autocomplete="off"></label>
         <button type="submit">Confirmar</button>
         <p class="quem-sou-status" role="status" aria-live="polite"></p>
       </form>`;
@@ -42,17 +41,15 @@
     const st = caixa.querySelector(".quem-sou-status");
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      const nome = form.nome.value.trim(), matricula = form.matricula.value.trim();
-      if (!nome || !matricula) { st.textContent = "Escreva seu nome e sua matrícula."; return; }
-      st.textContent = "Conferindo a matrícula…";
-      let nomeOficial = "";
-      try {
-        const r = await (await fetch(`${url}?matricula=${encodeURIComponent(matricula)}`)).json();
-        if (!r.ok) { st.textContent = r.mensagem || "Matrícula não encontrada."; return; }
-        nomeOficial = r.nome || "";
-      } catch (_) { /* sem internet: confere de novo depois */ }
+      const quem = form.quem.value.trim();
+      if (!quem) { st.textContent = "Escreva seu nome completo."; return; }
+      st.textContent = "Procurando você na turma…";
+      let r;
+      try { r = await (await fetch(`${url}?quem=${encodeURIComponent(quem)}`)).json(); }
+      catch (_) { st.textContent = "Sem conexão com a internet. Tente de novo em instantes."; return; }
+      if (!r.ok) { st.textContent = r.mensagem || "Não achei você na turma."; return; }
       limpar();
-      guardar("oficina_aluno", { nome: nomeOficial || nome, matricula, confirmado: true });
+      guardar("oficina_aluno", { nome: r.nome || quem, matricula: r.id, confirmado: true });
       guardar("oficina_ultimo_uso", Date.now());
       desenhar();
     });
@@ -63,7 +60,7 @@
     ev.preventDefault();
     desenhar();
     const st = caixa.querySelector(".quem-sou-status");
-    if (st) st.textContent = "Antes de continuar, diga seu nome e sua matrícula.";
+    if (st) st.textContent = "Antes de continuar, escreva seu nome completo.";
     caixa.scrollIntoView({ behavior: "smooth", block: "center" });
     const campo = caixa.querySelector("input");
     if (campo) campo.focus({ preventScroll: true });

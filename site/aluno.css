@@ -274,3 +274,4 @@ table.empilha td:first-child { white-space: nowrap; }
 .ident-mini input { font: inherit; padding: .5rem .6rem; border: 1px solid var(--borda); border-radius: var(--r-sm); background: var(--bg); color: var(--texto); }
 .ident-mini button { margin: 0; min-height: 40px; background: var(--acento); color: #fff; border-color: var(--acento); font-weight: 700; }
 .ident-mini-status { flex: 1 1 100%; font-weight: 700; color: var(--laranja); }
+.ident-mini label small, .quem-sou-form label small, .ident-campos label small { font-weight: 400; color: var(--suave); }

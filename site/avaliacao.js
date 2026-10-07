@@ -41,7 +41,7 @@
   if (confirmado) {
     painel.innerHTML = `
       <h2 id="titulo-identificacao">Estudando como ${esc(ident.nome)}</h2>
-      <p>Matrícula ${esc(ident.matricula)}. Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
+      <p>Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
       <div class="ident-acoes">
         <button type="button" class="ident-trocar">Não sou eu / Sair</button>
         <span class="ident-confirma" hidden>
@@ -58,10 +58,9 @@
   } else {
     painel.innerHTML = `
       <h2 id="titulo-identificacao">Quem está estudando?</h2>
-      <p>Escreva seu nome e sua matrícula para responder às perguntas das missões. Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
+      <p>Escreva seu nome completo para responder às perguntas das missões. Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
       <form class="ident-campos" novalidate>
-        <label>Nome <input id="aluno-nome" autocomplete="off" required></label>
-        <label>Matrícula <input id="aluno-matricula" autocomplete="off" inputmode="numeric" required></label>
+        <label>Seu nome completo <small>(ou sua matrícula)</small> <input id="aluno-quem" autocomplete="off" required></label>
         <button type="submit" class="ident-comecar">Começar</button>
       </form>
       <p class="ident-status" role="status" aria-live="polite"></p>`;
@@ -69,20 +68,17 @@
     const st = painel.querySelector(".ident-status");
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      const nome = painel.querySelector("#aluno-nome").value.trim();
-      const matricula = painel.querySelector("#aluno-matricula").value.trim();
-      if (!nome || !matricula) { st.textContent = "Escreva seu nome e sua matrícula."; st.className = "ident-status alerta"; return; }
-      let nomeOficial = "";
+      const quem = painel.querySelector("#aluno-quem").value.trim();
+      if (!quem) { st.textContent = "Escreva seu nome completo."; st.className = "ident-status alerta"; return; }
+      let r = { ok: true, nome: quem, id: quem };
       if (URL_ENVIO) {
-        st.textContent = "Conferindo a matrícula…"; st.className = "ident-status";
-        try {
-          const r = await (await fetch(`${URL_ENVIO}?matricula=${encodeURIComponent(matricula)}`)).json();
-          if (!r.ok) { st.textContent = r.mensagem || "Matrícula não encontrada."; st.className = "ident-status alerta"; return; }
-          nomeOficial = r.nome || "";
-        } catch (_) { /* sem internet: confere de novo no envio */ }
+        st.textContent = "Procurando você na turma…"; st.className = "ident-status";
+        try { r = await (await fetch(`${URL_ENVIO}?quem=${encodeURIComponent(quem)}`)).json(); }
+        catch (_) { st.textContent = "Sem conexão. Tente de novo em instantes."; st.className = "ident-status alerta"; return; }
+        if (!r.ok) { st.textContent = r.mensagem || "Não achei você na turma."; st.className = "ident-status alerta"; return; }
       }
       limparDadosPessoais();
-      guardar("oficina_aluno", { nome: nomeOficial || nome, matricula, confirmado: true });
+      guardar("oficina_aluno", { nome: r.nome || quem, matricula: r.id, confirmado: true });
       guardar("oficina_ultimo_uso", Date.now());
       location.reload();
     });
@@ -95,7 +91,7 @@
   guia.innerHTML = `
     <h2 id="titulo-guia">Como estudar nesta página</h2>
     <ol class="guia-passos">
-      <li><strong>Diga quem você é.</strong> Escreva seu nome e sua matrícula no quadro abaixo e clique em <em>Começar</em>.</li>
+      <li><strong>Diga quem você é.</strong> Escreva seu nome completo no quadro abaixo e clique em <em>Começar</em>.</li>
       <li><strong>Abra a sua missão.</strong> Faça uma de cada vez, na ordem. O botão abaixo leva você à próxima.</li>
       <li><strong>Leia com calma ou ouça o áudio.</strong> Leitura muito rápida não vale: o site pede para ler de novo.</li>
       <li><strong>Faça a atividade</strong> que está em <em>Faça</em> e guarde a prova pedida em <em>Mostre</em>.</li>
@@ -276,7 +272,7 @@
     } else if (!confirmado) {
       caixa.querySelectorAll("textarea").forEach((t) => { t.disabled = true; });
       botao.disabled = true;
-      status.innerHTML = 'Para responder, escreva seu nome e sua matrícula no quadro <a href="#titulo-identificacao">“Quem está estudando?”</a>.';
+      status.innerHTML = 'Para responder, escreva seu nome completo no quadro <a href="#titulo-identificacao">“Quem está estudando?”</a>.';
     }
     const resultadoAnterior = confirmado ? ler(chave(`nota_${missao.id}`), null) : null;
     if (resultadoAnterior) mostrarResultado(resultadoAnterior, true);

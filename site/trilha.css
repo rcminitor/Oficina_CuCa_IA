@@ -89,3 +89,4 @@ th { background: var(--acento-sup); }
 .situacao-feita { background: var(--verde-sup); color: var(--verde); border-color: var(--verde); }
 .passos-missao { display: inline-flex; flex-wrap: wrap; gap: .3rem; font-size: .85rem; color: var(--suave); }
 .passos-missao span + span::before { content: "→ "; }
+.ident-campos label small { font-weight: 400; color: var(--suave); }
