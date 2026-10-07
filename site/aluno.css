@@ -68,14 +68,38 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -
 .cont { font-size: .8rem; padding: 0 .5rem; border-radius: 999px; background: rgba(255,255,255,.22); }
 .aba:not([aria-current="page"]) .cont { background: var(--acento-sup); color: var(--acento); }
 
+/* ---- Continuidade entre páginas ---- */
+.navegacao-etapa { width: calc(100% - 2rem); max-width: var(--largura-site); margin: 1.5rem auto 2rem; padding: 1.2rem 1.3rem; background: var(--surface); border: 1px solid var(--borda); border-radius: var(--r-lg); box-shadow: var(--sombra); }
+.navegacao-etapa__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.2rem; }
+.navegacao-etapa .eyebrow { margin: 0; }
+.navegacao-etapa h2 { margin: .2rem 0; font-size: 1.35rem; }
+.marcar-conclusao { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; padding: .45rem .8rem; border-radius: 999px; background: var(--acento-sup); color: var(--acento); font-weight: 700; cursor: pointer; }
+.marcar-conclusao input { width: 22px; height: 22px; accent-color: var(--verde); }
+.navegacao-etapa.concluida .marcar-conclusao { background: var(--verde-sup); color: var(--verde); }
+.barra-caminho { height: 9px; margin: .8rem 0 1rem; overflow: hidden; border-radius: 999px; background: var(--hover); }
+.barra-caminho span { display: block; height: 100%; border-radius: inherit; background: var(--acento); }
+.acoes-etapa { display: flex; justify-content: space-between; gap: .8rem; }
+.acoes-etapa a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .6rem 1.1rem; border-radius: 999px; text-decoration: none; }
+.acao-voltar { border: 1px solid var(--borda); background: var(--surface); color: var(--texto); }
+.acao-continuar { margin-left: auto; border: 1px solid var(--acento); background: var(--acento); color: #fff; }
+.navegacao-etapa--compacta { margin-top: .5rem; margin-bottom: .5rem; padding: .7rem 1rem; }
+.navegacao-etapa--compacta h2 { font-size: 1.05rem; }
+.navegacao-etapa--compacta .barra-caminho { margin: .4rem 0 .6rem; }
+
 @media (min-width: 768px) {
   .topo-in, .abas, main { width: calc(100% - 4rem); }
+  .navegacao-etapa { width: calc(100% - 4rem); }
   .aba { flex: 1 1 auto; justify-content: center; }
 }
 @media (min-width: 768px) and (max-width: 1200px) {
   .abas { gap: .22rem; }
   .aba { gap: .3rem; padding: .4rem .62rem; font-size: .86rem; }
   .cont { padding: 0 .35rem; font-size: .72rem; }
+}
+@media (max-width: 560px) {
+  .acoes-etapa { flex-direction: column-reverse; }
+  .acoes-etapa a { width: 100%; }
+  .acao-continuar { margin-left: 0; }
 }
 
 main { padding-top: 1.5rem; padding-bottom: 3rem; }
