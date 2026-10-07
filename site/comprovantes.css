@@ -1,0 +1,32 @@
+.cabecalho-comprovantes { padding: 2rem 0 1.2rem; }
+.cabecalho-comprovantes h1 { max-width: 760px; margin: .2rem 0 .6rem; }
+.cabecalho-comprovantes .lead { max-width: 760px; margin-bottom: 1rem; }
+.regra-tres { margin: 1rem 0 2rem; padding: 1.2rem 1.3rem; border: 1px solid var(--borda); border-radius: var(--r-lg); background: var(--acento-sup); }
+.regra-tres h2 { margin: 0 0 .7rem; }
+.regra-tres ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 0; padding: 0; list-style: none; counter-reset: regra; }
+.regra-tres li { padding: .9rem; border-radius: var(--r-md); background: var(--surface); counter-increment: regra; }
+.regra-tres li::before { content: counter(regra); display: grid; place-items: center; width: 2rem; height: 2rem; margin-bottom: .45rem; border-radius: 50%; background: var(--acento); color: #fff; font-weight: 800; }
+.modelo-comprovante { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding: 1.3rem; margin: 1rem 0; border: 1px solid var(--borda); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--sombra); }
+.numero-modelo { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--acento); color: #fff; font-weight: 800; }
+.tipo-comprovante { margin: 0; color: var(--acento); font-size: .8rem; font-weight: 800; letter-spacing: .08em; }
+.modelo-comprovante h3 { margin: .1rem 0 .8rem; font-size: 1.4rem; }
+.comparacao, .escolhas { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+.exemplo, .escolhas > div { padding: .9rem 1rem; border-radius: var(--r-md); border: 1px solid var(--borda); }
+.exemplo p, .escolhas p { margin: .25rem 0 0; }
+.fraco { border-left: 5px solid var(--vermelho); background: var(--vermelho-sup); }
+.bom { border-left: 5px solid var(--verde); background: var(--verde-sup); }
+.faca-assim, .exemplo-outro { margin: .9rem 0 0; }
+.molde-fala, .molde-escrita { padding: .8rem 1rem; border-left: 5px solid var(--acento); border-radius: 0 var(--r-md) var(--r-md) 0; background: var(--acento-sup); }
+.molde-fala p, .molde-escrita p { margin: .35rem 0; }
+.escolhas { grid-template-columns: repeat(3, 1fr); margin-bottom: .9rem; }
+.escolhas > div { border-top: 5px solid var(--acento); }
+.destaque { margin-top: .8rem; }
+.checklist-entrega { margin: 2rem 0; padding: 1.3rem; border-radius: var(--r-lg); background: var(--verde-sup); border: 1px solid var(--verde); }
+.checklist-entrega h2 { margin: 0 0 .6rem; }
+.checklist-entrega li { margin: .45rem 0; }
+.checklist-entrega .btn { margin-top: .7rem; }
+@media (max-width: 680px) {
+  .regra-tres ol, .comparacao, .escolhas { grid-template-columns: 1fr; }
+  .modelo-comprovante { grid-template-columns: 1fr; }
+  .checklist-entrega .btn { width: 100%; justify-content: center; }
+}

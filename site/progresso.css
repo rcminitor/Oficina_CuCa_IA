@@ -9,6 +9,10 @@
 .barra-geral { grid-column: 1 / -1; height: 12px; overflow: hidden; border-radius: 999px; background: var(--hover); }
 .barra-geral span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--acento); transition: width .25s ease; }
 .resumo-progresso .btn { justify-self: start; }
+.guia-comprovantes { display: flex; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; margin: 0 0 2rem; padding: 1.2rem 1.3rem; border: 1px solid var(--borda); border-radius: var(--r-lg); background: var(--acento-sup); }
+.guia-comprovantes h2 { margin: .1rem 0 .25rem; }
+.guia-comprovantes p { margin: 0; }
+.guia-comprovantes .btn { flex: none; }
 .lista-progresso { display: grid; gap: 1rem; }
 .cartao-progresso { display: grid; grid-template-columns: auto 1fr auto; gap: .8rem 1rem; align-items: start; padding: 1.1rem 1.2rem; border: 1px solid var(--borda); border-left: 6px solid var(--borda); border-radius: var(--r-md); background: var(--surface); box-shadow: var(--sombra); }
 .cartao-progresso.concluida { border-left-color: var(--verde); }
@@ -32,4 +36,6 @@
   .estado-etapa { grid-column: 2; justify-self: start; }
   .marcacoes-etapa, .abrir-etapa { grid-column: 1 / -1; }
   .marcacoes-etapa { flex-direction: column; gap: .2rem; }
+  .guia-comprovantes { align-items: stretch; flex-direction: column; }
+  .guia-comprovantes .btn { width: 100%; justify-content: center; }
 }
