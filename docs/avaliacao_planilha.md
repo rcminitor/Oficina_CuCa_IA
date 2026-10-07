@@ -18,12 +18,21 @@ Já está tudo instalado na conta **rcminitori@gmail.com**:
 - **Ativar correção automática**: cria o agendamento de 5 em 5 minutos (já ativo).
 - **Corrigir a fila agora**: corrige na hora o que estiver pendente.
 - **Testar a correção**: corrige uma resposta de exemplo.
-- **Recriar abas Painel e Coladas**.
+- **Atualizar painel agora** e **Recriar abas Painel, Turma e Coladas**.
+
+## Turma e computadores compartilhados
+- Cole as matrículas (coluna A) e os nomes (coluna B) na aba **Turma**. Enquanto ela estiver vazia, qualquer matrícula é aceita.
+  Com a lista preenchida, só essas matrículas enviam, e o nome oficial da aba é o que fica registrado.
+- Cada matrícula pode enviar até 30 vezes por hora.
+- No site, o aluno clica em **Começar** com nome e matrícula. Para trocar de aluno no mesmo computador: **Não sou eu / Sair**.
+  Depois de 4 horas sem uso, o computador esquece o aluno sozinho.
 
 ## Abas
 - **Respostas**: uma linha por resposta, com nota, comentário, indício de IA e motivo, se colou, tempo de leitura,
   leituras rápidas, saídas da página, tempo fora, áudio ouvido, sinais de digitação, envio e status.
-- **Painel**: nota média, leitura e indícios por aluno e missão.
+- **Painel**: uma linha por aluno e uma coluna por missão, com a nota do último envio. Verde ≥ 7, amarelo 5 a 6,9,
+  rosa < 5, vermelho = colou ou indício de IA, cinza = na fila. Passe o mouse na célula para ver tentativas e alertas.
+- **Turma**: matrículas e nomes da turma.
 - **Coladas**: só as respostas eliminadas por colagem.
 
 ## Mudar o código do script

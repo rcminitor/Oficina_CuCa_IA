@@ -154,7 +154,8 @@ function onOpen() {
     .addItem("Ativar correção automática", "ativarCorrecaoAutomatica")
     .addItem("Corrigir a fila agora", "corrigirPendentes")
     .addItem("Testar a correção", "testarCorrecao")
-    .addItem("Recriar abas Painel e Coladas", "configurar")
+    .addItem("Atualizar painel agora", "atualizarPainel")
+    .addItem("Recriar abas Painel, Turma e Coladas", "configurar")
     .addToUi();
 }
 
@@ -217,6 +218,11 @@ function doGet(e) {
     return json_(info);
   }
   if (e && e.parameter && e.parameter.envio) return json_(consultarEnvio_(String(e.parameter.envio)));
+  if (e && e.parameter && e.parameter.matricula) {
+    const t = buscarNaTurma_(String(e.parameter.matricula));
+    if (t === false) return json_({ ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma. Confira o número ou fale com o professor." });
+    return json_({ ok: true, nome: t && t.nome ? t.nome : "" });
+  }
   return json_({ ok: true, servico: "Oficina Digital — avaliação" });
 }
 
@@ -243,6 +249,10 @@ function doPost(e) {
   try {
     const dados = JSON.parse(e.postData.contents);
     validar_(dados);
+    const turma = buscarNaTurma_(dados.matricula);
+    if (turma === false) return json_({ ok: false, erro: "matricula", mensagem: "Matrícula não encontrada na turma. Confira o número ou fale com o professor." });
+    if (turma && turma.nome) dados.aluno = turma.nome;   // usa o nome oficial da turma
+    if (!dentroDoLimite_(dados.matricula)) return json_({ ok: false, erro: "limite", mensagem: "Muitos envios seguidos. Espere alguns minutos e tente de novo." });
     const envioId = Utilities.getUuid();
     const linhaInicial = gravar_(dados, envioId);
 
@@ -463,6 +473,7 @@ function corrigirPendentes() {
       (envios[id] = envios[id] || []).push({ linha: i + 2, v: v });
     });
     const inicio = Date.now();
+    let mudou = false;
     Object.keys(envios).forEach((envioId) => {
       const grupo = envios[envioId];
       if (!grupo.some((g) => g.v[COL.STATUS - 1] === "pendente")) return;
@@ -476,9 +487,14 @@ function corrigirPendentes() {
       };
       try {
         const resultados = corrigirEnvio_(dados, 120000, true);
-        if (resultados) resultados.forEach((r, i) => atualizarLinhas_(grupo[i].linha, [r]));
+        if (resultados) { resultados.forEach((r, i) => atualizarLinhas_(grupo[i].linha, [r])); mudou = true; }
       } catch (erro) { console.warn("Fila: " + erro); }
     });
+    // Só redesenha o painel quando chegou envio novo ou saiu nota.
+    const props = PropertiesService.getScriptProperties();
+    if (mudou || props.getProperty("PAINEL_LINHAS") !== String(ultima)) {
+      try { atualizarPainel_(); props.setProperty("PAINEL_LINHAS", String(ultima)); } catch (erro) { console.warn("Painel: " + erro); }
+    }
   } finally {
     lock.releaseLock();
   }
@@ -504,6 +520,138 @@ function abaRespostas_() {
   return aba;
 }
 
+const LIMITE_ENVIOS_POR_HORA = 30;
+
+function normalizarMatricula_(m) {
+  return String(m || "").replace(/[\s.\-\/]/g, "").toUpperCase();
+}
+
+/** null = turma vazia (aceita todos); false = não está na turma; {nome} = encontrado. */
+function buscarNaTurma_(matricula) {
+  const aba = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Turma");
+  if (!aba || aba.getLastRow() < 2) return null;
+  const alvo = normalizarMatricula_(matricula);
+  const linhas = aba.getRange(2, 1, aba.getLastRow() - 1, 2).getDisplayValues();
+  const cadastradas = linhas.filter((l) => normalizarMatricula_(l[0]));
+  if (!cadastradas.length) return null;
+  const achou = cadastradas.find((l) => normalizarMatricula_(l[0]) === alvo);
+  return achou ? { nome: String(achou[1] || "").trim() } : false;
+}
+
+/** Até LIMITE_ENVIOS_POR_HORA envios por matrícula por hora. */
+function dentroDoLimite_(matricula) {
+  const cache = CacheService.getScriptCache();
+  const chave = "envios_" + normalizarMatricula_(matricula);
+  const n = Number(cache.get(chave) || 0);
+  if (n >= LIMITE_ENVIOS_POR_HORA) return false;
+  cache.put(chave, String(n + 1), 3600);
+  return true;
+}
+
+function abaTurma_() {
+  const planilha = SpreadsheetApp.getActiveSpreadsheet();
+  let aba = planilha.getSheetByName("Turma");
+  if (!aba) {
+    aba = planilha.insertSheet("Turma");
+    aba.getRange("A1:B1").setValues([["Matrícula", "Nome"]]).setFontWeight("bold");
+    aba.setFrozenRows(1);
+    aba.getRange("A2:A").setNumberFormat("@");
+    aba.getRange("D1").setValue("Cole as matrículas na coluna A (e os nomes na B). Enquanto esta aba estiver vazia, qualquer matrícula é aceita. Com a lista preenchida, só essas matrículas conseguem enviar, e o nome oficial daqui é usado no registro.");
+    aba.getRange("D1").setWrap(true);
+    aba.setColumnWidth(4, 420);
+  }
+  return aba;
+}
+
+/** Monta o painel aluno × missão: última nota de cada missão, tentativas e alertas. */
+function atualizarPainel_() {
+  const planilha = SpreadsheetApp.getActiveSpreadsheet();
+  const limiar = Number(PropertiesService.getScriptProperties().getProperty("LIMIAR_IA") || 70);
+  const missoes = Object.keys(GABARITO).map((id) => id.replace(/q\d+$/, "")).filter((m, i, a) => a.indexOf(m) === i);
+  const resp = abaRespostas_();
+  const ult = resp.getLastRow();
+  const valores = ult < 2 ? [] : resp.getRange(2, 1, ult - 1, CABECALHO.length).getValues();
+
+  // Agrupa por aluno (matrícula) → missão → envios em ordem.
+  const alunos = {};
+  valores.forEach((v) => {
+    const mat = normalizarMatricula_(v[2]);
+    if (!mat || !v[COL.ENVIO - 1]) return;
+    const a = alunos[mat] = alunos[mat] || { nome: v[1], matricula: String(v[2]), missoes: {} };
+    a.nome = v[1];
+    const m = a.missoes[v[COL.MISSAO - 1]] = a.missoes[v[COL.MISSAO - 1]] || { envios: [], linhas: {} };
+    const env = v[COL.ENVIO - 1];
+    if (m.envios.indexOf(env) < 0) m.envios.push(env);
+    (m.linhas[env] = m.linhas[env] || []).push(v);
+  });
+  // Alunos da turma que ainda não enviaram nada.
+  const turma = planilha.getSheetByName("Turma");
+  if (turma && turma.getLastRow() >= 2) {
+    turma.getRange(2, 1, turma.getLastRow() - 1, 2).getDisplayValues().forEach((l) => {
+      const mat = normalizarMatricula_(l[0]);
+      if (mat && !alunos[mat]) alunos[mat] = { nome: l[1] || "", matricula: l[0], missoes: {} };
+      else if (mat) { alunos[mat].matricula = l[0]; if (l[1]) alunos[mat].nome = l[1]; }
+    });
+  }
+
+  const COR = { boa: "#d1f2dc", media: "#fff1c2", baixa: "#fde0dc", fila: "#e5e7eb", alerta: "#f9c6c0", vazia: "#ffffff" };
+  const linhas = [], cores = [], notasCel = [];
+  Object.keys(alunos).sort((x, y) => String(alunos[x].nome).localeCompare(String(alunos[y].nome), "pt-BR")).forEach((mat) => {
+    const a = alunos[mat];
+    const linha = [a.nome, a.matricula, 0, ""], cor = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"], nota = ["", "", "", ""];
+    const finais = [];
+    missoes.forEach((m) => {
+      const info = a.missoes[m];
+      if (!info) { linha.push(""); cor.push(COR.vazia); nota.push(""); return; }
+      const ultimo = info.linhas[info.envios[info.envios.length - 1]];
+      const tentativas = info.envios.length;
+      if (ultimo.some((v) => v[COL.STATUS - 1] === "pendente")) {
+        linha.push("na fila"); cor.push(COR.fila); nota.push(tentativas + " envio(s); correção na fila."); return;
+      }
+      const ns = ultimo.map((v) => Number(v[COL.NOTA - 1]) || 0);
+      const media = Math.round((ns.reduce((x, y) => x + y, 0) / ns.length) * 10) / 10;
+      const colou = ultimo.some((v) => v[COL.COLOU - 1] === "SIM");
+      const ia = ultimo.some((v) => v[COL.INDICIO - 1] !== "" && Number(v[COL.INDICIO - 1]) >= limiar);
+      const rapidas = Math.max.apply(null, ultimo.map((v) => Number(v[15]) || 0));
+      finais.push(media);
+      linha.push(media);
+      cor.push(colou || ia ? COR.alerta : media >= 7 ? COR.boa : media >= 5 ? COR.media : COR.baixa);
+      const avisos = [];
+      if (colou) avisos.push("colou resposta");
+      if (ia) avisos.push("indício de IA");
+      if (rapidas) avisos.push(rapidas + " leitura(s) rápida(s)");
+      nota.push("Último envio: " + media + "/10 · " + tentativas + " envio(s)" + (avisos.length ? "\n⚠ " + avisos.join(", ") : ""));
+    });
+    linha[2] = finais.length;
+    linha[3] = finais.length ? Math.round((finais.reduce((x, y) => x + y, 0) / finais.length) * 10) / 10 : "";
+    linhas.push(linha); cores.push(cor); notasCel.push(nota);
+  });
+
+  let painel = planilha.getSheetByName("Painel");
+  if (!painel) painel = planilha.insertSheet("Painel", 0);
+  painel.clear(); painel.clearNotes();
+  const titulos = missoes.map((m) => {
+    const t = GABARITO[m + "q1"] ? m.replace("m", "M") : m;
+    return t;
+  });
+  painel.getRange(1, 1).setValue("Painel da turma: última nota de cada missão (passe o mouse na célula para ver tentativas e alertas)").setFontWeight("bold");
+  painel.getRange(2, 1).setValue("Verde ≥ 7 · Amarelo 5 a 6,9 · Rosa < 5 · Vermelho = colou ou indício de IA · Cinza = correção na fila · Atualiza a cada 5 minutos.").setFontColor("#555555");
+  const cab = ["Aluno", "Matrícula", "Missões feitas", "Média"].concat(titulos);
+  painel.getRange(4, 1, 1, cab.length).setValues([cab]).setFontWeight("bold").setBackground("#eef0ff");
+  if (linhas.length) {
+    const r = painel.getRange(5, 1, linhas.length, cab.length);
+    r.setValues(linhas); r.setBackgrounds(cores); r.setNotes(notasCel);
+    painel.getRange(5, 5, linhas.length, missoes.length).setHorizontalAlignment("center");
+  } else {
+    painel.getRange(5, 1).setValue("Ainda não há respostas.");
+  }
+  painel.setFrozenRows(4); painel.setFrozenColumns(2);
+  painel.setColumnWidth(1, 220);
+  painel.getRange(4, 5, 1, missoes.length).setHorizontalAlignment("center");
+}
+
+function atualizarPainel() { atualizarPainel_(); }
+
 /** Separador de argumentos das fórmulas conforme o idioma da planilha (pt_BR usa ";"). */
 function sep_() {
   const local = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetLocale() || "";
@@ -513,23 +661,14 @@ function sep_() {
 /** Cria ou recria as abas Respostas, Painel e Coladas. */
 function configurar() {
   abaRespostas_();
+  abaTurma_();
   const planilha = SpreadsheetApp.getActiveSpreadsheet();
   const S = sep_();
-  let painel = planilha.getSheetByName("Painel");
-  if (!painel) painel = planilha.insertSheet("Painel");
-  painel.clear();
-  painel.getRange("A1").setValue("Resumo por aluno e missão (considera todos os envios)").setFontWeight("bold");
-  painel.getRange("A3").setFormula(
-    "=IFERROR(QUERY(Respostas!A:X" + S + " \"select B, C, D, avg(I), count(F), max(N), max(P), max(Q), max(K) " +
-    "where B is not null group by B, C, D order by B, D " +
-    "label avg(I) 'Nota média', count(F) 'Respostas enviadas', max(N) 'Leitura (s)', max(P) 'Leituras rápidas', " +
-    "max(Q) 'Saídas da página', max(K) 'Maior indício de IA'\"" + S + " 1)" + S + " \"Ainda não há respostas corrigidas.\")"
-  );
+  atualizarPainel_();
   let coladas = planilha.getSheetByName("Coladas");
   if (!coladas) coladas = planilha.insertSheet("Coladas");
   coladas.clear();
   coladas.getRange("A1").setFormula("=QUERY(Respostas!A:X" + S + " \"select A, B, C, D, F, H where M = 'SIM'\"" + S + " 1)");
-  // Remove a aba vazia criada junto com a planilha.
   ["Página1", "Sheet1", "Planilha1"].forEach((nome) => {
     const aba = planilha.getSheetByName(nome);
     if (aba && aba.getLastRow() === 0 && planilha.getSheets().length > 1) planilha.deleteSheet(aba);
@@ -539,14 +678,21 @@ function configurar() {
 /** Ajustes que rodam sozinhos uma vez (chamado pela correção automática). */
 function manutencao_() {
   const props = PropertiesService.getScriptProperties();
-  if (props.getProperty("VERSAO_ABAS") === "3") return;
+  // Linhas de teste da instalação somem 20 minutos depois.
+  const resp = abaRespostas_();
+  const limite = Date.now() - 20 * 60 * 1000;
+  for (let linha = resp.getLastRow(); linha >= 2; linha--) {
+    const v = resp.getRange(linha, 1, 1, 2).getValues()[0];
+    if (v[1] === "TESTE (Claude)" && v[0] instanceof Date && v[0].getTime() < limite) resp.deleteRow(linha);
+  }
+  if (props.getProperty("VERSAO_ABAS") === "4") return;
   // Apaga as linhas de teste criadas na instalação.
   const aba = abaRespostas_();
   for (let linha = aba.getLastRow(); linha >= 2; linha--) {
     if (aba.getRange(linha, 2).getValue() === "TESTE (Claude)") aba.deleteRow(linha);
   }
   configurar();
-  props.setProperty("VERSAO_ABAS", "3");
+  props.setProperty("VERSAO_ABAS", "4");
 }
 
 function json_(obj) {

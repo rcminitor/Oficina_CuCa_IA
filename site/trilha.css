@@ -64,3 +64,13 @@ th { background: var(--acento-sup); }
 .quiz-retorno p { margin: .4rem 0 0; }
 .quiz-nota { padding: .45rem .7rem; border-radius: 8px; background: var(--acento-sup); }
 .quiz-aviso-ia { padding: .45rem .7rem; border-radius: 8px; background: var(--vermelho-sup); border-left: 4px solid var(--vermelho); }
+.ident-campos { align-items: end; }
+.ident-comecar, .ident-trocar, .ident-sim, .ident-nao { border: 0; border-radius: 8px; padding: .65rem 1.1rem; min-height: 44px; font-weight: 700; cursor: pointer; }
+.ident-comecar, .ident-sim { background: var(--acento); color: #fff; }
+.ident-trocar, .ident-nao { background: var(--bg); color: var(--texto); border: 1px solid var(--borda); }
+.ident-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.ident-confirma { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.ident-confirma[hidden] { display: none; }
+.ident-status { margin: .6rem 0 0; }
+.ident-status.alerta { padding: .5rem .7rem; border-radius: 8px; background: var(--laranja-sup); border-left: 4px solid var(--laranja); }
+.quiz-pergunta textarea:disabled { opacity: .6; cursor: not-allowed; }

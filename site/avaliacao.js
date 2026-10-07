@@ -11,26 +11,83 @@
   const ler = (chave, padrao) => { try { const v = localStorage.getItem(chave); return v ? JSON.parse(v) : padrao; } catch (_) { return padrao; } };
   const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  // ---------- Identificação do aluno ----------
+  // ---------- Identificação do aluno (computador compartilhado) ----------
   const secaoMissoes = document.querySelector(".missoes");
   if (!secaoMissoes) return;
-  const ident = ler("oficina_aluno", { nome: "", matricula: "" });
+  const EXPIRA_MS = 4 * 60 * 60 * 1000;   // 4 horas sem uso: o próximo aluno começa do zero
+
+  const limparDadosPessoais = () => {
+    try {
+      Object.keys(localStorage)
+        .filter((k) => (k.startsWith("oficina_") || k.startsWith("oficina-concluida-")) && k !== "oficina_tema")
+        .forEach((k) => localStorage.removeItem(k));
+    } catch (_) {}
+  };
+  const ultimoUso = ler("oficina_ultimo_uso", 0);
+  if (ultimoUso && Date.now() - ultimoUso > EXPIRA_MS) limparDadosPessoais();
+  let ultimaMarca = 0;
+  const marcarUso = () => { if (Date.now() - ultimaMarca > 60000) { ultimaMarca = Date.now(); guardar("oficina_ultimo_uso", ultimaMarca); } };
+  ["pointerdown", "keydown", "scroll"].forEach((ev) => window.addEventListener(ev, marcarUso, { passive: true }));
+
+  const ident = ler("oficina_aluno", {});
+  const confirmado = !!(ident.confirmado && ident.nome && ident.matricula);
+  const MAT = confirmado ? String(ident.matricula).replace(/[^0-9A-Za-z]/g, "") : "";
+  const chave = (nome) => `oficina_${MAT}_${nome}`;
+  if (confirmado) marcarUso();
+
   const painel = document.createElement("section");
   painel.className = "identificacao";
   painel.setAttribute("aria-labelledby", "titulo-identificacao");
-  painel.innerHTML = `
-    <h2 id="titulo-identificacao">Quem está estudando?</h2>
-    <p>Cada missão termina com perguntas. Responda com suas palavras. Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
-    <div class="ident-campos">
-      <label>Nome <input id="aluno-nome" autocomplete="name" value="${esc(ident.nome)}"></label>
-      <label>Matrícula <input id="aluno-matricula" inputmode="numeric" value="${esc(ident.matricula)}"></label>
-    </div>`;
+  if (confirmado) {
+    painel.innerHTML = `
+      <h2 id="titulo-identificacao">Estudando como ${esc(ident.nome)}</h2>
+      <p>Matrícula ${esc(ident.matricula)}. Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
+      <div class="ident-acoes">
+        <button type="button" class="ident-trocar">Não sou eu / Sair</button>
+        <span class="ident-confirma" hidden>
+          Isso apaga deste computador o que não foi enviado. Continuar?
+          <button type="button" class="ident-sim">Sim, trocar de aluno</button>
+          <button type="button" class="ident-nao">Cancelar</button>
+        </span>
+      </div>`;
+    const trocar = painel.querySelector(".ident-trocar");
+    const confirma = painel.querySelector(".ident-confirma");
+    trocar.addEventListener("click", () => { confirma.hidden = false; trocar.hidden = true; painel.querySelector(".ident-sim").focus(); });
+    painel.querySelector(".ident-nao").addEventListener("click", () => { confirma.hidden = true; trocar.hidden = false; trocar.focus(); });
+    painel.querySelector(".ident-sim").addEventListener("click", () => { limparDadosPessoais(); location.reload(); });
+  } else {
+    painel.innerHTML = `
+      <h2 id="titulo-identificacao">Quem está estudando?</h2>
+      <p>Escreva seu nome e sua matrícula para responder às perguntas das missões. Suas respostas, sua nota e o tempo de leitura de cada missão são enviados ao professor.</p>
+      <form class="ident-campos" novalidate>
+        <label>Nome <input id="aluno-nome" autocomplete="off" required></label>
+        <label>Matrícula <input id="aluno-matricula" autocomplete="off" inputmode="numeric" required></label>
+        <button type="submit" class="ident-comecar">Começar</button>
+      </form>
+      <p class="ident-status" role="status" aria-live="polite"></p>`;
+    const form = painel.querySelector("form");
+    const st = painel.querySelector(".ident-status");
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const nome = painel.querySelector("#aluno-nome").value.trim();
+      const matricula = painel.querySelector("#aluno-matricula").value.trim();
+      if (!nome || !matricula) { st.textContent = "Escreva seu nome e sua matrícula."; st.className = "ident-status alerta"; return; }
+      let nomeOficial = "";
+      if (URL_ENVIO) {
+        st.textContent = "Conferindo a matrícula…"; st.className = "ident-status";
+        try {
+          const r = await (await fetch(`${URL_ENVIO}?matricula=${encodeURIComponent(matricula)}`)).json();
+          if (!r.ok) { st.textContent = r.mensagem || "Matrícula não encontrada."; st.className = "ident-status alerta"; return; }
+          nomeOficial = r.nome || "";
+        } catch (_) { /* sem internet: confere de novo no envio */ }
+      }
+      limparDadosPessoais();
+      guardar("oficina_aluno", { nome: nomeOficial || nome, matricula, confirmado: true });
+      guardar("oficina_ultimo_uso", Date.now());
+      location.reload();
+    });
+  }
   secaoMissoes.before(painel);
-  const campoNome = painel.querySelector("#aluno-nome");
-  const campoMatricula = painel.querySelector("#aluno-matricula");
-  const salvarIdent = () => guardar("oficina_aluno", { nome: campoNome.value.trim(), matricula: campoMatricula.value.trim() });
-  campoNome.addEventListener("input", salvarIdent);
-  campoMatricula.addEventListener("input", salvarIdent);
 
   // ---------- Tempo de leitura por missão ----------
   const estado = {};          // por missão: tempo, saídas, tempo fora, leituras rápidas
@@ -40,7 +97,7 @@
 
   const missoes = [...document.querySelectorAll("article.missao")].filter((m) => PERGUNTAS[m.id]);
   missoes.forEach((m) => {
-    estado[m.id] = Object.assign({ tempo: 0, saidas: 0, tempoFora: 0, leiturasRapidas: 0 }, ler(`oficina_leitura_${m.id}`, {}));
+    estado[m.id] = Object.assign({ tempo: 0, saidas: 0, tempoFora: 0, leiturasRapidas: 0 }, confirmado ? ler(chave(`leitura_${m.id}`), {}) : {});
   });
 
   const palavrasDa = (missao) => {
@@ -76,7 +133,7 @@
       const naTela = (visibilidade[m.id] || 0) >= 0.3 || (m.id === maior && fr >= 0.15);
       if ((ativa && naTela) || tocando) {
         estado[m.id].tempo += 1;
-        if (estado[m.id].tempo % 5 === 0) guardar(`oficina_leitura_${m.id}`, estado[m.id]);
+        if (confirmado && estado[m.id].tempo % 5 === 0) guardar(chave(`leitura_${m.id}`), estado[m.id]);
       }
     });
   }, 1000);
@@ -90,7 +147,7 @@
     if (!foraDesde) return;
     if (missaoEmFoco && estado[missaoEmFoco]) {
       estado[missaoEmFoco].tempoFora += Math.round((Date.now() - foraDesde) / 1000);
-      guardar(`oficina_leitura_${missaoEmFoco}`, estado[missaoEmFoco]);
+      if (confirmado) guardar(chave(`leitura_${missaoEmFoco}`), estado[missaoEmFoco]);
     }
     foraDesde = null;
   };
@@ -103,7 +160,7 @@
 
   missoes.forEach((missao) => {
     const perguntas = PERGUNTAS[missao.id];
-    const rascunho = ler(`oficina_resp_${missao.id}`, {});
+    const rascunho = confirmado ? ler(chave(`resp_${missao.id}`), {}) : {};
     const caixa = document.createElement("section");
     caixa.className = "quiz-missao";
     caixa.setAttribute("aria-label", "Perguntas da missão");
@@ -150,7 +207,7 @@
         const s = sinais[p.id];
         r[p.id] = { texto: caixa.querySelector(`#${p.id}`).value, colou: s.colou, digitados: s.digitados, insercoesGrandes: s.insercoesGrandes, tempoEscrita: Math.round(s.tempoEscrita) };
       });
-      guardar(`oficina_resp_${missao.id}`, r);
+      if (confirmado) guardar(chave(`resp_${missao.id}`), r);
     }
 
     const status = caixa.querySelector(".quiz-status");
@@ -158,20 +215,18 @@
     if (!URL_ENVIO) {
       status.textContent = "O envio das respostas ainda não foi ligado pelo professor.";
       botao.disabled = true;
+    } else if (!confirmado) {
+      caixa.querySelectorAll("textarea").forEach((t) => { t.disabled = true; });
+      botao.disabled = true;
+      status.innerHTML = 'Para responder, escreva seu nome e sua matrícula no quadro <a href="#titulo-identificacao">“Quem está estudando?”</a>.';
     }
-    const resultadoAnterior = ler(`oficina_nota_${missao.id}`, null);
+    const resultadoAnterior = confirmado ? ler(chave(`nota_${missao.id}`), null) : null;
     if (resultadoAnterior) mostrarResultado(resultadoAnterior, true);
 
     botao.addEventListener("click", async () => {
       status.className = "quiz-status";
-      salvarIdent();
-      const aluno = ler("oficina_aluno", {});
-      if (!aluno.nome || !aluno.matricula) {
-        status.textContent = "Antes de enviar, escreva seu nome e sua matrícula no quadro “Quem está estudando?”.";
-        status.classList.add("alerta");
-        campoNome.focus();
-        return;
-      }
+      if (!confirmado) return;
+      const aluno = { nome: ident.nome, matricula: ident.matricula };
       const respostas = perguntas.map((p) => ({ id: p.id, pergunta: p.texto, texto: caixa.querySelector(`#${p.id}`).value.trim() }));
       const curta = respostas.find((r) => r.texto.length < 15);
       if (curta) {
@@ -185,7 +240,7 @@
       const ouviu = audioOuvido(missao);
       if (e.tempo < minimo && ouviu < AUDIO_SUFICIENTE) {
         e.leiturasRapidas += 1;
-        guardar(`oficina_leitura_${missao.id}`, e);
+        guardar(chave(`leitura_${missao.id}`), e);
         status.innerHTML = "<strong>Você passou pouco tempo nesta missão.</strong> Leia de novo com calma, ou ouça o áudio, e depois envie as respostas.";
         status.classList.add("alerta");
         missao.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -207,13 +262,18 @@
       try {
         const resp = await fetch(URL_ENVIO, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(envio) });
         const dados = await resp.json();
+        if (!dados.ok && dados.mensagem) {
+          status.textContent = dados.mensagem;
+          status.classList.add("alerta");
+          return;
+        }
         if (!dados.ok) throw new Error(dados.erro || "erro");
         if (dados.pendente) {
-          guardar(`oficina_pendente_${missao.id}`, dados.envioId);
+          guardar(chave(`pendente_${missao.id}`), dados.envioId);
           mostrarFila();
           acompanharFila(dados.envioId);
         } else {
-          guardar(`oficina_nota_${missao.id}`, dados);
+          guardar(chave(`nota_${missao.id}`), dados);
           mostrarResultado(dados, false);
         }
       } catch (_) {
@@ -238,14 +298,14 @@
           const dados = await r.json();
           if (dados.ok && !dados.pendente) {
             clearInterval(timer);
-            try { localStorage.removeItem(`oficina_pendente_${missao.id}`); } catch (_) {}
-            guardar(`oficina_nota_${missao.id}`, dados);
+            try { localStorage.removeItem(chave(`pendente_${missao.id}`)); } catch (_) {}
+            guardar(chave(`nota_${missao.id}`), dados);
             mostrarResultado(dados, false);
           }
         } catch (_) { /* tenta de novo na próxima volta */ }
       }, 30000);
     }
-    const pendente = ler(`oficina_pendente_${missao.id}`, null);
+    const pendente = confirmado ? ler(chave(`pendente_${missao.id}`), null) : null;
     if (pendente && URL_ENVIO) { mostrarFila(); acompanharFila(pendente); }
 
     function mostrarResultado(dados, antigo) {
