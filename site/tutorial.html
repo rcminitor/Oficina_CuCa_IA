@@ -87,6 +87,18 @@
       <summary><span class="num">1</span><span>Conferir e instalar o Python (e o Git)</span></summary>
       <div class="corpo">
         <p>O projeto é escrito em <strong>Python</strong>. O Gemini só consegue rodar o código se o Python estiver instalado. <strong>Primeiro confira.</strong> Se faltar, instale.</p>
+        <h3>Antes de abrir o terminal: o que é e para que serve</h3>
+        <p>O <strong>terminal</strong> é uma janela onde se digitam <strong>comandos</strong> para o computador. Neste projeto ele serve para <strong>conferir ferramentas</strong> e para <strong>deixar os programas ligados</strong>. Os programas do projeto só funcionam <strong>enquanto o terminal deles estiver aberto</strong>.</p>
+        <table>
+          <tr><th>Quando</th><th>O que o terminal faz</th></tr>
+          <tr><td><strong>Passo 1</strong></td><td>Conferir se o Python, o pip e o Git estão instalados.</td></tr>
+          <tr><td><strong>Passo 5</strong></td><td>Ligar a API. Fica aberto mostrando <code>Uvicorn running</code>. <strong>Não feche.</strong></td></tr>
+          <tr><td><strong>Passo 7</strong></td><td>Ligar a automação, num <strong>segundo</strong> terminal.</td></tr>
+          <tr><td><strong>Passo 9</strong></td><td>Ligar o programa do Telegram.</td></tr>
+          <tr><td><strong>Passo 10</strong></td><td>Rodar os testes.</td></tr>
+          <tr><td><strong>Etapa 6 do manual</strong></td><td>Enviar a pasta ao GitHub.</td></tr>
+        </table>
+        <div class="dica"><div class="cb"><strong>Você quase não digita comandos.</strong> O Gemini do Antigravity escreve e roda os comandos, e pede a sua permissão antes. Você só precisa <strong>abrir o terminal agora</strong>, para a conferência abaixo, e <strong>ler o que aparece</strong> nele nos outros passos. Para parar um programa, aperte <strong>Ctrl + C</strong>.</div></div>
         <h3>A) Conferir o que você já tem</h3>
         <p>Abra o terminal: tecla <strong>Windows</strong>, digite <code>PowerShell</code>, Enter. Digite os três comandos, um de cada vez:</p>
         <pre id="c-py">python --version
@@ -109,7 +121,7 @@ Se algum faltar, explique em passos curtos, para Windows, como instalar. Peça m
         <h3>B) Instalar o Python (se faltar)</h3>
         <ol>
           <li>Abra <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>.</li>
-          <li>Clique no botão amarelo <strong>Download Python</strong>. Prefira a versão <strong>3.12</strong> (ou 3.11). Versões muito antigas deixam de receber correções. Por isso não use uma anterior à 3.11.</li>
+          <li>Clique no botão amarelo <strong>Download Python</strong>. O número da versão muda com o tempo (hoje aparece a 3.14). <strong>Qualquer versão 3.11 ou mais nova serve</strong>: o projeto foi testado na 3.12 e na 3.14. Evite versões anteriores à 3.11, que deixam de receber correções.</li>
           <li>Abra o arquivo baixado.</li>
           <li><strong>Marque a caixinha "Add python.exe to PATH"</strong> (embaixo, na primeira tela).</li>
           <li>Clique em <strong>Install Now</strong> e espere terminar.</li>
