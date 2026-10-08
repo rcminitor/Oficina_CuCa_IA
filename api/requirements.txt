@@ -6,5 +6,6 @@ pydantic
 crewai
 google-genai
 networkx
+psycopg[binary]
 matplotlib
 # O grafo desta oficina é simples (networkx). Para montar o grafo de uma pasta inteira, use o Graphify (/graphify).

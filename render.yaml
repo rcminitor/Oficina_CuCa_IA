@@ -18,7 +18,7 @@ services:
       - key: ORIGENS_PERMITIDAS
         value: https://rcminitor.github.io
       - key: TELEGRAM_SEGREDO_WEBHOOK
-        generateValue: true   # o Render gera; copie o valor para rodar scripts/registrar_webhook.py
+        generateValue: true   # o Render gera; copie o valor para rodar api/registrar_webhook.py
       # Preencha estes no painel do Render (ficam secretos, não vão para o GitHub):
       - key: GEMINI_API_KEY
         sync: false
@@ -26,10 +26,6 @@ services:
         sync: false
       - key: TELEGRAM_CHAT_ID
         sync: false
-    # O disco do plano free é efêmero: o SQLite (chamados.db) zera a cada deploy/reinício.
-    # Para guardar os chamados, mude para `plan: starter` e descomente:
-    # disk:
-    #   name: dados
-    #   mountPath: /var/data
-    #   sizeGB: 1
-    # e adicione a variável:  BANCO=/var/data/chamados.db
+      - key: DATABASE_URL     # Postgres grátis em neon.tech ou supabase.com (veja docs/publicar_no_render.md)
+        sync: false
+    # O banco fica no Postgres (DATABASE_URL), então os chamados sobrevivem a deploys e reinícios.
