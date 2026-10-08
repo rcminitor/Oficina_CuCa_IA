@@ -7,7 +7,7 @@ Site: https://rcminitor.github.io/Oficina_CuCa_IA/roteiro.html
 ## A ideia
 
 - **Um documento por aluno:** o "Portfólio da Oficina Digital", com um espaço para cada comprovante.
-- **Seis tarefas no Classroom**, uma para cada aviso de [`avisos_classroom.md`](avisos_classroom.md). Todas usam o mesmo portfólio.
+- **Seis tarefas no Classroom**, uma para cada aviso de [`avisos_classroom.md`](avisos_classroom.md), mais uma **Tarefa 7 extra** (nuvem). Todas usam o mesmo portfólio.
 - O aluno **cola prints e fotos dentro do portfólio** e entrega o portfólio de novo a cada tarefa. Você vê a evolução.
 
 ## Como montar (uma vez)
@@ -22,7 +22,7 @@ Site: https://rcminitor.github.io/Oficina_CuCa_IA/roteiro.html
 
 ## As seis tarefas
 
-Pontuação sugerida: **90 pontos** nas tarefas 1, 2, 3, 5 e 6, mais **10 pontos de bônus** na tarefa 4 (opcional). Total possível: 100.
+Pontuação sugerida: **90 pontos** nas tarefas 1, 2, 3, 5 e 6, mais **10 pontos de bônus** na tarefa 4 (opcional). Total possível: 100. A **Tarefa 7** (nuvem) vale até **10 pontos extras**; a nota final **não passa de 100**.
 
 ### Tarefa 1: Preparar o ambiente (15 pontos)
 **Tópico:** 1. Preparar
@@ -95,6 +95,44 @@ Pontuação sugerida: **90 pontos** nas tarefas 1, 2, 3, 5 e 6, mais **10 pontos
 
 > **Se o `.env` aparecer no repositório:** a nota da segurança é zero até a chave ser trocada. Peça ao aluno para criar outra chave (veja o [Guia das chaves](https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html)) e entregar de novo.
 
+### Tarefa 7 (extra): Publique a sua oficina na nuvem (até 10 pontos extras)
+**Tópico:** 4. Opcionais
+
+**Para quem é:** quem terminou as tarefas 1 a 6 e quer ver a oficina funcionando na internet, sem o computador ligado. **Não é obrigatória** e não prejudica ninguém que não fizer.
+
+**Enunciado para colar no Classroom:**
+> **Sua oficina na nuvem.** Até agora a sua API só funciona no seu computador. Nesta tarefa extra você a coloca na internet, para o site e o Telegram falarem com ela de qualquer lugar.
+>
+> **O que fazer**
+> 1. **Prepare o repositório.** Confira que o seu projeto do GitHub (Tarefa 6) tem a pasta `api` com o `main.py`. Copie para ele, do projeto do professor, os arquivos `render.yaml`, `api/requirements-render.txt` e `api/configurar_telegram.py` (o Gemini no Antigravity ajuda a copiar). Envie as mudanças ao GitHub.
+> 2. **Crie a conta no Render** (render.com) entrando com o GitHub. Escolha o plano **gratuito**.
+> 3. **Publique.** No Render, clique em **New +**, depois **Blueprint**, e escolha o seu repositório. Quando o Render pedir os valores, preencha: `GEMINI_API_KEY` (a sua chave), `TELEGRAM_TOKEN` (o token do seu bot) e `TELEGRAM_CHAT_ID` (o seu número do @userinfobot). Se pedir `DATABASE_URL`, escreva `nenhum` (a API usa o banco simples).
+> 4. **Espere ficar "Live"** (cerca de 2 a 5 minutos). Abra o endereço que o Render mostra (`https://....onrender.com/docs`). Tire um print da página com o endereço visível.
+> 5. **Abra um chamado** pelo painel do site, trocando o endereço da API pelo seu: `painel.html?api=https://SUA-API.onrender.com`. Tire um print do chamado com o laudo.
+> 6. **Ligue o Telegram.** No computador, na pasta `api`, rode `python configurar_telegram.py` e siga as instruções na tela. Depois mande `/abertos` ao seu bot e tire um print da conversa, com o aviso do chamado e a resposta.
+>
+> **Cuidados**
+> - A API gratuita dorme depois de uns 15 minutos parada. A primeira resposta pode levar até 1 minuto. Isso é normal.
+> - **Nunca mostre o token, a chave ou a senha** em nenhum print. Tape antes de colar no portfólio.
+> - Travou? Escreva no portfólio **em qual passo** e o que apareceu na tela. Isso também vale pontos.
+>
+> **Entregue no portfólio (itens 14 a 16):** print do `/docs` com o endereço `onrender.com`, print do chamado com o laudo, e print do Telegram.
+
+| Critério | Pontos |
+|---|---|
+| API no ar: print do `/docs` com o endereço `onrender.com` | 3 |
+| Chamado aberto pelo painel com laudo | 3 |
+| Telegram: aviso do chamado e resposta ao `/abertos` | 3 |
+| Segurança: nenhum token, chave ou senha visível nos prints | 1 |
+
+**Alternativa que também vale pontos:** quem **não conseguir** completar um passo ganha a pontuação dos passos que fez e ganha **metade dos pontos do passo em que travou** se relatar, com clareza, onde parou e o que viu na tela.
+
+**Dicas para o professor**
+- O plano gratuito do Render pode pedir verificação de conta ou cartão em alguns casos. Confira antes da aula e, se for o caso, deixe a tarefa só como demonstração.
+- O aluno com o projeto muito diferente do gabarito pode não conseguir publicar sem ajuda. Nesse caso, valorize o relato.
+- Chave de IA, token do bot e `DATABASE_URL` nunca devem aparecer em print. Se aparecerem, peça para trocar e refazer o print, como nas outras tarefas.
+- Se ficar pesado para a turma, peça só os passos 1 a 4 (API no ar) e deixe o Telegram para quem quiser.
+
 ## Regras de correção
 
 - **Comprovante vale mais que perfeição.** O aluno que mostrar onde travou, de forma honesta, ganha pontos.
@@ -158,6 +196,15 @@ Link do meu repositório: ____________________
 Print do repositório com as pastas
 [cole o print aqui]
 O arquivo .env NÃO aparece no repositório: [ ] sim
+
+TAREFA 7 (EXTRA): NUVEM
+14. Página /docs da minha API com o endereço onrender.com
+[cole o print aqui]
+15. Chamado aberto pelo painel, com o laudo
+[cole o print aqui]
+16. Telegram: aviso do chamado e resposta ao /abertos
+[cole o print aqui]
+Nenhum token, chave ou senha aparece nos prints: [ ] sim
 
 ONDE TRAVEI (opcional)
 [escreva aqui ou grave um áudio de até 1 minuto]

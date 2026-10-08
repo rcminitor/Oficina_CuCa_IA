@@ -44,6 +44,16 @@ Entregue: print do laudo dos dois agentes e print da conversa com o bot no celul
 Antes de enviar, confirme que nenhum arquivo tem chave ou token.
 Entregue: print do seu repositório no GitHub com as pastas.
 
+## Aviso 7 (extra): sua oficina na nuvem
+
+Quem terminou as tarefas 1 a 6 pode fazer uma tarefa extra, **sem obrigação**: colocar a sua oficina na internet.
+
+Você publica a API no Render (plano gratuito), abre um chamado pelo painel e liga o Telegram. Vale até 10 pontos extras; a nota final não passa de 100.
+O passo a passo está na Tarefa 7 do Classroom.
+
+Travou? Escreva em qual passo e o que apareceu na tela. Isso também vale pontos.
+Lembrete: nunca mostre token, chave ou senha em print.
+
 ## Para o professor: ainda não testado em conta real
 
 Os nomes exatos de botões do Antigravity, do Colab, do AI Studio e do NotebookLM não foram conferidos numa conta real. Percorra o Roteiro uma vez antes da aula.
