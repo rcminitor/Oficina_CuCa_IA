@@ -1,56 +1,92 @@
-"""Banco de dados (SQLite) dos chamados de manutenção."""
+"""Banco de dados dos chamados de manutenção.
+
+Sem DATABASE_URL usa SQLite (arquivo local, ótimo para estudar e testar).
+Com DATABASE_URL (ex.: postgresql://usuario:senha@host/banco) usa Postgres, que não perde os dados
+quando a API reinicia na nuvem.
+"""
 import os
-from pathlib import Path
 import sqlite3
 from datetime import datetime
+from pathlib import Path
 
 CAMINHO = os.environ.get("BANCO", str(Path(__file__).resolve().parent / "chamados.db"))
+URL_POSTGRES = os.environ.get("DATABASE_URL", "")
+POSTGRES = URL_POSTGRES.startswith(("postgres://", "postgresql://"))
 STATUS = ("aberto", "em_andamento", "concluido")
+P = "%s" if POSTGRES else "?"  # marcador de parâmetro de cada banco
+
+COLUNAS = """
+    nome        TEXT NOT NULL,
+    contato     TEXT NOT NULL,
+    equipamento TEXT NOT NULL,
+    problema    TEXT NOT NULL,
+    status      TEXT NOT NULL DEFAULT 'aberto',
+    prioridade  TEXT,
+    diagnostico TEXT,
+    criado_em   TEXT NOT NULL"""
+CHAVE = "id SERIAL PRIMARY KEY," if POSTGRES else "id INTEGER PRIMARY KEY AUTOINCREMENT,"
 
 
 def conectar():
+    if POSTGRES:
+        import psycopg
+        from psycopg.rows import dict_row
+        return psycopg.connect(URL_POSTGRES, row_factory=dict_row)
     con = sqlite3.connect(CAMINHO)
     con.row_factory = sqlite3.Row
     return con
 
 
+def executar(con, sql, params=()):
+    return con.execute(sql, params)  # sqlite3 e psycopg 3 aceitam con.execute e devolvem um cursor
+
+
 def criar_tabela():
-    with conectar() as con:
-        con.execute("""
-            CREATE TABLE IF NOT EXISTS chamados (
-                id          INTEGER PRIMARY KEY AUTOINCREMENT,
-                nome        TEXT NOT NULL,
-                contato     TEXT NOT NULL,
-                equipamento TEXT NOT NULL,
-                problema    TEXT NOT NULL,
-                status      TEXT NOT NULL DEFAULT 'aberto',
-                prioridade  TEXT,
-                diagnostico TEXT,
-                criado_em   TEXT NOT NULL
-            )""")
+    con = conectar()
+    try:
+        with con:
+            executar(con, f"CREATE TABLE IF NOT EXISTS chamados ({CHAVE}{COLUNAS})")
+    finally:
+        con.close()
 
 
 def inserir(nome, contato, equipamento, problema):
-    with conectar() as con:
-        cur = con.execute(
-            "INSERT INTO chamados (nome, contato, equipamento, problema, criado_em) VALUES (?, ?, ?, ?, ?)",
-            (nome, contato, equipamento, problema, datetime.now().isoformat(timespec="seconds")))
-        return cur.lastrowid
+    agora = datetime.now().isoformat(timespec="seconds")
+    con = conectar()
+    try:
+        with con:
+            if POSTGRES:
+                cur = executar(
+                    con, f"INSERT INTO chamados (nome, contato, equipamento, problema, criado_em) "
+                         f"VALUES ({P}, {P}, {P}, {P}, {P}) RETURNING id", (nome, contato, equipamento, problema, agora))
+                return cur.fetchone()["id"]
+            cur = executar(
+                con, f"INSERT INTO chamados (nome, contato, equipamento, problema, criado_em) "
+                     f"VALUES ({P}, {P}, {P}, {P}, {P})", (nome, contato, equipamento, problema, agora))
+            return cur.lastrowid
+    finally:
+        con.close()
 
 
 def buscar(id_):
-    with conectar() as con:
-        linha = con.execute("SELECT * FROM chamados WHERE id = ?", (id_,)).fetchone()
+    con = conectar()
+    try:
+        linha = executar(con, f"SELECT * FROM chamados WHERE id = {P}", (id_,)).fetchone()
         return dict(linha) if linha else None
+    finally:
+        con.close()
 
 
 def listar(status=None):
-    with conectar() as con:
+    con = conectar()
+    try:
         if status:
-            linhas = con.execute("SELECT * FROM chamados WHERE status = ? ORDER BY id", (status,)).fetchall()
+            linhas = executar(con, f"SELECT * FROM chamados WHERE status = {P} ORDER BY id", (status,)).fetchall()
         else:
-            linhas = con.execute("SELECT * FROM chamados ORDER BY id").fetchall()
+            linhas = executar(con, "SELECT * FROM chamados ORDER BY id").fetchall()
         return [dict(l) for l in linhas]
+    finally:
+        con.close()
 
 
 def atualizar(id_, **campos):
@@ -60,6 +96,10 @@ def atualizar(id_, **campos):
         raise ValueError(f"status inválido: {campos['status']}")
     if not campos:
         return
-    sets = ", ".join(f"{k} = ?" for k in campos)
-    with conectar() as con:
-        con.execute(f"UPDATE chamados SET {sets} WHERE id = ?", (*campos.values(), id_))
+    sets = ", ".join(f"{k} = {P}" for k in campos)
+    con = conectar()
+    try:
+        with con:
+            executar(con, f"UPDATE chamados SET {sets} WHERE id = {P}", (*campos.values(), id_))
+    finally:
+        con.close()
