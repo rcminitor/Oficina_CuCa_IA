@@ -88,7 +88,7 @@ O site cita nomes de botões e menus que **nunca foram vistos numa conta real**.
 
 | Pergunta | Resposta |
 |---|---|
-| Algum passo ficou longo demais para quem lê pouco? Qual? | |
+| Algum passo ficou longo demais? Qual? | |
 | Alguma palavra difícil sem explicação? Qual? | |
 | Algum "Deu certo se" não bateu com o que apareceu? | |
 | Algum comprovante foi difícil de tirar? | |

@@ -134,7 +134,7 @@ Peça ajuda ao Gemini **sem colar o valor**: "Explique onde eu encontro [a chave
 
 ## 5. Como pedir ajuda ao Gemini (modelo de pedido)
 
-> Sou aluno iniciante e leio pouco. Explique em frases curtas e palavras simples.
+> Sou aluno iniciante. Explique em frases curtas e palavras simples.
 > Quero criar [A PARTE QUE VOCÊ ESCOLHEU] da Oficina Digital.
 > Antes de criar qualquer arquivo, me diga o plano em passos curtos.
 > Depois de criar, me diga como testar e o que devo ver na tela.
