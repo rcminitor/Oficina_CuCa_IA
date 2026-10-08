@@ -7,7 +7,7 @@ O site já vai para o GitHub Pages sozinho. Este guia coloca a **API** (chamados
 3. Crie um Postgres gratuito em <https://neon.tech> (ou <https://supabase.com>) e copie o endereço de conexão (`postgresql://...`).
 4. Preencha as variáveis secretas: `GEMINI_API_KEY`, `TELEGRAM_TOKEN`, `TELEGRAM_CHAT_ID` e `DATABASE_URL` (o endereço do passo anterior).
 5. Aguarde o deploy. Anote a URL, por exemplo `https://oficina-digital-api.onrender.com` (abra `/docs` para conferir).
-6. Copie o valor de `TELEGRAM_SEGREDO_WEBHOOK` (aba **Environment**) e registre o webhook, no seu computador:
+6. Invente uma senha para o webhook com **só letras, números, `_` e `-`** (o Telegram recusa `+`, `/`, `=` etc.), por exemplo no PowerShell: `-join ((48..57+65..90+97..122) | Get-Random -Count 40 | % {[char]$_})`. Coloque-a em `TELEGRAM_SEGREDO_WEBHOOK` na aba **Environment**, espere o deploy e registre o webhook, no seu computador:
    ```bash
    cd api
    export TELEGRAM_TOKEN=... TELEGRAM_SEGREDO_WEBHOOK=...
