@@ -100,38 +100,57 @@ Pontuação sugerida: **90 pontos** nas tarefas 1, 2, 3, 5 e 6, mais **10 pontos
 
 **Para quem é:** quem terminou as tarefas 1 a 6 e quer ver a oficina funcionando na internet, sem o computador ligado. **Não é obrigatória** e não prejudica ninguém que não fizer.
 
+**Regra principal:** o aluno **cria tudo sozinho, com o Gemini**. Ele não copia arquivos do projeto do professor nem de colegas. O projeto do professor serve só para mostrar como o resultado deve funcionar.
+
 **Enunciado para colar no Classroom:**
 > **Sua oficina na nuvem.** Até agora a sua API só funciona no seu computador. Nesta tarefa extra você a coloca na internet, para o site e o Telegram falarem com ela de qualquer lugar.
 >
-> **O que fazer**
-> 1. **Prepare o repositório.** Confira que o seu projeto do GitHub (Tarefa 6) tem a pasta `api` com o `main.py`. Copie para ele, do projeto do professor, os arquivos `render.yaml`, `api/requirements-render.txt` e `api/configurar_telegram.py` (o Gemini no Antigravity ajuda a copiar). Envie as mudanças ao GitHub.
-> 2. **Crie a conta no Render** (render.com) entrando com o GitHub. Escolha o plano **gratuito**.
-> 3. **Publique.** No Render, clique em **New +**, depois **Blueprint**, e escolha o seu repositório. Quando o Render pedir os valores, preencha: `GEMINI_API_KEY` (a sua chave), `TELEGRAM_TOKEN` (o token do seu bot) e `TELEGRAM_CHAT_ID` (o seu número do @userinfobot). Se pedir `DATABASE_URL`, escreva `nenhum` (a API usa o banco simples).
-> 4. **Espere ficar "Live"** (cerca de 2 a 5 minutos). Abra o endereço que o Render mostra (`https://....onrender.com/docs`). Tire um print da página com o endereço visível.
-> 5. **Abra um chamado** pelo painel do site, trocando o endereço da API pelo seu: `painel.html?api=https://SUA-API.onrender.com`. Tire um print do chamado com o laudo.
-> 6. **Ligue o Telegram.** No computador, na pasta `api`, rode `python configurar_telegram.py` e siga as instruções na tela. Depois mande `/abertos` ao seu bot e tire um print da conversa, com o aviso do chamado e a resposta.
+> **Você mesmo cria os arquivos, com o Gemini no Antigravity.** Não copie de ninguém. Leia o que o Gemini propõe antes de aceitar, como nas outras tarefas.
+>
+> **O que o seu projeto precisa ter no final**
+> 1. Um arquivo **`render.yaml`**: diz ao Render como instalar e ligar a sua API (que programa roda, qual comando liga e quais variáveis a API precisa).
+> 2. Uma **lista de pacotes enxuta** só para a nuvem (por exemplo, `requirements-render.txt`), com o mínimo para a API funcionar.
+> 3. A API **lendo token, chave e número do chat de variáveis de ambiente**, nunca escritos no código.
+> 4. O Telegram ligado à API por **webhook**: uma rota que recebe as mensagens do bot e um programa que avisa ao Telegram o endereço da sua API.
+>
+> **Como pedir ao Gemini** (troque as partes em MAIÚSCULAS pelo que é do seu projeto):
+> - *Arquivo de publicação:* "Quero publicar a API da pasta `api` no Render, plano gratuito. Explique o que é um `render.yaml` com palavras simples e crie o meu, com o comando para instalar os pacotes e o comando para ligar a API. As chaves devem ser pedidas no painel do Render, nunca escritas no arquivo."
+> - *Pacotes:* "Leia o meu `requirements.txt` e me mostre um `requirements-render.txt` só com o que a API precisa para funcionar. Explique o que você tirou e por quê."
+> - *Telegram:* "Meu bot do Telegram hoje funciona só no meu computador. Quero que ele funcione com a API publicada. Explique o que é um webhook e me ajude a criar a rota e o programa que registra o endereço no Telegram. A senha do webhook só pode ter letras, números, `_` e `-`."
+>
+> **Passo a passo**
+> 1. Crie os arquivos com o Gemini e envie as mudanças ao seu GitHub.
+> 2. Crie a conta no Render entrando com o GitHub (plano gratuito) e publique o seu repositório.
+> 3. Preencha as variáveis que o Render pedir (as suas chaves). Qualquer valor que você não tiver, pergunte ao Gemini o que é.
+> 4. Espere ficar **Live** (2 a 5 minutos) e abra `https://SUA-API.onrender.com/docs`.
+> 5. Abra um chamado pelo painel, usando `painel.html?api=https://SUA-API.onrender.com`.
+> 6. Ligue o webhook e mande `/abertos` ao seu bot.
 >
 > **Cuidados**
 > - A API gratuita dorme depois de uns 15 minutos parada. A primeira resposta pode levar até 1 minuto. Isso é normal.
-> - **Nunca mostre o token, a chave ou a senha** em nenhum print. Tape antes de colar no portfólio.
+> - **Nunca mostre token, chave ou senha** em prints, nem cole no chat do Gemini. Tape antes de colar no portfólio.
 > - Travou? Escreva no portfólio **em qual passo** e o que apareceu na tela. Isso também vale pontos.
 >
-> **Entregue no portfólio (itens 14 a 16):** print do `/docs` com o endereço `onrender.com`, print do chamado com o laudo, e print do Telegram.
+> **Entregue no portfólio (itens 14 a 18):** print do repositório com os seus arquivos de publicação, um parágrafo explicando o que faz o seu `render.yaml`, print do `/docs` com o endereço `onrender.com`, print de um chamado com laudo e print do Telegram.
 
 | Critério | Pontos |
 |---|---|
-| API no ar: print do `/docs` com o endereço `onrender.com` | 3 |
-| Chamado aberto pelo painel com laudo | 3 |
-| Telegram: aviso do chamado e resposta ao `/abertos` | 3 |
-| Segurança: nenhum token, chave ou senha visível nos prints | 1 |
+| Arquivos de publicação criados por você (`render.yaml` e pacotes) no seu GitHub, sem chave dentro | 2 |
+| Explicação com as suas palavras do que faz o seu `render.yaml` (3 a 5 linhas) | 1 |
+| API no ar: print do `/docs` com o endereço `onrender.com` | 2 |
+| Chamado aberto pelo painel, com laudo | 2 |
+| Telegram: aviso do chamado e resposta ao `/abertos` | 2 |
+| Segurança: nenhum token, chave ou senha visível nos prints nem no repositório | 1 |
 
-**Alternativa que também vale pontos:** quem **não conseguir** completar um passo ganha a pontuação dos passos que fez e ganha **metade dos pontos do passo em que travou** se relatar, com clareza, onde parou e o que viu na tela.
+**Quem travar** ganha os pontos dos passos que fez e **metade dos pontos do passo em que travou**, se relatar com clareza onde parou e o que viu na tela.
 
 **Dicas para o professor**
+- **O que conferir na explicação do `render.yaml`:** se o aluno diz o que roda (a API), como liga (o comando) e que as chaves ficam no painel, ele entendeu. Texto idêntico ao do Gemini sem adaptação merece conversa.
+- **Referência do resultado:** o seu projeto publicado mostra como deve ficar (`render.yaml` e a rota `/telegram/webhook`). Use só para conferir, não para distribuir.
+- **Erros comuns que o Gemini pode cometer:** senha do webhook com `+`, `/` ou `=` (o Telegram recusa), comando de início sem `--host 0.0.0.0 --port $PORT`, chave escrita dentro do `render.yaml`.
 - O plano gratuito do Render pode pedir verificação de conta ou cartão em alguns casos. Confira antes da aula e, se for o caso, deixe a tarefa só como demonstração.
-- O aluno com o projeto muito diferente do gabarito pode não conseguir publicar sem ajuda. Nesse caso, valorize o relato.
-- Chave de IA, token do bot e `DATABASE_URL` nunca devem aparecer em print. Se aparecerem, peça para trocar e refazer o print, como nas outras tarefas.
-- Se ficar pesado para a turma, peça só os passos 1 a 4 (API no ar) e deixe o Telegram para quem quiser.
+- Se ficar pesado para a turma, peça só os passos 1 a 4 e deixe o Telegram para quem quiser.
+- Chave de IA, token do bot e senha do banco nunca devem aparecer em print. Se aparecerem, peça para trocar e refazer o print.
 
 ## Regras de correção
 
@@ -198,13 +217,17 @@ Print do repositório com as pastas
 O arquivo .env NÃO aparece no repositório: [ ] sim
 
 TAREFA 7 (EXTRA): NUVEM
-14. Página /docs da minha API com o endereço onrender.com
+14. Repositório com os meus arquivos de publicação (render.yaml e pacotes)
 [cole o print aqui]
-15. Chamado aberto pelo painel, com o laudo
+15. O que o meu render.yaml faz, com as minhas palavras (3 a 5 linhas)
+[escreva aqui]
+16. Página /docs da minha API com o endereço onrender.com
 [cole o print aqui]
-16. Telegram: aviso do chamado e resposta ao /abertos
+17. Chamado aberto pelo painel, com o laudo
 [cole o print aqui]
-Nenhum token, chave ou senha aparece nos prints: [ ] sim
+18. Telegram: aviso do chamado e resposta ao /abertos
+[cole o print aqui]
+Nenhum token, chave ou senha aparece nos prints nem no repositório: [ ] sim
 
 ONDE TRAVEI (opcional)
 [escreva aqui ou grave um áudio de até 1 minuto]

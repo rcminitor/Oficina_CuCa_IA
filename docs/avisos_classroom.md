@@ -48,7 +48,7 @@ Entregue: print do seu repositório no GitHub com as pastas.
 
 Quem terminou as tarefas 1 a 6 pode fazer uma tarefa extra, **sem obrigação**: colocar a sua oficina na internet.
 
-Você publica a API no Render (plano gratuito), abre um chamado pelo painel e liga o Telegram. Vale até 10 pontos extras; a nota final não passa de 100.
+Você cria, com o Gemini, os arquivos que publicam a sua API no Render (plano gratuito), abre um chamado pelo painel e liga o Telegram. Não copie de ninguém: o objetivo é você entender cada arquivo. Vale até 10 pontos extras; a nota final não passa de 100.
 O passo a passo está na Tarefa 7 do Classroom.
 
 Travou? Escreva em qual passo e o que apareceu na tela. Isso também vale pontos.
