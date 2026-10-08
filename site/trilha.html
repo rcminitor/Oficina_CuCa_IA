@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Trilha acessível e passo a passo para adultos iniciantes aprenderem IA, fontes, GitHub, Obsidian, Graphiti, CrewAI e Telegram sem receber o trabalho pronto.">
+  <title>Trilha do Aluno — Oficina Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css?v=20261007-10">
+  <link rel="stylesheet" href="trilha.css?v=20261007-7">
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="caminho.js?v=20261007-6" defer></script>
+</head>
+<body class="trilha">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo" aria-hidden="true">📚</span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="index.html">Início</a>
+      <a class="aba" href="comecar.html">Começar</a>
+      <a class="aba" href="trilha.html" aria-current="page">Aprender</a>
+      <a class="aba" href="consultar.html">Consultar</a>
+      <a class="aba" href="ferramentas.html">Ferramentas</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="trilha-main" tabindex="-1">
+    <section class="trilha-topo">
+      <p class="eyebrow">Aprender · Ir além</p>
+      <h1>Trilha do Aluno: 15 missões pequenas</h1>
+      <p class="lead">Você constrói seu próprio projeto com IA, passo a passo. Uma missão por vez, sempre com uma prova do que fez.</p>
+    </section>
+
+    <section class="aviso-apoio" aria-labelledby="titulo-apoio">
+      <div>
+        <span class="selo-apoio">🤝 APOIO QUANDO PRECISAR</span>
+        <h2 id="titulo-apoio">Você fará o trabalho. O professor ou monitor ajudará nas partes de segurança.</h2>
+        <p>Você cuida da pergunta, das fontes, das escolhas, dos testes e da explicação. Peça apoio para cadastro, instalação, chaves, tokens e publicação quando tiver dúvida.</p>
+      </div>
+      <details>
+        <summary>Regras importantes de segurança</summary>
+        <ul>
+          <li>Use seu próprio e-mail e uma senha forte. Não compartilhe a senha.</li>
+          <li>Nunca publique telefone, documentos, endereço, senha, chave de API ou token.</li>
+          <li>Comece o Obsidian localmente. Sync, Publish e plugins são opcionais e devem ser avaliados com calma.</li>
+          <li>O token do Telegram funciona como senha. Guarde no arquivo <code>.env</code>, que não vai para o GitHub.</li>
+          <li>Graphiti e CrewAI exigem mais configuração. Faça primeiro o desenho e só depois execute com apoio técnico.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="controles-leitura" aria-label="Ajuda para leitura">
+      <button type="button" id="alternar-fonte">A+ Letras maiores</button>
+      <p>Cada missão pode ter um áudio do NotebookLM. Você também pode responder falando, desenhando ou mostrando uma imagem.</p>
+    </section>
+
+    <section id="mapa">
+      <h2>Seu mapa de aprendizagem</h2>
+      <p class="frase-curta">Faça uma missão por vez. Só marque quando conseguir explicar.</p>
+      <div class="mapa-ilhas" aria-label="Mapa das missões">
+        <a href="#m0">🛡️ Proteção</a><a href="#m1">❓ Pergunta</a><a href="#m2" class="com-ico-ferr" data-ferramenta="obsidian">Obsidian</a>
+        <a href="#m3">📖 Fontes</a><a href="#m4" class="com-ico-ferr" data-ferramenta="notebooklm">NotebookLM</a><a href="#m5">✨ Gemini Notebook</a>
+        <a href="#m6">💬 Prompt</a><a href="#m7">🧩 Skill</a><a href="#m8" class="com-ico-ferr" data-ferramenta="github">GitHub</a>
+        <a href="#m10" class="com-ico-ferr" data-ferramenta="graphiti">Graphiti</a><a href="#m11" class="com-ico-ferr" data-ferramenta="crewai">CrewAI</a><a href="#m12" class="com-ico-ferr" data-ferramenta="telegram">Telegram</a>
+      </div>
+    </section>
+
+    <section class="missoes" aria-labelledby="titulo-missoes">
+      <h2 id="titulo-missoes">15 missões pequenas</h2>
+
+      <article class="missao" id="m0"><h3>0. Proteja o que é secreto</h3><p><strong>Meta:</strong> separar o que pode ser publicado do que deve ficar secreto.</p><p><strong>Faça:</strong> crie duas listas: “público” e “secreto”. Classifique nome completo, telefone, endereço, foto, senha, token, código e desenho.</p><p><strong>Mostre:</strong> um áudio dizendo “não publico ___ porque ___”.</p><details><summary>Quero uma pista</summary><p>Token e senha abrem portas. Eles ficam na lista secreta.</p></details><span class="checkpoint">Peça uma conferência antes da primeira publicação</span></article>
+
+      <article class="missao" id="m1"><h3>1. Faça uma pergunta sua</h3><p><strong>Meta:</strong> escolher um problema pequeno que você quer entender.</p><p><strong>Faça:</strong> desenhe uma pessoa que precisa de ajuda e complete: “Como posso ajudar ___ a ___?”</p><p><strong>Documento:</strong> <code>docs/pergunta-do-projeto.md</code>.</p><p><strong>Explique:</strong> como você saberá que ajudou?</p></article>
+
+      <article class="missao" id="m2" data-ferramenta="obsidian"><span class="selo-ferr">Obsidian</span><h3>2. Monte seu caderno no Obsidian</h3><p><strong>Meta:</strong> guardar ideias e mostrar como elas se ligam.</p><p><strong>Faça:</strong> baixe o <a href="https://obsidian.md/download" target="_blank" rel="noopener">Obsidian oficial</a>. Se a instalação parecer difícil, peça ajuda ao professor ou monitor. Não é necessário criar conta.</p><p>Crie notas chamadas Pergunta, Ideias, Erros, Glossário, Fonte 1 e Fonte 2. Ligue cada nota a pelo menos outra.</p><p><strong>Mostre:</strong> uma captura do grafo local e diga por que ligou duas notas.</p><details><summary>Quero uma pista</summary><p>Use <code>[[Nome da nota]]</code> para criar uma ligação.</p></details></article>
+
+      <article class="missao" id="m3"><h3>3. Escolha documentos que ajudam</h3><p><strong>Meta:</strong> aprender a usar fontes, não respostas prontas.</p><p><strong>Inclua:</strong> enunciado da missão, rubrica simples, glossário, 2 ou 3 textos curtos aprovados, uma tabela quando ajudar e uma ficha de perguntas.</p><p><strong>Não inclua:</strong> trabalho de colega, livro inteiro sem licença, conversa privada, foto de pessoa, dado pessoal ou resposta pronta.</p><p><strong>Documento:</strong> <code>docs/fontes.md</code> com título, autor/site, link, data, duas ideias e “por que confio ou duvido”.</p></article>
+
+      <article class="missao" id="m4" data-ferramenta="notebooklm"><span class="selo-ferr">NotebookLM</span><h3>4. Estude as fontes no NotebookLM</h3><p><strong>Meta:</strong> fazer perguntas e conferir a citação.</p><p><strong>Faça:</strong> entre no <a href="https://notebooklm.google/" target="_blank" rel="noopener">NotebookLM</a> com sua conta Google e crie um notebook. Se não conseguir entrar, peça apoio.</p><p>Adicione apenas as fontes escolhidas, faça uma pergunta curta, abra a citação e compare com o documento.</p><p><strong>Explique:</strong> qual trecho apoia a resposta? O que a fonte não respondeu?</p></article>
+
+      <article class="missao" id="m5"><h3>5. Use o Gemini Notebook e o notebook de código</h3><p><strong>Meta:</strong> perceber que existem cadernos diferentes e escolher o certo.</p><p><strong>Gemini Notebook:</strong> caderno de projeto com fontes e perguntas. <strong>NotebookLM:</strong> ambiente dedicado ao estudo apoiado em fontes. <strong>Notebook de código:</strong> arquivo <code>.ipynb</code> com texto e células que executam Python.</p><h4>Parte A — caderno com fontes</h4><ol><li>Entre no Gemini Notebook com sua conta. Se o recurso não aparecer, peça apoio ao professor.</li><li>Crie um caderno com nome curto, sem telefone, endereço ou documento pessoal.</li><li>Inclua o enunciado, a rubrica simples, o glossário, dois ou três textos curtos escolhidos, uma tabela quando ajudar e a ficha de perguntas.</li><li>Faça a mesma pergunta usada no NotebookLM.</li><li>Abra a citação. Compare com a fonte original.</li><li>Registre duas diferenças e uma dúvida.</li></ol><p><strong>Não inclua:</strong> resposta pronta, trabalho de colega, livro inteiro sem licença, conversa privada, foto de pessoa ou dado pessoal.</p><h4>Parte B — notebook de código</h4><ol><li>Abra <code>notebooks/laboratorio_gemini_graphify.ipynb</code> no Google Colab.</li><li>Encontre o botão ▶ e execute uma célula de cada vez.</li><li>Antes de clicar, diga o que acha que vai acontecer.</li><li>Depois, aponte a entrada, a saída e algo que mudou.</li><li>Registre um erro e como investigou.</li></ol><p><strong>Explique:</strong> qual caderno você usou em cada parte e por quê? Por que uma resposta bonita não prova que está correta?</p><span class="checkpoint">Peça apoio para chaves, instalações ou mensagens de erro difíceis</span></article>
+
+      <article class="missao" id="m6"><h3>6. Melhore um prompt</h3><p><strong>Meta:</strong> pedir ajuda sem pedir a resposta final.</p><p><strong>Faça:</strong> complete objetivo, fonte, formato e regra de incerteza. Teste, confira e melhore uma parte.</p><p><strong>Documento:</strong> <code>docs/prompts.md</code> com antes, depois, fonte conferida e o que mudou.</p><p><strong>Explique:</strong> qual mudança deixou o pedido mais seguro ou claro?</p></article>
+
+      <article class="missao" id="m7"><h3>7. Escolha prompt, skill ou ambos</h3><p><strong>Prompt:</strong> ajuda em um pedido pontual. <strong>Skill:</strong> organiza uma rotina que será repetida. <strong>Ambos:</strong> a skill guarda o método e o prompt adapta um caso.</p><p><strong>Faça:</strong> escolha uma opção, teste e complete: “Usei ___ porque ___. Minha prova é ___. Um humano ainda precisa ___.”</p><p><strong>Documento:</strong> <code>docs/prompts-ou-skill.md</code>.</p></article>
+
+      <article class="missao" id="m8" data-ferramenta="github"><span class="selo-ferr">GitHub</span><h3>8. Aprenda Git e GitHub desde o início</h3><p><strong>Git:</strong> guarda a memória das mudanças. <strong>GitHub:</strong> hospeda e compartilha o repositório.</p><h4>Parte A — criar sua conta</h4><ol><li>Abra <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.</li><li>Informe seu e-mail.</li><li>Crie uma senha forte e exclusiva.</li><li>Escolha um nome de usuário que você consiga lembrar. Evite telefone, documento ou endereço.</li><li>Abra o e-mail de verificação e digite o código somente no site <code>github.com</code>.</li><li>Entre na conta e ative a autenticação em dois fatores. Peça apoio se esta parte parecer difícil.</li><li>Não publique ainda. Primeiro faça a missão de segurança.</li></ol><h4>Parte B — entender antes de clicar</h4><ol><li>Mostre onde aparecem o nome do repositório, os arquivos e o <code>README.md</code>.</li><li>Aprenda cinco cartões: arquivo, repositório, commit, branch e push.</li><li>Crie um repositório ou use o repositório preparado para a turma.</li><li>Mude uma frase pequena e veja o antes e o depois.</li><li>Revise a lista de arquivos. Pare se aparecer <code>.env</code>, token, banco local, foto ou dado pessoal.</li><li>Escreva uma mensagem de commit que diga o que mudou e por quê.</li><li>Envie a mudança. Depois confira no site do GitHub.</li></ol><details><summary>Frases para eu explicar</summary><p>“Meu repositório guarda ___. Meu commit mostra ___. Eu não publiquei ___ porque ___. Usei uma branch quando ___.”</p></details><p><strong>Explique:</strong> o que a “fotografia da mudança” guarda e por quê?</p><span class="checkpoint">Peça uma revisão antes da primeira publicação</span></article>
+
+      <article class="missao" id="m9"><h3>9. Crie uma skill somente se precisar</h3><p><strong>Meta:</strong> transformar uma rotina repetível em instruções.</p><p><strong>Faça:</strong> escreva objetivo, quando usar, entradas, passos, limites, checagem e um exemplo de outro assunto.</p><p><strong>Explique:</strong> o que continua exigindo julgamento humano?</p></article>
+
+      <article class="missao" id="m10" data-ferramenta="graphiti"><span class="selo-ferr">Graphiti</span><h3>10. Desenhe o Graphiti antes do código</h3><p><strong>Meta:</strong> transformar fatos em coisas ligadas por setas e perceber mudanças no tempo.</p><p><strong>Faça:</strong> use três fatos fictícios. Desenhe nós, relações, fonte e data. Depois execute o <a href="https://help.getzep.com/graphiti/getting-started/quick-start" target="_blank" rel="noopener">exemplo oficial do Graphiti</a> com apoio técnico, se necessário.</p><p><strong>Documentos:</strong> <code>graphiti/episodios.json</code> e <code>graphiti/grafo-esperado.md</code>.</p><p><strong>Explique:</strong> o resultado confirmou sua previsão?</p></article>
+
+      <article class="missao" id="m11" data-ferramenta="crewai"><span class="selo-ferr">CrewAI</span><h3>11. Simule uma equipe do CrewAI</h3><p><strong>Meta:</strong> entender agentes antes de programar.</p><p>Um aluno faz o papel de <strong>pesquisador</strong>. Outro faz o papel de <strong>conferidor</strong>. Cada pessoa recebe uma tarefa, uma entrada, uma saída e um limite.</p><p>Depois, demonstre no máximo dois agentes com a <a href="https://docs.crewai.com/core-concepts/Agents" target="_blank" rel="noopener">documentação do CrewAI</a>. Peça apoio para instalar e configurar.</p><p><strong>Documentos:</strong> configurações YAML e <code>docs/por-que-estes-agentes.md</code>.</p><p><strong>Explique:</strong> por que não basta um agente? Onde uma pessoa confere?</p></article>
+
+      <article class="missao" id="m12" data-ferramenta="telegram"><span class="selo-ferr">Telegram</span><h3>12. Planeje o bot do Telegram</h3><p><strong>Meta:</strong> desenhar uma conversa segura entre pessoa, programa e resposta.</p><p><strong>Faça:</strong> planeje <code>/start</code>, <code>/ajuda</code> e um comando do projeto, usando dados fictícios.</p><p>Depois, crie e teste o bot seguindo o <a href="https://core.telegram.org/bots/tutorial" target="_blank" rel="noopener">tutorial oficial</a>. Peça ajuda para configurar servidor e variáveis de ambiente.</p><p><strong>Documentos:</strong> <code>telegram/comandos.md</code> e <code>telegram/testes.md</code>.</p><span class="checkpoint">Token é senha: nunca aparece no site ou no GitHub</span></article>
+
+      <article class="missao" id="m13"><h3>13. Ligue duas partes de cada vez</h3><p><strong>Meta:</strong> testar sem se perder.</p><p>Teste primeiro cada peça. Depois ligue apenas duas: mensagem → programa; programa → banco; banco → resposta. Registre onde deu erro e o que mudou.</p><p><strong>Explique:</strong> onde o sistema pode errar e quem deve perceber?</p></article>
+
+      <article class="missao" id="m14"><h3>14. Apresente o que é realmente seu</h3><p><strong>Mostre:</strong> pergunta, fonte, nota, prompt, escolha de skill, grafo, agentes, bot e um erro corrigido.</p><p><strong>Responda:</strong> “Esta foi minha escolha. Esta é minha prova. Aqui a IA errou. Isto ficou secreto. Esta parte foi feita por mim.”</p><p><strong>Documento:</strong> <code>docs/autoavaliacao.md</code>.</p></article>
+    </section>
+
+    <section id="documentos" class="secao-trilha">
+      <h2>Documentos que o projeto deve ter</h2>
+      <div class="tabela-responsiva"><table><thead><tr><th>Arquivo ou pasta</th><th>O aluno mostra</th></tr></thead><tbody>
+        <tr><td><code>README.md</code></td><td>Problema, público, desenho, ferramentas e teste.</td></tr>
+        <tr><td><code>docs/pergunta-do-projeto.md</code></td><td>Pergunta própria e sinais de sucesso.</td></tr>
+        <tr><td><code>docs/fontes.md</code></td><td>Autor, link, data, ideias, confiança e dúvida.</td></tr>
+        <tr><td><code>docs/diario-de-bordo.md</code></td><td>Fiz, aprendi, errei e próximo passo.</td></tr>
+        <tr><td><code>docs/prompts.md</code></td><td>Pedido, resultado, fonte conferida e melhoria.</td></tr>
+        <tr><td><code>docs/prompts-ou-skill.md</code></td><td>Escolha, alternativa recusada, prova e limite humano.</td></tr>
+        <tr><td><code>skills/&lt;nome&gt;/SKILL.md</code></td><td>Rotina repetível, limites e exemplo diferente.</td></tr>
+        <tr><td><code>obsidian/</code></td><td>Notas ligadas de pergunta, fontes, decisões e erros.</td></tr>
+        <tr><td><code>notebooks/</code></td><td>Fontes escolhidas, perguntas e citações verificadas.</td></tr>
+        <tr><td><code>graphiti/</code></td><td>Episódios e desenho do grafo esperado.</td></tr>
+        <tr><td><code>crew/config/</code></td><td>Papéis e tarefas de no máximo dois agentes.</td></tr>
+        <tr><td><code>telegram/</code></td><td>Comandos e testes com dados fictícios.</td></tr>
+        <tr><td><code>.env.example</code> e <code>.gitignore</code></td><td>Nomes vazios e proteção de segredos.</td></tr>
+        <tr><td><code>docs/seguranca.md</code></td><td>Privacidade, autoria, segredos e revisão de segurança.</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section id="prompts" class="secao-trilha">
+      <h2>Prompts que ensinam sem fazer o trabalho</h2>
+      <p>Complete as lacunas. A IA deve fazer uma pergunta por vez e esperar sua tentativa.</p>
+      <div class="modelos-grid">
+        <article><h3>Tutor com pistas</h3><pre id="prompt-tutor">Você é meu tutor. Não faça o trabalho por mim.
+Minha missão é: [EU COMPLETO].
+Minha fonte é: [NOME DO DOCUMENTO].
+O que eu já penso é: [MINHA FRASE].
+
+Use frases curtas. Peça minha tentativa.
+Se eu travar, dê uma pista, não a resposta.
+Peça o trecho da fonte.
+No fim, peça que eu explique com minhas palavras.</pre><button type="button" data-copiar="prompt-tutor">Copiar molde</button></article>
+        <article><h3>Conferidor de fontes</h3><pre id="prompt-fontes">Use somente as fontes deste notebook.
+Não conclua por mim.
+Pergunte uma coisa por vez:
+- qual fonte fala do assunto;
+- qual trecho sustenta a ideia;
+- onde as fontes concordam ou discordam.
+Se não houver prova, diga: “Não achei prova nas fontes”.</pre><button type="button" data-copiar="prompt-fontes">Copiar molde</button></article>
+        <article><h3>Comparar prompt e skill</h3><pre id="prompt-comparar">Ajude-me a comparar meu prompt [COLO] e a skill [NOME].
+Não escolha nem escreva minha justificativa.
+Pergunte sobre clareza, fontes, repetição,
+segurança, resultado e limite humano.
+Depois peça que EU explique minha escolha e minha prova.</pre><button type="button" data-copiar="prompt-comparar">Copiar molde</button></article>
+        <article><h3>Revisor sem resposta pronta</h3><pre id="prompt-revisor">Leia minha tentativa e minha rubrica.
+Não reescreva o trabalho.
+Mostre uma parte clara, uma parte sem prova,
+uma pergunta para eu melhorar e uma pista de outro assunto.
+Espere minha nova tentativa.</pre><button type="button" data-copiar="prompt-revisor">Copiar molde</button></article>
+      </div>
+    </section>
+
+    <section class="secao-trilha">
+      <h2>Exemplo de skill — outro assunto</h2>
+      <p>Este exemplo ensina a forma sem resolver o projeto.</p>
+      <pre id="skill-exemplo">---
+name: preparar-reuniao
+description: Ajuda a conferir os materiais antes de uma reunião.
+---
+# Quando usar
+Antes de uma reunião de trabalho ou estudo.
+# Entradas
+Assunto, horário, participantes e lista de materiais.
+# Passos
+1. Ler o assunto e o horário.
+2. Separar os documentos necessários.
+3. Anotar duas perguntas.
+4. Conferir local, link e materiais.
+# Limite
+Não envia convites nem compartilha documentos sem autorização.
+# Checagem
+Comparar os materiais com a pauta da reunião.</pre>
+      <button type="button" data-copiar="skill-exemplo">Copiar exemplo</button>
+      <p><strong>Agora pense:</strong> qual rotina do seu projeto realmente se repete? Se ela não se repete, talvez um prompt seja suficiente.</p>
+    </section>
+
+    <section id="estudar" class="secao-trilha">
+      <h2>Onde estudar antes de fazer</h2>
+      <p>Abra um recurso por vez. Prefira vídeos com legenda, pause depois de cada ação e repita no seu computador.</p>
+      <div class="recursos-grid">
+        <article data-ferramenta="github"><h3 class="com-ico-ferr">GitHub</h3><a href="https://docs.github.com/pt/get-started/onboarding/getting-started-with-your-github-account" target="_blank" rel="noopener">Site oficial: conta e primeiros passos</a><a href="https://docs.github.com/en/get-started/start-your-journey" target="_blank" rel="noopener">Site oficial: jornada inicial</a><a href="https://www.youtube.com/watch?v=5BYm7UdCrX0" target="_blank" rel="noopener">Vídeo em português: Criando o primeiro Repositório — Curso em Vídeo</a><small>Pause depois de cada clique e repita a ação.</small></article>
+        <article data-ferramenta="obsidian"><h3 class="com-ico-ferr">Obsidian</h3><a href="https://help.obsidian.md/" target="_blank" rel="noopener">Site oficial: ajuda do Obsidian</a><a href="https://www.youtube.com/watch?v=BgzRGat8WfE" target="_blank" rel="noopener">Vídeo em português: Obsidian para Iniciantes</a><small>Veja somente até criar um cofre, uma nota e uma ligação.</small></article>
+        <article data-ferramenta="notebooklm"><h3 class="com-ico-ferr">NotebookLM</h3><a href="https://support.google.com/notebooklm/" target="_blank" rel="noopener">Site oficial: ajuda do NotebookLM</a><a href="https://www.youtube.com/watch?v=Pm8NKFfu9Ec" target="_blank" rel="noopener">Vídeo em português: NotebookLM — tutorial completo</a><small>Comece pelos trechos sobre fontes, perguntas e citações.</small></article>
+        <article><h3>Gemini Notebook e Colab</h3><a href="https://support.google.com/gemini/answer/16972047" target="_blank" rel="noopener">Site oficial: ajuda do Gemini Notebook</a><a href="https://support.google.com/gemininotebook/answer/16215270" target="_blank" rel="noopener">Site oficial: adicionar fontes</a><a href="https://colab.research.google.com/notebooks/welcome.ipynb" target="_blank" rel="noopener">Notebook visual: primeiros passos no Google Colab</a></article>
+        <article data-ferramenta="graphiti"><h3 class="com-ico-ferr">Graphiti</h3><a href="https://help.getzep.com/graphiti/getting-started/welcome" target="_blank" rel="noopener">Site oficial: o que é Graphiti</a><a href="https://www.youtube.com/watch?v=sygRBjILDn8" target="_blank" rel="noopener">Vídeo em inglês: Temporal Knowledge Graphs — Zep AI</a><small>Use como demonstração visual. Desenhe o grafo antes do código.</small></article>
+        <article data-ferramenta="crewai"><h3 class="com-ico-ferr">CrewAI</h3><a href="https://docs.crewai.com/core-concepts/Agents" target="_blank" rel="noopener">Site oficial: agentes e papéis</a><a href="https://www.youtube.com/watch?v=vIzlj0oObM0" target="_blank" rel="noopener">Vídeo em português: Montando uma Equipe IA com CrewAI</a><small>É um material técnico. Comece pela simulação de papéis e assista a um trecho curto.</small></article>
+        <article data-ferramenta="telegram"><h3 class="com-ico-ferr">Telegram</h3><a href="https://core.telegram.org/bots/tutorial" target="_blank" rel="noopener">Tutorial oficial de bots</a><a href="https://core.telegram.org/bots/faq" target="_blank" rel="noopener">Perguntas frequentes</a></article>
+        <article><h3>FastAPI e ambiente Python</h3><a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" rel="noopener">Site oficial: tutorial do FastAPI</a><a href="https://fastapi.tiangolo.com/virtual-environments/" target="_blank" rel="noopener">Site oficial: ambiente virtual</a><small>Identifique pasta, pacote, servidor, entrada e resposta. Peça apoio se a instalação falhar.</small></article>
+        <article><h3>Segurança</h3><a href="https://docs.github.com/en/get-started/learning-to-code/storing-your-secrets-safely" target="_blank" rel="noopener">Site oficial: como guardar segredos</a></article>
+      </div>
+    </section>
+
+    <section class="secao-trilha glossario">
+      <h2>Palavras difíceis em frases fáceis</h2>
+      <dl><dt>Repositório</dt><dd>Pasta do projeto que guarda memória.</dd><dt>Commit</dt><dd>Fotografia de uma mudança com uma legenda.</dd><dt>Fonte</dt><dd>Documento usado para conferir uma ideia.</dd><dt>Prompt</dt><dd>Pedido que você faz para a IA.</dd><dt>Skill</dt><dd>Rotina de instruções que pode ser usada novamente.</dd><dt>Grafo</dt><dd>Coisas ligadas por setas.</dd><dt>Agente</dt><dd>Um papel com objetivo, tarefa e limite.</dd><dt>Token</dt><dd>Senha secreta usada por um programa.</dd></dl>
+    </section>
+  </main>
+
+  <footer class="rodape-trilha"><p>Regra de ouro: código funcionando sem explicação não prova aprendizagem; explicação sem evidência não prova funcionamento.</p><p><a href="index.html">Voltar ao início</a></p></footer>
+  <script src="trilha.js?v=20261007-4"></script>
+  <script src="avaliacao-config.js?v=2"></script>
+  <script src="avaliacao-perguntas.js?v=1"></script>
+  <script src="avaliacao.js?v=6"></script>
+</body>
+</html>

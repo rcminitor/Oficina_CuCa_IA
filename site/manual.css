@@ -1,6 +1,6 @@
 /* Manual do Aluno: mesmo conceito da página inicial (letra maior, imagens, sem emojis). */
 .manual { font-size: 1.2rem; }
-.manual .topo-in, .manual .abas, .manual main { max-width: 1060px; }
+.manual .topo-in, .manual .abas, .manual main { max-width: var(--largura-site); }
 .manual main { padding-top: 0; }
 .manual .hero-home { padding-top: 3rem; }
 .manual .hero-home h1 { font-size: clamp(2.3rem, 5vw, 3.4rem); }

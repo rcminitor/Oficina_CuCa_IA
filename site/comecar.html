@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Começar o curso — Oficina Digital</title>
+  <meta name="description" content="Comece a Oficina Digital em três perguntas: o que você vai construir, o que precisa preparar e qual é a sua primeira tarefa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css?v=20261007-10">
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="comecar.css?v=3">
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="caminho.js?v=20261007-6" defer></script>
+</head>
+<body class="comecar">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="index.html">Início</a>
+      <a class="aba" href="comecar.html" aria-current="page">Começar</a>
+      <a class="aba" href="progresso.html">Progresso</a>
+      <a class="aba" href="trilha.html">Aprender</a>
+      <a class="aba" href="consultar.html">Consultar</a>
+      <a class="aba" href="ferramentas.html">Ferramentas</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="hero">
+      <p class="eyebrow">Começar o curso</p>
+      <h1>Antes de começar: o que você vai fazer</h1>
+      <p class="lead">Leia as quatro respostas com calma. Leva uns 7 minutos. No fim, diga quem você é e clique em <strong>Continuar</strong>.</p>
+    </section>
+
+    <ol class="perguntas">
+      <li class="pergunta" id="construir">
+        <span class="pergunta-n" aria-hidden="true">1</span>
+        <div class="pergunta-corpo">
+          <h2>O que vou construir?</h2>
+          <p>Uma <strong>oficina de conserto de computadores de mentirinha</strong>. Nela, a inteligência artificial ajuda a organizar os pedidos dos clientes. Você monta cada parte pedindo ajuda ao Gemini.</p>
+          <ol class="mini-caminho">
+            <li>O cliente abre um chamado no site.</li>
+            <li>A API guarda o pedido e dá um número.</li>
+            <li>A IA escreve um laudo de apoio.</li>
+            <li>O técnico recebe o aviso no Telegram.</li>
+            <li>O cliente acompanha no site.</li>
+          </ol>
+          <p class="nota-cores">Cada ferramenta tem <strong>uma cor e um ícone</strong>. Eles se repetem no Manual, no Tutorial, no Roteiro e na Trilha:</p>
+          <ul class="legenda-ferr" aria-label="Cores das ferramentas">
+            <li><span class="selo-ferr" data-ferramenta="notebooklm">NotebookLM</span></li>
+            <li><span class="selo-ferr" data-ferramenta="obsidian">Obsidian</span></li>
+            <li><span class="selo-ferr" data-ferramenta="github">GitHub</span></li>
+            <li><span class="selo-ferr" data-ferramenta="graphiti">Graphiti</span></li>
+            <li><span class="selo-ferr" data-ferramenta="crewai">CrewAI</span></li>
+            <li><span class="selo-ferr" data-ferramenta="telegram">Telegram</span></li>
+          </ul>
+          <p class="mais"><a href="sobre.html">Quero saber mais sobre o projeto</a></p>
+        </div>
+      </li>
+
+      <li class="pergunta" id="preparar">
+        <span class="pergunta-n" aria-hidden="true">2</span>
+        <div class="pergunta-corpo">
+          <h2>O que preciso preparar?</h2>
+          <ul class="checklist">
+            <li><strong>Computador</strong> com Windows 10 de 64 bits ou mais novo, e internet.</li>
+            <li><strong>Conta Google pessoal</strong>, de preferência <code>@gmail.com</code>, com 18 anos ou mais.</li>
+            <li><strong>Fone de ouvido</strong>, para ouvir o resumo em áudio do NotebookLM.</li>
+            <li><strong>Celular com Telegram</strong>. Só é preciso nos passos opcionais.</li>
+            <li><strong>Tempo:</strong> cerca de 6 horas, divididas em várias aulas.</li>
+          </ul>
+          <p>As chaves e senhas vêm depois. Quando chegar a hora, o site mostra o <a href="chaves.html">Guia das chaves</a>.</p>
+          <p class="mais"><a href="roteiro.html">Ver o roteiro completo dos 13 passos</a></p>
+        </div>
+      </li>
+
+      <li class="pergunta" id="como-funciona">
+        <span class="pergunta-n" aria-hidden="true">3</span>
+        <div class="pergunta-corpo">
+          <h2>Como vou trabalhar e ser acompanhado?</h2>
+          <p>Depois desta página vêm <strong>6 etapas</strong>, uma por página: Manual, Chaves, Tutorial, Grafo, Painel e, por último, a Trilha. Em cada etapa você repete o mesmo ritmo:</p>
+          <ol class="ritmo">
+            <li><strong>Leia ou ouça</strong> a etapa com calma.</li>
+            <li><strong>Faça a atividade</strong> no seu computador, pedindo ajuda ao Gemini quando precisar.</li>
+            <li><strong>Guarde um comprovante</strong>: um print, uma foto ou um áudio curto. <a href="comprovantes.html">Veja exemplos de bons comprovantes</a>.</li>
+            <li><strong>Responda as 5 perguntas</strong> no fim da página: o que fez, que ferramenta usou, o que foi difícil, como conferiu e qual comprovante guardou.</li>
+            <li>Marque <strong>“Sim, concluí”</strong> e clique em <strong>Continuar</strong>.</li>
+          </ol>
+          <p>Na <strong>Trilha</strong>, a última etapa, há 15 missões pequenas. Cada uma termina com <strong>2 perguntas que recebem nota de 0 a 10</strong>.</p>
+          <div class="regras">
+            <h3>Combinados</h3>
+            <ul>
+              <li><strong>Escreva com suas palavras.</strong> Frases simples valem mais do que texto bonito. Resposta que parece feita por IA volta para você reescrever.</li>
+              <li><strong>Leia com calma.</strong> Se passar rápido demais por uma missão, o site pede para ler de novo.</li>
+              <li><strong>O professor acompanha.</strong> Suas respostas, suas notas e o tempo de leitura vão para ele, junto com o seu nome e a sua matrícula.</li>
+              <li><strong>Computador do laboratório?</strong> Ao terminar, clique em <em>Não sou eu / Sair</em> para o próximo colega começar do zero.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="pergunta pergunta--tarefa" id="primeira-tarefa">
+        <span class="pergunta-n" aria-hidden="true">4</span>
+        <div class="pergunta-corpo">
+          <h2>Qual é minha primeira tarefa?</h2>
+          <p class="tarefa"><strong>Etapa 1 do Manual:</strong> instalar o Antigravity, criar a pasta <code>oficina-digital</code>, abrir a pasta e dizer olá ao Gemini.</p>
+          <dl class="tarefa-dados">
+            <div><dt>Tempo</dt><dd>cerca de 20 minutos</dd></div>
+            <div><dt>Comprovante</dt><dd>um print do Antigravity com a pasta e a resposta do Gemini</dd></div>
+          </dl>
+          <div class="quem-sou" id="quem-sou"></div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="continuar-unico">
+      <a class="btn principal" id="comecar-continuar" href="aluno.html#e1">Continuar <span aria-hidden="true">→</span></a>
+      <p>Depois, cada página termina com um botão <strong>Continuar</strong> que leva ao próximo passo.</p>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <p>Material de ensino. Os dados e os casos da oficina são de exemplo.</p>
+  </footer>
+  <script src="avaliacao-config.js?v=2"></script>
+  <script src="comecar.js?v=2"></script>
+</body>
+</html>

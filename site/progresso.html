@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Acompanhe as etapas concluídas, os comprovantes e o próximo passo da Oficina Digital.">
+  <title>Oficina Digital — Meu progresso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aluno.css?v=20261007-10">
+  <link rel="stylesheet" href="progresso.css?v=20261007-1">
+  <script src="tema.js?v=20261007-2"></script>
+  <script src="progresso.js?v=20261007-2" defer></script>
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+  <header class="barra-topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><span class="logo" aria-hidden="true">✓</span><span class="marca-nome">Oficina Digital</span></a>
+      <button class="tema-btn" id="tema-btn" type="button" aria-label="Alternar tema claro e escuro" title="Tema claro/escuro">◐</button>
+    </div>
+    <nav class="abas" aria-label="Seções do site">
+      <a class="aba" href="index.html">Início</a>
+      <a class="aba" href="comecar.html">Começar</a>
+      <a class="aba" href="progresso.html" aria-current="page">Progresso</a>
+      <a class="aba" href="trilha.html">Aprender</a>
+      <a class="aba" href="consultar.html">Consultar</a>
+      <a class="aba" href="ferramentas.html">Ferramentas</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="progresso-hero">
+      <p class="eyebrow">Meu progresso</p>
+      <h1>Continue de onde você parou</h1>
+      <p class="lead">Veja o que terminou, guarde uma prova simples e descubra qual é o próximo passo.</p>
+    </section>
+
+    <section class="resumo-progresso" aria-labelledby="titulo-resumo">
+      <div>
+        <p class="eyebrow">Visão geral</p>
+        <h2 id="titulo-resumo"><span id="total-concluido">0</span> de <span id="total-etapas">7</span> etapas concluídas</h2>
+        <p id="mensagem-progresso">Seu progresso fica guardado somente neste navegador.</p>
+      </div>
+      <div class="anel-progresso" id="anel-progresso" role="progressbar" aria-label="Progresso do curso" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><strong id="porcentagem">0%</strong></div>
+      <div class="barra-geral" aria-hidden="true"><span id="barra-geral"></span></div>
+      <a class="btn principal" id="continuar-curso" href="index.html">Começar o curso</a>
+    </section>
+
+    <aside class="guia-comprovantes">
+      <div><p class="eyebrow">Precisa de um exemplo?</p><h2>Aprenda a fazer um bom comprovante</h2><p>Veja modelos de print, áudio, explicação e justificativa sem receber a resposta da atividade.</p></div>
+      <a class="btn secundario" href="comprovantes.html">Ver os exemplos</a>
+    </aside>
+
+    <section aria-labelledby="titulo-etapas">
+      <h2 id="titulo-etapas">Etapas e comprovantes</h2>
+      <p class="sub-sec">Marque uma caixa somente depois de fazer. O comprovante pode ser um print, uma foto ou um áudio curto.</p>
+      <div class="lista-progresso" id="lista-progresso"></div>
+    </section>
+
+    <aside class="nota-local">
+      <strong>Importante:</strong> as caixinhas marcadas aqui ficam só neste aparelho. Já as respostas das 5 perguntas de cada etapa e as respostas da Trilha vão para o professor, com o seu nome e a sua matrícula.
+    </aside>
+  </main>
+
+  <footer>Material de ensino. Você faz as atividades; o site apenas organiza o caminho.</footer>
+</body>
+</html>

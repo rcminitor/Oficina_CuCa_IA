@@ -1,0 +1,92 @@
+.trilha-main { max-width: var(--largura-site); margin: 0 auto; padding: 1.25rem 1rem; }
+.aviso-apoio { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; padding: 1.2rem; border: 3px solid var(--laranja); border-radius: 12px; background: var(--surface); }
+.selo-apoio, .checkpoint { display: inline-block; padding: .35rem .65rem; border-radius: 999px; background: var(--laranja); color: #fff; font-weight: 800; }
+.controles-leitura { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 1rem 0; padding: .8rem; background: var(--acento-sup); border-radius: 10px; }
+.controles-leitura p { margin: 0; }
+.controles-leitura button, [data-copiar], .ouvir-missao { border: 0; border-radius: 7px; padding: .65rem .85rem; background: var(--acento); color: #fff; font-weight: 700; cursor: pointer; }
+.ouvir-missao { float: right; margin: 0 0 .5rem .5rem; }
+.leitura-grande { font-size: 125%; }
+.frase-curta { max-width: 48ch; }
+.mapa-ilhas { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: .6rem; }
+.mapa-ilhas a { display: block; padding: .9rem; border: 2px solid var(--borda); border-radius: 10px; text-align: center; background: var(--surface); color: var(--texto); text-decoration: none; font-weight: 700; }
+.missoes { margin-top: 1.5rem; }
+.missao, .secao-trilha { margin: 1rem 0; padding: 1rem; border: 1px solid var(--borda); border-left: 5px solid var(--acento); border-radius: 10px; background: var(--surface); box-shadow: var(--sombra); }
+.missao h3, .secao-trilha h2 { margin-top: 0; }
+.missao h4 { margin: 1rem 0 .35rem; color: var(--acento); }
+.missao p { max-width: 75ch; }
+.missao details { padding: .65rem; border-radius: 7px; background: var(--acento-sup); }
+.missao summary { cursor: pointer; font-weight: 700; }
+.checkpoint { margin-top: .5rem; font-size: .8rem; }
+.tabela-responsiva { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .7rem; border: 1px solid var(--borda); text-align: left; vertical-align: top; }
+th { background: var(--acento-sup); }
+.modelos-grid, .recursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .8rem; }
+.modelos-grid article, .recursos-grid article { padding: .9rem; border: 1px solid var(--borda); border-radius: 8px; background: var(--bg); }
+.modelos-grid pre, #skill-exemplo { white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; background: var(--surface); border: 1px solid var(--borda); border-radius: 6px; }
+.recursos-grid a { display: block; margin: .5rem 0; }
+.recursos-grid small { display: block; margin-top: .65rem; color: var(--suave); }
+.glossario dl { display: grid; grid-template-columns: minmax(100px, 160px) 1fr; gap: .5rem 1rem; }
+.glossario dt { font-weight: 800; }
+.glossario dd { margin: 0; }
+.rodape-trilha { padding: 1.2rem; text-align: center; background: var(--texto); color: var(--surface); }
+.rodape-trilha a { color: inherit; }
+@media (max-width: 720px) { .aviso-apoio { grid-template-columns: 1fr; } .glossario dl { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+.trilha-topo { padding: 1.4rem 0 .4rem; }
+.trilha-topo h1 { margin: 0 0 .5rem; font-size: clamp(1.8rem, 4.5vw, 2.5rem); }
+.trilha-topo .lead { max-width: 60ch; margin-bottom: 1rem; }
+.missao > .selo-ferr { margin-bottom: .5rem; }
+.recursos-grid h3.com-ico-ferr { justify-content: flex-start; }
+.audio-missao { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin: .4rem 0 .8rem; padding: .7rem .9rem; border-radius: 10px; background: color-mix(in srgb, var(--f-notebooklm) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--f-notebooklm) 35%, var(--surface)); }
+.audio-missao span { font-weight: 700; color: var(--f-notebooklm); }
+.audio-missao audio { width: 100%; max-width: 420px; }
+
+/* Identificação e perguntas das missões */
+.identificacao { margin: 1.2rem 0; padding: 1rem 1.1rem; border: 2px solid var(--acento); border-radius: 12px; background: var(--surface); }
+.identificacao h2 { margin: 0 0 .3rem; font-size: 1.3rem; }
+.identificacao p { margin: 0 0 .7rem; max-width: 70ch; }
+.ident-campos { display: flex; flex-wrap: wrap; gap: .7rem 1.2rem; }
+.ident-campos label { display: grid; gap: .25rem; font-weight: 700; flex: 1 1 220px; }
+.identificacao input, .quiz-pergunta textarea { font: inherit; padding: .6rem .7rem; border: 1px solid var(--borda); border-radius: 8px; background: var(--bg); color: var(--texto); width: 100%; }
+.quiz-missao { clear: both; margin: 1rem 0 .6rem; padding: 1rem; border-radius: 10px; background: var(--bg); border: 1px dashed var(--borda); }
+.quiz-missao h4 { margin: 0 0 .6rem; }
+.quiz-pergunta { margin: 0 0 1rem; }
+.quiz-pergunta label { display: block; font-weight: 700; margin-bottom: .35rem; }
+.quiz-n { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; margin-right: .3rem; border-radius: 999px; background: var(--acento); color: #fff; font-size: .85rem; }
+.quiz-pergunta textarea { min-height: 6rem; resize: vertical; }
+.quiz-enviar { border: 0; border-radius: 8px; padding: .75rem 1.2rem; min-height: 44px; background: var(--acento); color: #fff; font-weight: 700; cursor: pointer; }
+.quiz-enviar:disabled { opacity: .55; cursor: not-allowed; }
+.quiz-status { margin: .6rem 0 0; }
+.quiz-status.alerta { padding: .6rem .8rem; border-radius: 8px; background: var(--laranja-sup); color: var(--texto); border-left: 4px solid var(--laranja); }
+.quiz-status.ok { padding: .6rem .8rem; border-radius: 8px; background: var(--verde-sup); border-left: 4px solid var(--verde); }
+.quiz-retorno p { margin: .4rem 0 0; }
+.quiz-nota { padding: .45rem .7rem; border-radius: 8px; background: var(--acento-sup); }
+.quiz-aviso-ia { padding: .45rem .7rem; border-radius: 8px; background: var(--vermelho-sup); border-left: 4px solid var(--vermelho); }
+.ident-campos { align-items: end; }
+.ident-comecar, .ident-trocar, .ident-sim, .ident-nao { border: 0; border-radius: 8px; padding: .65rem 1.1rem; min-height: 44px; font-weight: 700; cursor: pointer; }
+.ident-comecar, .ident-sim { background: var(--acento); color: #fff; }
+.ident-trocar, .ident-nao { background: var(--bg); color: var(--texto); border: 1px solid var(--borda); }
+.ident-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.ident-confirma { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.ident-confirma[hidden] { display: none; }
+.ident-status { margin: .6rem 0 0; }
+.ident-status.alerta { padding: .5rem .7rem; border-radius: 8px; background: var(--laranja-sup); border-left: 4px solid var(--laranja); }
+.quiz-pergunta textarea:disabled { opacity: .6; cursor: not-allowed; }
+/* Guia de estudo e situação das missões */
+.guia-estudo { margin: 0 0 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: var(--acento-sup); border: 1px solid color-mix(in srgb, var(--acento) 30%, transparent); }
+.guia-estudo h2 { margin: 0 0 .5rem; font-size: 1.35rem; }
+.guia-passos { margin: 0 0 .7rem; padding-left: 1.4rem; display: grid; gap: .35rem; max-width: 75ch; }
+.guia-progresso { margin: .2rem 0 .7rem; }
+.guia-progresso:empty { display: none; }
+.guia-proxima { display: inline-block; padding: .75rem 1.2rem; border-radius: 999px; background: var(--acento); color: #fff; font-weight: 700; text-decoration: none; }
+:root[data-theme="dark"] .guia-proxima { background: #6d74e8; }
+.faixa-missao { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; margin: .1rem 0 .8rem; }
+.situacao-missao { padding: .2rem .65rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1.5px solid var(--borda); }
+.situacao-afazer { color: var(--suave); }
+.situacao-fila { background: var(--hover); color: var(--texto); }
+.situacao-feita { background: var(--verde-sup); color: var(--verde); border-color: var(--verde); }
+.passos-missao { display: inline-flex; flex-wrap: wrap; gap: .3rem; font-size: .85rem; color: var(--suave); }
+.passos-missao span + span::before { content: "→ "; }
+.ident-campos label small { font-weight: 400; color: var(--suave); }

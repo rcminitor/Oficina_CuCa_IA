@@ -14,6 +14,8 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 
 > **Alunos adultos / iniciantes:** comece pelo [Roteiro](https://rcminitor.github.io/Oficina_CuCa_IA/roteiro.html), que junta os 13 passos na ordem. O aluno cria a própria pasta, abre no Antigravity e **constrói o projeto com o Gemini**, guiado pelo [Manual](https://rcminitor.github.io/Oficina_CuCa_IA/aluno.html), pelo [Tutorial](https://rcminitor.github.io/Oficina_CuCa_IA/tutorial.html) e pelo NotebookLM; só no final leva a pasta ao GitHub. As chaves e senhas estão no [Guia das chaves](https://rcminitor.github.io/Oficina_CuCa_IA/chaves.html). Versão em texto: [MANUAL_DO_ALUNO.md](MANUAL_DO_ALUNO.md). Documentos de estudo em `docs/notebooklm/` e prompts em [`docs/prompts_skills.md`](docs/prompts_skills.md). O projeto desta pasta (`api/`, `site/`) é o **gabarito do professor**.
 
+> **Adultos com pouca experiência de estudo ou leitura:** use a [Trilha passo a passo](https://rcminitor.github.io/Oficina_CuCa_IA/trilha.html). Ela divide o trabalho em 15 missões curtas, oferece leitura em voz alta e ensina fontes, prompts, skills, GitHub, Obsidian, NotebookLM, Gemini Notebook, Graphiti, CrewAI e Telegram. O aluno realiza o trabalho e pede apoio técnico somente quando necessário.
+
 ## Material do professor
 
 | Arquivo | Para que serve |

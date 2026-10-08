@@ -16,6 +16,15 @@
                problema: "O computador reinicia sozinho sempre que a placa de vídeo trabalha pesado, em jogos ou renderização." },
   };
 
+  const CHAMADOS_DEMO = new Map([
+    [101, { numero: 101, equipamento: "Dell G15 5511", status: "em_andamento", prioridade: "alta", data: "2026-10-07T09:15:00-03:00",
+      laudo: "Causa provável: superaquecimento por pasta térmica ressecada e saída de ar obstruída.\nPróximos passos: limpar as aletas, conferir as ventoinhas e substituir a pasta térmica." }],
+    [102, { numero: 102, equipamento: "Acer Nitro 5 AN515", status: "aberto", prioridade: "media", data: "2026-10-07T10:40:00-03:00",
+      laudo: "Causa provável: falha de memória ou de driver.\nPróximos passos: verificar os registros da tela azul, testar a memória RAM e atualizar os drivers." }],
+    [103, { numero: 103, equipamento: "Desktop Gamer Core i5", status: "concluido", prioridade: "alta", data: "2026-10-07T11:20:00-03:00",
+      laudo: "Causa encontrada no exemplo: fonte com potência insuficiente durante jogos.\nSolução simulada: testar outra fonte compatível e conferir os cabos de alimentação." }],
+  ]);
+
   const $ = (id) => document.getElementById(id);
   const lerLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const gravarLS = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* sem armazenamento: segue sem salvar */ } };
@@ -24,6 +33,8 @@
   let apiUrl = limpaUrl(lerLS(CHAVE_API)) || PADRAO;
   let ultimoId = lerLS(CHAVE_ULTIMO);
   let temporizadorLaudo = null;
+  let modoDemo = true;
+  let proximoDemo = 104;
 
   // ---------------------------------------------------------------- estado da API
   async function verificarApi() {
@@ -57,9 +68,39 @@
     apiUrl = limpaUrl($("input-url-api").value) || PADRAO;
     gravarLS(CHAVE_API, apiUrl);
     fecharDialogo();
+    modoDemo = false;
+    atualizarModo();
     $("ponto-api").dataset.estado = "verificando";
     $("texto-api").textContent = "Verificando...";
     verificarApi();
+  }
+
+  function atualizarModo() {
+    $("estado-modo").textContent = modoDemo
+      ? "Modo demonstração ativo"
+      : "Usando a API configurada em " + apiUrl.replace(/^https?:\/\//, "");
+    document.body.dataset.modoPainel = modoDemo ? "demo" : "api";
+  }
+
+  function ativarDemo(mostrarCaso) {
+    modoDemo = true;
+    atualizarModo();
+    if (mostrarCaso) {
+      $("campo-id-consulta").value = 101;
+      carregarChamado(101);
+      $("acompanhar").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function criarLaudoDemo(dados) {
+    const texto = (dados.equipamento + " " + dados.problema).toLowerCase();
+    if (texto.includes("desliga") || texto.includes("aquece")) {
+      return { prioridade: "alta", laudo: "Causa provável: superaquecimento.\nPróximos passos: conferir ventoinhas, saídas de ar e pasta térmica." };
+    }
+    if (texto.includes("tela azul") || texto.includes("reinicia")) {
+      return { prioridade: "media", laudo: "Causa provável: memória, driver ou alimentação.\nPróximos passos: consultar os registros e testar uma peça de cada vez." };
+    }
+    return { prioridade: "baixa", laudo: "O caso precisa de testes na bancada.\nPróximos passos: registrar os sintomas, reproduzir o defeito e testar com segurança." };
   }
 
   // ---------------------------------------------------------------- abrir chamado
@@ -96,6 +137,25 @@
     const form = evento.target;
     if (!validar(form)) {
       mostrar("resposta-chamado", "Confira os campos em vermelho. O relato precisa de pelo menos 10 letras.", "erro");
+      return;
+    }
+    if (modoDemo) {
+      const dados = Object.fromEntries(new FormData(form));
+      const triagem = criarLaudoDemo(dados);
+      const id = proximoDemo++;
+      CHAMADOS_DEMO.set(id, {
+        numero: id,
+        equipamento: dados.equipamento,
+        status: "aberto",
+        prioridade: triagem.prioridade,
+        data: new Date().toISOString(),
+        laudo: triagem.laudo,
+      });
+      ultimoId = String(id);
+      $("campo-id-consulta").value = id;
+      form.reset();
+      mostrar("resposta-chamado", "Chamado fictício nº " + id + " criado no modo demonstração.", "ok");
+      carregarChamado(id);
       return;
     }
     const botao = $("btn-enviar");
@@ -136,6 +196,29 @@
     $("btn-ultimo").hidden = false;
   }
 
+  function exibirChamado(c, id, tentativa) {
+    mostrar("resposta-acompanhar", "", "");
+    $("res-titulo").textContent = "Chamado nº " + (c.numero ?? c.id ?? id);
+    $("res-status").textContent = STATUS[c.status] || c.status || "Sem status";
+    const prioridade = (c.prioridade || "").toLowerCase();
+    $("res-prioridade").textContent = prioridade ? "Prioridade " + prioridade : "Sem prioridade";
+    $("res-prioridade").dataset.nivel = prioridade;
+    $("res-equipamento").textContent = c.equipamento || "-";
+    const quando = c.data ?? c.criado_em;
+    $("res-data").textContent = quando ? new Date(quando).toLocaleString("pt-BR") : "-";
+    const laudo = $("res-laudo");
+    const texto = c.laudo ?? c.diagnostico;
+    if (texto) {
+      laudo.textContent = texto;
+    } else {
+      laudo.textContent = "A triagem ainda está trabalhando. Esta tela confere de novo sozinha.";
+      if (tentativa < 5) temporizadorLaudo = setTimeout(() => carregarChamado(id, tentativa + 1), 2500);
+      else laudo.textContent = "O laudo não chegou. Veja o terminal da API e tente consultar de novo.";
+    }
+    $("resultado").hidden = false;
+    if (tentativa === 0) $("resultado").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
   async function carregarChamado(id, tentativa) {
     clearTimeout(temporizadorLaudo);
     tentativa = tentativa || 0;
@@ -143,40 +226,29 @@
       mostrar("resposta-acompanhar", "Buscando o chamado...", "");
       $("resultado").hidden = true;
     }
+    if (modoDemo) {
+      const chamado = CHAMADOS_DEMO.get(Number(id));
+      if (!chamado) {
+        mostrar("resposta-acompanhar", "Não achei o chamado fictício nº " + id + ". Use 101, 102 ou 103.", "erro");
+        return;
+      }
+      exibirChamado(chamado, id, tentativa);
+      return;
+    }
     try {
       const r = await fetch(apiUrl + "/chamados/" + encodeURIComponent(id));
       if (r.status === 404) { mostrar("resposta-acompanhar", "Não achei o chamado nº " + id + ".", "erro"); return; }
       if (!r.ok) throw new Error("a API respondeu com o código " + r.status);
-      const c = await r.json();
-      mostrar("resposta-acompanhar", "", "");
-
-      $("res-titulo").textContent = "Chamado nº " + (c.numero ?? c.id ?? id);
-      $("res-status").textContent = STATUS[c.status] || c.status || "Sem status";
-      const prioridade = (c.prioridade || "").toLowerCase();
-      $("res-prioridade").textContent = prioridade ? "Prioridade " + prioridade : "Sem prioridade";
-      $("res-prioridade").dataset.nivel = prioridade;
-      $("res-equipamento").textContent = c.equipamento || "-";
-      const quando = c.data ?? c.criado_em;
-      $("res-data").textContent = quando ? new Date(quando).toLocaleString("pt-BR") : "-";
-      const laudo = $("res-laudo");
-      const texto = c.laudo ?? c.diagnostico;
-      if (texto) {
-        laudo.textContent = texto;
-      } else {
-        laudo.textContent = "A triagem ainda está trabalhando. Esta tela confere de novo sozinha.";
-        if (tentativa < 5) temporizadorLaudo = setTimeout(() => carregarChamado(id, tentativa + 1), 2500);
-        else laudo.textContent = "O laudo não chegou. Veja o terminal da API e tente consultar de novo.";
-      }
-      $("resultado").hidden = false;
-      if (tentativa === 0) $("resultado").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      exibirChamado(await r.json(), id, tentativa);
     } catch (erro) {
-      mostrar("resposta-acompanhar", "Não consegui carregar o chamado (" + erro.message + "). Veja se a API está ligada.", "erro");
+      mostrar("resposta-acompanhar", "Não consegui carregar o chamado (" + erro.message + "). Abra a Configuração avançada e confira a API.", "erro");
     }
   }
 
   // ---------------------------------------------------------------- início
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-exemplo]").forEach((b) => b.addEventListener("click", () => preencherExemplo(b.dataset.exemplo)));
+    $("btn-demo").addEventListener("click", () => ativarDemo(true));
     $("form-chamado").addEventListener("submit", enviarChamado);
     $("form-acompanhar").addEventListener("submit", (e) => {
       e.preventDefault();
@@ -188,8 +260,7 @@
     $("btn-alterar-api").addEventListener("click", abrirDialogo);
     $("form-api").addEventListener("submit", salvarApi);
     $("btn-cancelar-api").addEventListener("click", fecharDialogo);
-    if (ultimoId) { mostrarUltimo(); $("campo-id-consulta").value = ultimoId; }
-    verificarApi();
-    setInterval(verificarApi, 8000);
+    $("configuracao-avancada").addEventListener("toggle", (e) => { if (e.target.open) verificarApi(); });
+    atualizarModo();
   });
 })();
