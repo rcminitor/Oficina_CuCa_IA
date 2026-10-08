@@ -44,15 +44,15 @@ Entregue: print do laudo dos dois agentes e print da conversa com o bot no celul
 Antes de enviar, confirme que nenhum arquivo tem chave ou token.
 Entregue: print do seu repositório no GitHub com as pastas.
 
-## Aviso 7 (extra): sua oficina na nuvem
+## Aviso 7 (extra): sua oficina na internet
 
-Quem terminou as tarefas 1 a 6 pode fazer uma tarefa extra, **sem obrigação**: colocar a sua oficina na internet.
+Quem terminou as tarefas 1 a 6 pode fazer uma tarefa extra, **sem obrigação**: colocar a oficina na internet, de graça, para funcionar mesmo com o seu computador desligado, e ligar o Telegram.
 
-Você cria, com o Gemini, os arquivos que publicam a sua API no Render (plano gratuito), abre um chamado pelo painel e liga o Telegram. Não copie de ninguém: o objetivo é você entender cada arquivo. Vale até 10 pontos extras; a nota final não passa de 100.
-O passo a passo está na Tarefa 7 do Classroom.
+Você não recebe passo a passo: abra o projeto no Antigravity e cole no Gemini o pedido que está na Tarefa 7. Ele cria o que precisa e guia você, um passo de cada vez.
+Vale até 10 pontos extras; a nota final não passa de 100.
 
 Travou? Escreva em qual passo e o que apareceu na tela. Isso também vale pontos.
-Lembrete: nunca mostre token, chave ou senha em print.
+Lembrete: nunca mostre token, chave ou senha em print nem no chat.
 
 ## Para o professor: ainda não testado em conta real
 
