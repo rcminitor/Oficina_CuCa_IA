@@ -12,7 +12,7 @@ O site já vai para o GitHub Pages sozinho. Este guia coloca a **API** (chamados
    python configurar_telegram.py
    ```
    Ele pede o token do bot, descobre o seu `chat_id` (você manda `oi` ao bot), mostra o que conferir no Render, liga o bot à API e manda uma mensagem de teste. Depois, mande `/abertos` ao bot.
-7. No site (`painel.html`), configure a URL da API para o endereço do Render.
+7. Abra o painel já ligado à sua API, trocando pelo endereço do Render: `https://rcminitor.github.io/Oficina_CuCa_IA/painel.html?api=https://oficina-digital-api.onrender.com`. O painel pede para você confirmar o endereço e guarda a escolha neste navegador. O padrão do painel continua sendo `http://localhost:8000`, a API de cada aluno.
 
 ## Banco de dados
 - Sem `DATABASE_URL` a API usa SQLite (arquivo `chamados.db`), ideal para estudar no computador.

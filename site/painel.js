@@ -36,12 +36,27 @@
   let modoDemo = true;
   let proximoDemo = 104;
 
+  // Link pronto: painel.html?api=https://minha-api.onrender.com guarda o endereço e já usa essa API.
+  // O padrão continua sendo o localhost de cada aluno; o link só vale depois de a pessoa confirmar.
+  function enderecoDoLink() {
+    let u;
+    try { u = new URL(new URLSearchParams(location.search).get("api") || ""); } catch (e) { return ""; }
+    if (u.protocol !== "https:" && u.protocol !== "http:") return "";
+    const endereco = limpaUrl(u.origin);
+    if (endereco === apiUrl) return endereco;
+    return confirm("Conectar este painel à API em " + endereco + "?\n\nOs chamados que você abrir aqui serão enviados para esse endereço. Só aceite se você confia nele.") ? endereco : "";
+  }
+  const doLink = enderecoDoLink();
+  if (doLink) { apiUrl = doLink; gravarLS(CHAVE_API, apiUrl); modoDemo = false; }
+
   // ---------------------------------------------------------------- estado da API
   async function verificarApi() {
     const alvo = apiUrl; // se o endereço mudar durante a espera, este resultado fica velho
     const curta = alvo.replace(/^https?:\/\//, "");
+    const remota = !/^https?:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(alvo);
+    if (remota) $("texto-api").textContent = "Verificando " + curta + " (a API gratuita pode levar 1 minuto para acordar)...";
     const controle = new AbortController();
-    const prazo = setTimeout(() => controle.abort(), 4000);
+    const prazo = setTimeout(() => controle.abort(), remota ? 70000 : 4000);
     let estado = "offline";
     try {
       await fetch(alvo + "/docs", { method: "HEAD", mode: "no-cors", signal: controle.signal });
