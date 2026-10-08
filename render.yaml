@@ -17,8 +17,10 @@ services:
         value: "1"
       - key: ORIGENS_PERMITIDAS
         value: https://rcminitor.github.io
+      # Invente uma senha só com letras, números, _ e - (o Telegram recusa outros caracteres, como + / =).
+      # Por isso não usamos generateValue: o valor gerado pelo Render pode trazer caracteres inválidos.
       - key: TELEGRAM_SEGREDO_WEBHOOK
-        generateValue: true   # o Render gera; copie o valor para rodar api/registrar_webhook.py
+        sync: false
       # Preencha estes no painel do Render (ficam secretos, não vão para o GitHub):
       - key: GEMINI_API_KEY
         sync: false
