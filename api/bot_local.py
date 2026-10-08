@@ -8,6 +8,8 @@ import os
 import time
 import urllib.request
 
+import telegram
+
 TOKEN = os.environ["TELEGRAM_TOKEN"]
 API_LOCAL = "http://localhost:8000/telegram/webhook"
 ultimo = 0
@@ -21,6 +23,6 @@ while True:
             req = urllib.request.Request(
                 API_LOCAL, data=json.dumps(update).encode(), method="POST",
                 headers={"Content-Type": "application/json",
-                         "X-Telegram-Bot-Api-Secret-Token": os.environ.get("TELEGRAM_SEGREDO_WEBHOOK", "")})
+                         "X-Telegram-Bot-Api-Secret-Token": telegram.segredo_webhook(TOKEN)})
             urllib.request.urlopen(req, timeout=60).read()
     time.sleep(1)

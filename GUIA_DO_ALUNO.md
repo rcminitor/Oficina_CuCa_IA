@@ -94,16 +94,14 @@ INFO: Uvicorn running on http://127.0.0.1:8000
 $env:USAR_GRAFO="1"
 $env:TELEGRAM_TOKEN="COLE_O_TOKEN_AQUI"
 $env:TELEGRAM_CHAT_ID="COLE_SEU_ID_AQUI"
-$env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"
 uvicorn main:app --reload
 ```
 
-7. **Terminal 2:** abra outro terminal na pasta `api` (botão direito → **Abrir no Terminal**) e use a **mesma senha**:
+7. **Terminal 2:** abra outro terminal na pasta `api` (botão direito → **Abrir no Terminal**) e use o **mesmo token**:
 
 ```powershell
 .venv\Scripts\activate
 $env:TELEGRAM_TOKEN="COLE_O_TOKEN_AQUI"
-$env:TELEGRAM_SEGREDO_WEBHOOK="invente-uma-senha"
 python bot_local.py
 ```
 **Deu certo se** aparecer `Repassando mensagens do bot para a API local`.
@@ -159,7 +157,7 @@ Para parar: `Ctrl + C`.
 - **Sem `(.venv)` no começo da linha:** rode `.venv\Scripts\activate`.
 - **O bot do Telegram não responde:**
   - Os Terminais 1 e 2 estão abertos?
-  - A **senha** (`TELEGRAM_SEGREDO_WEBHOOK`) é **igual** nos dois? Se for diferente, a API recusa.
+  - O **token** é o mesmo nos dois terminais? Se for diferente, a API recusa.
   - O **Id** é o número do `@userinfobot`?
   - Você enviou `/start` ao **seu bot**?
 - **Fechei o terminal:** as variáveis `$env:...` somem. Digite de novo.

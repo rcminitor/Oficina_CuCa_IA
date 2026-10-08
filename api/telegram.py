@@ -1,8 +1,17 @@
 """Envio de mensagens pelo bot do Telegram (API oficial, sem biblioteca extra)."""
+import hashlib
 import json
 import os
 import urllib.parse
 import urllib.request
+
+
+def segredo_webhook(token: str) -> str:
+    """Senha do webhook derivada do token do bot: ninguém precisa inventar, copiar nem conferir.
+
+    O resultado tem só 0-9 e a-f, que o Telegram aceita. Quem tem o token chega ao mesmo valor.
+    """
+    return hashlib.sha256(f"oficina-digital-webhook:{token}".encode()).hexdigest()
 
 
 def configurado() -> bool:
