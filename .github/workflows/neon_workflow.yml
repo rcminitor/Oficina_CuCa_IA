@@ -1,0 +1,49 @@
+name: Branch do Neon por Pull Request
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+concurrency:
+  group: neon-${{ github.event.number }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  # Cria (ou atualiza) um branch do banco só para este PR e roda os testes nele.
+  testes-no-neon:
+    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v4
+      - id: branch
+        uses: neondatabase/create-branch-action@v6
+        with:
+          project_id: ${{ vars.NEON_PROJECT_ID }}
+          api_key: ${{ secrets.NEON_API_KEY }}
+          branch_name: preview/pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}
+          database: neondb
+          role: neondb_owner
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install fastapi uvicorn pytest httpx pydantic "psycopg[binary]"
+      - name: Testes no branch do Neon
+        run: pytest -q
+        env:
+          DATABASE_URL: ${{ steps.branch.outputs.db_url }}
+
+  # Apaga o branch quando o PR é fechado ou mesclado.
+  apagar-branch:
+    if: github.event.action == 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: neondatabase/delete-branch-action@v3
+        with:
+          project_id: ${{ vars.NEON_PROJECT_ID }}
+          api_key: ${{ secrets.NEON_API_KEY }}
+          branch: preview/pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}
