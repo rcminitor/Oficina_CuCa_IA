@@ -3,6 +3,7 @@
 Rodar:  uvicorn main:app --reload      (dentro da pasta api/)
 Docs:   http://localhost:8000/docs
 """
+import hmac
 import os
 
 from fastapi import BackgroundTasks, FastAPI, Header, HTTPException
@@ -63,7 +64,9 @@ AJUDA = "Comandos: /abertos · /ver ID · /andamento ID · /concluir ID"
 
 @app.post("/telegram/webhook")
 def webhook(update: dict, x_telegram_bot_api_secret_token: str | None = Header(default=None)):
-    if x_telegram_bot_api_secret_token != os.environ.get("TELEGRAM_SEGREDO_WEBHOOK"):
+    token = os.environ.get("TELEGRAM_TOKEN", "")
+    esperado = telegram.segredo_webhook(token) if token else ""
+    if not esperado or not hmac.compare_digest(x_telegram_bot_api_secret_token or "", esperado):
         raise HTTPException(403, "origem não autorizada")
     msg = update.get("message") or {}
     chat_id = str(msg.get("chat", {}).get("id", ""))
