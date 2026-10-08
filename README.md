@@ -5,7 +5,7 @@ Sistema inteligente e didático de assistência técnica de computadores: o clie
 | Parte | Tecnologia | Onde roda |
 |---|---|---|
 | Site (`site/`) | HTML, CSS e JavaScript | GitHub Pages |
-| API (`api/`) | Python + FastAPI + SQLite | Render (ou o seu PC) |
+| API (`api/`) | Python + FastAPI + SQLite | Render ([guia](docs/publicar_no_render.md)) ou o seu PC |
 | Triagem | CrewAI (2 agentes) ou regras simples | dentro da API |
 | Avisos e comandos | Bot do Telegram | dentro da API |
 | Memória e Grafo | Gemini 2.5 + Grafo de Conhecimento (Graphify) | `api/grafo_conhecimento.py` |

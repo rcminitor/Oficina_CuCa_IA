@@ -1,0 +1,7 @@
+# Dependências enxutas para a nuvem (Render): sem CrewAI e matplotlib, que são pesados.
+# A triagem usa Gemini + Grafo de Conhecimento (USAR_GRAFO=1) ou regras simples.
+fastapi
+uvicorn
+pydantic
+google-genai
+networkx
